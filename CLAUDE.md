@@ -4,6 +4,7 @@ Structured frameworks: problem diagnosis → solution design → target setting 
 
 ## Pipeline
 problem-analysis → solution-design → funnel-planner → experiment
+Standalone: churn-prevention
 
 ## Artifacts
 Skills write to `.agents/`:
@@ -11,6 +12,7 @@ Skills write to `.agents/`:
 - `.agents/solution-design.md`
 - `.agents/targets.md`
 - `.agents/experiment-[name].md`
+- `.agents/churn-prevention.md`
 
 ## Cross-Stack (Optional)
 All strategy skills can read `.agents/product-context.md` for business context.

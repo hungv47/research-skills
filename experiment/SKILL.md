@@ -26,6 +26,7 @@ Before delivering, verify:
 - [ ] Costs <10% of full initiative budget (or $0 for internal-only changes)
 - [ ] Success threshold is a specific number (not "significant improvement" or "we'll know it when we see it")
 - [ ] Sample size is sufficient (checked against table below) — or test type adjusted if insufficient
+- [ ] Guardrail metrics defined (metrics that must NOT get worse — e.g., support ticket rate, error rate, refund rate)
 
 ## Chain Position
 Previous: `funnel-planner` | Next: implement winning variant, or re-diagnose with `problem-analysis` if inconclusive
@@ -82,6 +83,8 @@ Define specific numeric thresholds — vague thresholds cause endless "let's giv
 | **Iterate** | [metric] between [X] and [Y] | Change ONE variable: [specify which]. Rerun for [duration]. Max 2 iterations. |
 | **Kill** | [metric] < [number] after [full duration] | Archive learnings. Re-diagnose using `problem-analysis`. |
 
+**Guardrail check:** Before declaring Success, verify all guardrail metrics remain within acceptable range. A test that hits its primary target but degrades a guardrail metric is an Iterate (fix the guardrail breach) or a Kill (if the guardrail breach is inherent to the approach).
+
 ---
 
 ## Step 3: Sample Size Check
@@ -129,6 +132,8 @@ status: draft
 | Budget | [$X or $0] |
 | Primary Metric | [metric name] |
 | Baseline | [current value] |
+| Guardrail Metrics | [metrics that must NOT degrade — e.g., support tickets, error rate, refund rate] |
+| Guardrail Thresholds | [acceptable range for each guardrail — e.g., support tickets ≤ current +10%] |
 
 ## Decision Rules
 

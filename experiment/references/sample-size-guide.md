@@ -37,7 +37,8 @@ If sample size requires > 2 weeks:
 ## Common Mistakes
 
 1. **Ending early** — Don't stop when results "look good." Wait for full sample size.
-2. **Peeking** — Checking results daily inflates false positive rate. Set a check date and wait.
+2. **Peeking** — Checking results daily inflates false positive rate. Set a check date and wait. Why this matters: at 95% confidence, peeking daily can inflate your actual false positive rate to 25-30%. Each check is an independent statistical test — if you check 20 times, the probability of seeing at least one "significant" result by chance compounds (1 - 0.95^20 ≈ 64%). Use sequential testing methods (like Bayesian or alpha-spending) if you must monitor, or commit to a single check date and don't look until then.
 3. **Too many variants** — Each variant needs full sample size. 4 variants = 4x the traffic.
 4. **Ignoring segments** — Overall results may mask segment-level differences. Check major segments.
 5. **Novelty effect** — New things get clicks initially. Run tests long enough to normalize.
+6. **Missing guardrails** — A test can "succeed" on the primary metric while breaking something else (support tickets spike, error rate climbs, refund rate doubles). Always define guardrail metrics — things that must NOT get worse — before launching.
