@@ -99,6 +99,38 @@ For each initiative/metric:
 
 See [references/unit-economics.md](references/unit-economics.md) for formulas.
 
+### Pricing Health Signals
+
+If you're setting acquisition or revenue targets, check for pricing misalignment:
+
+| Signal | What It Means | Action |
+|--------|--------------|--------|
+| Conversion rate >40% | Likely underpriced — you're not losing anyone on price | Test a 15-20% price increase |
+| Churn <3% + no price complaints | Room to increase pricing | Test higher tier or annual pricing |
+| Win rate drops when price discussed | Price objection is real | Improve value communication before raising |
+| Competitors pricing 2x+ higher | Either they're overcharging or you're undervaluing | Run Van Westendorp survey to find optimal zone |
+
+**Van Westendorp Price Sensitivity:** A 4-question survey to find the optimal price range. Ask:
+1. At what price would this be too expensive? (ceiling)
+2. At what price would this be too cheap / suspicious? (floor)
+3. At what price is this expensive but acceptable? (upper bound)
+4. At what price is this a great deal? (lower bound)
+
+Plot the four curves — the intersections reveal the acceptable price range and optimal point.
+
+### Speed-to-Lead (B2B targets)
+
+If targets involve lead response or qualification:
+
+| Response Time | Qualification Likelihood |
+|--------------|------------------------|
+| <5 minutes | 21x more likely to qualify |
+| 5-30 minutes | Baseline |
+| 30 min - 24 hours | 10x drop from baseline |
+| >24 hours | Effectively cold |
+
+If your funnel has a lead stage, include response time SLA as a target: contact within 4 hours, qualify/reject within 48 hours. Speed-to-lead is often the highest-leverage conversion lever in B2B funnels — it's free and just requires process discipline.
+
 ---
 
 ## Step 4: Validate
@@ -155,9 +187,13 @@ status: draft
 ### 70% Test: [Pass/fail per target]
 ### LTV:CAC Check: [Ratio] — [Healthy / Flag]
 
+## Baseline Handoff to Experiment
+
+Every target in this table becomes a baseline for `experiment`. When running `experiment`, the baseline MUST match the number in this table — if it doesn't, update this table first. Stale baselines produce incorrect sample size calculations and misleading lift targets.
+
 ## Next Step
 
-Run `experiment` to design minimum viable tests before full rollout.
+Run `experiment` to design minimum viable tests before full rollout. Pass this artifact as required input — experiment should read baselines from this table, not re-interview for them.
 ```
 
 ---

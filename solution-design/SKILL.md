@@ -75,6 +75,19 @@ Interview for:
 
 Use real examples to inspire specific, targeted ideas — not generic playbooks.
 
+**Unconventional tactics to consider** (when standard approaches don't fit):
+
+| Tactic | When to Use | Example |
+|--------|------------|---------|
+| **Pixel sharing** | Need reach without ad spend | Share remarketing audiences with complementary (non-competing) companies |
+| **Contract buyouts** | Competing against entrenched incumbents | Pay to exit competitor contracts — "We'll cover your remaining [competitor] contract" |
+| **Media acquisitions** | Need audience access fast | Buy an existing newsletter, podcast, or community in your space |
+| **Influencer whitelisting** | Ads need authenticity | Run paid ads through an influencer's account (with permission) — their face, your budget |
+| **"Powered by" marketing** | Product is embeddable or white-label | Free tier includes visible badge — every user becomes a marketing channel |
+| **Free tool as lead gen** | Need high-volume top-of-funnel | Build a free calculator/analyzer that solves a related problem — gates results behind email |
+
+These aren't default moves — use them when the standard ICE-scored initiatives don't adequately address the root cause or when you need asymmetric leverage.
+
 For each idea:
 
 | # | Name | Hypothesis | Mechanic | Target Metric | Effort |

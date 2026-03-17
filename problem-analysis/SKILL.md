@@ -94,6 +94,20 @@ Interview:
 
 **WebSearch directive:** Use WebSearch to understand what factors typically drive this metric — generic trees miss industry-specific drivers. Search: `"[metric] decomposition" OR "[metric] drivers" OR "what affects [metric]"`
 
+### External Factor Check
+
+Before finalizing the tree, rule out external causes that could explain the metric change without any internal failure:
+
+| Factor | Search For | Example |
+|--------|-----------|---------|
+| **Competitor launch** | `"[competitor] launch OR announce [date range]"` | Competitor launched free tier, pulling traffic |
+| **Market/seasonal shift** | `"[industry] [metric] trend [year]"` | Industry-wide conversion drop in Q4 |
+| **Platform algorithm change** | `"[platform] algorithm update [date range]"` | Google core update tanked organic traffic |
+| **Regulatory/policy change** | `"[industry] regulation OR policy [year]"` | GDPR enforcement reduced EU email signups |
+| **Economic conditions** | `"[industry] spending [quarter] [year]"` | Budget freezes across the industry |
+
+Add an "External Factors" branch to the logic tree if any of these are plausible. External causes are often the fastest to confirm or reject — and missing them leads to treating a symptom (your site) when the cause is environmental.
+
 ---
 
 ## Phase 2: Form Hypotheses

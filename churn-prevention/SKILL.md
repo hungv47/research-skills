@@ -200,6 +200,21 @@ Dunning = the process of recovering failed payments before they become churn.
 
 Predict churn before it happens. A health score aggregates usage signals into a single risk indicator.
 
+### Early Warning Signals
+
+These specific behaviors predict churn before it shows up in aggregate metrics:
+
+| Signal | Lead Time | Severity |
+|--------|-----------|----------|
+| **Login frequency drops 50%+** | 2-4 weeks before cancel | Warning |
+| **Billing page visits increase** | Days before cancel | High |
+| **Data export initiated** | Days before cancel | Critical — immediate intervention |
+| **Support ticket with negative sentiment** | 1-2 weeks | Warning |
+| **Downgrade request** | Days | High |
+| **Feature usage drops to zero** | 2-3 weeks | Warning |
+
+**Data export is the strongest signal.** When a customer exports their data, they're preparing to leave. This should trigger immediate personal outreach — not an automated email.
+
 ### Health Score Signals
 
 | Signal | Weight | Healthy | At Risk | Critical |
@@ -350,7 +365,11 @@ Route top hypotheses to `experiment` for testing. Start with highest-impact, low
 
 **Over-engineering health scores before basics** — Building a predictive ML model when you don't have a cancel flow or dunning sequence is premature optimization. Fix the cancel flow first, then dunning, then health scores.
 
-**Ignoring involuntary churn** — Many teams focus entirely on voluntary churn while 30-40% of their churn is failed payments. Dunning optimization is often the highest-ROI retention investment.
+**Ignoring involuntary churn** — Many teams focus entirely on voluntary churn while 30-40% of their churn is failed payments. Dunning optimization is often the highest-ROI retention investment. Consider card updater services (Visa Account Updater, Mastercard ABU) — they reduce hard declines by 30-50% automatically.
+
+**Training cancel-for-deals behavior** — Offering 50%+ discounts in the cancel flow teaches customers that cancelling is the way to get a deal. Cap save discounts at 20-30% for 2-3 months maximum. If someone cancels three times and gets saved each time, the pattern is the problem.
+
+**No connection to problem-analysis** — Running churn-prevention in isolation when churn was identified as a root cause in `problem-analysis`. If `problem-analysis` identified churn as a root cause, read that artifact first — it may reveal specific churn drivers that should shape your cancel flow and save offers.
 
 ---
 
