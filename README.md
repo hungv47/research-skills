@@ -39,9 +39,6 @@ All strategy skills can read `.agents/product-context.md`, created by `icp-resea
 - "Prioritize initiatives" → `solution-design`
 - "Set targets" → `funnel-planner`
 - "Design an experiment" → `experiment`
-
-## Part of [Agent Skills](https://github.com/hungv47/agent-skills)
-
 ## License
 
 MIT

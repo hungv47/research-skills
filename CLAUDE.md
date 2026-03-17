@@ -16,6 +16,3 @@ Skills write to `.agents/`:
 All strategy skills can read `.agents/product-context.md` for business context.
 Created by `icp-research` from the communication stack:
 `npx skills add hungv47/comms-skills`
-
-## Part of Agent Skills
-https://github.com/hungv47/agent-skills
