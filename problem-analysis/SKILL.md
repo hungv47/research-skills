@@ -173,6 +173,16 @@ For each hypothesis:
 | **Rejected** | Evidence contradicts the "then" clause | "[Data point] shows [opposite of prediction]. Cause eliminated." |
 | **Inconclusive** | Evidence is ambiguous or insufficient | "[What we found]. Need: [specific additional data], from [source], owned by [who]." |
 
+**Prioritize Inconclusive verdicts by impact:** Not all Inconclusive results deserve follow-up. Rank them:
+
+| Potential Gap Explained | Action |
+|------------------------|--------|
+| **>50% of gap** (high-impact) | **Must resolve** before moving to solution-design. Specify: data needed, source, access barrier, timeline, owner. |
+| **10-50% of gap** (medium-impact) | **Should resolve** if data is available within 1 week. Otherwise, note as risk and proceed. |
+| **<10% of gap** (low-impact) | **Skip** — proceed to solution-design. Note as unexplained variance. |
+
+Designing solutions around an incomplete diagnosis is expensive. A high-impact Inconclusive hypothesis that explains 50%+ of the gap means your root cause statement is missing the biggest driver — solutions will target the wrong thing.
+
 Be direct. "The data doesn't support this" is useful. "It's hard to tell" is not.
 
 ### Step 2: Root Cause Statement

@@ -144,14 +144,17 @@ If your funnel has a lead stage, include response time SLA as a target: contact 
 | **Moonshot** | 10x improvement, no plan → work backwards from realistic |
 | **Orphan Target** | Owner is "the team" → assign a person |
 | **Input Trap** | Measuring activities ("publish 4 posts") → measure the output ("organic signups") |
-| **Aspirational math** | Setting targets that require 2x industry benchmarks without acknowledging the gap. If the numbers don't work at benchmark rates, say so. |
+| **Aspirational math** | Target > 1.5x good-tier benchmark AND no written justification for why you can outperform 80% of companies. If variance > 50% above benchmark, must explain or reduce to 1.3x benchmark. |
 
 See [references/anti-patterns.md](references/anti-patterns.md) for detailed detection.
 
 ### Stress Tests
 
 1. **Revenue test:** If we hit this but revenue doesn't move, was it worth it?
-2. **70% test:** If we hit 70%, is that still valuable?
+2. **70% test:** If we hit 70%, is that still valuable? Context matters:
+   - *Higher-is-better metrics* (conversion, retention): 70% of target is acceptable IF it's still above industry benchmark. If 70% puts you below benchmark, your target is too low.
+   - *Lower-is-better metrics* (churn, CAC): 70% of target means you achieved only 70% of the reduction — almost always still worth doing.
+   - *Binary thresholds* (LTV:CAC ≥3:1): 70% = 2.1:1 — this is still broken. Don't accept 70% on binary targets; they pass or fail.
 3. **Ownership test:** Who owns this? What are they NOT doing to focus on it?
 4. **Measurement test:** Can we check this weekly, or only at period end?
 
@@ -177,9 +180,11 @@ status: draft
 
 ## Target Table
 
-| Initiative | Metric | Baseline | Benchmark | Target | Justification | Owner |
-|-----------|--------|----------|-----------|--------|---------------|-------|
-| [Name] | [Metric] | [Current] | [Industry ref] | [Goal] | [Why achievable] | [Person] |
+| Initiative | Metric | Baseline | Benchmark (Good) | Target | Variance vs. Benchmark | Justification | Owner |
+|-----------|--------|----------|-------------------|--------|----------------------|---------------|-------|
+| [Name] | [Metric] | [Current] | [Industry ref] | [Goal] | [+X% above benchmark or within range] | [Why achievable — cite evidence] | [Person] |
+
+If Variance > 50% above good-tier benchmark, flag: "This target requires significantly above-average performance. Justification: [why your situation is different]."
 
 ## Validation
 

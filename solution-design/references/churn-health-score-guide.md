@@ -80,6 +80,23 @@ For each signal, define what 1-5 means:
 3. Find the score threshold that best separates the two groups
 4. Adjust weights if a signal doesn't differentiate (e.g., if all churned customers had the same login frequency as retained ones, login frequency has low predictive power for your product)
 
+### Predictive Validation
+
+After 2+ weeks of scoring, validate the model actually predicts churn:
+
+1. Segment all scored customers into bands: Healthy (4.0+), At Risk (2.5-3.9), Critical (<2.5)
+2. Track who actually churns in the next 30 days per band
+3. Calculate **precision**: of customers marked Critical, what % actually churned?
+4. Calculate **recall**: of customers who actually churned, what % were marked Critical or At Risk?
+
+| Metric | Target | Action If Below |
+|--------|--------|----------------|
+| Precision (Critical band) | >40% | Weights are wrong — Critical band is too broad. Tighten thresholds. |
+| Recall | >60% | You're missing real churners. Add signals or lower At Risk threshold. |
+| False positive rate | <30% | Too many false alarms. Raise Critical threshold to reduce noise. |
+
+If precision <30%, the model is worse than random for your product. Re-examine which signals actually correlate with churn in your data — don't just use the defaults.
+
 ### Ongoing Calibration
 
 - Monthly: Check false positive rate (healthy customers flagged as at-risk)

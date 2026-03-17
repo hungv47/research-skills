@@ -84,7 +84,14 @@ Define specific numeric thresholds — vague thresholds cause endless "let's giv
 | **Iterate** | [metric] between [X] and [Y] | Change ONE variable: [specify which]. Rerun for [duration]. Max 2 iterations. |
 | **Kill** | [metric] < [number] after [full duration] | Archive learnings. Re-diagnose using `problem-analysis`. |
 
-**Guardrail check:** Before declaring Success, verify all guardrail metrics remain within acceptable range. A test that hits its primary target but degrades a guardrail metric is an Iterate (fix the guardrail breach) or a Kill (if the guardrail breach is inherent to the approach).
+**Guardrail check — response protocol:**
+
+| Situation | Decision | Action |
+|-----------|----------|--------|
+| Primary succeeds, guardrails hold | **Success** | Scale as planned |
+| Primary succeeds, guardrail breached slightly (<20% degradation) | **Conditional Success** | Reduce variant scope (e.g., show to 50% instead of 100%), rerun 7 days. If guardrail recovers and primary holds, scale. |
+| Primary succeeds, guardrail breached severely (>20% degradation) | **Iterate** | The approach works but has side effects. Change the implementation to protect the guardrail, then retest. |
+| Primary succeeds, guardrail breach is inherent to approach | **Kill** | The primary gain isn't worth the guardrail cost. Archive why and try a different approach via `solution-design`. |
 
 ---
 

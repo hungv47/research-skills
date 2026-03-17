@@ -128,6 +128,18 @@ Score 1-10 on three dimensions. Attach a one-sentence evidence citation to every
 | **Confidence** — How sure are we? | Gut feeling, no data | Some supporting data | Direct evidence, proven playbook |
 | **Ease** — How easy to execute? | Multi-team, months | Moderate effort, manageable | Small team, quick turnaround |
 
+**Confidence evidence thresholds** (most common source of arbitrary scoring):
+
+| Score | Evidence Required | Example |
+|-------|------------------|---------|
+| 1-3 | Gut feeling only, no data | "I think this would work" |
+| 4-5 | One data point (one past test, one customer quote, one competitor example) | "Competitor X did this and grew 20%" |
+| 6-7 | Supporting pattern (2+ data points from different sources) | "3 customers requested this + competitor benchmark shows 30% lift" |
+| 8-9 | Proven in similar context (same tactic worked 2+ times in same business type) | "We ran this last quarter and got 25% lift; industry case studies show 20-40% range" |
+| 10 | Near-certain (proven playbook with 80%+ success rate in your exact context) | "We've done this 3 times before, same metric moved every time" |
+
+Map your evidence to this grid before assigning the number. If two initiatives both land at "6" but one has customer quotes and the other has competitor data, the forced ranking from Step 4 should break the tie.
+
 **Bad:** "Impact: 7"
 **Good:** "Impact: 7 — paid traffic is 60% of signups, and the old targeting had 3.5% conversion vs. current 1.2%"
 
@@ -326,6 +338,20 @@ Run `funnel-planner` to set targets for Restore Paid Targeting and Restore Socia
 
 **Generic initiatives** — "Improve SEO" or "Optimize onboarding" are categories, not initiatives. Every initiative must describe a specific mechanic tied to a specific root cause. The anti-generic test catches these: if ANY company could use this idea regardless of root cause, it's too generic.
 
+When an initiative fails the anti-generic test, salvage it:
+1. Identify the generic part ("Improve onboarding" = generic)
+2. Anchor to the root cause ("Low feature adoption of export feature" = specific root cause)
+3. Rewrite with a specific mechanic ("Add 3-step export walkthrough triggered on first file upload")
+4. Re-test: delete the root cause — does the idea still make sense for any company? If so, go more specific
+
+**Before/after examples:**
+
+| Generic (fails test) | Still Generic (fails again) | Specific (passes) |
+|---------------------|---------------------------|-------------------|
+| "Improve onboarding" | "Improve onboarding with gamification" | "Add export walkthrough on first login because Root Cause = users never discover export" |
+| "Better content marketing" | "Create more blog posts" | "Write 3 comparison articles targeting [competitor] keywords because Root Cause = losing deals at evaluation stage" |
+| "Reduce churn" | "Send retention emails" | "Add pause-subscription option to cancel flow because Root Cause = 30% of cancellers cite 'temporary need change'" |
+
 **Untethered ideas** — Ideas that sound good but don't connect to the confirmed root cause. Root cause anchoring prevents the brainstorm from drifting into a generic growth playbook.
 
 **All-small or all-large efforts** — Skewing entirely toward quick wins misses structural fixes. Skewing entirely toward large initiatives stalls momentum. Include a mix: ≥2 Small, ≥2 Medium, ≥1 Large.
@@ -346,3 +372,6 @@ Run `funnel-planner` to set targets for Restore Paid Targeting and Restore Socia
 - [references/initiative-types.md](references/initiative-types.md) — Hero vs Support classification
 - [references/ice-scoring-rubric.md](references/ice-scoring-rubric.md) — Detailed scoring calibration with scored examples
 - [references/initiative-planning.md](references/initiative-planning.md) — Detailed execution planning for complex initiatives
+- [references/churn-playbook.md](references/churn-playbook.md) — Cancel flow, dunning, health scores, exit-reason mapping (when root cause is churn)
+- [references/churn-cancel-flow-templates.md](references/churn-cancel-flow-templates.md) — Email templates for cancel flow and dunning sequences
+- [references/churn-health-score-guide.md](references/churn-health-score-guide.md) — Health score implementation and calibration
