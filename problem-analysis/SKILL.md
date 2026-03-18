@@ -1,6 +1,6 @@
 ---
 name: problem-analysis
-description: "Diagnose the problem, break down the issue, build a logic tree, form hypotheses, test against evidence, find root cause, what's causing this — structured problem diagnosis, MECE decomposition, hypothesis development, root cause analysis. Works across any domain: marketing, product, engineering, operations, finance, HR."
+description: "Diagnoses problems through structured MECE decomposition, forms testable hypotheses, and identifies root causes with evidence. Use when the user asks to diagnose a problem, break down an issue, build a logic tree, form hypotheses, test against evidence, or find a root cause — structured problem diagnosis, MECE decomposition, hypothesis development, root cause analysis. Works across any domain: marketing, product, engineering, operations, finance, HR."
 license: MIT
 metadata:
   author: hungv47

@@ -1,6 +1,6 @@
 ---
 name: solution-design
-description: "Brainstorm solutions, generate initiatives, prioritize ideas, rank by impact, what should we try, which should we do first — solution ideation, initiative brainstorming, ICE scoring, evidence-backed ranking. Works across any domain: growth levers, product fixes, operational improvements, cost reduction."
+description: "Brainstorms targeted solutions anchored to root causes and ranks them with evidence-backed ICE scoring. Use when the user asks to brainstorm solutions, generate initiatives, prioritize ideas, rank by impact, decide what to try, or determine what to do first — solution ideation, initiative brainstorming, ICE scoring, evidence-backed ranking. Works across any domain: growth levers, product fixes, operational improvements, cost reduction."
 license: MIT
 metadata:
   author: hungv47

@@ -1,6 +1,7 @@
 ---
 name: experiment
-description: "Design experiments, create A/B tests, validate hypotheses with minimum viable tests, test this idea, how do I validate this — experimentation, A/B testing, test design, decision rules. Works across any domain: landing pages, pricing, onboarding flows, ad creative, feature flags."
+description: "Designs minimum viable experiments with clear success/iterate/kill decision rules and sample size validation. Use when the user asks to design experiments, create A/B tests, validate hypotheses, test an idea, or figure out how to validate something — experimentation, A/B testing, test design, decision rules. Works across any domain: landing pages, pricing, onboarding flows, ad creative, feature flags."
+argument-hint: "[initiative to test]"
 license: MIT
 metadata:
   author: hungv47
