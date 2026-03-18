@@ -4,7 +4,7 @@ description: "This skill should be used when the user asks to 'set targets', 'pl
 license: MIT
 metadata:
   author: hungv47
-  version: "3.1.0"
+  version: "3.2.0"
 ---
 
 # Funnel Planner — Target Setting
@@ -12,6 +12,10 @@ metadata:
 *Strategy — Step 3 of 4. Sets data-driven targets for each prioritized initiative.*
 
 **Core Question:** "Do the numbers actually work?"
+
+## Philosophy
+
+Improvement factors and benchmarks here are evidence-backed starting points. Actual achievable improvement depends on baseline, team capability, and market context. Use the defaults as sanity checks, not ceilings or floors.
 
 ## Inputs Required
 - Prioritized initiatives from `.agents/solution-design.md` (preferred)
@@ -92,12 +96,46 @@ For each initiative/metric:
 | Mature funnel | 5-10% |
 | Major redesign or fix | 30-50% |
 
+Typical ranges, not guarantees. A team fixing a known broken page may see 100%+ lift; a team optimizing an excellent funnel may see 2-3%. Ground targets in evidence (baseline + realistic improvement), not in this table.
+
 **LTV:CAC sanity check** (for acquisition targets):
 - LTV:CAC should be ≥ 3:1, ideally 5:1
 - Payback < 12 months (SMB) or < 18 months (mid-market)
 - If targets imply unhealthy economics, flag it explicitly
 
 See [references/unit-economics.md](references/unit-economics.md) for formulas.
+
+### Pricing Health Signals
+
+If you're setting acquisition or revenue targets, check for pricing misalignment:
+
+| Signal | What It Means | Action |
+|--------|--------------|--------|
+| Conversion rate >40% | Likely underpriced — you're not losing anyone on price | Test a 15-20% price increase |
+| Churn <3% + no price complaints | Room to increase pricing | Test higher tier or annual pricing |
+| Win rate drops when price discussed | Price objection is real | Improve value communication before raising |
+| Competitors pricing 2x+ higher | Either they're overcharging or you're undervaluing | Run Van Westendorp survey to find optimal zone |
+
+**Van Westendorp Price Sensitivity:** A 4-question survey to find the optimal price range. Ask:
+1. At what price would this be too expensive? (ceiling)
+2. At what price would this be too cheap / suspicious? (floor)
+3. At what price is this expensive but acceptable? (upper bound)
+4. At what price is this a great deal? (lower bound)
+
+Plot the four curves — the intersections reveal the acceptable price range and optimal point.
+
+### Speed-to-Lead (B2B targets)
+
+If targets involve lead response or qualification:
+
+| Response Time | Qualification Likelihood |
+|--------------|------------------------|
+| <5 minutes | 21x more likely to qualify |
+| 5-30 minutes | Baseline |
+| 30 min - 24 hours | 10x drop from baseline |
+| >24 hours | Effectively cold |
+
+If your funnel has a lead stage, include response time SLA as a target: contact within 4 hours, qualify/reject within 48 hours. Speed-to-lead is often the highest-leverage conversion lever in B2B funnels — it's free and just requires process discipline.
 
 ---
 
@@ -112,14 +150,17 @@ See [references/unit-economics.md](references/unit-economics.md) for formulas.
 | **Moonshot** | 10x improvement, no plan → work backwards from realistic |
 | **Orphan Target** | Owner is "the team" → assign a person |
 | **Input Trap** | Measuring activities ("publish 4 posts") → measure the output ("organic signups") |
-| **Aspirational math** | Setting targets that require 2x industry benchmarks without acknowledging the gap. If the numbers don't work at benchmark rates, say so. |
+| **Aspirational math** | Target significantly above good-tier benchmark (roughly >1.5x) without written justification for why your situation enables outperformance. The further above benchmark, the stronger the justification needs to be. |
 
 See [references/anti-patterns.md](references/anti-patterns.md) for detailed detection.
 
 ### Stress Tests
 
 1. **Revenue test:** If we hit this but revenue doesn't move, was it worth it?
-2. **70% test:** If we hit 70%, is that still valuable?
+2. **70% test:** If we hit 70%, is that still valuable? Context matters:
+   - *Higher-is-better metrics* (conversion, retention): 70% of target is acceptable IF it's still above industry benchmark. If 70% puts you below benchmark, your target is too low.
+   - *Lower-is-better metrics* (churn, CAC): 70% of target means you achieved only 70% of the reduction — almost always still worth doing.
+   - *Binary thresholds* (LTV:CAC ≥3:1): 70% = 2.1:1 — this is still broken. Don't accept 70% on binary targets; they pass or fail.
 3. **Ownership test:** Who owns this? What are they NOT doing to focus on it?
 4. **Measurement test:** Can we check this weekly, or only at period end?
 
@@ -145,9 +186,11 @@ status: draft
 
 ## Target Table
 
-| Initiative | Metric | Baseline | Benchmark | Target | Justification | Owner |
-|-----------|--------|----------|-----------|--------|---------------|-------|
-| [Name] | [Metric] | [Current] | [Industry ref] | [Goal] | [Why achievable] | [Person] |
+| Initiative | Metric | Baseline | Benchmark (Good) | Target | Variance vs. Benchmark | Justification | Owner |
+|-----------|--------|----------|-------------------|--------|----------------------|---------------|-------|
+| [Name] | [Metric] | [Current] | [Industry ref] | [Goal] | [+X% above benchmark or within range] | [Why achievable — cite evidence] | [Person] |
+
+If Variance > 50% above good-tier benchmark, flag: "This target requires significantly above-average performance. Justification: [why your situation is different]."
 
 ## Validation
 
@@ -155,9 +198,13 @@ status: draft
 ### 70% Test: [Pass/fail per target]
 ### LTV:CAC Check: [Ratio] — [Healthy / Flag]
 
+## Baseline Handoff to Experiment
+
+Every target in this table becomes a baseline for `experiment`. When running `experiment`, the baseline MUST match the number in this table — if it doesn't, update this table first. Stale baselines produce incorrect sample size calculations and misleading lift targets.
+
 ## Next Step
 
-Run `experiment` to design minimum viable tests before full rollout.
+Run `experiment` to design minimum viable tests before full rollout. Pass this artifact as required input — experiment should read baselines from this table, not re-interview for them.
 ```
 
 ---

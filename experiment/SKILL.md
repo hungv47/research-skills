@@ -4,7 +4,7 @@ description: "Design experiments, create A/B tests, validate hypotheses with min
 license: MIT
 metadata:
   author: hungv47
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Experiment Design
@@ -13,8 +13,13 @@ metadata:
 
 **Core Question:** "What's the cheapest way to learn if this works?"
 
+## Philosophy
+
+Experimental rigor matters — but the level should match the stakes. Sample size tables assume 95% confidence / 80% power, appropriate for high-stakes decisions. For lower-stakes tests (social creative, email subjects), 90% confidence may suffice. Define acceptable risk upfront.
+
 ## Inputs Required
 - An initiative with hypothesis and target metric (from `.agents/solution-design.md` + `.agents/targets.md`)
+- Baselines from `.agents/targets.md` (required for sample size calculation and lift targets)
 - OR: User describes what they want to test
 
 ## Output
@@ -26,6 +31,7 @@ Before delivering, verify:
 - [ ] Costs <10% of full initiative budget (or $0 for internal-only changes)
 - [ ] Success threshold is a specific number (not "significant improvement" or "we'll know it when we see it")
 - [ ] Sample size is sufficient (checked against table below) — or test type adjusted if insufficient
+- [ ] Guardrail metrics defined (metrics that must NOT get worse — e.g., support ticket rate, error rate, refund rate)
 
 ## Chain Position
 Previous: `funnel-planner` | Next: implement winning variant, or re-diagnose with `problem-analysis` if inconclusive
@@ -42,7 +48,7 @@ Check for `.agents/product-context.md`. If missing: **INTERVIEW.** Ask the user 
 | Artifact | Source | If Missing |
 |----------|--------|------------|
 | `solution-design.md` | solution-design | **INTERVIEW.** Ask what to test. |
-| `targets.md` | funnel-planner | **INTERVIEW.** Ask for baseline metrics. |
+| `targets.md` | funnel-planner | **INTERVIEW.** Ask for baseline metrics. Baselines are required — without them, sample size and lift calculations are meaningless. |
 
 ### Optional Artifacts
 | Artifact | Source | Benefit |
@@ -82,6 +88,15 @@ Define specific numeric thresholds — vague thresholds cause endless "let's giv
 | **Iterate** | [metric] between [X] and [Y] | Change ONE variable: [specify which]. Rerun for [duration]. Max 2 iterations. |
 | **Kill** | [metric] < [number] after [full duration] | Archive learnings. Re-diagnose using `problem-analysis`. |
 
+**Guardrail check — response protocol:**
+
+| Situation | Decision | Action |
+|-----------|----------|--------|
+| Primary succeeds, guardrails hold | **Success** | Scale as planned |
+| Primary succeeds, guardrail breached slightly (<20% degradation) | **Conditional Success** | Reduce variant scope (e.g., show to 50% instead of 100%), rerun 7 days. If guardrail recovers and primary holds, scale. |
+| Primary succeeds, guardrail breached severely (>20% degradation) | **Iterate** | The approach works but has side effects. Change the implementation to protect the guardrail, then retest. |
+| Primary succeeds, guardrail breach is inherent to approach | **Kill** | The primary gain isn't worth the guardrail cost. Archive why and try a different approach via `solution-design`. |
+
 ---
 
 ## Step 3: Sample Size Check
@@ -94,6 +109,8 @@ For A/B tests — minimum visitors PER VARIANT:
 | 5% | ~8,000 | ~1,300 |
 | 10% | ~4,000 | ~640 |
 | 25% | ~1,600 | ~260 |
+
+Assumes 95% confidence, 80% power. For exploratory tests, 90% confidence reduces required sample by ~25%. For critical decisions, consider 99%.
 
 **Quick math:** [Your daily traffic] × [test days] ÷ 2 = visitors per variant. Compare against table.
 
@@ -129,6 +146,8 @@ status: draft
 | Budget | [$X or $0] |
 | Primary Metric | [metric name] |
 | Baseline | [current value] |
+| Guardrail Metrics | [metrics that must NOT degrade — e.g., support tickets, error rate, refund rate] |
+| Guardrail Thresholds | [acceptable range for each guardrail — e.g., support tickets ≤ current +10%] |
 
 ## Decision Rules
 
@@ -275,6 +294,24 @@ When an experiment concludes, follow the appropriate path:
 | **Success** | Scale. Set full targets via `funnel-planner`. Celebrate briefly, then test the next initiative. |
 | **Iterate** | Change ONE variable. Document what and why. Max 2 iterations before escalating to kill/pivot. |
 | **Kill** | Archive in the experiment file: what you tested, what happened, what you learned. Return to `solution-design` with the new learning. |
+
+---
+
+## Anti-Patterns
+
+**Testing the wrong level** — Most teams test CTA button colors when they should test entirely different angles. Creative testing hierarchy by impact: Concept/angle (biggest swing) → Hook/headline → Visual style → Body copy → CTA. Start at the top of the hierarchy, not the bottom.
+
+**Testing multiple variables** — Changing the hook, CTA, and format simultaneously makes results uninterpretable. Change exactly ONE element per variant — the learning is more valuable than the lift.
+
+**Insufficient sample rationalization** — "We don't have enough traffic for statistical significance, so let's just go with what feels right." If you can't reach sample size for a 20% lift, either aim for a bigger change (50%+ lift) or use Before-After — don't abandon rigor entirely.
+
+**Novelty effect as success** — New things get clicks initially. A variant that "wins" in 3 days may lose after 2 weeks once the novelty wears off. Run tests long enough for the novelty to normalize.
+
+**Metrics without baselines** — "Let's test if this improves conversions" without knowing the current conversion rate. Every experiment requires a numeric baseline — without one, you can't calculate lift, sample size, or whether the result is meaningful.
+
+**Testing without guardrails** — A test can "succeed" on the primary metric while degrading support ticket rates, error rates, or refund rates. Define guardrail metrics before launching — see Quality Gate.
+
+**Survivorship bias in iteration** — Iterating only on winners while ignoring what failures teach. Kill decisions should feed learnings back to `solution-design` — the failure mechanism often reveals a better approach.
 
 ---
 

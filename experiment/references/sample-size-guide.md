@@ -4,7 +4,9 @@ How to determine if you have enough traffic/users to run a meaningful test.
 
 ## Quick Reference Table
 
-Minimum visitors per variant to detect a given relative lift at 95% confidence, 80% power:
+Minimum visitors per variant to detect a given relative lift at 95% confidence, 80% power.
+
+**Confidence level context:** 95% confidence / 80% power is the standard for high-stakes decisions (pricing changes, major redesigns). For lower-stakes exploratory tests (social creative, email subject lines), 90% confidence reduces required sample by ~25% and is often sufficient. For critical, hard-to-reverse decisions, consider 99% confidence — which roughly doubles the required sample. Define acceptable risk before choosing.
 
 | Baseline Rate | 10% Lift | 20% Lift | 50% Lift | 100% Lift |
 |--------------|----------|----------|----------|-----------|
@@ -37,7 +39,8 @@ If sample size requires > 2 weeks:
 ## Common Mistakes
 
 1. **Ending early** — Don't stop when results "look good." Wait for full sample size.
-2. **Peeking** — Checking results daily inflates false positive rate. Set a check date and wait.
+2. **Peeking** — Checking results daily inflates false positive rate. Set a check date and wait. Why this matters: at 95% confidence, peeking daily can inflate your actual false positive rate to 25-30%. Each check is an independent statistical test — if you check 20 times, the probability of seeing at least one "significant" result by chance compounds (1 - 0.95^20 ≈ 64%). Use sequential testing methods (like Bayesian or alpha-spending) if you must monitor, or commit to a single check date and don't look until then.
 3. **Too many variants** — Each variant needs full sample size. 4 variants = 4x the traffic.
 4. **Ignoring segments** — Overall results may mask segment-level differences. Check major segments.
 5. **Novelty effect** — New things get clicks initially. Run tests long enough to normalize.
+6. **Missing guardrails** — A test can "succeed" on the primary metric while breaking something else (support tickets spike, error rate climbs, refund rate doubles). Always define guardrail metrics — things that must NOT get worse — before launching.

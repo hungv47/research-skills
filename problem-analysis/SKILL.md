@@ -4,7 +4,7 @@ description: "Diagnose the problem, break down the issue, build a logic tree, fo
 license: MIT
 metadata:
   author: hungv47
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Problem Analysis
@@ -94,6 +94,20 @@ Interview:
 
 **WebSearch directive:** Use WebSearch to understand what factors typically drive this metric — generic trees miss industry-specific drivers. Search: `"[metric] decomposition" OR "[metric] drivers" OR "what affects [metric]"`
 
+### External Factor Check
+
+Before finalizing the tree, rule out external causes that could explain the metric change without any internal failure:
+
+| Factor | Search For | Example |
+|--------|-----------|---------|
+| **Competitor launch** | `"[competitor] launch OR announce [date range]"` | Competitor launched free tier, pulling traffic |
+| **Market/seasonal shift** | `"[industry] [metric] trend [year]"` | Industry-wide conversion drop in Q4 |
+| **Platform algorithm change** | `"[platform] algorithm update [date range]"` | Google core update tanked organic traffic |
+| **Regulatory/policy change** | `"[industry] regulation OR policy [year]"` | GDPR enforcement reduced EU email signups |
+| **Economic conditions** | `"[industry] spending [quarter] [year]"` | Budget freezes across the industry |
+
+Add an "External Factors" branch to the logic tree if any of these are plausible. External causes are often the fastest to confirm or reject — and missing them leads to treating a symptom (your site) when the cause is environmental.
+
 ---
 
 ## Phase 2: Form Hypotheses
@@ -158,6 +172,16 @@ For each hypothesis:
 | **Confirmed** | Evidence matches the "then" clause and supports the "because" | "[Data point] confirms: [what it shows]. Mechanism supported." |
 | **Rejected** | Evidence contradicts the "then" clause | "[Data point] shows [opposite of prediction]. Cause eliminated." |
 | **Inconclusive** | Evidence is ambiguous or insufficient | "[What we found]. Need: [specific additional data], from [source], owned by [who]." |
+
+**Prioritize Inconclusive verdicts by impact:** Not all Inconclusive results deserve follow-up. Rank them:
+
+| Potential Gap Explained | Action |
+|------------------------|--------|
+| **>50% of gap** (high-impact) | **Must resolve** before moving to solution-design. Specify: data needed, source, access barrier, timeline, owner. |
+| **10-50% of gap** (medium-impact) | **Should resolve** if data is available within 1 week. Otherwise, note as risk and proceed. |
+| **<10% of gap** (low-impact) | **Skip** — proceed to solution-design. Note as unexplained variance. |
+
+Designing solutions around an incomplete diagnosis is expensive. A high-impact Inconclusive hypothesis that explains 50%+ of the gap means your root cause statement is missing the biggest driver — solutions will target the wrong thing.
 
 Be direct. "The data doesn't support this" is useful. "It's hard to tell" is not.
 
