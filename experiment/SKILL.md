@@ -1,6 +1,6 @@
 ---
 name: experiment
-description: "This skill should be invoked when the user has an idea or initiative and wants to validate it before fully committing. Triggers include 'how do I test this', 'should I run an A/B test', 'split test', 'how do I know if this will work', 'validate this idea', 'design an experiment', 'smoke test', or 'what's the cheapest way to learn' -- even if they just say 'should I try this' or have a hunch and want to know if it's worth pursuing. Works across landing pages, pricing, onboarding, ads, features. Not for strategic prioritization (use solution-design)."
+description: "This skill should be invoked when the user has a business idea or initiative and wants to validate it before fully committing. Triggers include 'how do I test this', 'should I run an A/B test', 'split test', 'how do I know if this will work', 'validate this idea', 'design an experiment', 'de-risk this launch', 'beta test', 'soft launch', 'smoke test', or 'what's the cheapest way to learn' -- even if they just say 'should I try this' or are about to launch something and want confidence it will work. Works across landing pages, pricing, onboarding, ads, features. Not for strategic prioritization (use solution-design) or code testing, QA, or test suites."
 argument-hint: "[initiative to test]"
 license: MIT
 metadata:

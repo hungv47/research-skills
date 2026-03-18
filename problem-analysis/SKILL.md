@@ -1,6 +1,6 @@
 ---
 name: problem-analysis
-description: "This skill should be invoked when the user faces a problem they don't fully understand and needs structured diagnosis. Triggers include 'why is this happening', 'something is wrong', 'our numbers are down', 'revenue dropped', 'churn is high', 'growth stalled', 'I can't figure out why...', 'diagnose this', 'what's the root cause', or 'something changed and I don't know what' -- even if they just describe symptoms without asking for analysis. Works across any domain: marketing, product, engineering, operations. Not for code refactoring (use code-cleanup) or brainstorming solutions (use solution-design)."
+description: "This skill should be invoked when the user faces a business or strategic problem they don't fully understand and needs structured diagnosis. Triggers include 'why is this happening', 'something is wrong', 'our numbers are down', 'revenue dropped', 'churn is high', 'growth stalled', 'we're bleeding money', 'I'm stuck', 'our funnel is broken', 'how do I improve my product', or 'something changed and I don't know what' -- even if they just describe symptoms without asking for analysis, or share data and expect you to spot the issue. Not for code bugs or test failures, code refactoring (use code-cleanup), or brainstorming solutions when the problem is already clear (use solution-design)."
 license: MIT
 metadata:
   author: hungv47
