@@ -397,9 +397,9 @@ status: draft
 
 ### Adjacent Competitors
 
-| Adjacent Category | Player | Why They Could Enter | Likelihood |
-|------------------|--------|---------------------|-----------|
-| [Category] | [Name] | [Reason] | [Level] |
+| Adjacent Category | Player | Why They Could Enter | Likelihood | Signal to Watch |
+|------------------|--------|---------------------|-----------|----------------|
+| [Category] | [Name] | [Reason] | [Level] | [What to monitor] |
 
 ### Feature Comparison
 
@@ -409,9 +409,9 @@ status: draft
 
 ### Pricing
 
-| Competitor | Free Tier | Entry Price | Enterprise | Model |
-|-----------|-----------|------------|-----------|-------|
-| [Name] | [Details] | [$/mo] | [Details] | [Type] |
+| Competitor | Free Tier | Entry Price | Mid Tier | Enterprise | Model |
+|-----------|-----------|------------|----------|-----------|-------|
+| [Name] | [Details] | [$/mo] | [$/mo] | [Details] | [Type] |
 
 ### Positioning Map
 
@@ -492,7 +492,7 @@ Run `solution-design` to turn top opportunities into prioritized initiatives, or
 - Scope calibration: "Building a new product" → Product positioning depth (5-8 competitors, detailed features)
 
 **Research Checkpoint:**
-- User confirmed competitor list, added "Greptile" as a missing competitor
+- User confirmed competitor list: "Yeah, those are the main ones. I'd add Qodo and Ellipsis too."
 - User shared internal sales notes: "We lose deals to CodeRabbit on speed, to Codacy on compliance"
 - No battle cards available
 
@@ -548,11 +548,11 @@ status: draft
 
 ### Adjacent Competitors
 
-| Adjacent Category | Player | Why They Could Enter | Likelihood |
-|------------------|--------|---------------------|-----------|
-| AI coding assistants | GitHub (Copilot) | Already in dev workflow, code understanding capabilities, massive distribution | High |
-| Static analysis | SonarQube | Existing enterprise install base, adding AI features | Medium |
-| Code search/intelligence | Sourcegraph (Cody) | Deep code understanding, could add review layer | Medium |
+| Adjacent Category | Player | Why They Could Enter | Likelihood | Signal to Watch |
+|------------------|--------|---------------------|-----------|----------------|
+| AI coding assistants | GitHub (Copilot) | Already in dev workflow, code understanding capabilities, massive distribution | High | Copilot PR review feature announcements |
+| Static analysis | SonarQube | Existing enterprise install base, adding AI features | Medium | AI-powered analysis in release notes |
+| Code search/intelligence | Sourcegraph (Cody) | Deep code understanding, could add review layer | Medium | "Code review" in job postings or roadmap |
 
 ### Feature Comparison
 
@@ -568,13 +568,13 @@ status: draft
 
 ### Pricing
 
-| Competitor | Free Tier | Entry Price | Enterprise | Model |
-|-----------|-----------|------------|-----------|-------|
-| CodeRabbit | Yes (public repos) | $12/seat/mo | Custom | Per seat |
-| Sourcery | Yes (limited) | $10/seat/mo | Custom | Per seat |
-| Codacy | Yes (3 users) | $15/seat/mo | Custom | Per seat |
-| Qodo | Yes (individual) | $19/seat/mo | Custom | Per seat |
-| Ellipsis | Yes (public repos) | $20/repo/mo | N/A | Per repo |
+| Competitor | Free Tier | Entry Price | Mid Tier | Enterprise | Model |
+|-----------|-----------|------------|----------|-----------|-------|
+| CodeRabbit | Yes (public repos) | $12/seat/mo | $24/seat/mo | Custom | Per seat |
+| Sourcery | Yes (limited) | $10/seat/mo | — | Custom | Per seat |
+| Codacy | Yes (3 users) | $15/seat/mo | $30/seat/mo | Custom | Per seat |
+| Qodo | Yes (individual) | $19/seat/mo | $39/seat/mo | Custom | Per seat |
+| Ellipsis | Yes (public repos) | $20/repo/mo | — | N/A | Per repo |
 
 ### Positioning Map
 
