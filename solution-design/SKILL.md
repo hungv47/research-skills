@@ -54,6 +54,7 @@ If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommen
 | Artifact | Source | Benefit |
 |----------|--------|---------|
 | `product-context.md` | icp-research (from hungv47/comms-skills) | Constraints and capabilities context |
+| `market-research.md` | market-research | Market gaps and competitive intelligence sharpen initiative generation |
 
 ### Root Cause Review
 Read `.agents/problem-analysis.md`. Quote the root cause statement(s) and gap percentages. A root cause anchor is necessary because generic growth ideas produce low-impact, unfocused initiatives.
