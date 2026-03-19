@@ -1,12 +1,15 @@
 # Strategy Skills
 
-Structured frameworks: problem diagnosis → solution design → target setting → experimentation.
+Structured frameworks: market research, problem diagnosis → solution design → target setting → experimentation.
 
 ## Pipeline
-problem-analysis → solution-design → funnel-planner → experiment
+market-research ──┐
+                  ├→ solution-design → funnel-planner → experiment
+problem-analysis ─┘
 
 ## Artifacts
 Skills write to `.agents/`:
+- `.agents/market-research.md`
 - `.agents/problem-analysis.md`
 - `.agents/solution-design.md`
 - `.agents/targets.md`
@@ -14,8 +17,8 @@ Skills write to `.agents/`:
 
 ## Cross-Stack (Optional)
 All strategy skills can read `.agents/product-context.md` for business context.
-Created by `icp-research` from the communication stack:
+Created by `product-description` or `icp-research` from the communication stack:
 `npx skills add hungv47/comms-skills`
 
 ## Recommended Starting Point
-Run `icp-research` (from comms-skills) first to create `.agents/product-context.md` — the canonical cross-stack artifact.
+Run `product-description` or `icp-research` (from comms-skills) first to create `.agents/product-context.md` — the canonical cross-stack artifact.
