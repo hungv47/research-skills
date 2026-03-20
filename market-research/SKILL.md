@@ -1,10 +1,11 @@
 ---
 name: market-research
-description: "This skill should be invoked when the user needs to understand a market landscape, competitive dynamics, or identify gaps and opportunities. Triggers include 'research this market', 'who are the competitors', 'what does the competitive landscape look like', 'market analysis', 'competitive analysis', 'market sizing', 'TAM SAM SOM', 'where are the gaps', 'market opportunity', 'is there room for us', 'what's the white space', 'landscape analysis', 'industry overview', or 'who else is doing this' -- even if they just describe a product idea and want to know if it's viable, ask about competitors without naming the skill, or want to understand market trends before building. Not for diagnosing why a metric is underperforming (use problem-analysis), identifying WHO the customer is and building personas (use icp-research), brainstorming solutions to a known problem (use solution-design), or planning marketing campaigns (use imc-plan)."
+description: "Analyzes market landscapes, competitive dynamics, TAM/SAM/SOM sizing, and whitespace opportunities for a product or category. Produces `.agents/market-research.md`. Not for building customer personas (use icp-research) or planning marketing campaigns (use imc-plan)."
+argument-hint: "[market or product category]"
 license: MIT
 metadata:
   author: hungv47
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Market Research

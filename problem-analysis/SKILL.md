@@ -1,10 +1,11 @@
 ---
 name: problem-analysis
-description: "This skill should be invoked when the user faces a business or strategic problem (not code bugs) they don't fully understand and needs structured diagnosis. Triggers include 'why is this happening', 'something is wrong', 'diagnose this', 'root cause', 'our numbers are down', 'revenue dropped', 'churn is high', 'growth stalled', 'we're bleeding money', 'no traction', 'our CAC is too high', 'I'm stuck on a business problem', or 'something changed and I don't know what' -- even if they just describe symptoms without asking for analysis, share data and expect you to spot the issue, or frame it as a competitive threat ('competitor is eating our lunch'). Not for code refactoring (use code-cleanup), diagnosing a specific page's conversion issues (use lp-optimization), brainstorming solutions when the problem is already clear (use solution-design), or setting funnel targets (use funnel-planner)."
+description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/problem-analysis.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use solution-design)."
+argument-hint: "[metric or problem to diagnose]"
 license: MIT
 metadata:
   author: hungv47
-  version: "1.1.1"
+  version: "1.1.2"
 ---
 
 # Problem Analysis

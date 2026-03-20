@@ -1,11 +1,11 @@
 ---
 name: experiment
-description: "This skill should be invoked when the user has a business idea or initiative and wants to validate it with a test before fully committing (not code testing or QA). Triggers include 'how do I test this', 'should I run an A/B test', 'prove this works first', 'how do I know if this will work', 'validate this idea with data', 'design an experiment', 'de-risk this launch', 'test our pricing', 'beta test', 'pilot program', 'soft launch', 'smoke test', or 'what's the cheapest way to learn' -- even if they are about to launch something and want confidence it will work, want to de-risk an idea with data, or have targets set and need to test before full rollout. Not for strategic prioritization (use solution-design), market sizing or feasibility research (use icp-research), modeling whether pricing math works (use funnel-planner), auditing an existing page's conversion (use lp-optimization), or diagnosing why metrics are declining (use problem-analysis)."
-argument-hint: "[initiative to test]"
+description: "Designs validation experiments for business ideas — defines hypotheses, success metrics, sample sizes, and minimum viable tests before full commitment. Produces `.agents/experiment-[name].md`. Not for strategic prioritization (use solution-design) or market sizing (use market-research)."
+argument-hint: "[initiative to validate]"
 license: MIT
 metadata:
   author: hungv47
-  version: "1.2.1"
+  version: "1.2.2"
 ---
 
 # Experiment Design

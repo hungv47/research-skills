@@ -1,10 +1,11 @@
 ---
 name: funnel-planner
-description: "This skill should be invoked when the user needs to set numeric business targets, model a funnel, or validate whether the math works for a business goal. Triggers include 'set targets', 'plan a funnel', 'create OKRs', 'what business metrics should I track', 'how many users do I need to hit [goal]', 'will the numbers work', 'is my pricing sustainable', 'what conversion rate do I need', 'forecast', 'can we actually hit this number', 'scenario modeling', 'financial model', 'unit economics', 'pricing model', or 'path to profitability' -- even if they just say 'can we hit $X', state a revenue target and need the funnel math worked backward, or have prioritized initiatives that need numeric targets. Not for mapping activities to existing KPIs (use attribution), testing a specific price or variant with users (use experiment), defining experiment success metrics or sample sizes (use experiment), diagnosing why metrics are problematic (use problem-analysis), or benchmarking a specific page's conversion rate (use lp-optimization)."
+description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. Not for mapping activities to existing KPIs (use attribution) or testing specific variants (use experiment)."
+argument-hint: "[revenue target or business goal]"
 license: MIT
 metadata:
   author: hungv47
-  version: "3.2.1"
+  version: "3.2.2"
 ---
 
 # Funnel Planner — Target Setting
