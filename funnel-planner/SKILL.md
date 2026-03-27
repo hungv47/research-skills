@@ -5,14 +5,25 @@ argument-hint: "[revenue target or business goal]"
 license: MIT
 metadata:
   author: hungv47
-  version: "3.2.2"
+  version: "4.0.0"
 ---
 
-# Funnel Planner — Target Setting
+# Funnel Planner — Orchestrator
 
 *Strategy — Step 3 of 4. Sets data-driven targets for each prioritized initiative.*
 
 **Core Question:** "Do the numbers actually work?"
+
+---
+
+## Critical Gates — Read First
+
+1. **Every target MUST have a numeric baseline — zero "TBD" values.** Targets without baselines are arbitrary guesses. If the user lacks data, use industry benchmarks with confidence flagging.
+2. **Every target MUST cite justification — no naked numbers.** "Achieve 5% conversion" needs: baseline (current 3.2%), improvement factor (20% lift), reasoning (no optimization done yet, fixing known broken page).
+3. **70% test is mandatory — partial achievement must still be valuable.** If hitting 70% of a target is meaningless, the target is wrong. Apply context rules for metric type (higher-is-better, lower-is-better, binary).
+4. **LTV:CAC ≥ 3:1 required for acquisition targets — or explicitly flagged.** Setting aggressive acquisition targets when unit economics are unhealthy means you lose money faster.
+
+---
 
 ## Philosophy
 
@@ -25,13 +36,6 @@ Improvement factors and benchmarks here are evidence-backed starting points. Act
 ## Output
 - `.agents/targets.md`
 
-## Quality Gate
-Before delivering, verify:
-- [ ] Every target has a numeric baseline (zero "TBD" values)
-- [ ] Every target cites a justification: historical data, benchmark, or calculated improvement factor
-- [ ] 70% test passes: hitting 70% of each target is still valuable
-- [ ] LTV:CAC ≥ 3:1 (if acquisition targets involved) — or flagged as unhealthy
-
 ## Chain Position
 Previous: `solution-design` | Next: `experiment`
 
@@ -39,137 +43,142 @@ Previous: `solution-design` | Next: `experiment`
 
 ---
 
-## Before Starting
+## Agent Manifest
 
-### Step 0: Product Context
+| # | Agent | Layer | Focus | Input | Output |
+|---|-------|-------|-------|-------|--------|
+| 1 | [model-selection-agent](agents/model-selection-agent.md) | L1 (parallel) | Funnel model selection, stage mapping | Business profile + initiatives | Selected model + stage definitions |
+| 2 | [baseline-collector-agent](agents/baseline-collector-agent.md) | L1 (parallel) | Baseline metrics collection | Initiatives + metrics data | Baselines, benchmarks, unit economics |
+| 3 | [target-setter-agent](agents/target-setter-agent.md) | L2 (sequential) | Numeric target setting with justification | Merged L1 output | Target table with improvement factors |
+| 4 | [sanity-check-agent](agents/sanity-check-agent.md) | L2 (sequential) | Anti-pattern detection | Target table | Anti-pattern scan with fixes |
+| 5 | [stress-test-agent](agents/stress-test-agent.md) | L2 (sequential) | 4-stress-test validation | Checked targets | Stress test results |
+| 6 | [critic-agent](agents/critic-agent.md) | L2 (sequential) | 4-point quality gate | Complete analysis | PASS or FAIL with fix routing |
+
+---
+
+## Routing Logic
+
+### Route A: Full Analysis (Default)
+
+For any target-setting exercise with multiple initiatives.
+
+```
+Layer 1 (parallel):  model-selection-agent + baseline-collector-agent
+         ↓ merge
+Layer 2 (sequential): target-setter-agent → sanity-check-agent → stress-test-agent → critic-agent
+```
+
+### Route B: Quick Targets
+
+When the funnel model is already established and baselines are known.
+
+```
+target-setter-agent → sanity-check-agent → critic-agent
+```
+
+Skip model-selection-agent, baseline-collector-agent, and stress-test-agent. Use when:
+- User already has a funnel model and baselines
+- Updating existing targets with new data
+- Single initiative needs a quick target
+
+---
+
+## Dispatch Protocol
+
+### Pre-Dispatch: Context Gathering
+
+#### Step 0: Product Context
 
 Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/comms-skills`) first to create `.agents/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, ask the user 8 product questions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `.agents/product-context.md`.
 
 If upstream artifacts' `date` fields are older than 30 days, recommend re-running upstream skills before proceeding — stale baselines produce unreliable targets.
 
-### Required Artifacts
+#### Required Artifacts
 | Artifact | Source | If Missing |
 |----------|--------|------------|
 | `solution-design.md` | solution-design | **INTERVIEW.** Ask what initiatives to set targets for. |
 
-### Optional Artifacts
+#### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
 | `product-context.md` | icp-research (from hungv47/comms-skills) | Business model context for benchmark selection |
 
-### Initiative Review
+#### Initiative Review
 Read `.agents/solution-design.md` if it exists — set a target for each "Proceed" initiative. If it doesn't exist, interview for:
 - What business type? (SaaS, e-commerce, B2B services, etc.)
 - What stage? (Pre-launch, early traction, growth, mature)
 - What metrics need targets?
 
----
+#### Route Selection
+- Default → Route A (Full Analysis)
+- If user provides baselines + funnel model → Route B
 
-## Step 1: Choose Funnel Model
+### Single-Agent Fallback
 
-| Model | Best For | Stages |
-|-------|----------|--------|
-| **AARRR** | SaaS, apps | Acquisition → Activation → Retention → Revenue → Referral |
-| **AIDA** | E-commerce, D2C | Awareness → Interest → Desire → Action |
-| **TOFU-MOFU-BOFU** | B2B, long sales | Top → Middle → Bottom |
-
-See [references/funnel-models.md](references/funnel-models.md) for detailed stage definitions.
+If the full orchestration is unnecessary (single metric, user has baseline and benchmark), you may run the target-setting inline without dispatching agents. Apply the same quality gate (4-point checklist) before delivering.
 
 ---
 
-## Step 2: Collect Baselines
+## Layer 1 — Parallel: Model Selection + Baseline Collection
 
-Collect the current number for each metric — baselines are necessary because targets without baselines become arbitrary guesses.
+Dispatch **model-selection-agent** and **baseline-collector-agent** simultaneously.
 
-If user lacks data, use WebSearch to find industry benchmarks:
-- `"[industry] [metric] benchmark [year]"` (e.g., "B2B SaaS trial conversion benchmark 2025")
-- `"[business type] average [metric] by stage"` (e.g., "Series A SaaS average churn rate")
-- `"[metric] good vs bad [industry]"` (e.g., "email open rate good vs bad SaaS")
+### model-selection-agent
+- **Input:** Business profile (type, stage, sales cycle, revenue model), initiatives from solution-design.md
+- **References:** `references/funnel-models.md`
+- **Expected output:** Selected model, stage definitions, initiative-to-stage mapping
 
-See [references/benchmarks.md](references/benchmarks.md) for reference ranges. Note: benchmarks are starting points, not guarantees.
+### baseline-collector-agent
+- **Input:** Initiatives with their target metrics, user-provided data
+- **References:** `references/benchmarks.md`, `references/unit-economics.md`
+- **Expected output:** Baselines with sources and confidence, benchmark context, unit economics snapshot
 
----
+### Layer 1 Merge
 
-## Step 3: Set Targets
-
-For each initiative/metric:
-
-| Scenario | Improvement Factor |
-|----------|-------------------|
-| No optimization yet | 20-30% lift |
-| Basic optimization done | 10-15% |
-| Mature funnel | 5-10% |
-| Major redesign or fix | 30-50% |
-
-Typical ranges, not guarantees. A team fixing a known broken page may see 100%+ lift; a team optimizing an excellent funnel may see 2-3%. Ground targets in evidence (baseline + realistic improvement), not in this table.
-
-**LTV:CAC sanity check** (for acquisition targets):
-- LTV:CAC should be ≥ 3:1, ideally 5:1
-- Payback < 12 months (SMB) or < 18 months (mid-market)
-- If targets imply unhealthy economics, flag it explicitly
-
-See [references/unit-economics.md](references/unit-economics.md) for formulas.
-
-### Pricing Health Signals
-
-If you're setting acquisition or revenue targets, check for pricing misalignment:
-
-| Signal | What It Means | Action |
-|--------|--------------|--------|
-| Conversion rate >40% | Likely underpriced — you're not losing anyone on price | Test a 15-20% price increase |
-| Churn <3% + no price complaints | Room to increase pricing | Test higher tier or annual pricing |
-| Win rate drops when price discussed | Price objection is real | Improve value communication before raising |
-| Competitors pricing 2x+ higher | Either they're overcharging or you're undervaluing | Run Van Westendorp survey to find optimal zone |
-
-**Van Westendorp Price Sensitivity:** A 4-question survey to find the optimal price range. Ask:
-1. At what price would this be too expensive? (ceiling)
-2. At what price would this be too cheap / suspicious? (floor)
-3. At what price is this expensive but acceptable? (upper bound)
-4. At what price is this a great deal? (lower bound)
-
-Plot the four curves — the intersections reveal the acceptable price range and optimal point.
-
-### Speed-to-Lead (B2B targets)
-
-If targets involve lead response or qualification:
-
-| Response Time | Qualification Likelihood |
-|--------------|------------------------|
-| <5 minutes | 21x more likely to qualify |
-| 5-30 minutes | Baseline |
-| 30 min - 24 hours | 10x drop from baseline |
-| >24 hours | Effectively cold |
-
-If your funnel has a lead stage, include response time SLA as a target: contact within 4 hours, qualify/reject within 48 hours. Speed-to-lead is often the highest-leverage conversion lever in B2B funnels — it's free and just requires process discipline.
+After both agents return:
+1. Combine model selection (stages + mapping) with baselines (numbers + benchmarks)
+2. Verify every initiative has both a funnel stage mapping AND a numeric baseline
+3. If any initiative is missing a baseline, send feedback to baseline-collector-agent
+4. Pass merged output to target-setter-agent
 
 ---
 
-## Step 4: Validate
+## Layer 2 — Sequential: Set → Check → Stress → Critic
 
-### Anti-Pattern Check
+### Step 1: target-setter-agent
+- **Input:** Merged L1 output (model + baselines)
+- **References:** `references/benchmarks.md`, `references/unit-economics.md`
+- **Expected output:** Target table with improvement factors and justifications, LTV:CAC check, pricing health signals
 
-| Anti-Pattern | Detection |
-|--------------|-----------|
-| **Vanity Metric** | Doesn't connect to revenue → find the revenue-connected metric |
-| **Sandbagging** | 100% confidence, zero stretch → add 30-50% |
-| **Moonshot** | 10x improvement, no plan → work backwards from realistic |
-| **Orphan Target** | Owner is "the team" → assign a person |
-| **Input Trap** | Measuring activities ("publish 4 posts") → measure the output ("organic signups") |
-| **Aspirational math** | Target significantly above good-tier benchmark (roughly >1.5x) without written justification for why your situation enables outperformance. The further above benchmark, the stronger the justification needs to be. |
+### Step 2: sanity-check-agent
+- **Input:** Target-setter-agent output
+- **References:** `references/anti-patterns.md`
+- **Expected output:** Anti-pattern scan — 6 checks with pass/fail per target
 
-See [references/anti-patterns.md](references/anti-patterns.md) for detailed detection.
+If sanity-check-agent finds **Blocking** failures:
+1. Re-dispatch target-setter-agent with the specific fixes
+2. Re-run sanity-check-agent on the updated targets
+3. Maximum 1 fix cycle before proceeding
 
-### Stress Tests
+### Step 3: stress-test-agent
+- **Input:** Sanity-checked targets
+- **References:** `references/stress-tests.md`
+- **Expected output:** 4 stress tests per target with pass/fail and recommendations
 
-1. **Revenue test:** If we hit this but revenue doesn't move, was it worth it?
-2. **70% test:** If we hit 70%, is that still valuable? Context matters:
-   - *Higher-is-better metrics* (conversion, retention): 70% of target is acceptable IF it's still above industry benchmark. If 70% puts you below benchmark, your target is too low.
-   - *Lower-is-better metrics* (churn, CAC): 70% of target means you achieved only 70% of the reduction — almost always still worth doing.
-   - *Binary thresholds* (LTV:CAC ≥3:1): 70% = 2.1:1 — this is still broken. Don't accept 70% on binary targets; they pass or fail.
-3. **Ownership test:** Who owns this? What are they NOT doing to focus on it?
-4. **Measurement test:** Can we check this weekly, or only at period end?
+### Step 4: critic-agent
+- **Input:** Complete merged analysis
+- **Expected output:** PASS or FAIL against 4-point quality gate
 
-See [references/stress-tests.md](references/stress-tests.md) for stage-specific questions.
+---
+
+## Critic Gate
+
+**Maximum 2 rewrite cycles.** If the critic returns FAIL:
+
+1. Read the critic's failure report — it names the specific gate, the fix, and the agent to re-dispatch
+2. Re-dispatch ONLY the named agent(s) with the critic's feedback
+3. Re-merge and send back to critic-agent
+4. If FAIL again after 2 cycles: deliver the artifact with a "Known Issues" section listing unresolved gate failures
 
 ---
 
@@ -216,11 +225,29 @@ Run `experiment` to design minimum viable tests before full rollout. Pass this a
 
 ## Worked Example
 
+**Initiatives from solution-design:** Restore Paid Targeting (Proceed), Restore Social Proof (Proceed).
+
+### Layer 1: Parallel Dispatch
+
+**model-selection-agent:** Selects AARRR (SaaS with retention-dependent economics). Maps Paid Targeting → Acquisition stage, Social Proof → Activation stage.
+
+**baseline-collector-agent:** Collects baselines — paid conversion 1.2% (user data, High confidence), bounce rate 52% (user data, High confidence), weekly signups 200 (user data, High). Benchmarks: B2B SaaS paid conversion good = 3-5%, bounce rate good = 30-40%. LTV:CAC = 15:1 (healthy).
+
+### Layer 2: Sequential
+
+**target-setter-agent:** Sets targets — paid conversion 3.0% (was 3.5% before change, 30% lift = conservative recovery), bounce 40% (old page was 35%, major fix scenario), overall signups 300 (combined effect).
+
+**sanity-check-agent:** All pass. No vanity metrics, no sandbagging, owners assigned.
+
+**stress-test-agent:** Revenue test PASS (both connect to signups → revenue). 70% test PASS (2.5% and 43% still meaningful recovery). Ownership test PASS. Measurement test PASS (weekly check via analytics).
+
+**critic-agent:** PASS — all 4 gates satisfied.
+
+### Final Artifact
+
 ```markdown
 # Targets
 
-**Date:** 2026-03-13
-**Skill:** funnel-planner
 **Funnel Model:** AARRR
 
 ## Target Table
@@ -241,6 +268,24 @@ Run `experiment` to design minimum viable tests before full rollout. Pass this a
 
 Run `experiment` to design A/B test for paid targeting and before-after for social proof restoration.
 ```
+
+---
+
+## Anti-Patterns
+
+**Targets without baselines** — "Achieve 5% conversion" without knowing current conversion makes the target unverifiable. INSTEAD: Collect baseline first. Use benchmarks with low confidence if user data is unavailable. Zero "TBD" values.
+
+**Aspirational math** — Target significantly above good-tier benchmark without written justification. INSTEAD: Flag any target >1.5x above good-tier benchmark. Require explicit reasoning for why this situation enables outperformance.
+
+**Vanity metrics** — Targeting Instagram followers or page views when they don't connect to revenue. INSTEAD: For every metric, ask "If this 5x'd tomorrow, would revenue change?" If not, find the revenue-connected metric.
+
+**Sandbagging** — Setting targets that will happen without effort. INSTEAD: Add 30-50% stretch above organic trajectory.
+
+**Orphan targets** — Owner is "the team" or a department. INSTEAD: One named person per target.
+
+**Input traps** — Measuring activities ("publish 4 posts") instead of outcomes ("organic signups from content"). INSTEAD: Measure the output the activity should produce.
+
+**Ignoring unit economics** — Setting aggressive acquisition targets when LTV:CAC is unhealthy. INSTEAD: Check LTV:CAC first. If <3:1, fix economics before scaling acquisition.
 
 ---
 
