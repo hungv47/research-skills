@@ -6,6 +6,28 @@ license: MIT
 metadata:
   author: hungv47
   version: "4.0.0"
+routing:
+  intent-tags:
+    - funnel-modeling
+    - target-setting
+    - unit-economics
+    - growth-targets
+    - ltv-cac
+  position: pipeline
+  produces:
+    - targets.md
+  consumes:
+    - product-context.md
+    - solution-design.md
+  requires: []
+  defers-to:
+    - skill: experiment
+      when: "need to test a hypothesis, not set targets"
+    - skill: attribution
+      when: "measuring results against targets, not setting them"
+  parallel-with: []
+  interactive: false
+  estimated-complexity: medium
 ---
 
 # Funnel Planner — Orchestrator

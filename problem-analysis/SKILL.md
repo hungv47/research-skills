@@ -6,6 +6,28 @@ license: MIT
 metadata:
   author: hungv47
   version: "2.0.0"
+routing:
+  intent-tags:
+    - problem-diagnosis
+    - root-cause
+    - hypothesis-testing
+    - metric-decline
+    - logic-tree
+  position: pipeline
+  produces:
+    - problem-analysis.md
+  consumes:
+    - product-context.md
+  requires: []
+  defers-to:
+    - skill: market-research
+      when: "need market landscape, not root cause diagnosis"
+    - skill: solution-design
+      when: "already know the problem, need solutions"
+  parallel-with:
+    - market-research
+  interactive: false
+  estimated-complexity: heavy
 ---
 
 # Problem Analysis — Orchestrator

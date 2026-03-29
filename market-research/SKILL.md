@@ -6,6 +6,28 @@ license: MIT
 metadata:
   author: hungv47
   version: "2.0.0"
+routing:
+  intent-tags:
+    - market-research
+    - competitive-analysis
+    - market-sizing
+    - tam-sam-som
+    - whitespace-analysis
+  position: pipeline
+  produces:
+    - market-research.md
+  consumes:
+    - product-context.md
+  requires: []
+  defers-to:
+    - skill: icp-research
+      when: "need audience personas, not market landscape"
+    - skill: problem-analysis
+      when: "diagnosing a specific metric decline, not surveying the market"
+  parallel-with:
+    - problem-analysis
+  interactive: false
+  estimated-complexity: heavy
 ---
 
 # Market Research — Orchestrator
@@ -299,7 +321,6 @@ status: draft
 
 | Trend | Direction | Evidence | Quantification | Implication |
 |-------|-----------|----------|---------------|-------------|
-| [Trend] | [Direction] | [Source + URL] | [Data point] | [What it means] |
 
 **Narrative:** [2-3 paragraph market story connecting trends]
 
@@ -307,101 +328,57 @@ status: draft
 
 | Metric | Method | Estimate | Source | Confidence |
 |--------|--------|----------|--------|-----------|
-| TAM | [Method] | $[X-Y]B | [Source, date] | [Level] |
-| SAM | [Filters] | $[X-Y]M | [Calculation] | [Level] |
-| SOM | [Basis] | $[X-Y]M | [Assumptions] | [Level] |
 
 ## User & Consumer Landscape
 
 | Dimension | Findings | Source |
 |-----------|----------|--------|
-| Hot topics | [What audience discusses] | [Source] |
-| Cultural moments | [Driving behavior change] | [Source] |
-| Sentiment | [Category feeling] | [Source] |
-| Unmet needs | [What's missing] | [Source] |
 
 ## Competitive Landscape
 
 ### Overview
-
 | Competitor | Founded | Funding/Revenue | Team Size | Target Segment | Positioning | Threat |
 |-----------|---------|----------------|-----------|---------------|-------------|--------|
-| [Name] | [Year] | [Amount] | [Size] | [Segment] | [One-line] | [Level] |
 
 ### Adjacent Competitors
-
 | Adjacent Category | Player | Why They Could Enter | Likelihood | Signal to Watch |
 |------------------|--------|---------------------|-----------|----------------|
-| [Category] | [Name] | [Reason] | [Level] | [What to monitor] |
 
 ### Feature Comparison
-
-| Capability | Type | [Your Product] | Competitor A | Competitor B | Competitor C |
-|-----------|------|---------------|-------------|-------------|-------------|
-| [Feature] | Stakes/Diff | ✅/❌/🟡 | ✅/❌/🟡 | ✅/❌/🟡 | ✅/❌/🟡 |
+| Capability | [Your Product] | Competitor A | Competitor B | Competitor C |
+|-----------|---------------|-------------|-------------|-------------|
 
 ### Pricing
-
 | Competitor | Free Tier | Entry Price | Mid Tier | Enterprise | Model |
 |-----------|-----------|------------|----------|-----------|-------|
-| [Name] | [Details] | [$/mo] | [$/mo] | [Details] | [Type] |
 
 ### Positioning Map
-
-​```
-[Axis Y]
-    ▲
-    │  [Competitors plotted]
-    └──────────────────────────► [Axis X]
-​```
+[2-axis positioning map: axes selected from buyer decision criteria]
 
 ### Community & Mindshare
-
 | Competitor | Community Size | Activity Level | Sentiment | Share of Voice |
 |-----------|---------------|---------------|-----------|---------------|
-| [Name] | [Size] | [Posts/week] | [Sentiment] | [Estimate] |
 
 ## Gaps & Opportunities
 
-### Underserved Segments
+### Gap Analysis (4 dimensions)
 
-| Segment | Current Options | Why Underserved | Demand Signal |
-|---------|----------------|----------------|--------------|
-| [Segment] | [Options] | [Why] | [Evidence] |
-
-### Feature Gaps
-
-| Gap | User Need | Workarounds | Demand Evidence | Difficulty |
-|-----|-----------|-------------|-----------------|-----------|
-| [Gap] | [Need] | [Cope] | [Evidence] | S/M/L |
-
-### Emerging Trends Not Addressed
-
-| Trend | Incumbent Response | Opportunity Window | Evidence |
-|-------|-------------------|-------------------|----------|
-| [Trend] | [Response] | [Window] | [Source] |
-
-### Positioning White Space
-
-| White Space | Description | Why Empty | Risk |
-|-------------|------------|-----------|------|
-| [Position] | [Details] | [Reason] | [Risk] |
+| Dimension | Gap | Evidence | Demand Signal | Difficulty |
+|-----------|-----|----------|---------------|-----------|
+| Underserved Segment | [Segment] | [Evidence] | [Signal] | — |
+| Feature Gap | [Gap] | [User need] | [Evidence] | S/M/L |
+| Emerging Trend | [Trend] | [Incumbent response] | [Opportunity window] | — |
+| Positioning White Space | [Position] | [Why empty] | [Risk] | — |
 
 ### Top 3 Opportunities
 
 | # | Opportunity | Evidence Source | Window | Risk | Why Now |
 |---|------------|---------------|--------|------|---------|
-| 1 | [Opportunity] | [Source] | [Time] | [Level] | [Reason] |
-| 2 | [Opportunity] | [Source] | [Time] | [Level] | [Reason] |
-| 3 | [Opportunity] | [Source] | [Time] | [Level] | [Reason] |
 
 ## Limitations & Confidence
 
 | Aspect | Confidence | Justification |
 |--------|-----------|---------------|
-| Market sizing | [Level] | [Why] |
-| Competitor data | [Level] | [Why] |
-| Gap identification | [Level] | [Why] |
 
 **Data gaps:** [What couldn't be found]
 
@@ -471,18 +448,6 @@ Unmet needs: Cross-repo understanding, org-specific style enforcement, test gene
 
 ### Final Artifact
 Merged all outputs into `.agents/market-research.md` per artifact template.
-
----
-
-## Limitations & Confidence
-
-| Aspect | Confidence | Justification |
-|--------|-----------|---------------|
-| Market sizing | High/Medium/Low | [Why — e.g., "Multiple analyst reports agree" or "Extrapolated from limited data"] |
-| Competitor data | High/Medium/Low | [Why — e.g., "Public company with reported revenue" or "Estimated from team size"] |
-| Gap identification | High/Medium/Low | [Why — e.g., "Strong demand signals from multiple forums" or "Based on absence, not presence"] |
-
-Explicitly state what you couldn't find and where data gaps exist. Honest limitations are more useful than false confidence.
 
 ---
 

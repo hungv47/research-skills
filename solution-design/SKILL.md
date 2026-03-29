@@ -6,6 +6,29 @@ license: MIT
 metadata:
   author: hungv47
   version: "2.0.0"
+routing:
+  intent-tags:
+    - solution-design
+    - prioritization
+    - ice-scoring
+    - initiative-planning
+    - strategic-options
+  position: pipeline
+  produces:
+    - solution-design.md
+  consumes:
+    - product-context.md
+    - market-research.md
+    - problem-analysis.md
+  requires: []
+  defers-to:
+    - skill: plan-interviewer
+      when: "need to clarify HOW to build, not WHAT to pursue"
+    - skill: system-architecture
+      when: "need technical design, not strategic prioritization"
+  parallel-with: []
+  interactive: false
+  estimated-complexity: heavy
 ---
 
 # Solution Design — Orchestrator

@@ -6,6 +6,29 @@ license: MIT
 metadata:
   author: hungv47
   version: "2.0.0"
+routing:
+  intent-tags:
+    - experiment-design
+    - ab-testing
+    - sample-sizing
+    - hypothesis-validation
+    - mvt-design
+  position: pipeline
+  produces:
+    - experiment-[name].md
+  consumes:
+    - product-context.md
+    - solution-design.md
+    - targets.md
+  requires: []
+  defers-to:
+    - skill: funnel-planner
+      when: "need to set numeric targets, not test an initiative"
+    - skill: attribution
+      when: "measuring ongoing results, not designing a test"
+  parallel-with: []
+  interactive: false
+  estimated-complexity: medium
 ---
 
 # Experiment Design — Orchestrator
