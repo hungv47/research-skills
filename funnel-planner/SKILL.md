@@ -13,6 +13,9 @@ routing:
     - unit-economics
     - growth-targets
     - ltv-cac
+    - plg-funnel
+    - slg-funnel
+    - growth-motion
   position: pipeline
   produces:
     - targets.md
@@ -44,6 +47,8 @@ routing:
 2. **Every target MUST cite justification — no naked numbers.** "Achieve 5% conversion" needs: baseline (current 3.2%), improvement factor (20% lift), reasoning (no optimization done yet, fixing known broken page).
 3. **70% test is mandatory — partial achievement must still be valuable.** If hitting 70% of a target is meaningless, the target is wrong. Apply context rules for metric type (higher-is-better, lower-is-better, binary).
 4. **LTV:CAC ≥ 3:1 required for acquisition targets — or explicitly flagged.** Setting aggressive acquisition targets when unit economics are unhealthy means you lose money faster.
+5. **Growth motion MUST be explicitly identified** — PLG, SLG, or Hybrid. The funnel model selection depends on the growth motion. PLG → PLG Funnel or AARRR. SLG → SLG Funnel or TOFU-MOFU-BOFU. Hybrid → both with clear primary/supplementary designation.
+6. **Three-outcome validation required** — every funnel must account for Business (revenue), Brand (awareness), and Community (engagement). Business must be Covered. Brand and Community may be N/A with justification. Gaps without justification are flagged.
 
 ---
 
@@ -125,11 +130,19 @@ If upstream artifacts' `date` fields are older than 30 days, recommend re-runnin
 |----------|--------|---------|
 | `product-context.md` | icp-research (from hungv47/comms-skills) | Business model context for benchmark selection |
 
+#### Growth Motion Identification
+Before selecting a funnel model, determine the growth motion:
+- **PLG** — Product drives acquisition. Users find, try, and buy through self-serve. Indicators: free tier exists, low-touch onboarding, product virality.
+- **SLG** — Outbound and paid performance drive acquisition. Indicators: sales team, high ACV, demo-required, paid channels are primary.
+- **Hybrid** — Both motions coexist (e.g., self-serve for SMB + sales-assisted for enterprise). Designate which is primary for target-setting.
+
 #### Initiative Review
 Read `.agents/solution-design.md` if it exists — set a target for each "Proceed" initiative. If it doesn't exist, interview for:
 - What business type? (SaaS, e-commerce, B2B services, etc.)
 - What stage? (Pre-launch, early traction, growth, mature)
+- What is the growth motion? (PLG, SLG, or Hybrid — see above)
 - What metrics need targets?
+- What channels are active or planned? (Reference the 9-channel map: Search engines/GEO, Store/Listing platforms, Bounty/Info platforms, News, Forums/Communities, Social media, IRL, Mailbox, SMS)
 
 #### Route Selection
 - Default → Route A (Full Analysis)
@@ -146,9 +159,9 @@ If the full orchestration is unnecessary (single metric, user has baseline and b
 Dispatch **model-selection-agent** and **baseline-collector-agent** simultaneously.
 
 ### model-selection-agent
-- **Input:** Business profile (type, stage, sales cycle, revenue model), initiatives from solution-design.md
-- **References:** `references/funnel-models.md`
-- **Expected output:** Selected model, stage definitions, initiative-to-stage mapping
+- **Input:** Business profile (type, stage, sales cycle, revenue model, growth motion), initiatives from solution-design.md
+- **References:** `references/funnel-models.md` (includes PLG Funnel, SLG Funnel, AARRR, AIDA, TOFU-MOFU-BOFU)
+- **Expected output:** Growth motion classification (PLG/SLG/Hybrid), selected funnel model, stage definitions, initiative-to-stage mapping, channel-to-stage mapping for active channels
 
 ### baseline-collector-agent
 - **Input:** Initiatives with their target metrics, user-provided data
@@ -218,7 +231,17 @@ status: draft
 
 # Targets
 
-**Funnel Model:** [AARRR / AIDA / TOFU-MOFU-BOFU]
+**Growth Motion:** [PLG / SLG / Hybrid]
+**Funnel Model:** [PLG Funnel / SLG Funnel / AARRR / AIDA / TOFU-MOFU-BOFU]
+**Primary Model:** [if Hybrid — which model is primary for target-setting]
+
+## Funnel Stages
+
+Stage definitions from the selected model, with initiative-to-stage mapping.
+
+| Stage | Definition | Key Metric | Mapped Initiatives |
+|-------|------------|------------|-------------------|
+| [e.g. Visitor] | [How users enter this stage] | [e.g. Unique visitors] | [Which initiatives target this stage] |
 
 ## Target Table
 
@@ -227,6 +250,33 @@ status: draft
 | [Name] | [Metric] | [Current] | [Industry ref] | [Goal] | [+X% above benchmark or within range] | [Why achievable — cite evidence] | [Person] |
 
 If Variance > 50% above good-tier benchmark, flag: "This target requires significantly above-average performance. Justification: [why your situation is different]."
+
+## Channel → Funnel Stage Map
+
+Which channels from the 9-channel map drive which funnel stages. Include only channels active in your strategy — use `references/funnel-models.md` for typical stage assignments by growth motion. If a channel is used differently than the default tactic (e.g., paid Reddit ads vs. organic forum engagement), create separate rows.
+
+| Channel | Primary Stage | Secondary Stage | Key Metric | Budget Type |
+|---------|--------------|-----------------|------------|-------------|
+| [e.g. Search engines] | [e.g. Impression → Click] | [e.g. Lead] | [e.g. CTR, CPL] | [Paid / Organic / Both] |
+
+**9-Channel Reference:** Search engines/GEO, Store/Listing platforms, Bounty/Info platforms, News, Forums/Communities, Social media, IRL (OOH/Events/POS), Mailbox (email), SMS.
+
+## Three-Outcome Validation
+
+Both PLG and SLG motions feed three outcomes: Business, Brand, Community. This section checks coverage — gaps are flagged but not blocking.
+
+| Outcome | Metric(s) | Current | Target | Status |
+|---------|-----------|---------|--------|--------|
+| **Business** | [Revenue, conversion, unit economics] | [value] | [value] | [Covered / Gap] |
+| **Brand** | [Branded search volume, social mentions, NPS, share of voice] | [value] | [value] | [Covered / Gap / N/A] |
+| **Community** | [Active members, engagement rate, UGC volume, forum activity] | [value] | [value] | [Covered / Gap / N/A] |
+
+**Status definitions:**
+- **Covered** — metrics exist with baselines and targets
+- **Gap** — outcome is relevant but no metrics defined. Recommend adding before proceeding to experiment.
+- **N/A** — outcome is legitimately out of scope for this business. Justify: e.g., "B2B enterprise with no user community — Community is N/A. Brand is tracked via branded search only."
+
+Business must always be Covered. Brand and Community may be N/A with justification — this is not a failure.
 
 ## Validation
 

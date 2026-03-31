@@ -160,6 +160,148 @@ User signed up but not activated
 
 ---
 
+## PLG Funnel (Product-Led Growth)
+
+Product is the primary acquisition and conversion engine. Users discover, try, and buy through the product itself.
+
+### Stages
+
+| Stage | Definition | Key Question | Typical Metrics |
+|-------|------------|--------------|-----------------|
+| **Visitor** | Arrives at site/product page | How did they find us? | Unique visitors, traffic sources, landing page conversion |
+| **Free User** | Signs up for free tier/trial | Did they sign up? | Signup rate, cost per signup, channel attribution |
+| **Activated** | Reaches the "aha moment" | Did they experience core value? | Activation rate, time to activate, feature adoption |
+| **Converted** | Becomes paying customer | Did they hit the paywall and convert? | Free-to-paid %, trial conversion rate, time to convert |
+| **Expanded** | Upgrades or increases usage | Are they getting more value? | Expansion revenue %, seat growth, tier upgrades |
+| **Advocate** | Refers others, creates content | Are they bringing new users? | Referral rate, NPS, viral coefficient, UGC volume |
+
+### Best For
+
+- SaaS with self-serve signup
+- Freemium products
+- Developer tools
+- Collaboration tools (network effects)
+- Products where value is obvious in first session
+
+### Key Metrics
+
+| Metric | Formula | Healthy Range |
+|--------|---------|---------------|
+| Signup rate | Visitors → Free Users | 2-10% (depends on traffic quality) |
+| Activation rate | Free Users → Activated | 20-40% |
+| Free-to-paid | Activated → Converted | 2-5% (freemium), 15-25% (free trial) |
+| Expansion rate | Revenue from upgrades / Starting MRR | >5% monthly |
+| Viral coefficient | Invites × invite conversion rate | >0.5 (self-sustaining >1.0) |
+
+### PLG-Specific Anti-Patterns
+
+| Anti-Pattern | Symptom | Fix |
+|-------------|---------|-----|
+| **Vanity free users** | High signups, <10% activation | Fix onboarding, reduce time to value |
+| **Premature paywall** | Low signup → high churn after trial | Move paywall later, expand free tier |
+| **No expansion motion** | Flat ARPU over time | Add usage-based pricing, team tiers |
+| **Viral loop missing** | Zero organic growth from existing users | Add sharing mechanics, referral incentives |
+| **PLG without product readiness** | Product can't sell itself | Fix UX first; PLG requires excellent self-serve experience |
+
+### PLG Drop-off Diagnostics
+
+| Drop-off Point | Diagnostic Question | Typical Interventions |
+|----------------|---------------------|----------------------|
+| **Visitor → No signup** | Value prop unclear? Too much friction? | Simplify signup, show product in action, reduce form fields |
+| **Signup → No activation** | Onboarding too complex? Aha moment unclear? | Guided tour, progressive onboarding, quick wins |
+| **Activated → No conversion** | Free tier too generous? Paywall unclear? | Value gating, usage limits, upgrade prompts |
+| **Converted → No expansion** | No additional value tiers? No team features? | Usage-based pricing, team plans, premium features |
+| **Active → No referral** | No sharing mechanism? Not delightful enough? | Invite flows, referral rewards, collaboration features |
+
+### Channel Alignment for PLG
+
+PLG motions favor channels that drive product discovery and self-serve adoption:
+
+| Channel | PLG Role | Typical Tactic |
+|---------|----------|----------------|
+| Search engines/GEO | Primary acquisition | Problem-aware content, how-to guides |
+| Forums/Communities | Activation + Advocacy | Threading, community engagement, UGC |
+| Social media | Awareness + Referral | Organic content, user stories, UGC amplification |
+| Mailbox | Activation + Expansion | Onboarding sequences, feature announcements |
+| Store/Listing platforms | Acquisition | ASO, G2/Capterra profiles, review management |
+| Bounty/Info platforms | Acquisition | Referral programs, affiliate campaigns |
+
+---
+
+## SLG Funnel (Sales-Led / Performance Growth)
+
+Outbound and paid channels drive acquisition. Sales team or performance marketing converts.
+
+### Stages
+
+| Stage | Definition | Key Question | Typical Metrics |
+|-------|------------|--------------|-----------------|
+| **Impression** | Sees ad, content, or outreach | Did they notice us? | Impressions, reach, CPM |
+| **Click** | Engages with the touchpoint | Did they click/respond? | CTR, CPC, response rate |
+| **Lead** | Provides contact information | Did they express interest? | CPL, lead volume, form completion rate |
+| **MQL** | Meets marketing qualification criteria | Are they a good fit? | MQL rate, lead score, engagement score |
+| **SQL** | Sales accepts and engages | Is there real opportunity? | MQL→SQL %, response time, meeting booked rate |
+| **Opportunity** | Active deal in pipeline | Are they evaluating us? | Pipeline value, deal velocity, stage progression |
+| **Closed-Won** | Signs contract / purchases | Did we win the deal? | Win rate, ACV, sales cycle length, CAC |
+
+### Best For
+
+- B2B enterprise sales
+- High-ACV products (>$10K/year)
+- Complex products requiring demos
+- Regulated industries
+- Products with long evaluation cycles
+
+### Key Metrics
+
+| Metric | Formula | Healthy Range |
+|--------|---------|---------------|
+| CPL | Total spend / Leads | Varies by industry ($5-500) |
+| MQL→SQL rate | SQLs / MQLs | 15-30% |
+| Win rate | Closed-Won / Opportunities | 15-30% (enterprise), 30-50% (SMB) |
+| ACV | Annual contract value | Depends on market |
+| Sales cycle | Days from lead to close | 30-90 (SMB), 90-360 (enterprise) |
+| CAC payback | Months to recoup CAC | <12 months ideal |
+
+### SLG-Specific Anti-Patterns
+
+| Anti-Pattern | Symptom | Fix |
+|-------------|---------|-----|
+| **High CPL, low SQL** | Spending on leads that don't convert | Tighten targeting, improve lead scoring |
+| **Long cycle, no nurture** | Leads go cold between MQL and SQL | Build nurture sequences, content for each stage |
+| **No sales enablement** | Reps create their own materials | Build battle cards, one-pagers, demo scripts |
+| **Vanity MQLs** | High MQL count, low pipeline | Tighten MQL criteria, align marketing-sales definitions |
+| **Channel concentration** | 80%+ of leads from one channel | Diversify channels, test new acquisition paths |
+
+### SLG Drop-off Diagnostics
+
+| Drop-off Point | Diagnostic Question | Typical Interventions |
+|----------------|---------------------|----------------------|
+| **Low impressions** | Wrong channels? Budget too low? | Channel testing, budget reallocation |
+| **Impression → No click** | Creative not compelling? Targeting off? | A/B test creatives, refine audience targeting |
+| **Click → No lead** | Landing page friction? Message mismatch? | LP optimization, message match audit |
+| **Lead → No MQL** | Wrong audience? Lead scoring too strict? | Adjust scoring, improve targeting |
+| **MQL → No SQL** | Sales follow-up slow? Lead quality poor? | SLA for follow-up, tighten MQL criteria |
+| **SQL → No close** | Competitor winning? Pricing? | Win/loss analysis, competitive positioning |
+
+### Channel Alignment for SLG
+
+SLG motions favor channels that drive outbound reach and direct response:
+
+| Channel | SLG Role | Typical Tactic |
+|---------|----------|----------------|
+| Search engines/GEO | Lead generation | Search ads (Google, Bing), retargeting |
+| Social media | Lead generation + Awareness | Paid ads (Meta, LinkedIn, X), UGC amplification |
+| Mailbox | Nurture + Conversion | Outbound email sequences, newsletters, transactional |
+| SMS | Conversion + Re-engagement | Transaction SMS, campaign SMS, follow-ups |
+| News | Awareness + Trust | PR articles, guest-postings, press releases |
+| IRL | Relationship + Conversion | Events, conferences, OOH, Point of Sales |
+| Forums/Communities | Awareness + Trust | Paid ads (Reddit), sponsored posts |
+| Store/Listing platforms | Lead generation | Paid placements, review management |
+| Bounty/Info platforms | Lead generation | Incentive campaigns, affiliate deals |
+
+---
+
 ## AIDA
 
 Classic marketing funnel for persuasion and purchase decisions.
@@ -504,14 +646,15 @@ Visit → Browse → First Purchase → Repeat Purchase → Loyal
 
 ## Funnel Model Comparison
 
-| Aspect | AARRR | AIDA | TOFU-MOFU-BOFU |
-|--------|-------|------|----------------|
-| Focus | Product + Growth | Marketing + Sales | Content + Leads |
-| Stages | 5 | 4 | 3 |
-| Time horizon | Product lifecycle | Campaign | Buyer journey |
-| Best metric | Retention | Conversion | Lead quality |
-| Optimization | Product changes | Messaging | Content strategy |
-| Team ownership | Growth/Product | Marketing | Marketing/Content |
+| Aspect | PLG | SLG | AARRR | AIDA | TOFU-MOFU-BOFU |
+|--------|-----|-----|-------|------|----------------|
+| Focus | Product as growth engine | Outbound + paid performance | Product + Growth | Marketing + Sales | Content + Leads |
+| Stages | 6 | 7 | 5 | 4 | 3 |
+| Primary motion | Self-serve adoption | Outreach + conversion | Product lifecycle | Campaign | Buyer journey |
+| Best metric | Activation rate | Win rate / CAC | Retention | Conversion | Lead quality |
+| Optimization | Product UX, onboarding | Targeting, sales process | Product changes | Messaging | Content strategy |
+| Team ownership | Product/Growth | Sales/Performance Marketing | Growth/Product | Marketing | Marketing/Content |
+| Channel emphasis | SEO, community, forums, referral | Paid ads, email, IRL, SMS, PR | All channels | Campaign-specific | Content-driven |
 
 ---
 
@@ -521,12 +664,22 @@ Ask these questions:
 
 | Question | If Yes → Model |
 |----------|----------------|
+| Does the product sell itself with minimal human touch? | **PLG** |
+| Is there a free tier or freemium model? | **PLG** or AARRR |
+| Is the ACV >$10K and requires demos/sales? | **SLG** |
+| Does the business rely on outbound and paid channels? | **SLG** |
 | Is retention critical to unit economics? | AARRR |
 | Is the purchase decision quick (<1 week)? | AIDA |
-| Is the sales cycle long (>30 days)? | TOFU-MOFU-BOFU |
-| Is there a free/trial tier? | AARRR |
+| Is the sales cycle long (>30 days)? | TOFU-MOFU-BOFU or **SLG** |
 | Is content the main acquisition channel? | TOFU-MOFU-BOFU |
 | Is it a one-time purchase? | AIDA |
-| Is there a human sales team? | TOFU-MOFU-BOFU |
+| Is there a human sales team closing deals? | **SLG** or TOFU-MOFU-BOFU |
 
-Many businesses use **hybrid models**—AARRR for product analytics + TOFU-MOFU-BOFU for marketing.
+### Hybrid Models
+
+Many businesses combine models:
+- **PLG + SLG:** Self-serve for SMB + sales-assisted for enterprise (common in SaaS). Track both funnels independently with shared revenue targets.
+- **PLG + AARRR:** PLG funnel stages map closely to AARRR. Use PLG when the motion is explicitly product-led; use AARRR for general product analytics.
+- **SLG + TOFU-MOFU-BOFU:** SLG for outbound, TOFU-MOFU-BOFU for inbound content. Common in B2B with both marketing and sales motions.
+
+When choosing a hybrid, designate one model as primary (for target-setting) and the other as supplementary (for diagnostics).
