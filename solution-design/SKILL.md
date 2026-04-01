@@ -55,7 +55,7 @@ routing:
 - `.agents/solution-design.md`
 
 ## Chain Position
-Previous: `problem-analysis` | Next: `funnel-planner` | Cross-stack: `system-architecture` (from prod-skills — for initiatives requiring technical builds)
+Previous: `problem-analysis` | Next: `funnel-planner` | Cross-stack: `system-architecture` (from product-skills — for initiatives requiring technical builds)
 
 **Re-run triggers:** When root cause changes (re-diagnosis), when all "Proceed" initiatives are shipped or killed, or when new constraints emerge.
 
@@ -110,7 +110,7 @@ Skip unconventional-agent. Use when:
 
 #### Step 0: Product Context
 
-Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/comms-skills`) first to create `.agents/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, ask the user 8 product questions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `.agents/product-context.md`.
+Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/marketing-skills`) first to create `.agents/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, ask the user 8 product questions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `.agents/product-context.md`.
 
 If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommend re-running `problem-analysis` before proceeding — the root cause landscape may have shifted.
 
@@ -122,7 +122,7 @@ If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommen
 #### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `product-context.md` | icp-research (from hungv47/comms-skills) | Constraints and capabilities context |
+| `product-context.md` | icp-research (from hungv47/marketing-skills) | Constraints and capabilities context |
 | `market-research.md` | market-research | Market gaps and competitive intelligence sharpen initiative generation |
 
 #### Root Cause Review
@@ -277,7 +277,7 @@ status: draft
 ## Next Step
 
 Run `funnel-planner` to set targets, then `experiment` to test.
-If any "Proceed" initiative requires a technical build, also run `system-architecture` (from `hungv47/prod-skills`) with these initiatives as context.
+If any "Proceed" initiative requires a technical build, also run `system-architecture` (from `hungv47/product-skills`) with these initiatives as context.
 ```
 
 ---

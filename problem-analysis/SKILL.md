@@ -58,7 +58,7 @@ Previous: none | Next: `solution-design`
 
 ### Skill Deference
 - **Have a METRIC that's underperforming** (X is at Y, should be Z)? Use this skill.
-- **Have a FEATURE IDEA to spec out?** Use `plan-interviewer` (from prod-skills) instead.
+- **Have a FEATURE IDEA to spec out?** Use `plan-interviewer` (from product-skills) instead.
 
 **Re-run triggers:** When the metric shifts significantly, when new data surfaces that could change verdicts, or when a solution-design initiative is killed.
 
@@ -107,7 +107,7 @@ Layer 2 (sequential): hypothesis-agent → data-mapper-agent → [DATA PAUSE] �
 ### Pre-Dispatch: Context Gathering
 
 #### Step 0: Product Context
-Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/comms-skills`) first to create `.agents/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, interview for 8 product dimensions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `.agents/product-context.md`.
+Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/marketing-skills`) first to create `.agents/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, interview for 8 product dimensions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `.agents/product-context.md`.
 
 #### Step 1: Problem Interview
 If the user describes a vague problem ("things aren't going well", "growth is slow"):

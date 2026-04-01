@@ -39,7 +39,7 @@ Check for `.agents/product-context.md`. If missing: **INTERVIEW.** Ask for produ
 | Artifact | Source | Benefit |
 |----------|--------|---------|
 | `problem-analysis.md` | problem-analysis | Root cause context if churn was diagnosed as a problem |
-| `product-context.md` | icp-research (from hungv47/comms-skills) | Product and pricing context |
+| `product-context.md` | icp-research (from hungv47/marketing-skills) | Product and pricing context |
 
 ---
 

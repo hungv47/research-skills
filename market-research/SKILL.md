@@ -60,7 +60,7 @@ Previous: none | Next: `solution-design`, `icp-research`
 
 ### Skill Deference
 - **Need to understand the MARKET and WHERE the gaps are?** → Use this skill.
-- **Need to understand WHO the customer is and what they feel?** → Use `icp-research` (from comms-skills) instead — it builds personas and VoC, not market maps.
+- **Need to understand WHO the customer is and what they feel?** → Use `icp-research` (from marketing-skills) instead — it builds personas and VoC, not market maps.
 - **Have a METRIC that's underperforming?** → Use `problem-analysis` instead — it diagnoses root causes, not landscapes.
 - **Already know the problem and need SOLUTIONS?** → Use `solution-design` instead.
 
@@ -149,7 +149,7 @@ All 4 L1 agents run in parallel with enhanced depth. Sizing-agent is required (n
 
 ### Step 0: Product Context
 
-Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/comms-skills`) first to create `.agents/product-context.md`. This skill works without it but produces significantly better analysis with product context. If the user prefers not to, interview for the product's category, target market, and key differentiator at minimum.
+Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/marketing-skills`) first to create `.agents/product-context.md`. This skill works without it but produces significantly better analysis with product context. If the user prefers not to, interview for the product's category, target market, and key differentiator at minimum.
 
 **If product-context.md exists**, extract before dispatch:
 - **Product category** → determines which competitors to include and which features to compare
@@ -485,7 +485,7 @@ None — this is an entry point for the Strategy track.
 ### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `product-context.md` | icp-research (from hungv47/comms-skills) | Product context for better competitor selection and gap identification |
+| `product-context.md` | icp-research (from hungv47/marketing-skills) | Product context for better competitor selection and gap identification |
 | `problem-analysis.md` | problem-analysis | Known root causes focus competitive analysis on relevant dimensions |
 
 ---
