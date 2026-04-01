@@ -1,6 +1,6 @@
-# Strategy Skills
+# Research Skills
 
-Structured frameworks for market research, problem diagnosis, solution design, target setting, and experimentation. Domain-agnostic — works for marketing, product, engineering, or operational challenges.
+Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and experimentation. Domain-agnostic — works for marketing, product, engineering, or operational challenges.
 
 ## Installation
 
@@ -12,6 +12,7 @@ npx skills add hungv47/research-skills
 
 | Skill | Description |
 |-------|-------------|
+| `icp-research` | Deep audience research and Ideal Customer Profile development |
 | `market-research` | Map market landscape, competitive dynamics, and identify gaps and opportunities |
 | `problem-analysis` | Structured problem diagnosis, hypothesis development, and root cause analysis |
 | `solution-design` | Brainstorm targeted solutions and rank with evidence-backed ICE scoring |
@@ -21,6 +22,8 @@ npx skills add hungv47/research-skills
 ## Pipeline
 
 ```
+icp-research → product-context.md (foundation for 12+ downstream skills)
+
 market-research ──┐
                   ├→ solution-design → funnel-planner → experiment
 problem-analysis ─┘
@@ -31,37 +34,40 @@ Artifacts save to `.agents/`.
 ## Cross-Stack DAG
 
 ```
-strategy: market-research ─┐
-                           ├→ solution-design → funnel-planner → experiment
-          problem-analysis ─┘
-                                    ↓                  ↓
-comms:    icp-research → imc-plan → content-create → attribution
-               ↓              ↕ (reads solution-design, targets)
-design:   brand-system → user-flow
-                              ↓
-prod:     plan-interviewer → system-architecture → task-breakdown
-          code-cleanup (standalone)    technical-writer (standalone)
+research:   icp-research → product-context.md
+            market-research ─┐
+            problem-analysis ─┤→ solution-design → funnel-planner → experiment
+                              │
+marketing:  brand-system ─────┤
+            imc-plan ←────────┘→ content-create → attribution
+            copywriting, lp-optimization, seo, humanize (horizontal)
+
+product:    user-flow → system-architecture → (execution)
+            code-cleanup, technical-writer (horizontal)
+
+meta:       preflight → plan-interviewer → task-breakdown (before builds)
+            multi-lens (decisions), review-chain (verification)
+            artifact-status, skill-router (navigation)
 ```
 
-`icp-research` (from marketing-skills) creates `.agents/product-context.md`, consumed by 12+ skills across all stacks.
+`icp-research` creates `.agents/product-context.md`, consumed by 12+ skills across all stacks.
 
 ## Cross-Stack Workflow
 
-All strategy skills can read `.agents/product-context.md`, created by `icp-research` from [marketing-skills](https://github.com/hungv47/marketing-skills).
+All research skills can read `.agents/product-context.md`, created by `icp-research`.
 
 ## Usage
 
+- "Research my audience" → `icp-research`
 - "Research this market" → `market-research`
 - "Who are the competitors" → `market-research`
-- "Where are the gaps" → `market-research`
 - "Diagnose the problem" → `problem-analysis`
 - "What's causing this?" → `problem-analysis`
-- "Form hypotheses" → `problem-analysis`
-- "Find root cause" → `problem-analysis`
 - "Brainstorm solutions" → `solution-design`
 - "Prioritize initiatives" → `solution-design`
 - "Set targets" → `funnel-planner`
 - "Design an experiment" → `experiment`
+
 ## License
 
 MIT
