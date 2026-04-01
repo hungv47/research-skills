@@ -122,7 +122,7 @@ Next step: [What data to gather, from where, owned by whom.]
 
 ### 3-Strikes Escalation
 
-If 3 consecutive hypotheses are all Rejected and the remaining evidence is insufficient to form new hypotheses, **stop and escalate**. Do not force a root cause from weak evidence.
+If 3+ hypotheses are all Rejected and the remaining evidence is insufficient to form new hypotheses, **stop and escalate**. Do not force a root cause from weak evidence.
 
 In this case, your Root Cause Statement should be:
 ```
