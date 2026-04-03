@@ -58,7 +58,7 @@ Previous: none | Next: `solution-design`
 
 ### Skill Deference
 - **Have a METRIC that's underperforming** (X is at Y, should be Z)? Use this skill.
-- **Have a FEATURE IDEA to spec out?** Use `plan-interviewer` (from product-skills) instead.
+- **Have a FEATURE IDEA to spec out?** Use `discover` (from product-skills) instead.
 
 **Re-run triggers:** When the metric shifts significantly, when new data surfaces that could change verdicts, or when a solution-design initiative is killed.
 

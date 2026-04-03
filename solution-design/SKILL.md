@@ -22,7 +22,7 @@ routing:
     - problem-analysis.md
   requires: []
   defers-to:
-    - skill: plan-interviewer
+    - skill: discover
       when: "need to clarify HOW to build, not WHAT to pursue"
     - skill: system-architecture
       when: "need technical design, not strategic prioritization"
