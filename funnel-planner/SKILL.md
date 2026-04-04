@@ -1,6 +1,6 @@
 ---
 name: funnel-planner
-description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. Not for mapping activities to existing KPIs (use attribution) or testing specific variants (use experiment)."
+description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. Not for mapping activities to existing KPIs (use attribution) or testing specific variants (use experiment). For designing experiments to test targets, see experiment. For campaign planning, see imc-plan."
 argument-hint: "[revenue target or business goal]"
 license: MIT
 metadata:

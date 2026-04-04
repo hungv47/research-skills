@@ -1,6 +1,6 @@
 ---
 name: experiment
-description: "Designs validation experiments for business ideas — defines hypotheses, success metrics, sample sizes, and minimum viable tests before full commitment. Produces `.agents/experiment-[name].md`. Not for strategic prioritization (use solution-design) or market sizing (use market-research)."
+description: "Designs validation experiments for business ideas — defines hypotheses, success metrics, sample sizes, and minimum viable tests before full commitment. Produces `.agents/experiment-[name].md`. Not for strategic prioritization (use solution-design) or market sizing (use market-research). For diagnosing root causes, see problem-analysis. For campaign planning, see imc-plan."
 argument-hint: "[initiative to validate]"
 license: MIT
 metadata:
