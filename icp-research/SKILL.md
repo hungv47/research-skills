@@ -1,6 +1,6 @@
 ---
 name: icp-research
-description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `.agents/mkt/icp-research.md`. Not for competitive positioning (use solution-design) or campaign planning (use imc-plan)."
+description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `.agents/mkt/icp-research.md`. Not for competitive positioning (use solution-design) or campaign planning (use imc-plan). For brand identity from audience data, see brand-system. For market sizing and competitor landscape, see market-research."
 argument-hint: "[product or target market]"
 license: MIT
 metadata:
@@ -192,7 +192,14 @@ This scan-then-interview approach avoids asking the user questions they've alrea
 
 ## Primary CTA
 [What should people do next: e.g., "Start free trial"]
+
+## Canonical Terminology
+| Term | Definition | Don't use |
+|------|-----------|-----------|
+| [canonical term] | [precise definition] | [synonyms to avoid] |
 ```
+
+The Canonical Terminology section defines the shared vocabulary for the product and domain. Downstream skills (imc-plan, content-create, copywriting, humanize, lp-optimization) reference this to maintain consistent language across all artifacts. Populate during the scope interview — ask: "What do you call your users? Your pricing tiers? The main workspace?" If the user doesn't have strong preferences, propose defaults from the codebase (variable names, UI labels, docs).
 
 All marketing skills read this file for product context.
 

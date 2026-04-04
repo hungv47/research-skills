@@ -1,6 +1,6 @@
 ---
 name: solution-design
-description: "Brainstorms and prioritizes strategic solutions when the problem or goal is already clear — generates options, scores trade-offs, and recommends a path forward. Produces `.agents/solution-design.md`. Not for diagnosing what the problem is (use problem-analysis) or engineering task lists (use task-breakdown)."
+description: "Brainstorms and prioritizes strategic solutions when the problem or goal is already clear — generates options, scores trade-offs, and recommends a path forward. Produces `.agents/solution-design.md`. Not for diagnosing what the problem is (use problem-analysis) or engineering task lists (use task-breakdown). For setting numeric targets after prioritizing, see funnel-planner. For technical architecture of chosen initiatives, see system-architecture."
 argument-hint: "[problem or goal to solve]"
 license: MIT
 metadata:
@@ -213,6 +213,24 @@ After both agents return:
 2. Re-dispatch ONLY the named agent(s) with the critic's feedback
 3. Re-merge and send back to critic-agent
 4. If FAIL again after 2 cycles: deliver the artifact with a "Known Issues" section listing unresolved gate failures
+
+## Out-of-Scope Persistence
+
+After delivering the artifact, write killed initiatives to `.agents/meta/out-of-scope/` so future sessions don't re-analyze them:
+
+For each initiative marked **Kill** in the Decisions table:
+
+```markdown
+# [Initiative Name]
+**Decided:** [date]
+**Context:** [root cause and goal that prompted this analysis]
+**Decision:** Killed because [reason from Kill criteria]
+**Revisit if:** [condition that would change the decision — e.g., "team grows to 5+", "root cause shifts to retention"]
+```
+
+Save as `.agents/meta/out-of-scope/[kebab-case-name].md`. Create the directory if it doesn't exist.
+
+**Why:** Prevents re-debating settled decisions in future sessions. Navigate and discover read this directory before recommending workflows or asking about features already rejected.
 
 ---
 
