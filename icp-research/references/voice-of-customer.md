@@ -129,6 +129,49 @@ Capture price sensitivity:
 
 ---
 
+## Source Reliability & Confidence
+
+Not all VoC sources are equal. Weight findings based on source reliability and label confidence explicitly.
+
+### Source Reliability Weighting
+
+| Source | Reliability | Bias to Account For |
+|--------|-------------|-------------------|
+| Customer interviews (1:1) | Very High | Selection bias — you choose who to interview |
+| Support tickets / chat logs | High | Skews toward problems, not value |
+| Sales call transcripts | High | Prospect language, not yet customer language |
+| G2 / Capterra reviews | Medium-High | Power users and strong opinions overrepresented |
+| Reddit / forums | Medium-High | Technical and skeptical vs mainstream buyers |
+| App store reviews | Medium | Skews emotional extremes (1-star and 5-star) |
+| Social media comments | Medium | Short, reactive, context-poor |
+| Surveys (open-ended) | Low-Medium | Response bias — people say what sounds correct |
+| Surveys (multiple choice) | Low | Options constrain and lead answers |
+
+### Confidence Labeling
+
+Every theme or insight extracted from VoC data must have a confidence label:
+
+| Confidence | Criteria |
+|------------|---------|
+| **High** | Theme appears in 3+ independent sources, mentioned unprompted, consistent across segments |
+| **Medium** | Theme appears in 2 sources, or only when prompted, or limited to one segment |
+| **Low** | Single source, could be an outlier, needs validation before acting on |
+
+**Minimum viable sample:** Do not build personas or draw messaging conclusions from fewer than 5 independent data points per segment. Anything less is anecdote, not pattern.
+
+### Per-Platform Research Tips
+
+| Platform | Search Operators | What to Look For |
+|----------|-----------------|-----------------|
+| Reddit | `site:reddit.com "[product category]" (frustrated OR hate OR love OR switched)` | Unprompted complaints, competitor comparisons, workaround descriptions |
+| G2 | Filter by star rating (1-2 for pain, 4-5 for value), read "What do you dislike?" field | Structured pros/cons with real usage context |
+| Hacker News | `site:news.ycombinator.com "[product]"` | Technical buyer perspective, contrarian views, build-vs-buy debates |
+| LinkedIn | Search posts with `#[industry]` + pain keywords | Professional context, job-to-be-done framing |
+| Twitter/X | `"[product category]" (wish OR need OR hate OR love) -filter:links` | Real-time sentiment, emotional reactions, feature requests |
+| YouTube comments | Search `[product] review` → read comments, not video | Viewer corrections and real experiences vs creator's sponsored take |
+
+---
+
 ## Communication Pattern Analysis
 
 ### Industry Jargon Inventory
