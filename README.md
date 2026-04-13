@@ -4,9 +4,27 @@ Structured frameworks for audience research, market analysis, problem diagnosis,
 
 ## Install
 
+Installs via the [`skills` CLI](https://skills.sh). Requires Node.js 18+. Auto-detects Claude Code, Cursor, Codex, Windsurf, Gemini CLI, or VS Code.
+
 ```bash
+# Install the full research stack
 npx skills add hungv47/research-skills
+
+# Cherry-pick a single skill (any skill in the stack — these are just examples)
+npx skills add hungv47/research-skills --skill icp-research
+npx skills add hungv47/research-skills --skill problem-analysis
+
+# List available skills without installing
+npx skills add hungv47/research-skills --list
+
+# Target a specific editor
+npx skills add hungv47/research-skills --agent claude-code
+
+# Install globally (available in every project)
+npx skills add hungv47/research-skills -g
 ```
+
+See the [root README](https://github.com/hungv47/agent-skills#install) for the full install reference.
 
 ## Pipeline
 
