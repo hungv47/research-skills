@@ -12,10 +12,10 @@ problem-analysis ─┘
 content-research → content-research.md (feeds into content-create, imc-plan, copywriting)
 
 ## Artifacts
-Skills write to `.agents/`:
-- `.agents/product-context.md` (cross-stack — created by icp-research, consumed by 12+ skills)
-- `.agents/mkt/icp-research.md`
-- `.agents/market-research.md`
+Pipeline outputs write to `.agents/`; canonical audience/market records live in the top-level `research/` folder:
+- `research/product-context.md` (cross-stack canonical record — created by icp-research, consumed by 12+ skills)
+- `research/icp-research.md` (canonical audience record from icp-research)
+- `research/market-research.md` (canonical market record from market-research)
 - `.agents/problem-analysis.md`
 - `.agents/solution-design.md`
 - `.agents/targets.md`
@@ -23,11 +23,11 @@ Skills write to `.agents/`:
 - `.agents/mkt/content-research.md`
 
 ## Cross-Stack (Optional)
-All research skills can read `.agents/product-context.md` for business context.
+All research skills can read `research/product-context.md` for business context.
 Created by `icp-research` — run it first to establish the foundation artifact.
 
 ## Recommended Starting Point
-Run `icp-research` first to create `.agents/product-context.md`, the canonical cross-stack artifact.
+Run `icp-research` first to create `research/product-context.md`, the canonical cross-stack artifact.
 
 ## Multi-Agent Skills
 

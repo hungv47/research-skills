@@ -28,7 +28,7 @@ Previous: `problem-analysis` (when churn is identified as root cause) | Next: `e
 ## Before Starting
 
 ### Step 0: Product Context
-Check for `.agents/product-context.md`. If missing: **INTERVIEW.** Ask for product type, pricing model, customer segment (B2B/B2C), and current churn rate.
+Check for `research/product-context.md`. If missing: **INTERVIEW.** Ask for product type, pricing model, customer segment (B2B/B2C), and current churn rate.
 
 ### Required Artifacts
 | Artifact | Source | If Missing |
@@ -39,7 +39,7 @@ Check for `.agents/product-context.md`. If missing: **INTERVIEW.** Ask for produ
 | Artifact | Source | Benefit |
 |----------|--------|---------|
 | `problem-analysis.md` | problem-analysis | Root cause context if churn was diagnosed as a problem |
-| `product-context.md` | icp-research (from hungv47/marketing-skills) | Product and pricing context |
+| `product-context.md` | icp-research (from hungv47/research-skills) | Product and pricing context |
 
 ---
 

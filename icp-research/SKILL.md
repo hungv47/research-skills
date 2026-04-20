@@ -1,6 +1,6 @@
 ---
 name: icp-research
-description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `.agents/mkt/icp-research.md`. Not for competitive positioning (use solution-design) or campaign planning (use imc-plan). For brand identity from audience data, see brand-system. For market sizing and competitor landscape, see market-research."
+description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `research/icp-research.md`. Not for competitive positioning (use solution-design) or campaign planning (use imc-plan). For brand identity from audience data, see brand-system. For market sizing and competitor landscape, see market-research."
 argument-hint: "[product or target market]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -41,7 +41,7 @@ routing:
   position: foundation
   produces:
     - product-context.md
-    - mkt/icp-research.md
+    - icp-research.md
   consumes: []
   requires: []
   defers-to:
@@ -68,7 +68,7 @@ Before dispatching any agent, internalize these non-negotiable constraints:
 1. **Do NOT guess personas — evidence from VoC or interview only.** Every persona attribute must trace to product context, brief details, user input, or VoC quotes. Fabricated personas collapse under scrutiny and mislead 12+ downstream skills.
 2. **Do NOT skip habitat mapping — channels without habitats waste downstream effort.** IMC planning depends on specific community names with density and engagement type. "They're on LinkedIn" is not actionable.
 3. **Max 2 personas — more dilutes focus for 12+ downstream skills.** If research reveals 4+ segments, force-rank by revenue potential. This is a genuine constraint, not a suggestion.
-4. **Stale product context (>30 days) → recommend re-running.** If `.agents/product-context.md` exists but its `Date` field is older than 30 days, warn the user and recommend re-running this skill. Proceed if the user confirms, but note "stale product context" in the artifact header.
+4. **Stale product context (>30 days) → recommend re-running.** If `research/product-context.md` exists but its `Date` field is older than 30 days, warn the user and recommend re-running this skill. Proceed if the user confirms, but note "stale product context" in the artifact header.
 
 ---
 
@@ -77,10 +77,11 @@ Before dispatching any agent, internalize these non-negotiable constraints:
 This skill provides research structure, not a rigid formula. The minimums for channels, quotes, and platforms ensure thoroughness — they're not arbitrary thresholds. If overwhelming evidence surfaces in 2 channels, you don't need a third. If one devastating quote captures a pain perfectly, you don't need three. Let evidence dictate depth. This orchestrator dispatches specialist agents for each research concern, then a critic agent ensures every section meets the bar.
 
 ## Inputs Required
-- Product context from `.agents/product-context.md` (or willingness to answer product questions)
+- Product context from `research/product-context.md` (or willingness to answer product questions)
 
 ## Output
-- `.agents/mkt/icp-research.md`
+- `research/icp-research.md`
+- `research/product-context.md` (foundational — written on first run, updated on re-run)
 
 ## Quality Gate
 Before delivering, the **critic agent** verifies:
@@ -94,7 +95,7 @@ Before delivering, the **critic agent** verifies:
 ## Chain Position
 Previous: none (or any skill needing audience context) | Next: `imc-plan`, `brand-system` (from marketing-skills — uses audience data for brand strategy)
 
-**Foundational role:** This skill creates `.agents/product-context.md`, used by 12+ downstream skills across all 4 stacks (comms, strategy, prod, design). Running it first provides significantly better output for all downstream skills.
+**Foundational role:** This skill creates `research/product-context.md`, used by 12+ downstream skills across all 4 stacks (comms, strategy, prod, design). Running it first provides significantly better output for all downstream skills.
 **Re-run triggers:** When pivoting audience, entering a new market, after major product changes, or quarterly for active products.
 
 ### Skill Deference
@@ -172,7 +173,7 @@ Classify the task, then follow the matching route.
 
 ```
 1. Pre-dispatch: Read context from calling skill's artifacts
-2. Check if .agents/mkt/icp-research.md already exists:
+2. Check if research/icp-research.md already exists:
    - If exists and fresh (< 30 days) → return existing artifact
    - If exists but stale (> 30 days) → warn caller and recommend re-run
    - If missing → run Route B
@@ -183,12 +184,12 @@ Classify the task, then follow the matching route.
 
 ## Step 0: Pre-Dispatch — Product Context
 
-Check for `.agents/product-context.md`. If missing, **scan first, then interview for gaps:**
+Check for `research/product-context.md`. If missing, **scan first, then interview for gaps:**
 
 1. **Auto-scan available sources:** Look for README.md, marketing site copy, pricing page, product descriptions, and any existing documentation in the codebase. Extract what you can about the 8 dimensions below.
 2. **Interview only for gaps:** Present what you found and ask the user to confirm, correct, or fill in missing dimensions.
 
-This scan-then-interview approach avoids asking the user questions they've already answered elsewhere. This skill is the canonical source for product context across all skill stacks (comms, strategy, prod, design). Save to `.agents/product-context.md`:
+This scan-then-interview approach avoids asking the user questions they've already answered elsewhere. This skill is the canonical source for product context across all skill stacks (comms, strategy, prod, design). Save to `research/product-context.md`:
 
 ```markdown
 # Product Context
@@ -232,7 +233,7 @@ All marketing skills read this file for product context.
 ### Required Artifacts
 | Artifact | Source | If Missing |
 |----------|--------|------------|
-| `product-context.md` | icp-research | **INTERVIEW.** Interview for 8 product dimensions and save to `.agents/product-context.md`. |
+| `product-context.md` | icp-research | **INTERVIEW.** Interview for 8 product dimensions and save to `research/product-context.md`. |
 
 ### Optional Artifacts
 | Artifact | Source | Benefit |
@@ -261,7 +262,7 @@ For each agent dispatched below, use the **Agent tool** with a prompt constructe
 1. **Read** the agent instruction file (e.g., `agents/persona-agent.md`) — include its FULL content in the Agent prompt
 2. **Append** the brief and context after the instructions
 3. **Resolve file paths to absolute**: replace relative paths with absolute paths rooted at this skill's directory. Example: if this skill is at `/path/to/icp-research/`, then `references/voice-of-customer.md` becomes `/path/to/icp-research/references/voice-of-customer.md`. Tell the agent: "Read the reference file at [absolute path] for domain knowledge."
-4. **Pass upstream artifacts by content, not path**: the orchestrator reads `.agents/product-context.md` FIRST, then includes relevant excerpts (product, buyer, problem, differentiator) in the context object. Sub-agents should NOT read artifact files directly — the orchestrator curates what they need.
+4. **Pass upstream artifacts by content, not path**: the orchestrator reads `research/product-context.md` FIRST, then includes relevant excerpts (product, buyer, problem, differentiator) in the context object. Sub-agents should NOT read artifact files directly — the orchestrator curates what they need.
 5. If **feedback** exists (from a critic FAIL cycle), append it at the end of the prompt with the header "## Critic Feedback — Address Every Point"
 
 ### Single-agent fallback
@@ -317,7 +318,7 @@ pain-analysis-agent → decision-psychology-agent → synthesis-agent → critic
 The critic agent returns one of two verdicts:
 
 ### PASS
-The artifact meets all quality standards. Deliver the synthesis agent's output as the final artifact to `.agents/mkt/icp-research.md`.
+The artifact meets all quality standards. Deliver the synthesis agent's output as the final artifact to `research/icp-research.md`.
 
 ### FAIL
 The critic returns specific failures with:
@@ -404,7 +405,7 @@ Run `imc-plan` to turn these insights into a communication plan.
 **Brief:** "Research my ICP for a project management tool aimed at engineering teams."
 
 ### Step 0: Pre-Dispatch
-Product context scanned from README.md and pricing page. Saved to `.agents/product-context.md`:
+Product context scanned from README.md and pricing page. Saved to `research/product-context.md`:
 - Product: ProjectSync — async project visibility for engineering teams
 - Buyer: Engineering managers at mid-size SaaS companies
 - Problem: Hours lost to status updates nobody reads
@@ -458,7 +459,7 @@ Three agents dispatched simultaneously:
 > 1. **Fear of being perceived as unable to scale** — EMs who can't produce visibility for leadership fear being passed over for promotion or labeled as "not ready for director." Quotes: "My skip-level keeps asking me for updates I can't produce fast enough" (r/engineeringmanagers), "I got feedback that I 'lack strategic visibility' and I don't even know what that means" (r/ExperiencedDevs)
 
 ### Critic Gate → PASS
-All 7 gates pass. 18 quotes with attribution. Habitats are specific. Biases are named. Drivers traced to 2+ quotes each. Artifact delivered to `.agents/mkt/icp-research.md`.
+All 7 gates pass. 18 quotes with attribution. Habitats are specific. Biases are named. Drivers traced to 2+ quotes each. Artifact delivered to `research/icp-research.md`.
 
 ---
 

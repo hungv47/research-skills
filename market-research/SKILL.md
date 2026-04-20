@@ -1,6 +1,6 @@
 ---
 name: market-research
-description: "Analyzes market landscapes, competitive dynamics, TAM/SAM/SOM sizing, and whitespace opportunities for a product or category. Produces `.agents/market-research.md`. Not for building customer personas (use icp-research) or planning marketing campaigns (use imc-plan). For diagnosing a specific business problem, see problem-analysis. For prioritizing what to build from market data, see solution-design."
+description: "Analyzes market landscapes, competitive dynamics, TAM/SAM/SOM sizing, and whitespace opportunities for a product or category. Produces `research/market-research.md`. Not for building customer personas (use icp-research) or planning marketing campaigns (use imc-plan). For diagnosing a specific business problem, see problem-analysis. For prioritizing what to build from market data, see solution-design."
 argument-hint: "[market or product category]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -74,10 +74,10 @@ Research rigor scales with stakes. A weekend project needs a quick landscape sca
 **Correctness > Verifiability > Completeness > Style.**
 
 ## Inputs Required
-- Product context (from `.agents/product-context.md` or willingness to answer questions)
+- Product context (from `research/product-context.md` or willingness to answer questions)
 
 ## Output
-- `.agents/market-research.md`
+- `research/market-research.md`
 
 ## Chain Position
 Previous: none | Next: `solution-design`, `icp-research`
@@ -173,7 +173,7 @@ All 4 L1 agents run in parallel with enhanced depth. Sizing-agent is required (n
 
 ### Step 0: Product Context
 
-Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/marketing-skills`) first to create `.agents/product-context.md`. This skill works without it but produces significantly better analysis with product context. If the user prefers not to, interview for the product's category, target market, and key differentiator at minimum.
+Check for `research/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/research-skills`) first to create `research/product-context.md`. This skill works without it but produces significantly better analysis with product context. If the user prefers not to, interview for the product's category, target market, and key differentiator at minimum.
 
 **If product-context.md exists**, extract before dispatch:
 - **Product category** → determines which competitors to include and which features to compare
@@ -418,7 +418,7 @@ Run `solution-design` to turn top opportunities into prioritized initiatives, or
 **User:** "Research the AI code review market."
 
 ### Step 0 — Product Context
-Checked `.agents/product-context.md` — not found. Interview initiated.
+Checked `research/product-context.md` — not found. Interview initiated.
 
 ### Step 1 — Scope Interview
 - "What market?" → "AI-powered code review tools — automated PR review, code quality analysis"
@@ -471,7 +471,7 @@ Unmet needs: Cross-repo understanding, org-specific style enforcement, test gene
 **critic-agent** → PASS on first cycle. Notes: "Adjacent competitor section is strong. Sizing was correctly skipped for Positioning scope."
 
 ### Final Artifact
-Merged all outputs into `.agents/market-research.md` per artifact template.
+Merged all outputs into `research/market-research.md` per artifact template.
 
 ---
 
@@ -509,7 +509,7 @@ None — this is an entry point for the Strategy track.
 ### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `product-context.md` | icp-research (from hungv47/marketing-skills) | Product context for better competitor selection and gap identification |
+| `product-context.md` | icp-research (from hungv47/research-skills) | Product context for better competitor selection and gap identification |
 | `problem-analysis.md` | problem-analysis | Known root causes focus competitive analysis on relevant dimensions |
 
 ---

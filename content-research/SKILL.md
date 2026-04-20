@@ -52,7 +52,7 @@ routing:
     - mkt/content-research.md
   consumes:
     - product-context.md
-    - mkt/icp-research.md
+    - icp-research.md
   requires: []
   defers-to:
     - skill: market-research
@@ -205,8 +205,8 @@ All 4 L1 agents run in parallel. Full L2 sequence produces actionable content br
 
 Check for upstream artifacts in this priority order:
 
-1. **`.agents/product-context.md`** — Product category, differentiator, target audience (created by `icp-research`)
-2. **`.agents/mkt/icp-research.md`** — Full persona profiles, VoC data, audience habitats
+1. **`research/product-context.md`** — Product category, differentiator, target audience (created by `icp-research`)
+2. **`research/icp-research.md`** — Full persona profiles, VoC data, audience habitats
 3. **`.agents/mkt/imc-plan.md`** *(optional bonus — not upstream)* — If it already exists from a prior run, use channel strategy to focus research on relevant platforms. Content-research is typically run before imc-plan, so this will often be null.
 
 If none of the required artifacts (1-2) exist: interview for the minimum viable context:

@@ -45,7 +45,7 @@ Analyzes demographics, pain points, jobs-to-be-done, and market segmentation to 
 
 **Not for:** competitive positioning (use `solution-design`) or campaign planning (use `imc-plan`)
 
-**Produces:** `.agents/product-context.md` (cross-stack), `.agents/mkt/icp-research.md`
+**Produces:** `research/product-context.md` (cross-stack), `research/icp-research.md`
 
 ---
 
@@ -60,7 +60,7 @@ Analyzes competitive dynamics, TAM/SAM/SOM sizing, whitespace opportunities, and
 
 **Not for:** audience personas (use `icp-research`) or diagnosing a metric decline (use `problem-analysis`)
 
-**Produces:** `.agents/market-research.md`
+**Produces:** `research/market-research.md`
 
 ---
 
@@ -141,7 +141,7 @@ Designs minimum viable tests with hypotheses, success metrics, sample sizes, and
 
 ## Cross-Stack
 
-All research skills can read `.agents/product-context.md`, the foundation artifact created by `icp-research`. Run it first to establish context for all downstream skills.
+All research skills can read `research/product-context.md`, the foundation artifact created by `icp-research`. Run it first to establish context for all downstream skills.
 
 Research artifacts feed into marketing (`imc-plan`, `attribution`) and product (`system-architecture`) stacks.
 

@@ -131,7 +131,7 @@ Layer 2 (sequential): hypothesis-agent → data-mapper-agent → [DATA PAUSE] �
 ### Pre-Dispatch: Context Gathering
 
 #### Step 0: Product Context
-Check for `.agents/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/marketing-skills`) first to create `.agents/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, interview for 8 product dimensions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `.agents/product-context.md`.
+Check for `research/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/research-skills`) first to create `research/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, interview for 8 product dimensions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `research/product-context.md`.
 
 #### Step 1: Problem Interview
 If the user describes a vague problem ("things aren't going well", "growth is slow"):
@@ -166,7 +166,7 @@ Dispatch **tree-builder-agent** and **external-check-agent** simultaneously.
 
 ### external-check-agent
 - **Input:** Problem statement, timeline, industry, product type, known competitors
-- **References:** `.agents/product-context.md` (if available)
+- **References:** `research/product-context.md` (if available)
 - **Expected output:** 6-factor assessment (competitor, market/seasonal, platform/algorithm, regulatory, technology, macro-economic), each with WebSearch evidence
 
 ### Layer 1 Merge
