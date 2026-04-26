@@ -1,6 +1,6 @@
 ---
 name: content-research
-description: "Researches what content to create by analyzing competitor ads, audience communities, trending topics, and top-performing content across platforms. Produces `.agents/mkt/content-research.md`. Not for market landscape analysis (use market-research) or audience personas (use icp-research). For writing the content itself, see content-create."
+description: "Researches what short-form content to create — competitor ads, audience communities, trending topics, viral patterns, scroll-stop creative across social, ad, SMS, and OOH channels. Produces `.agents/mkt/content-research.md`. For long-form research (blog, case study, byline, PR, newsletter, app store listings) use content-research-long instead. Not for market landscape (use market-research) or audience personas (use icp-research). For writing the content itself, see content-short."
 argument-hint: "[niche, competitor, or topic]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -55,12 +55,16 @@ routing:
     - icp-research.md
   requires: []
   defers-to:
+    - skill: content-research-long
+      when: "research target is long-form (blog, case study, byline, press release, newsletter, app store/G2 listings) — needs SERP analysis, keyword intent, source/expert discovery, dwell-time audience language"
     - skill: market-research
       when: "need strategic market landscape and competitive dynamics, not content-level intelligence"
     - skill: icp-research
       when: "need full persona profiles and buyer psychology, not real-time audience language"
+    - skill: content-short
+      when: "ready to write short-form content (social, ads, SMS, OOH) — research is done"
     - skill: content-create
-      when: "ready to write the content — research is done"
+      when: "ready to write the content (legacy — content-create is being retired in favor of content-short / content-long / creator-brief)"
     - skill: seo
       when: "need technical SEO audit of existing pages, not pre-creation content gaps"
   parallel-with: []
@@ -84,9 +88,20 @@ routing:
 
 ## Philosophy
 
-The best content teams don't create in a vacuum — they research before they write. This skill bridges the gap between strategic research (market-research, icp-research) and content execution (content-create, copywriting). It answers: "What's working, what's missing, and what should we make?"
+The best content teams don't create in a vacuum — they research before they write. This skill bridges the gap between strategic research (market-research, icp-research) and short-form content execution (content-short, copywriting). It answers: "What short-form is winning, what hooks stop the scroll, and what should we ship?"
+
+For long-form research (blog, case study, byline, PR, newsletter), use **content-research-long** — it covers SERP analysis, keyword intent, expert/source discovery, and dwell-time audience language that this skill does not.
 
 **Evidence > Intuition > Imitation.**
+
+## When to use this vs. `content-research-long`
+
+| If your target is... | Use |
+|---|---|
+| TikTok/Reels script, ad creative, social post (LinkedIn/X/IG/FB), thread, carousel, SMS, OOH, drip email | **content-research** (this skill) |
+| Blog post, case study, byline, press release, newsletter, app store/G2 listing, in-depth Quora answer, evergreen guide | **content-research-long** |
+
+The two skills share upstream artifacts (`product-context.md`, `icp-research.md`) and feed two different downstream skills (`content-short` vs. `content-long`). Run both if a campaign spans both formats.
 
 ## Inputs Required
 
@@ -104,10 +119,11 @@ Previous: `icp-research`, `market-research` (optional but recommended) | Next: `
 
 ### Skill Deference
 
-- **Need to know what CONTENT to create based on what's working?** → Use this skill.
+- **Need to know what SHORT-FORM content to create based on what's winning?** → Use this skill.
+- **Need to know what LONG-FORM content to create (blog, case study, byline, PR, newsletter)?** → Use `content-research-long` instead — it covers SERP analysis, keyword intent, source discovery, dwell-time audience language.
 - **Need to understand the overall MARKET and competitive dynamics?** → Use `market-research` instead — it maps markets, not content.
 - **Need to understand WHO the customer is?** → Use `icp-research` instead — it builds personas, not content briefs.
-- **Ready to WRITE the content?** → Use `content-create` instead — it executes, this skill researches.
+- **Ready to WRITE short-form content?** → Use `content-short` instead — it executes, this skill researches.
 - **Need to audit EXISTING pages for SEO?** → Use `seo` instead — it audits what's live, this researches what to create.
 
 **Re-run triggers:** Before any content campaign, before entering a new channel, monthly for active content programs, when competitor creative strategy shifts noticeably.

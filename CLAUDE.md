@@ -9,7 +9,8 @@ market-research ──┐
                   ├→ solution-design → funnel-planner → experiment
 problem-analysis ─┘
 
-content-research → content-research.md (feeds into content-create, imc-plan, copywriting)
+content-research → content-research.md (short-form: feeds into content-short, imc-plan, copywriting)
+content-research-long → content-research-long.md (long-form: feeds into content-long, seo, imc-plan)
 
 ## Artifacts
 Pipeline outputs write to `.agents/`; canonical audience/market records live in the top-level `research/` folder:
@@ -21,6 +22,7 @@ Pipeline outputs write to `.agents/`; canonical audience/market records live in 
 - `.agents/targets.md`
 - `.agents/experiment-[name].md`
 - `.agents/mkt/content-research.md`
+- `.agents/mkt/content-research-long.md`
 
 ## Cross-Stack (Optional)
 All research skills can read `research/product-context.md` for business context.
@@ -31,7 +33,7 @@ Run `icp-research` first to create `research/product-context.md`, the canonical 
 
 ## Multi-Agent Skills
 
-All 7 skills use a two-layer multi-agent orchestration pattern:
+All 8 skills use a two-layer multi-agent orchestration pattern:
 
 - `SKILL.md` = **orchestrator** — dispatch graph, routing logic, merge step, critic gate
 - `agents/` = **sub-agent instruction files** — each with role, input/output contracts, domain knowledge, self-check
@@ -51,4 +53,5 @@ All 7 skills use a two-layer multi-agent orchestration pattern:
 - `solution-design` — 7 agents (research, initiative-generator, unconventional, ranking, ice-scoring, cut-line, critic). Layer 1 (research) → Layer 1.5 parallel (initiative-generator + unconventional) → Layer 2 sequential (ranking→ice-scoring→cut-line→critic).
 - `funnel-planner` — 6 agents (model-selection, baseline-collector, target-setter, sanity-check, stress-test, critic). Layer 1 parallel (model-selection + baseline-collector) → Layer 2 sequential (target-setter→sanity-check→stress-test→critic).
 - `experiment` — 5 agents (test-design, metrics, sample-size, guardrail, critic). Layer 1 parallel (test-design + metrics) → Layer 2 sequential (sample-size→guardrail→critic).
-- `content-research` — 7 agents (ad-intel, listening, trend, competitive-content, pattern, brief, critic). Layer 1 parallel (ad-intel + listening + trend + competitive-content) → Layer 2 sequential (pattern→brief→critic).
+- `content-research` — 7 agents (ad-intel, listening, trend, competitive-content, pattern, brief, critic). Layer 1 parallel (ad-intel + listening + trend + competitive-content) → Layer 2 sequential (pattern→brief→critic). **Scope: short-form only** (social, ads, SMS, OOH).
+- `content-research-long` — 7 agents (serp, keyword-intent, source-discovery, deep-listening, pattern, brief, critic). Layer 1 parallel (serp + keyword-intent + source-discovery + deep-listening) → Layer 2 sequential (pattern→brief→critic). **Scope: long-form only** (blog, case study, byline, PR, newsletter, listings).
