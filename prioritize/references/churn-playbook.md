@@ -1,6 +1,6 @@
 # Churn Prevention
 
-*Reference playbook for solution-design. Use when the diagnosed root cause (from problem-analysis) is churn.*
+*Reference playbook for prioritize. Use when the diagnosed root cause (from diagnose) is churn.*
 
 **Core Question:** "Why are customers leaving, and what's the minimum intervention to keep the right ones?"
 
@@ -21,7 +21,7 @@ Before delivering, verify:
 - [ ] Benchmarks cited for context (what "good" looks like for their segment)
 
 ## Chain Position
-Previous: `problem-analysis` (when churn is identified as root cause) | Next: `funnel-planner` (set targets for retention interventions)
+Previous: `diagnose` (when churn is identified as root cause) | Next: `funnel-planner` (set targets for retention interventions)
 
 ---
 
@@ -38,7 +38,7 @@ Check for `research/product-context.md`. If missing: **INTERVIEW.** Ask for prod
 ### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `problem-analysis.md` | problem-analysis | Root cause context if churn was diagnosed as a problem |
+| `diagnose.md` | diagnose | Root cause context if churn was diagnosed as a problem |
 | `product-context.md` | icp-research (from hungv47/research-skills) | Product and pricing context |
 
 ---
@@ -360,7 +360,7 @@ Pass top hypotheses to `funnel-planner` to set numeric targets, then ship the hi
 
 **Training cancel-for-deals behavior** — Offering 50%+ discounts in the cancel flow teaches customers that cancelling is the way to get a deal. Cap save discounts at 20-30% for 2-3 months maximum. If someone cancels three times and gets saved each time, the pattern is the problem.
 
-**No connection to problem-analysis** — Running churn-prevention in isolation when churn was identified as a root cause in `problem-analysis`. If `problem-analysis` identified churn as a root cause, read that artifact first — it may reveal specific churn drivers that should shape your cancel flow and save offers.
+**No connection to diagnose** — Running churn-prevention in isolation when churn was identified as a root cause in `diagnose`. If `diagnose` identified churn as a root cause, read that artifact first — it may reveal specific churn drivers that should shape your cancel flow and save offers.
 
 ---
 

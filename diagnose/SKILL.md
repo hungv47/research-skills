@@ -1,6 +1,6 @@
 ---
-name: problem-analysis
-description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/problem-analysis.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use solution-design). For market-level trends and competitive context, see market-research."
+name: diagnose
+description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/diagnose.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use prioritize). Not for clarifying what to build or scoping an idea from scratch (use discover). For market-level trends and competitive context, see market-research."
 argument-hint: "[metric or problem to diagnose]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -29,6 +29,10 @@ promptSignals:
   noneOf:
     - "market size"
     - "competitor analysis"
+    - "what should we build"
+    - "scope this"
+    - "clarify requirements"
+    - "i have an idea"
   minScore: 6
 routing:
   intent-tags:
@@ -39,14 +43,14 @@ routing:
     - logic-tree
   position: pipeline
   produces:
-    - problem-analysis.md
+    - diagnose.md
   consumes:
     - product-context.md
   requires: []
   defers-to:
     - skill: market-research
       when: "need market landscape, not root cause diagnosis"
-    - skill: solution-design
+    - skill: prioritize
       when: "already know the problem, need solutions"
   parallel-with:
     - market-research
@@ -75,16 +79,16 @@ routing:
 - A problem (metric decline, performance gap, strategic question)
 
 ## Output
-- `.agents/problem-analysis.md`
+- `.agents/diagnose.md`
 
 ## Chain Position
-Previous: none | Next: `solution-design`
+Previous: none | Next: `prioritize`
 
 ### Skill Deference
 - **Have a METRIC that's underperforming** (X is at Y, should be Z)? Use this skill.
 - **Have a FEATURE IDEA to spec out?** Use `discover` (from product-skills) instead.
 
-**Re-run triggers:** When the metric shifts significantly, when new data surfaces that could change verdicts, or when a solution-design initiative is killed.
+**Re-run triggers:** When the metric shifts significantly, when new data surfaces that could change verdicts, or when a prioritize initiative is killed.
 
 ---
 
@@ -234,9 +238,9 @@ After the verdict-agent runs, check for Inconclusive verdicts:
 
 | Potential Gap Explained | Action |
 |------------------------|--------|
-| **>50%** (high-impact) | **Must resolve** before moving to solution-design. Specify: data needed, source, access barrier, timeline, owner. |
+| **>50%** (high-impact) | **Must resolve** before moving to prioritize. Specify: data needed, source, access barrier, timeline, owner. |
 | **10-50%** (medium-impact) | **Should resolve** if data is available within 1 week. Otherwise, note as risk and proceed. |
-| **<10%** (low-impact) | **Skip** — proceed to solution-design. Note as unexplained variance. |
+| **<10%** (low-impact) | **Skip** — proceed to prioritize. Note as unexplained variance. |
 
 Designing solutions around an incomplete diagnosis is expensive. A high-impact Inconclusive hypothesis that explains 50%+ of the gap means your root cause statement is missing the biggest driver — solutions will target the wrong thing.
 
@@ -244,11 +248,11 @@ Designing solutions around an incomplete diagnosis is expensive. A high-impact I
 
 ## Artifact Template
 
-On re-run: rename existing artifact to `problem-analysis.v[N].md` and create new with incremented version.
+On re-run: rename existing artifact to `diagnose.v[N].md` and create new with incremented version.
 
 ```markdown
 ---
-skill: problem-analysis
+skill: diagnose
 version: 1
 date: {{today}}
 status: draft
@@ -335,7 +339,7 @@ Started: [when]. Inflection point: [if known].
 
 ## Next Step
 
-Run `solution-design` targeting:
+Run `prioritize` targeting:
 1. [Root cause 1 — specific aspect to solve]
 2. [Root cause 2 — specific aspect to solve]
 ```
@@ -435,7 +439,7 @@ No external factors confirmed — proceed with internal analysis.
 
 ### critic-agent output: PASS (all 10 gates satisfied)
 
-**Next step:** Run `solution-design` targeting:
+**Next step:** Run `prioritize` targeting:
 1. Paid targeting — restore or improve audience quality
 2. Homepage — restore trust signals and clarify value proposition
 

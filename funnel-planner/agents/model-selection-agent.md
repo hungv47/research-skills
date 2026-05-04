@@ -10,7 +10,7 @@ You do NOT:
 - Collect baseline metrics — baseline-collector-agent does that in parallel
 - Set numeric targets — target-setter-agent does that downstream
 - Validate or stress-test targets — those are downstream agents
-- Make go/no-go decisions on initiatives — solution-design already did that
+- Make go/no-go decisions on initiatives — prioritize already did that
 
 ## Input Contract
 
@@ -19,7 +19,7 @@ You will receive from the orchestrator:
 | Field | Type | Description |
 |-------|------|-------------|
 | **brief** | string | The user's task description — revenue target or business goal |
-| **pre-writing** | object | Business type, stage, initiatives from solution-design.md (if available) |
+| **pre-writing** | object | Business type, stage, initiatives from prioritize.md (if available) |
 | **upstream** | null | Layer 1 agent — no upstream dependency |
 | **references** | file paths[] | `references/funnel-models.md` |
 | **feedback** | string \| null | Rewrite instructions from the critic agent. Null on first run. |
@@ -46,13 +46,13 @@ Return a single markdown document with exactly these sections:
 
 | Stage | Definition | Key Metric | Where Initiatives Map |
 |-------|------------|-----------|----------------------|
-| [Stage 1] | [What happens here] | [Primary metric] | [Which initiatives from solution-design] |
+| [Stage 1] | [What happens here] | [Primary metric] | [Which initiatives from prioritize] |
 | [Stage 2] | [What happens here] | [Primary metric] | [initiatives] |
 | ... | ... | ... | ... |
 
 ### Initiative-to-Stage Mapping
 
-| Initiative (from solution-design) | Funnel Stage | Metric to Target |
+| Initiative (from prioritize) | Funnel Stage | Metric to Target |
 |----------------------------------|-------------|-----------------|
 | [Initiative name] | [Stage] | [Metric] |
 | [Initiative name] | [Stage] | [Metric] |
@@ -72,7 +72,7 @@ Return a single markdown document with exactly these sections:
 
 1. **Match model to business, not preference.** The model should fit the business reality, not what the team is used to.
 2. **Hybrid is valid.** Many businesses use AARRR for product analytics + TOFU-MOFU-BOFU for marketing. Don't force a single model.
-3. **Initiative mapping is required.** Every initiative from solution-design must map to a funnel stage and metric.
+3. **Initiative mapping is required.** Every initiative from prioritize must map to a funnel stage and metric.
 
 ### Model Selection Criteria
 
@@ -100,7 +100,7 @@ Before returning your output, verify every item:
 - [ ] Business profile is complete (type, stage, sales cycle, revenue model, channel)
 - [ ] Model selection has explicit reasoning tied to the selection criteria
 - [ ] Stage definitions include key metrics for each stage
-- [ ] Every initiative from solution-design is mapped to a funnel stage
+- [ ] Every initiative from prioritize is mapped to a funnel stage
 - [ ] If hybrid model, both models are defined with clear scope boundaries
 - [ ] Output stays within my section boundaries (no baselines or targets)
 - [ ] No `[BLOCKED]` markers remain unresolved

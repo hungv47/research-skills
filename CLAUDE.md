@@ -6,16 +6,16 @@ Structured frameworks: audience research, market analysis, problem diagnosis →
 icp-research → product-context.md (foundation)
 
 market-research ──┐
-                  ├→ solution-design → funnel-planner
-problem-analysis ─┘
+                  ├→ prioritize → funnel-planner
+diagnose ─┘
 
 ## Artifacts
 Pipeline outputs write to `.agents/`; canonical audience/market records live in the top-level `research/` folder:
 - `research/product-context.md` (cross-stack canonical record — created by icp-research, consumed by 12+ skills)
 - `research/icp-research.md` (canonical audience record from icp-research)
 - `research/market-research.md` (canonical market record from market-research)
-- `.agents/problem-analysis.md`
-- `.agents/solution-design.md`
+- `.agents/diagnose.md`
+- `.agents/prioritize.md`
 - `.agents/targets.md`
 
 ## Cross-Stack (Optional)
@@ -43,6 +43,6 @@ All 5 skills use a two-layer multi-agent orchestration pattern:
 ### Skills using this pattern
 - `icp-research` — 7 agents (persona, voc-collector, habitat, pain-analysis, decision-psychology, synthesis, critic). Layer 1 parallel (persona + VoC + habitat) → Layer 2 sequential (pain→psychology→synthesis→critic).
 - `market-research` — 7 agents (trends, sizing, competitor, consumer-landscape, cross-analysis, opportunity, critic). Layer 1 parallel (trends + sizing + competitor + consumer-landscape) → Layer 2 sequential (cross-analysis→opportunity→critic).
-- `problem-analysis` — 6 agents (tree-builder, external-check, hypothesis, data-mapper, verdict, critic). Layer 1 parallel (tree-builder + external-check) → Layer 2 sequential (hypothesis→data-mapper→verdict→critic).
-- `solution-design` — 7 agents (research, initiative-generator, unconventional, ranking, ice-scoring, cut-line, critic). Layer 1 (research) → Layer 1.5 parallel (initiative-generator + unconventional) → Layer 2 sequential (ranking→ice-scoring→cut-line→critic).
+- `diagnose` — 6 agents (tree-builder, external-check, hypothesis, data-mapper, verdict, critic). Layer 1 parallel (tree-builder + external-check) → Layer 2 sequential (hypothesis→data-mapper→verdict→critic).
+- `prioritize` — 7 agents (research, initiative-generator, unconventional, ranking, ice-scoring, cut-line, critic). Layer 1 (research) → Layer 1.5 parallel (initiative-generator + unconventional) → Layer 2 sequential (ranking→ice-scoring→cut-line→critic).
 - `funnel-planner` — 6 agents (model-selection, baseline-collector, target-setter, sanity-check, stress-test, critic). Layer 1 parallel (model-selection + baseline-collector) → Layer 2 sequential (target-setter→sanity-check→stress-test→critic).

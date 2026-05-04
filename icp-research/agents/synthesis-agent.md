@@ -82,7 +82,7 @@ status: draft
 - [Language/positioning that triggers skepticism and why]
 
 ## Next Step
-Run `imc-plan` to turn these insights into a communication plan.
+Run `campaign-plan` to turn these insights into a communication plan.
 
 > On re-run: rename existing artifact to `icp-research.v[N].md` and create new with incremented version.
 ```

@@ -19,7 +19,7 @@ You will receive from the orchestrator:
 | Field | Type | Description |
 |-------|------|-------------|
 | **brief** | string | The user's task description |
-| **pre-writing** | object | Initiatives from solution-design.md, existing metrics data |
+| **pre-writing** | object | Initiatives from prioritize.md, existing metrics data |
 | **upstream** | null | Layer 1 agent — no upstream dependency |
 | **references** | file paths[] | `references/benchmarks.md`, `references/unit-economics.md` |
 | **feedback** | string \| null | Rewrite instructions from the critic agent. Null on first run. |
@@ -78,7 +78,7 @@ Return a single markdown document with exactly these sections:
 ### Baseline Collection Priority
 
 1. **User-provided data** — Best source. Ask for analytics screenshots, dashboard exports, or specific numbers.
-2. **Existing artifacts** — Read `.agents/problem-analysis.md` and `.agents/solution-design.md` for numbers already established.
+2. **Existing artifacts** — Read `.agents/diagnose.md` and `.agents/prioritize.md` for numbers already established.
 3. **Industry benchmarks** — When user lacks data. See `references/benchmarks.md` for ranges by industry and stage.
 
 ### WebSearch for Missing Baselines

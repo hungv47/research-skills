@@ -1,6 +1,6 @@
 ---
 name: market-research
-description: "Analyzes market landscapes, competitive dynamics, TAM/SAM/SOM sizing, and whitespace opportunities for a product or category. Produces `research/market-research.md`. Not for building customer personas (use icp-research) or planning marketing campaigns (use imc-plan). For diagnosing a specific business problem, see problem-analysis. For prioritizing what to build from market data, see solution-design."
+description: "Analyzes market landscapes, competitive dynamics, TAM/SAM/SOM sizing, and whitespace opportunities for a product or category. Produces `research/market-research.md`. Not for building customer personas (use icp-research) or planning marketing campaigns (use campaign-plan). For diagnosing a specific business problem, see diagnose. For prioritizing what to build from market data, see prioritize."
 argument-hint: "[market or product category]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -46,10 +46,10 @@ routing:
   defers-to:
     - skill: icp-research
       when: "need audience personas, not market landscape"
-    - skill: problem-analysis
+    - skill: diagnose
       when: "diagnosing a specific metric decline, not surveying the market"
   parallel-with:
-    - problem-analysis
+    - diagnose
   interactive: false
   estimated-complexity: heavy
 ---
@@ -80,13 +80,13 @@ Research rigor scales with stakes. A weekend project needs a quick landscape sca
 - `research/market-research.md`
 
 ## Chain Position
-Previous: none | Next: `solution-design`, `icp-research`
+Previous: none | Next: `prioritize`, `icp-research`
 
 ### Skill Deference
 - **Need to understand the MARKET and WHERE the gaps are?** → Use this skill.
 - **Need to understand WHO the customer is and what they feel?** → Use `icp-research` (from marketing-skills) instead — it builds personas and VoC, not market maps.
-- **Have a METRIC that's underperforming?** → Use `problem-analysis` instead — it diagnoses root causes, not landscapes.
-- **Already know the problem and need SOLUTIONS?** → Use `solution-design` instead.
+- **Have a METRIC that's underperforming?** → Use `diagnose` instead — it diagnoses root causes, not landscapes.
+- **Already know the problem and need SOLUTIONS?** → Use `prioritize` instead.
 
 **Re-run triggers:** When entering a new market, when a major competitor launches or pivots, when fundraising (investors expect current data), or quarterly for fast-moving markets.
 
@@ -408,7 +408,7 @@ status: draft
 
 ## Next Step
 
-Run `solution-design` to turn top opportunities into prioritized initiatives, or `icp-research` to build personas for identified underserved segments.
+Run `prioritize` to turn top opportunities into prioritized initiatives, or `icp-research` to build personas for identified underserved segments.
 ```
 
 ---
@@ -510,7 +510,7 @@ None — this is an entry point for the Strategy track.
 | Artifact | Source | Benefit |
 |----------|--------|---------|
 | `product-context.md` | icp-research (from hungv47/research-skills) | Product context for better competitor selection and gap identification |
-| `problem-analysis.md` | problem-analysis | Known root causes focus competitive analysis on relevant dimensions |
+| `diagnose.md` | diagnose | Known root causes focus competitive analysis on relevant dimensions |
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: funnel-planner
-description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. For campaign planning, see imc-plan."
+description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. For campaign planning, see campaign-plan."
 argument-hint: "[revenue target or business goal]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -46,7 +46,7 @@ routing:
     - targets.md
   consumes:
     - product-context.md
-    - solution-design.md
+    - prioritize.md
   requires: []
   defers-to: []
   parallel-with: []
@@ -78,14 +78,14 @@ routing:
 Improvement factors and benchmarks here are evidence-backed starting points. Actual achievable improvement depends on baseline, team capability, and market context. Use the defaults as sanity checks, not ceilings or floors.
 
 ## Inputs Required
-- Prioritized initiatives from `.agents/solution-design.md` (preferred)
+- Prioritized initiatives from `.agents/prioritize.md` (preferred)
 - OR: A business with metrics that need targets
 
 ## Output
 - `.agents/targets.md`
 
 ## Chain Position
-Previous: `solution-design` | Next: terminal (consumed by imc-plan and downstream measurement when one is in place)
+Previous: `prioritize` | Next: terminal (consumed by campaign-plan and downstream measurement when one is in place)
 
 **Re-run triggers:** When baselines shift >20% from target table values, after measurement cycles conclude with new data, or quarterly.
 
@@ -144,7 +144,7 @@ If upstream artifacts' `date` fields are older than 30 days, recommend re-runnin
 #### Required Artifacts
 | Artifact | Source | If Missing |
 |----------|--------|------------|
-| `solution-design.md` | solution-design | **INTERVIEW.** Ask what initiatives to set targets for. |
+| `prioritize.md` | prioritize | **INTERVIEW.** Ask what initiatives to set targets for. |
 
 #### Optional Artifacts
 | Artifact | Source | Benefit |
@@ -158,7 +158,7 @@ Before selecting a funnel model, determine the growth motion:
 - **Hybrid** — Both motions coexist (e.g., self-serve for SMB + sales-assisted for enterprise). Designate which is primary for target-setting.
 
 #### Initiative Review
-Read `.agents/solution-design.md` if it exists — set a target for each "Proceed" initiative. If it doesn't exist, interview for:
+Read `.agents/prioritize.md` if it exists — set a target for each "Proceed" initiative. If it doesn't exist, interview for:
 - What business type? (SaaS, e-commerce, B2B services, etc.)
 - What stage? (Pre-launch, early traction, growth, mature)
 - What is the growth motion? (PLG, SLG, or Hybrid — see above)
@@ -180,7 +180,7 @@ If the full orchestration is unnecessary (single metric, user has baseline and b
 Dispatch **model-selection-agent** and **baseline-collector-agent** simultaneously.
 
 ### model-selection-agent
-- **Input:** Business profile (type, stage, sales cycle, revenue model, growth motion), initiatives from solution-design.md
+- **Input:** Business profile (type, stage, sales cycle, revenue model, growth motion), initiatives from prioritize.md
 - **References:** `references/funnel-models.md` (includes PLG Funnel, SLG Funnel, AARRR, AIDA, TOFU-MOFU-BOFU)
 - **Expected output:** Growth motion classification (PLG/SLG/Hybrid), selected funnel model, stage definitions, initiative-to-stage mapping, channel-to-stage mapping for active channels
 
@@ -314,7 +314,7 @@ Every target in this table is also the baseline for downstream measurement. Keep
 
 ## Worked Example
 
-**Initiatives from solution-design:** Restore Paid Targeting (Proceed), Restore Social Proof (Proceed).
+**Initiatives from prioritize:** Restore Paid Targeting (Proceed), Restore Social Proof (Proceed).
 
 ### Layer 1: Parallel Dispatch
 

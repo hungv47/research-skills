@@ -12,7 +12,7 @@ npx skills add hungv47/research-skills
 
 # Cherry-pick a single skill (any skill in the stack — these are just examples)
 npx skills add hungv47/research-skills --skill icp-research
-npx skills add hungv47/research-skills --skill problem-analysis
+npx skills add hungv47/research-skills --skill diagnose
 
 # List available skills without installing
 npx skills add hungv47/research-skills --list
@@ -40,7 +40,7 @@ Skills are then namespaced — call them as `/research-skills:icp-research`, `/r
 ## Pipeline
 
 ```
-icp-research → market-research + problem-analysis → solution-design → funnel-planner
+icp-research → market-research + diagnose → prioritize → funnel-planner
 ```
 
 ## Skills
@@ -54,7 +54,7 @@ Analyzes demographics, pain points, jobs-to-be-done, and market segmentation to 
 - You want to ground all downstream skills in real audience data
 - You need the `product-context.md` artifact that 12+ skills depend on
 
-**Not for:** competitive positioning (use `solution-design`) or campaign planning (use `imc-plan`)
+**Not for:** competitive positioning (use `prioritize`) or campaign planning (use `campaign-plan`)
 
 **Produces:** `research/product-context.md` (cross-stack), `research/icp-research.md`
 
@@ -69,13 +69,13 @@ Analyzes competitive dynamics, TAM/SAM/SOM sizing, whitespace opportunities, and
 - You want to understand who the competitors are and where the gaps exist
 - You're evaluating whether to enter a market
 
-**Not for:** audience personas (use `icp-research`) or diagnosing a metric decline (use `problem-analysis`)
+**Not for:** audience personas (use `icp-research`) or diagnosing a metric decline (use `diagnose`)
 
 **Produces:** `research/market-research.md`
 
 ---
 
-### `problem-analysis` — diagnose root causes
+### `diagnose` — diagnose root causes
 
 Builds logic trees, forms testable hypotheses, maps data requirements, and identifies root causes with evidence.
 
@@ -84,13 +84,13 @@ Builds logic trees, forms testable hypotheses, maps data requirements, and ident
 - You're facing a complex problem and want structured diagnosis before jumping to solutions
 - You need to distinguish symptoms from causes
 
-**Not for:** code bugs (use `code-cleanup`) or brainstorming solutions to a known problem (use `solution-design`)
+**Not for:** code bugs (use `code-cleanup`) or brainstorming solutions to a known problem (use `prioritize`)
 
-**Produces:** `.agents/problem-analysis.md`
+**Produces:** `.agents/diagnose.md`
 
 ---
 
-### `solution-design` — prioritize what to build
+### `prioritize` — prioritize what to build
 
 Generates strategic options, scores trade-offs with evidence-backed ICE scoring, and recommends a path forward.
 
@@ -99,9 +99,9 @@ Generates strategic options, scores trade-offs with evidence-backed ICE scoring,
 - You have multiple possible directions and need a structured way to choose
 - You want initiatives ranked by impact, confidence, and effort
 
-**Not for:** diagnosing what the problem is (use `problem-analysis`) or engineering task lists (use `task-breakdown`)
+**Not for:** diagnosing what the problem is (use `diagnose`) or engineering task lists (use `task-breakdown`)
 
-**Produces:** `.agents/solution-design.md`
+**Produces:** `.agents/prioritize.md`
 
 ---
 
@@ -124,7 +124,7 @@ Models business funnels backward from revenue goals to required traffic, convers
 
 All research skills can read `research/product-context.md`, the foundation artifact created by `icp-research`. Run it first to establish context for all downstream skills.
 
-Research artifacts feed into marketing (`imc-plan`, `lp-brief`, `copywriting`) and product (`system-architecture`) stacks.
+Research artifacts feed into marketing (`campaign-plan`, `lp-brief`, `copywriting`) and product (`system-architecture`) stacks.
 
 ## License
 

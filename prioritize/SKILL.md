@@ -1,6 +1,6 @@
 ---
-name: solution-design
-description: "Brainstorms and prioritizes strategic solutions when the problem or goal is already clear — generates options, scores trade-offs, and recommends a path forward. Produces `.agents/solution-design.md`. Not for diagnosing what the problem is (use problem-analysis) or engineering task lists (use task-breakdown). For setting numeric targets after prioritizing, see funnel-planner. For technical architecture of chosen initiatives, see system-architecture."
+name: prioritize
+description: "Brainstorms and prioritizes strategic solutions when the problem or goal is already clear — generates options, scores trade-offs, and recommends a path forward. Produces `.agents/prioritize.md`. Not for diagnosing what the problem is (use diagnose) or engineering task lists (use task-breakdown). For setting numeric targets after prioritizing, see funnel-planner. For technical architecture of chosen initiatives, see system-architecture."
 argument-hint: "[problem or goal to solve]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -32,18 +32,18 @@ promptSignals:
   minScore: 6
 routing:
   intent-tags:
-    - solution-design
+    - prioritize
     - prioritization
     - ice-scoring
     - initiative-planning
     - strategic-options
   position: pipeline
   produces:
-    - solution-design.md
+    - prioritize.md
   consumes:
     - product-context.md
     - market-research.md
-    - problem-analysis.md
+    - diagnose.md
   requires: []
   defers-to:
     - skill: discover
@@ -73,13 +73,13 @@ routing:
 ---
 
 ## Inputs Required
-- Root cause from `.agents/problem-analysis.md`
+- Root cause from `.agents/diagnose.md`
 
 ## Output
-- `.agents/solution-design.md`
+- `.agents/prioritize.md`
 
 ## Chain Position
-Previous: `problem-analysis` | Next: `funnel-planner` | Cross-stack: `system-architecture` (from product-skills — for initiatives requiring technical builds)
+Previous: `diagnose` | Next: `funnel-planner` | Cross-stack: `system-architecture` (from product-skills — for initiatives requiring technical builds)
 
 **Re-run triggers:** When root cause changes (re-diagnosis), when all "Proceed" initiatives are shipped or killed, or when new constraints emerge.
 
@@ -136,12 +136,12 @@ Skip unconventional-agent. Use when:
 
 Check for `research/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/research-skills`) first to create `research/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, ask the user 8 product questions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `research/product-context.md`.
 
-If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommend re-running `problem-analysis` before proceeding — the root cause landscape may have shifted.
+If `.agents/diagnose.md` has a `date` field older than 30 days, recommend re-running `diagnose` before proceeding — the root cause landscape may have shifted.
 
 #### Required Artifacts
 | Artifact | Source | If Missing |
 |----------|--------|------------|
-| `problem-analysis.md` | problem-analysis | **STOP.** "Run `problem-analysis` first to identify the root cause." |
+| `diagnose.md` | diagnose | **STOP.** "Run `diagnose` first to identify the root cause." |
 
 #### Optional Artifacts
 | Artifact | Source | Benefit |
@@ -150,7 +150,7 @@ If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommen
 | `market-research.md` | market-research | Market gaps and competitive intelligence sharpen initiative generation |
 
 #### Root Cause Review
-Read `.agents/problem-analysis.md`. Quote the root cause statement(s) and gap percentages. This anchor is necessary because generic growth ideas produce low-impact, unfocused initiatives.
+Read `.agents/diagnose.md`. Quote the root cause statement(s) and gap percentages. This anchor is necessary because generic growth ideas produce low-impact, unfocused initiatives.
 
 #### Constraint Interview
 Interview for:
@@ -173,7 +173,7 @@ If the full orchestration is unnecessary (simple problem, few initiatives, user 
 Dispatch **research-agent**.
 
 ### research-agent
-- **Input:** Problem statement, root cause from problem-analysis.md, gap percentages, constraints, prior attempts
+- **Input:** Problem statement, root cause from diagnose.md, gap percentages, constraints, prior attempts
 - **References:** `../shared/hypothesis-framework.md` (use Framing B — Predictive), `references/initiative-types.md`
 - **Expected output:** Validated root cause, 3-6 case studies with quantified results, unconventional tactic scan, constraint summary
 
@@ -260,11 +260,11 @@ Save as `.agents/meta/out-of-scope/[kebab-case-name].md`. Create the directory i
 
 ## Artifact Template
 
-On re-run: rename existing artifact to `solution-design.v[N].md` and create new with incremented version.
+On re-run: rename existing artifact to `prioritize.v[N].md` and create new with incremented version.
 
 ```markdown
 ---
-skill: solution-design
+skill: prioritize
 version: 1
 date: {{today}}
 status: draft
@@ -272,7 +272,7 @@ status: draft
 
 # Solution Design
 
-**Root Cause:** [from problem-analysis.md]
+**Root Cause:** [from diagnose.md]
 
 ## Phase 1: Initiatives
 

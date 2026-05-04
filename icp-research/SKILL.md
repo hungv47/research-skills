@@ -1,6 +1,6 @@
 ---
 name: icp-research
-description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `research/icp-research.md`. Not for competitive positioning (use solution-design) or campaign planning (use imc-plan). For brand identity from audience data, see brand-system. For market sizing and competitor landscape, see market-research."
+description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `research/icp-research.md`. Not for competitive positioning (use prioritize) or campaign planning (use campaign-plan). For brand identity from audience data, see brand-system. For market sizing and competitor landscape, see market-research."
 argument-hint: "[product or target market]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -93,16 +93,16 @@ Before delivering, the **critic agent** verifies:
 - [ ] Maximum 2 personas
 
 ## Chain Position
-Previous: none (or any skill needing audience context) | Next: `imc-plan`, `brand-system` (from marketing-skills — uses audience data for brand strategy)
+Previous: none (or any skill needing audience context) | Next: `campaign-plan`, `brand-system` (from marketing-skills — uses audience data for brand strategy)
 
 **Foundational role:** This skill creates `research/product-context.md`, used by 12+ downstream skills across all 4 stacks (comms, strategy, prod, design). Running it first provides significantly better output for all downstream skills.
 **Re-run triggers:** When pivoting audience, entering a new market, after major product changes, or quarterly for active products.
 
 ### Skill Deference
 - **Need competitive analysis or market sizing?** → Use `market-research`
-- **Need campaign planning from these personas?** → Use `imc-plan`
+- **Need campaign planning from these personas?** → Use `campaign-plan`
 - **Need brand identity using audience data?** → Use `brand-system`
-- **Need to diagnose a business problem, not an audience?** → Use `problem-analysis`
+- **Need to diagnose a business problem, not an audience?** → Use `diagnose`
 
 ---
 
@@ -169,7 +169,7 @@ Classify the task, then follow the matching route.
 ```
 
 ### Route C: Called by Another Skill
-**When:** Invoked by `imc-plan`, `brand-system`, `copywriting`, or another skill that needs audience context.
+**When:** Invoked by `campaign-plan`, `brand-system`, `copywriting`, or another skill that needs audience context.
 
 ```
 1. Pre-dispatch: Read context from calling skill's artifacts
@@ -226,7 +226,7 @@ This scan-then-interview approach avoids asking the user questions they've alrea
 | [canonical term] | [precise definition] | [synonyms to avoid] |
 ```
 
-The Canonical Terminology section defines the shared vocabulary for the product and domain. Downstream skills (imc-plan, copywriting, humanize, lp-optimization, lp-brief, design-brief) reference this to maintain consistent language across all artifacts. Populate during the scope interview — ask: "What do you call your users? Your pricing tiers? The main workspace?" If the user doesn't have strong preferences, propose defaults from the codebase (variable names, UI labels, docs).
+The Canonical Terminology section defines the shared vocabulary for the product and domain. Downstream skills (campaign-plan, copywriting, humanize, lp-optimization, lp-brief, design-brief) reference this to maintain consistent language across all artifacts. Populate during the scope interview — ask: "What do you call your users? Your pricing tiers? The main workspace?" If the user doesn't have strong preferences, propose defaults from the codebase (variable names, UI labels, docs).
 
 All marketing skills read this file for product context.
 
@@ -238,7 +238,7 @@ All marketing skills read this file for product context.
 ### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `problem-analysis.md` | problem-analysis (from hungv47/research-skills) | Problem context sharpens audience research |
+| `diagnose.md` | diagnose (from hungv47/research-skills) | Problem context sharpens audience research |
 
 ---
 
@@ -393,7 +393,7 @@ status: draft
 - [Language/positioning that triggers skepticism and why]
 
 ## Next Step
-Run `imc-plan` to turn these insights into a communication plan.
+Run `campaign-plan` to turn these insights into a communication plan.
 
 > On re-run: rename existing artifact to `icp-research.v[N].md` and create new with incremented version.
 ```

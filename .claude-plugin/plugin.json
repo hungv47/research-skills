@@ -10,8 +10,8 @@
   "skills": [
     "./icp-research/",
     "./market-research/",
-    "./problem-analysis/",
-    "./solution-design/",
+    "./diagnose/",
+    "./prioritize/",
     "./funnel-planner/"
   ]
 }

@@ -19,7 +19,7 @@ Skip when:
 
 ## Phase 1: Foundation
 
-- Problem restatement (from problem-analysis root cause)
+- Problem restatement (from diagnose root cause)
 - Success definition: primary metric, baseline, target, timeline
 - Scope: what's IN, what's explicitly OUT
 - Key assumptions (list — they become risk items)
@@ -84,12 +84,12 @@ Any section scoring 1 = proposal needs rework before execution.
 # Initiative Plan: [Name]
 
 **Date:** [today]
-**Source:** solution-design.md, Initiative #[N]
+**Source:** prioritize.md, Initiative #[N]
 **Owner:** [name]
 
 ## Phase 1: Foundation
 
-**Root Cause:** [from problem-analysis]
+**Root Cause:** [from diagnose]
 **Primary Metric:** [metric] — Baseline: [current] → Target: [goal] by [date]
 **Scope IN:** [what's included]
 **Scope OUT:** [what's explicitly excluded]
