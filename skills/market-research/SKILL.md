@@ -62,14 +62,14 @@ routing:
 
 ## Critical Gates — Read First
 
-1. **Markets move fast — any source older than 18 months must be flagged as historical context.** Do not present stale data as current intelligence.
-2. **TAM/SAM/SOM without methodology is a guess, not research.** Every sizing estimate needs a stated method (top-down, bottom-up, or both), source, and confidence level.
-3. **Adjacent competitors are the highest threat — do NOT skip the adjacent check.** The biggest competitive threat often comes from an adjacent category expanding into yours, not from a direct competitor.
-4. **Do NOT rely on training data for market positions or pricing — use WebSearch.** Competitor data changes constantly. Always verify with live research.
+1. **Sources >18 months old → flag as historical, not current.** Don't present stale data as current intelligence.
+2. **TAM/SAM/SOM without methodology is a guess.** Every estimate needs method (top-down/bottom-up), source, and confidence.
+3. **Adjacent competitors are the highest threat — never skip the adjacent check.** Biggest threats come from adjacent categories expanding in.
+4. **Never rely on training data for positions or pricing — use WebSearch.** Competitor data changes constantly; verify live.
 
 ## Philosophy
 
-Research rigor scales with stakes. A weekend project needs a quick landscape scan; a Series A pivot needs deep competitive intelligence. This skill produces evidence, not opinions. Every claim cites a source. Every opportunity has supporting data.
+Rigor scales with stakes. Weekend project = quick scan; Series A pivot = deep intel. Evidence, not opinions — every claim cites a source, every opportunity has data.
 
 **Correctness > Verifiability > Completeness > Style.**
 
@@ -83,12 +83,12 @@ Research rigor scales with stakes. A weekend project needs a quick landscape sca
 Previous: none | Next: `prioritize`, `icp-research`
 
 ### Skill Deference
-- **Need to understand the MARKET and WHERE the gaps are?** → Use this skill.
-- **Need to understand WHO the customer is and what they feel?** → Use `icp-research` (from marketing-skills) instead — it builds personas and VoC, not market maps.
-- **Have a METRIC that's underperforming?** → Use `diagnose` instead — it diagnoses root causes, not landscapes.
-- **Already know the problem and need SOLUTIONS?** → Use `prioritize` instead.
+- **MARKET landscape and gaps?** → This skill.
+- **WHO the customer is, what they feel?** → `icp-research` (personas/VoC, not market maps).
+- **A METRIC underperforming?** → `diagnose` (root causes, not landscapes).
+- **Know the problem, need SOLUTIONS?** → `prioritize`.
 
-**Re-run triggers:** When entering a new market, when a major competitor launches or pivots, when fundraising (investors expect current data), or quarterly for fast-moving markets.
+**Re-run triggers:** New market entry, major competitor launch/pivot, fundraising, or quarterly for fast-moving categories.
 
 ---
 
@@ -119,7 +119,7 @@ trends-agent ──┐
 competitor-agent┘
 ```
 
-Skip sizing-agent (not required). Consumer-landscape-agent optional (include if time allows). Opportunity-agent skipped — cross-analysis identifies gaps directly for Quick scope.
+Skip sizing-agent. Consumer-landscape-agent optional. Opportunity-agent skipped — cross-analysis identifies gaps directly at Quick scope.
 
 ### Route B: Product Positioning
 **Trigger:** "Position our product," "Where do we fit?", "Competitive analysis for [product]"
@@ -131,7 +131,7 @@ competitor-agent ────────┼──→ cross-analysis-agent → o
 consumer-landscape-agent ┘
 ```
 
-All 4 L1 agents run in parallel. Full L2 sequence.
+All 4 L1 agents parallel. Full L2 sequence.
 
 ### Route C: Fundraising / Market Entry
 **Trigger:** "Market analysis for investors," "Series A research," "Entering [market]," "Full market research"
@@ -143,7 +143,7 @@ competitor-agent ────────┼──→ cross-analysis-agent → o
 consumer-landscape-agent ┘
 ```
 
-All 4 L1 agents run in parallel with enhanced depth. Sizing-agent is required (not optional). Opportunity-agent uses quantitative 1-5 scoring. Full L2 sequence.
+All 4 L1 agents parallel at enhanced depth. Sizing-agent required. Opportunity-agent uses quantitative 1-5 scoring. Full L2 sequence.
 
 ---
 
@@ -173,29 +173,29 @@ All 4 L1 agents run in parallel with enhanced depth. Sizing-agent is required (n
 
 ### Step 0: Product Context
 
-Check for `research/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/research-skills`) first to create `research/product-context.md`. This skill works without it but produces significantly better analysis with product context. If the user prefers not to, interview for the product's category, target market, and key differentiator at minimum.
+Check for `research/product-context.md`. If missing: **strongly recommend** running `icp-research` first to create it. Skill works without it, but quality improves significantly. If user declines, interview for category, target market, and differentiator at minimum.
 
 **If product-context.md exists**, extract before dispatch:
-- **Product category** → determines which competitors to include and which features to compare
-- **Differentiator** → anchors positioning map axes and gap identification
-- **Pricing model** → frames pricing comparison dimensions
-- **Target segment** → filters competitors by segment overlap (direct vs. adjacent)
+- **Product category** → which competitors and features
+- **Differentiator** → positioning map axes and gap identification
+- **Pricing model** → pricing comparison dimensions
+- **Target segment** → filters direct vs. adjacent competitors
 
 ### Step 1: Scope Interview
 
-If the user provides a vague request ("research this market", "who are the competitors"):
+For vague requests ("research this market", "who are the competitors"):
 
-1. **What market/industry?** — Name the product category and adjacent categories. (Not "tech" — which segment?)
-2. **Geographic scope?** — Global, specific regions, or specific countries?
-3. **Timeframe?** — Current snapshot, or include trajectory (last 2-3 years)?
-4. **Known competitors?** — List any the user already tracks. Starting points, not the full list.
-5. **What decisions will this inform?** — Building? Positioning? Fundraising? Pivoting? The answer determines scope and route.
+1. **What market/industry?** — Name product category and adjacent. (Not "tech" — which segment?)
+2. **Geographic scope?** — Global, regional, or specific countries?
+3. **Timeframe?** — Current snapshot, or 2-3 year trajectory?
+4. **Known competitors?** — Any starting points (not the full list).
+5. **What decisions will this inform?** — Building / positioning / fundraising / pivoting? Determines scope and route.
 
-All 5 answers are necessary before dispatch — without scope, research sprawls and produces a Wikipedia article instead of actionable intelligence.
+All 5 answers required — without scope, research sprawls into a Wikipedia article.
 
 ### Single-Agent Fallback
 
-If the task is narrow enough for a single agent (e.g., "just list the competitors" or "what's the market size?"), dispatch only the relevant agent without the full pipeline. Skip cross-analysis, opportunity, and critic agents. Return the single agent's output directly.
+For narrow tasks ("just list competitors", "what's the market size?"), dispatch only the relevant agent. Skip cross-analysis, opportunity, and critic. Return output directly.
 
 ---
 
@@ -227,26 +227,26 @@ pre-writing = {
 
 ### Research Tool Priority (all L1 agents)
 
-1. **Exa MCP** or **Perplexity MCP** (if installed) — best for market reports, competitor analysis, trend data
-2. **Firecrawl** or **Defuddle** (if installed) — for scraping specific pages (pricing, features, G2, Crunchbase)
+1. **Exa MCP** or **Perplexity MCP** (if installed) — best for market reports, competitor analysis, trends
+2. **Firecrawl** or **Defuddle** (if installed) — scraping specific pages (pricing, features, G2, Crunchbase)
 3. **WebSearch** — always available as fallback
 
 ### Research Checkpoint
 
-After L1 agents return, present findings and gather feedback before proceeding to L2:
+After L1 returns, present findings and gather feedback before L2:
 
-**"Here's the competitive landscape I've found. Before I identify gaps and opportunities:"**
-1. **Are these the right competitors?** Any missing? Any to deprioritize?
-2. **Do you have internal competitive intel?** Sales battle cards, win/loss data, customer feedback about competitors?
-3. **Any surprising findings you want me to dig deeper on?**
+**"Here's the competitive landscape. Before I identify gaps and opportunities:"**
+1. **Right competitors?** Missing any? Deprioritize any?
+2. **Internal competitive intel?** Battle cards, win/loss data, customer feedback?
+3. **Surprising findings to dig deeper on?**
 
-If user provides internal data (battle cards, sales notes, support tickets), incorporate into the merged L1 output before dispatching L2.
+Incorporate any internal data (battle cards, sales notes, support tickets) into merged L1 output before dispatching L2.
 
 ---
 
 ## Layer 2 Dispatch — Sequential Analysis
 
-After L1 agents return and checkpoint feedback is incorporated, dispatch L2 agents in strict sequence:
+After L1 returns and checkpoint feedback is incorporated, dispatch L2 in strict sequence:
 
 ### Step 1: Cross-Analysis Agent
 
@@ -256,27 +256,27 @@ dispatch cross-analysis-agent:
   references: [references/gap-analysis-template.md]
 ```
 
-Receives the full merged L1 output. Identifies gaps across 4 dimensions: underserved segments, feature gaps, emerging trend gaps, positioning whitespace.
+Identifies gaps across 4 dimensions: underserved segments, feature gaps, emerging trend gaps, positioning whitespace.
 
 ### Step 2: Opportunity Agent
 
 ```
 dispatch opportunity-agent:
-  upstream: [cross-analysis-agent output + merged L1 context]
+  upstream: [cross-analysis output + merged L1 context]
   references: [references/gap-analysis-template.md]
 ```
 
-Receives cross-analysis output plus L1 context for evidence sourcing. Force-ranks top 3 opportunities.
+Receives cross-analysis plus L1 context for evidence. Force-ranks top 3 opportunities.
 
 ### Step 3: Critic Agent
 
 ```
 dispatch critic-agent:
-  upstream: [full merged artifact — all L1 + L2 outputs assembled into artifact template]
+  upstream: [full merged artifact — all L1 + L2 outputs in artifact template]
   references: [all reference files]
 ```
 
-Receives the complete artifact. Evaluates against quality gate checklist. Returns PASS or FAIL.
+Evaluates against quality gate checklist. Returns PASS or FAIL.
 
 ---
 
@@ -299,21 +299,21 @@ if cycle == 2 and verdict == FAIL:
   warn user: "Artifact delivered with quality notes — some items could not be resolved in 2 cycles."
 ```
 
-**On rewrite:** Only re-dispatch the agents the critic names. Do not re-run the entire pipeline. The critic provides specific feedback per agent — pass it in the `feedback` field.
+**On rewrite:** Re-dispatch only the agents the critic names. Don't re-run the full pipeline. Pass critic's per-agent feedback in the `feedback` field.
 
 ---
 
 ## Quality Gate
 
-Before delivering, verify the merged artifact passes all checks:
+Before delivering, verify merged artifact passes:
 
-- [ ] Every claim cites a source with URL or publication name
-- [ ] Competitor table includes >=3 competitors with quantified size/growth signals
-- [ ] Feature comparison covers >=5 capabilities relevant to the product category
-- [ ] Gaps & Opportunities section identifies >=3 distinct opportunities with evidence
-- [ ] Each Top 3 opportunity includes: evidence source, estimated window, risk level, and "why now"
-- [ ] Market trends include >=2 quantified data points (%, $, growth rates)
-- [ ] No source older than 18 months presented as current without historical flag
+- [ ] Every claim cites source (URL or publication name)
+- [ ] Competitor table: >=3 competitors with quantified size/growth signals
+- [ ] Feature comparison: >=5 capabilities relevant to category
+- [ ] Gaps & Opportunities: >=3 distinct opportunities with evidence
+- [ ] Each Top 3 opportunity: evidence source, window, risk, and "why now"
+- [ ] Market trends: >=2 quantified data points (%, $, growth rates)
+- [ ] No source >18 months presented as current without historical flag
 - [ ] Confidence level stated with justification
 - [ ] Adjacent competitors section populated — never skipped
 - [ ] TAM/SAM/SOM (if present) shows methodology, not just numbers
@@ -477,29 +477,29 @@ Merged all outputs into `research/market-research.md` per artifact template.
 
 ## Anti-Patterns
 
-**Describing without concluding** — Listing competitors and features without identifying gaps and opportunities produces a Wikipedia article, not strategic intelligence. The Gaps & Opportunities section is the point of this skill — everything before it is setup.
-**INSTEAD:** Ensure cross-analysis-agent and opportunity-agent run. If they are skipped, the output is incomplete.
+**Describing without concluding** — Listing competitors and features without identifying gaps produces a Wikipedia article, not strategic intelligence. Gaps & Opportunities is the point — everything before is setup.
+**INSTEAD:** Ensure cross-analysis-agent and opportunity-agent run. Skipping them = incomplete output.
 
-**Unsourced market sizing** — "The market is worth $5B" without citing a source or methodology is fiction.
-**INSTEAD:** Every market size claim needs a source, methodology (top-down or bottom-up), and confidence level. See [references/market-sizing-guide.md](references/market-sizing-guide.md).
+**Unsourced market sizing** — "The market is worth $5B" without source or methodology is fiction.
+**INSTEAD:** Every sizing claim needs source, methodology (top-down or bottom-up), and confidence. See [references/market-sizing-guide.md](references/market-sizing-guide.md).
 
-**Recency blindness** — Using a 2022 report to describe a 2026 market. In fast-moving categories, 18-month-old data is historical context, not current intelligence.
-**INSTEAD:** Flag source dates prominently. Instruct agents to prioritize sources from the last 12 months.
+**Recency blindness** — Using a 2022 report for a 2026 market. In fast categories, 18-month-old data is historical, not current.
+**INSTEAD:** Flag source dates prominently. Prioritize last-12-month sources.
 
-**Feature-only competitor analysis** — Comparing features while ignoring positioning, community, growth trajectory, and pricing produces an incomplete picture.
-**INSTEAD:** competitor-agent analyzes all 6 dimensions (overview, adjacent, features, pricing, positioning, community). Do not accept feature-only output.
+**Feature-only competitor analysis** — Comparing features while ignoring positioning, community, growth, and pricing produces an incomplete picture.
+**INSTEAD:** competitor-agent covers all 6 dimensions (overview, adjacent, features, pricing, positioning, community). Don't accept feature-only output.
 
-**Confirmation bias in gap identification** — Reverse-engineering "gaps" from your product's features isn't research — it's rationalization.
+**Confirmation bias in gap identification** — Reverse-engineering "gaps" from your product's features is rationalization, not research.
 **INSTEAD:** cross-analysis-agent identifies gaps from user complaints, switching reasons, and unmet needs FIRST, then checks product fit.
 
-**Treating all competitors as equal threats** — A $40M-funded company with 200 employees targeting your exact segment is a different threat level than a side project on Product Hunt.
-**INSTEAD:** competitor-agent assigns threat levels (Critical/High/Medium/Low/Watch) with justification per the framework.
+**Treating all competitors as equal threats** — A $40M-funded company with 200 employees in your exact segment is not a Product Hunt side project.
+**INSTEAD:** competitor-agent assigns threat levels (Critical/High/Medium/Low/Watch) with justification.
 
-**Ignoring adjacent competitors** — The biggest competitive threat often comes from an adjacent category expanding into yours.
-**INSTEAD:** competitor-agent always researches adjacent players. critic-agent specifically checks this was not skipped.
+**Ignoring adjacent competitors** — Biggest threats often come from adjacent categories expanding in.
+**INSTEAD:** competitor-agent always researches adjacent players. critic-agent specifically checks this.
 
-**Positioning map with self-serving axes** — Axes should reflect dimensions that MATTER to buyers, not dimensions that make your product look good.
-**INSTEAD:** competitor-agent validates axis choices against what users actually compare when switching.
+**Positioning map with self-serving axes** — Axes should reflect what MATTERS to buyers, not what makes your product look good.
+**INSTEAD:** competitor-agent validates axes against what users compare when switching.
 
 ---
 
@@ -509,8 +509,8 @@ None — this is an entry point for the Strategy track.
 ### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `product-context.md` | icp-research (from hungv47/research-skills) | Product context for better competitor selection and gap identification |
-| `diagnose.md` | diagnose | Known root causes focus competitive analysis on relevant dimensions |
+| `product-context.md` | icp-research | Better competitor selection and gap identification |
+| `diagnose.md` | diagnose | Known root causes focus analysis on relevant dimensions |
 
 ---
 

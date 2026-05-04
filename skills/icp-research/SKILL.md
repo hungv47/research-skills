@@ -55,7 +55,7 @@ routing:
 
 # ICP Research — Orchestrator
 
-*Communication — Step 1 of 4. Foundational skill for all stacks. Coordinates specialized sub-agents to build deep audience intelligence from real research, not assumptions.*
+*Communication — Step 1 of 4. Foundational skill for all stacks. Coordinates sub-agents to build audience intelligence from real research, not assumptions.*
 
 **Core Question:** "Who exactly are we talking to and what keeps them up at night?"
 
@@ -63,46 +63,42 @@ routing:
 
 ## Critical Gates — Read First
 
-Before dispatching any agent, internalize these non-negotiable constraints:
-
-1. **Do NOT guess personas — evidence from VoC or interview only.** Every persona attribute must trace to product context, brief details, user input, or VoC quotes. Fabricated personas collapse under scrutiny and mislead 12+ downstream skills.
-2. **Do NOT skip habitat mapping — channels without habitats waste downstream effort.** IMC planning depends on specific community names with density and engagement type. "They're on LinkedIn" is not actionable.
-3. **Max 2 personas — more dilutes focus for 12+ downstream skills.** If research reveals 4+ segments, force-rank by revenue potential. This is a genuine constraint, not a suggestion.
-4. **Stale product context (>30 days) → recommend re-running.** If `research/product-context.md` exists but its `Date` field is older than 30 days, warn the user and recommend re-running this skill. Proceed if the user confirms, but note "stale product context" in the artifact header.
+Non-negotiable constraints before dispatching any agent:
+1. **No guessed personas — VoC or interview evidence only.** Every attribute traces to product context, brief, user input, or VoC quotes. Fabricated personas mislead 12+ downstream skills.
+2. **Don't skip habitat mapping.** IMC planning needs specific community names with density and engagement type. "They're on LinkedIn" is not actionable.
+3. **Max 2 personas.** More dilutes focus for 12+ downstream skills. If research reveals 4+ segments, force-rank by revenue potential.
+4. **Stale product context (>30 days) → recommend re-running.** If `research/product-context.md` `Date` field is older than 30 days, warn and recommend re-run. If user proceeds, note "stale product context" in artifact header.
 
 ---
 
 ## Philosophy
 
-This skill provides research structure, not a rigid formula. The minimums for channels, quotes, and platforms ensure thoroughness — they're not arbitrary thresholds. If overwhelming evidence surfaces in 2 channels, you don't need a third. If one devastating quote captures a pain perfectly, you don't need three. Let evidence dictate depth. This orchestrator dispatches specialist agents for each research concern, then a critic agent ensures every section meets the bar.
+Research structure, not rigid formula. Minimums for channels, quotes, and platforms ensure thoroughness — they're not arbitrary. If overwhelming evidence surfaces in 2 channels, a third isn't needed. Let evidence dictate depth. Orchestrator dispatches specialists per concern; critic ensures every section meets the bar.
 
-## Inputs Required
-- Product context from `research/product-context.md` (or willingness to answer product questions)
-
-## Output
-- `research/icp-research.md`
-- `research/product-context.md` (foundational — written on first run, updated on re-run)
+## Inputs / Output
+**Inputs:** Product context from `research/product-context.md` (or willingness to answer product questions).
+**Outputs:** `research/icp-research.md` + `research/product-context.md` (foundational — written on first run, updated on re-run).
 
 ## Quality Gate
-Before delivering, the **critic agent** verifies:
-- [ ] Every VoC quote includes platform name and is from a real source (not agent-generated)
-- [ ] Each persona has a habitat map with specific channels with supporting evidence. Aim for 3+; if research surfaces fewer, document why.
-- [ ] Each emotional driver is traced to at least 2 specific quotes
-- [ ] Decision psychology section names specific cognitive biases and objections (not generic "they need trust")
+Critic agent verifies before delivery:
+- [ ] Every VoC quote includes platform name and traces to a real source (not agent-generated)
+- [ ] Each persona has a habitat map with specific channels and supporting evidence. Aim for 3+; document why if fewer.
+- [ ] Each emotional driver traces to at least 2 specific quotes
+- [ ] Decision psychology names specific cognitive biases and objections (not generic "they need trust")
 - [ ] At least 15 VoC quotes across categories
 - [ ] Maximum 2 personas
 
 ## Chain Position
-Previous: none (or any skill needing audience context) | Next: `campaign-plan`, `brand-system` (from marketing-skills — uses audience data for brand strategy)
+Previous: none (or any skill needing audience context) | Next: `campaign-plan`, `brand-system` (marketing-skills).
 
-**Foundational role:** This skill creates `research/product-context.md`, used by 12+ downstream skills across all 4 stacks (comms, strategy, prod, design). Running it first provides significantly better output for all downstream skills.
-**Re-run triggers:** When pivoting audience, entering a new market, after major product changes, or quarterly for active products.
+**Foundational role:** Creates `research/product-context.md`, used by 12+ downstream skills across all 4 stacks (comms, strategy, prod, design). Run first for significantly better downstream output.
+**Re-run triggers:** Audience pivot, new market entry, major product changes, or quarterly for active products.
 
 ### Skill Deference
-- **Need competitive analysis or market sizing?** → Use `market-research`
-- **Need campaign planning from these personas?** → Use `campaign-plan`
-- **Need brand identity using audience data?** → Use `brand-system`
-- **Need to diagnose a business problem, not an audience?** → Use `diagnose`
+- Competitive analysis / market sizing → `market-research`
+- Campaign planning from personas → `campaign-plan`
+- Brand identity using audience data → `brand-system`
+- Diagnose a business problem (not audience) → `diagnose`
 
 ---
 
@@ -119,10 +115,10 @@ Previous: none (or any skill needing audience context) | Next: `campaign-plan`, 
 | Critic Agent | 2 (final) | `agents/critic-agent.md` | Quality gate — PASS/FAIL evaluation with rewrite routing |
 
 ### Shared References (read by multiple agents)
-- `references/voice-of-customer.md` — VoC collection patterns, quote categories, platform tips (used by voc-collector-agent)
-- `references/customer-interviews.md` — Win/loss interview methodology, support ticket analysis (used by voc-collector-agent)
-- `references/habitat-mapping.md` — Density definitions, engagement types, cross-persona analysis (used by habitat-agent)
-- `references/icp-to-imc-handoff.md` — How to package outputs for IMC planning (used by synthesis-agent)
+- `references/voice-of-customer.md` — VoC patterns, quote categories, platform tips (voc-collector-agent)
+- `references/customer-interviews.md` — Win/loss methodology, support ticket analysis (voc-collector-agent)
+- `references/habitat-mapping.md` — Density, engagement types, cross-persona analysis (habitat-agent)
+- `references/icp-to-imc-handoff.md` — Packaging outputs for IMC planning (synthesis-agent)
 
 ---
 
@@ -131,53 +127,48 @@ Previous: none (or any skill needing audience context) | Next: `campaign-plan`, 
 Classify the task, then follow the matching route.
 
 ### Route A: Quick ICP
-**When:** Brief asks for a focused ICP with minimal scope — single persona, known audience, time-constrained.
+**When:** Focused ICP, minimal scope — single persona, known audience, time-constrained.
 
 ```
-1. Pre-dispatch: Gather context (Step 0 below)
-2. Scope interview (Step 1 below)
-3. LAYER 1 — Dispatch IN PARALLEL:
-   - persona-agent
-   - voc-collector-agent
-4. LAYER 2 — Dispatch SEQUENTIALLY:
-   - pain-analysis-agent (receives persona + VoC output)
-   - synthesis-agent (receives all upstream — skips habitat + decision psychology)
+1. Pre-dispatch: Gather context (Step 0)
+2. Scope interview (Step 1)
+3. LAYER 1 IN PARALLEL: persona-agent, voc-collector-agent
+4. LAYER 2 SEQUENTIAL:
+   - pain-analysis-agent (receives persona + VoC)
+   - synthesis-agent (all upstream — skips habitat + decision psychology)
    - critic-agent
-5. If critic returns FAIL → re-dispatch named agent(s) with feedback (max 2 cycles)
+5. Critic FAIL → re-dispatch named agent(s) with feedback (max 2 cycles)
 6. Deliver artifact
 ```
 
-**Note:** Route A skips habitat-agent and decision-psychology-agent. Use when the user needs speed over depth. The artifact will have empty Habitat Map and Decision Psychology sections — note this as a limitation.
+**Note:** Skips habitat-agent and decision-psychology-agent. Use when speed > depth. Artifact has empty Habitat Map and Decision Psychology sections — note as limitation.
 
 ### Route B: Full ICP
-**When:** Brief asks for comprehensive ICP research — full persona profiles, habitat mapping, decision psychology.
+**When:** Comprehensive ICP research — full persona profiles, habitat mapping, decision psychology.
 
 ```
-1. Pre-dispatch: Gather context (Step 0 below)
-2. Scope interview (Step 1 below)
-3. LAYER 1 — Dispatch IN PARALLEL:
-   - persona-agent
-   - voc-collector-agent
-   - habitat-agent
-4. LAYER 2 — Dispatch SEQUENTIALLY:
-   - pain-analysis-agent (receives persona + VoC output)
-   - decision-psychology-agent (receives pain-analysis output)
-   - synthesis-agent (receives ALL upstream outputs)
-   - critic-agent (receives synthesis output)
-5. If critic returns FAIL → re-dispatch named agent(s) with feedback (max 2 cycles)
+1. Pre-dispatch: Gather context (Step 0)
+2. Scope interview (Step 1)
+3. LAYER 1 IN PARALLEL: persona-agent, voc-collector-agent, habitat-agent
+4. LAYER 2 SEQUENTIAL:
+   - pain-analysis-agent (persona + VoC)
+   - decision-psychology-agent (pain-analysis output)
+   - synthesis-agent (ALL upstream)
+   - critic-agent (synthesis output)
+5. Critic FAIL → re-dispatch named agent(s) with feedback (max 2 cycles)
 6. Deliver final artifact
 ```
 
 ### Route C: Called by Another Skill
-**When:** Invoked by `campaign-plan`, `brand-system`, `copywriting`, or another skill that needs audience context.
+**When:** Invoked by `campaign-plan`, `brand-system`, `copywriting`, or another skill needing audience context.
 
 ```
-1. Pre-dispatch: Read context from calling skill's artifacts
-2. Check if research/icp-research.md already exists:
-   - If exists and fresh (< 30 days) → return existing artifact
-   - If exists but stale (> 30 days) → warn caller and recommend re-run
-   - If missing → run Route B
-3. Return artifact to calling skill
+1. Pre-dispatch: Read context from caller's artifacts
+2. Check research/icp-research.md:
+   - Fresh (<30 days) → return existing
+   - Stale (>30 days) → warn caller, recommend re-run
+   - Missing → run Route B
+3. Return artifact to caller
 ```
 
 ---
@@ -185,11 +176,10 @@ Classify the task, then follow the matching route.
 ## Step 0: Pre-Dispatch — Product Context
 
 Check for `research/product-context.md`. If missing, **scan first, then interview for gaps:**
+1. **Auto-scan sources:** README.md, marketing site, pricing page, product descriptions, existing docs. Extract what you can about the 8 dimensions below.
+2. **Interview only for gaps:** Present findings; ask user to confirm, correct, or fill missing dimensions.
 
-1. **Auto-scan available sources:** Look for README.md, marketing site copy, pricing page, product descriptions, and any existing documentation in the codebase. Extract what you can about the 8 dimensions below.
-2. **Interview only for gaps:** Present what you found and ask the user to confirm, correct, or fill in missing dimensions.
-
-This scan-then-interview approach avoids asking the user questions they've already answered elsewhere. This skill is the canonical source for product context across all skill stacks (comms, strategy, prod, design). Save to `research/product-context.md`:
+Avoids re-asking answered questions. This skill is the canonical source for product context across stacks (comms, strategy, prod, design). Save to `research/product-context.md`:
 
 ```markdown
 # Product Context
@@ -226,30 +216,30 @@ This scan-then-interview approach avoids asking the user questions they've alrea
 | [canonical term] | [precise definition] | [synonyms to avoid] |
 ```
 
-The Canonical Terminology section defines the shared vocabulary for the product and domain. Downstream skills (campaign-plan, copywriting, humanize, lp-optimization, lp-brief, design-brief) reference this to maintain consistent language across all artifacts. Populate during the scope interview — ask: "What do you call your users? Your pricing tiers? The main workspace?" If the user doesn't have strong preferences, propose defaults from the codebase (variable names, UI labels, docs).
+Canonical Terminology defines shared vocabulary for product and domain. Downstream skills (campaign-plan, copywriting, humanize, lp-optimization, lp-brief, design-brief) reference this for consistent language. Populate during scope interview — ask: "What do you call your users? Pricing tiers? Main workspace?" If no strong preferences, propose defaults from codebase (variable names, UI labels, docs).
 
 All marketing skills read this file for product context.
 
 ### Required Artifacts
 | Artifact | Source | If Missing |
 |----------|--------|------------|
-| `product-context.md` | icp-research | **INTERVIEW.** Interview for 8 product dimensions and save to `research/product-context.md`. |
+| `product-context.md` | icp-research | **INTERVIEW** for 8 product dimensions, save to `research/product-context.md`. |
 
 ### Optional Artifacts
 | Artifact | Source | Benefit |
 |----------|--------|---------|
-| `diagnose.md` | diagnose (from hungv47/research-skills) | Problem context sharpens audience research |
+| `diagnose.md` | diagnose (hungv47/research-skills) | Problem context sharpens audience research |
 
 ---
 
 ## Step 1: Scope Interview
 
 Interview for:
-1. **Who are we researching?** (Job role, mindset, community, or use case)
+1. **Who are we researching?** (Role, mindset, community, or use case)
 2. **What decisions will this inform?** (Messaging? Channels? Positioning? All three?)
-3. **B2C or B2B?** Geography? Specific segments to focus or exclude?
+3. **B2C or B2B?** Geography? Segments to focus or exclude?
 
-Use the answers to determine the route (A, B, or C) and to populate the brief passed to all agents.
+Answers determine route (A, B, or C) and populate the brief passed to agents.
 
 ---
 
@@ -257,30 +247,29 @@ Use the answers to determine the route (A, B, or C) and to populate the brief pa
 
 ### How to spawn a sub-agent
 
-For each agent dispatched below, use the **Agent tool** with a prompt constructed as follows:
+For each agent dispatched below, use the **Agent tool** with a prompt built as follows:
 
-1. **Read** the agent instruction file (e.g., `agents/persona-agent.md`) — include its FULL content in the Agent prompt
-2. **Append** the brief and context after the instructions
-3. **Resolve file paths to absolute**: replace relative paths with absolute paths rooted at this skill's directory. Example: if this skill is at `/path/to/icp-research/`, then `references/voice-of-customer.md` becomes `/path/to/icp-research/references/voice-of-customer.md`. Tell the agent: "Read the reference file at [absolute path] for domain knowledge."
-4. **Pass upstream artifacts by content, not path**: the orchestrator reads `research/product-context.md` FIRST, then includes relevant excerpts (product, buyer, problem, differentiator) in the context object. Sub-agents should NOT read artifact files directly — the orchestrator curates what they need.
-5. If **feedback** exists (from a critic FAIL cycle), append it at the end of the prompt with the header "## Critic Feedback — Address Every Point"
+1. **Read** the agent instruction file (e.g., `agents/persona-agent.md`) — include FULL content in the Agent prompt
+2. **Append** brief and context after instructions
+3. **Resolve paths to absolute**: replace relative paths with absolute paths rooted at this skill's directory (e.g., `references/voice-of-customer.md` → `/path/to/icp-research/references/voice-of-customer.md`). Tell agent: "Read reference file at [absolute path] for domain knowledge."
+4. **Pass upstream artifacts by content, not path**: orchestrator reads `research/product-context.md` first, then includes relevant excerpts (product, buyer, problem, differentiator) in context. Sub-agents do NOT read artifacts directly — orchestrator curates.
+5. If **feedback** exists (critic FAIL cycle), append at end with header "## Critic Feedback — Address Every Point"
 
 ### Single-agent fallback
 
-If multi-agent dispatch is unavailable (no Agent tool, single-agent runtime, or context constraints), execute each agent's instructions sequentially in-context:
-
-- **Layer 1:** Run each agent's domain instructions one at a time — persona, VoC collection, habitat mapping
+If multi-agent dispatch unavailable (no Agent tool, single-agent runtime, context constraints), execute each agent's instructions sequentially in-context:
+- **Layer 1:** Run each agent's instructions one at a time — persona, VoC collection, habitat mapping
 - **Layer 2:** Apply pain analysis to Layer 1 outputs, then decision psychology, then synthesis
-- **Critic:** Self-evaluate using the critic-agent's quality gate criteria
+- **Critic:** Self-evaluate using critic-agent quality gate
 - Produce the complete artifact as if all agents had run
 
-The output quality should be equivalent — the multi-agent pattern optimizes for parallelism and focus, not capability.
+Output quality is equivalent — multi-agent pattern optimizes parallelism and focus, not capability.
 
 ---
 
 ## Layer 1: Parallel Research Agents
 
-Spawn the following agents **IN PARALLEL** (multiple Agent tool calls in a single message). For each agent, follow the Dispatch Protocol above.
+Spawn **IN PARALLEL** (multiple Agent tool calls in one message). Follow Dispatch Protocol above.
 
 | Agent | Instruction File | Pass These Inputs | Reference Files to Resolve |
 |-------|-----------------|-------------------|---------------------------|
@@ -288,15 +277,13 @@ Spawn the following agents **IN PARALLEL** (multiple Agent tool calls in a singl
 | VoC Collector Agent | `agents/voc-collector-agent.md` | brief + product context | `references/voice-of-customer.md`, `references/customer-interviews.md` |
 | Habitat Agent | `agents/habitat-agent.md` | brief + product context | `references/habitat-mapping.md` |
 
-**For Quick ICP (Route A):** Dispatch only persona-agent and voc-collector-agent.
-
-After Layer 1 completes, the orchestrator holds all three outputs (persona cards, VoC library, habitat map) ready to feed into Layer 2.
+**Quick ICP (Route A):** Dispatch only persona-agent and voc-collector-agent. After Layer 1, orchestrator holds all outputs (persona cards, VoC library, habitat map) ready for Layer 2.
 
 ---
 
 ## Layer 2: Sequential Analysis Chain
 
-Dispatch these agents **ONE AT A TIME, IN ORDER** using the Dispatch Protocol above. Each receives the previous agent's output (plus relevant Layer 1 outputs) as the `upstream` field.
+Dispatch **ONE AT A TIME, IN ORDER** via Dispatch Protocol. Each receives the previous agent's output (plus relevant Layer 1 outputs) as `upstream`.
 
 ```
 pain-analysis-agent → decision-psychology-agent → synthesis-agent → critic-agent
@@ -309,29 +296,29 @@ pain-analysis-agent → decision-psychology-agent → synthesis-agent → critic
 | 3 | Synthesis Agent | `agents/synthesis-agent.md` | ALL upstream: persona + VoC + habitat + pain + psychology |
 | 4 | Critic Agent | `agents/critic-agent.md` | synthesis-agent output |
 
-**For Quick ICP (Route A):** Skip decision-psychology-agent. Pain-analysis feeds directly to synthesis, which feeds to critic.
+**Quick ICP (Route A):** Skip decision-psychology-agent. Pain-analysis feeds directly to synthesis, then critic.
 
 ---
 
 ## Critic Gate
 
-The critic agent returns one of two verdicts:
+Critic returns one of two verdicts:
 
 ### PASS
-The artifact meets all quality standards. Deliver the synthesis agent's output as the final artifact to `research/icp-research.md`.
+Artifact meets all quality standards. Deliver synthesis output to `research/icp-research.md`.
 
 ### FAIL
-The critic returns specific failures with:
+Critic returns:
 - Which gate failed and what's wrong
 - Specific fix instructions
 - Which agent to re-dispatch
 
 **Rewrite loop:**
-1. Read the critic's failure report
-2. Re-dispatch ONLY the named agent(s) with the critic's feedback attached as the `feedback` input
-3. If the fix affects downstream agents, re-run the chain from the fixed agent forward
-4. Run the modified output back through the critic
-5. **Maximum 2 rewrite cycles.** After 2 failures, deliver the artifact with the critic's annotations and flag to the user: "ICP scored below quality gate — manual review recommended on [specific sections]."
+1. Read failure report
+2. Re-dispatch ONLY the named agent(s) with critic feedback as `feedback` input
+3. If fix affects downstream agents, re-run chain from fixed agent forward
+4. Run modified output back through critic
+5. **Max 2 rewrite cycles.** After 2 failures, deliver with annotations and flag: "ICP scored below quality gate — manual review recommended on [specific sections]."
 
 ---
 
@@ -465,19 +452,19 @@ All 7 gates pass. 18 quotes with attribution. Habitats are specific. Biases are 
 
 ## Anti-Patterns
 
-**Guessing personas without evidence** — Inventing "Sarah, 34, EM" because it sounds right, without VoC quotes or brief details to support it. INSTEAD: Let the persona agent build from product context and brief, and the pain analysis agent validate against VoC evidence.
+**Guessing personas without evidence** — Inventing "Sarah, 34, EM" because it sounds right, without VoC quotes or brief details. INSTEAD: Persona agent builds from product context and brief; pain analysis agent validates against VoC.
 
-**Skipping habitat mapping for speed** — Dropping the habitat agent because "we know they're on Reddit." INSTEAD: Use Route A (Quick ICP) which explicitly skips habitats and notes the limitation. Don't silently omit sections.
+**Skipping habitat mapping for speed** — Dropping habitat agent because "we know they're on Reddit." INSTEAD: Use Route A (Quick ICP), which explicitly skips habitats and notes the limitation. Don't silently omit sections.
 
-**Fabricating VoC quotes** — Generating plausible-sounding quotes when research tools return thin results. INSTEAD: Document data gaps honestly, flag confidence as LOW, and recommend the user provide customer quotes, support tickets, or sales call notes.
+**Fabricating VoC quotes** — Generating plausible quotes when research returns thin results. INSTEAD: Document gaps honestly, flag confidence LOW, recommend user provide customer quotes, support tickets, or sales call notes.
 
-**Too many personas** — Including 3+ personas because research surfaced distinct segments. INSTEAD: Force-rank to 2 max by revenue potential. Document who was cut and why in the Segment Rationale.
+**Too many personas** — 3+ personas because research surfaced distinct segments. INSTEAD: Force-rank to 2 max by revenue potential. Document who was cut and why in Segment Rationale.
 
-**Platform-level habitat mapping** — "They're on LinkedIn" without naming the specific group, hashtag, or content type. INSTEAD: Every habitat entry must name the specific community. The habitat agent enforces this.
+**Platform-level habitat mapping** — "They're on LinkedIn" without naming the group, hashtag, or content type. INSTEAD: Every entry names a specific community. Habitat agent enforces this.
 
-**Recycling stale research** — Reusing personas and VoC from a previous iteration without re-validation. INSTEAD: Check the artifact date. If >30 days, recommend re-running. Markets shift, competitors launch, and pain points evolve.
+**Recycling stale research** — Reusing personas and VoC without re-validation. INSTEAD: Check artifact date. If >30 days, recommend re-run. Markets shift, competitors launch, pain points evolve.
 
-**Ignoring the critic's FAIL** — Delivering an artifact that failed quality gates because "it's close enough." INSTEAD: Re-dispatch the named agent with critic feedback. Max 2 cycles, then deliver with annotations.
+**Ignoring critic FAIL** — Delivering a failed artifact because "close enough." INSTEAD: Re-dispatch named agent with critic feedback. Max 2 cycles, then deliver with annotations.
 
 ---
 
