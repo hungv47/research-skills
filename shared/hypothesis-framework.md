@@ -60,7 +60,7 @@ Revenue:      If [pricing/packaging] is misaligned
               Because [willingness-to-pay shifted: market, perception, alternatives]
 ```
 
-### Framing B — Predictive (used by `solution-design`, tested by `experiment`)
+### Framing B — Predictive (used by `solution-design`, validated post-execution against `funnel-planner` baselines)
 
 You're predicting what will happen if you take a specific action.
 

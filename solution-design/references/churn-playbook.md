@@ -21,7 +21,7 @@ Before delivering, verify:
 - [ ] Benchmarks cited for context (what "good" looks like for their segment)
 
 ## Chain Position
-Previous: `problem-analysis` (when churn is identified as root cause) | Next: `experiment` (to test retention interventions)
+Previous: `problem-analysis` (when churn is identified as root cause) | Next: `funnel-planner` (set targets for retention interventions)
 
 ---
 
@@ -250,13 +250,13 @@ Score each signal 1-5, then compute weighted total:
 
 ### Testing Retention Interventions
 
-Route each hypothesis from Step 1 to the `experiment` skill:
+Frame each hypothesis from Step 1 in the predictive form:
 
 ```
 If [intervention], then [metric] from [baseline] to [target], because [reason].
 ```
 
-Test the highest-impact, lowest-effort interventions first:
+Then ship the highest-impact, lowest-effort interventions first and measure against baselines from `funnel-planner`:
 1. Cancel flow save offers (usually highest leverage)
 2. Dunning sequence optimization (often low-effort, high-impact)
 3. Health score-triggered outreach (requires more infrastructure)
@@ -337,7 +337,7 @@ Trigger → Survey → Dynamic Offer → Confirmation → Post-Cancel
 
 ## Next Step
 
-Route top hypotheses to `experiment` for testing. Start with highest-impact, lowest-effort interventions.
+Pass top hypotheses to `funnel-planner` to set numeric targets, then ship the highest-impact, lowest-effort interventions first.
 
 > On re-run: rename existing artifact to `churn-prevention.v[N].md` and create new with incremented version.
 ```

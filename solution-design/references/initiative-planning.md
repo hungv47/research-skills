@@ -12,7 +12,7 @@ Use when the initiative is:
 - High stakes (core product or major metric)
 
 Skip when:
-- The experiment skill covers it (≤2 weeks, low cost)
+- A small validation test covers it (≤2 weeks, low cost)
 - Single-person, single-day work
 
 ---

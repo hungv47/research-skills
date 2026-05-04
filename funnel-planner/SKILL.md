@@ -1,6 +1,6 @@
 ---
 name: funnel-planner
-description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. Not for mapping activities to existing KPIs (use attribution) or testing specific variants (use experiment). For designing experiments to test targets, see experiment. For campaign planning, see imc-plan."
+description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. Not for mapping activities to existing KPIs (use attribution). For campaign planning, see imc-plan."
 argument-hint: "[revenue target or business goal]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -49,8 +49,6 @@ routing:
     - solution-design.md
   requires: []
   defers-to:
-    - skill: experiment
-      when: "need to test a hypothesis, not set targets"
     - skill: attribution
       when: "measuring results against targets, not setting them"
   parallel-with: []
@@ -89,9 +87,9 @@ Improvement factors and benchmarks here are evidence-backed starting points. Act
 - `.agents/targets.md`
 
 ## Chain Position
-Previous: `solution-design` | Next: `experiment`
+Previous: `solution-design` | Next: `attribution` (post-execution measurement)
 
-**Re-run triggers:** When baselines shift >20% from target table values, after experiments conclude with new data, or quarterly.
+**Re-run triggers:** When baselines shift >20% from target table values, after measurement cycles conclude with new data, or quarterly.
 
 ---
 
@@ -298,7 +296,7 @@ Both PLG and SLG motions feed three outcomes: Business, Brand, Community. This s
 
 **Status definitions:**
 - **Covered** — metrics exist with baselines and targets
-- **Gap** — outcome is relevant but no metrics defined. Recommend adding before proceeding to experiment.
+- **Gap** — outcome is relevant but no metrics defined. Recommend adding before execution.
 - **N/A** — outcome is legitimately out of scope for this business. Justify: e.g., "B2B enterprise with no user community — Community is N/A. Brand is tracked via branded search only."
 
 Business must always be Covered. Brand and Community may be N/A with justification — this is not a failure.
@@ -309,13 +307,9 @@ Business must always be Covered. Brand and Community may be N/A with justificati
 ### 70% Test: [Pass/fail per target]
 ### LTV:CAC Check: [Ratio] — [Healthy / Flag]
 
-## Baseline Handoff to Experiment
+## Baselines
 
-Every target in this table becomes a baseline for `experiment`. When running `experiment`, the baseline MUST match the number in this table — if it doesn't, update this table first. Stale baselines produce incorrect sample size calculations and misleading lift targets.
-
-## Next Step
-
-Run `experiment` to design minimum viable tests before full rollout. Pass this artifact as required input — experiment should read baselines from this table, not re-interview for them.
+Every target in this table is also the baseline for downstream measurement. Keep these numbers authoritative — if the underlying metric drifts >20%, update this table before reusing baselines elsewhere. Stale baselines produce misleading lift targets.
 ```
 
 ---
@@ -361,9 +355,6 @@ Run `experiment` to design minimum viable tests before full rollout. Pass this a
 ### 70% Test: Hitting 70% (2.5% paid rate, 43% bounce, 270 signups) still represents meaningful recovery from 200.
 ### LTV:CAC Check: Current CAC $120, LTV $1,800 → 15:1 ratio. Healthy even if CAC rises 50%.
 
-## Next Step
-
-Run `experiment` to design A/B test for paid targeting and before-after for social proof restoration.
 ```
 
 ---

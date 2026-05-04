@@ -1,6 +1,6 @@
 # Research Skills
 
-Structured frameworks for audience research, market analysis, content intelligence, problem diagnosis, solution design, target setting, and experimentation. 7 skills.
+Structured frameworks for audience research, market analysis, problem diagnosis, solution design, and target setting. 5 skills.
 
 ## Install
 
@@ -39,9 +39,9 @@ Skills are then namespaced — call them as `/research-skills:icp-research`, `/r
 
 ## Pipeline
 
-<picture>
-  <img src="./assets/pipeline.svg" alt="Research pipeline: icp-research → market-research + problem-analysis → solution-design → funnel-planner → experiment" width="100%">
-</picture>
+```
+icp-research → market-research + problem-analysis → solution-design → funnel-planner
+```
 
 ## Skills
 
@@ -114,39 +114,9 @@ Models business funnels backward from revenue goals to required traffic, convers
 - You're setting quarterly targets with realistic assumptions
 - You want to stress-test whether your growth model actually works
 
-**Not for:** mapping activities to existing KPIs (use `attribution`) or testing specific variants (use `experiment`)
+**Not for:** mapping activities to existing KPIs (use `attribution`)
 
 **Produces:** `.agents/targets.md`
-
----
-
-### `content-research` — research what content to create
-
-Analyzes competitor ads, audience communities, trending topics, and top-performing content across platforms to inform what to write before drafting anything.
-
-**Use when:**
-- You're planning content and need data on what's actually working in your category
-- You want competitor ad intelligence, audience listening, and trend detection in one pass
-- You need a content brief grounded in evidence, not guesses
-
-**Not for:** drafting the content itself (use `content-create`) or writing headlines (use `copywriting`)
-
-**Produces:** `.agents/mkt/content-research.md`
-
----
-
-### `experiment` — design validation tests
-
-Designs minimum viable tests with hypotheses, success metrics, sample sizes, and clear decision rules.
-
-**Use when:**
-- You have a strategic initiative and want to validate before full commitment
-- You need a test design with proper sample sizing and guardrail metrics
-- You want clear "ship / kill / iterate" decision criteria before running the test
-
-**Not for:** strategic prioritization (use `solution-design`) or market sizing (use `market-research`)
-
-**Produces:** `.agents/experiment-[name].md`
 
 ---
 

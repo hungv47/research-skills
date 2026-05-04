@@ -318,7 +318,7 @@ status: draft
 
 ## Next Step
 
-Run `funnel-planner` to set targets, then `experiment` to test.
+Run `funnel-planner` to set numeric targets for the proceeding initiatives.
 If any "Proceed" initiative requires a technical build, also run `system-architecture` (from `hungv47/product-skills`) with these initiatives as context.
 ```
 
@@ -419,7 +419,7 @@ Validates root cause, searches for case studies: "ad targeting quality case stud
 
 ## Next Step
 
-Run `funnel-planner` to set targets for Restore Paid Targeting and Restore Social Proof, then `experiment` to test.
+Run `funnel-planner` to set targets for Restore Paid Targeting and Restore Social Proof.
 ```
 
 ---

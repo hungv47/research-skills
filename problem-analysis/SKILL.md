@@ -1,6 +1,6 @@
 ---
 name: problem-analysis
-description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/problem-analysis.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use solution-design). For market-level trends and competitive context, see market-research. For testing hypotheses with experiments, see experiment."
+description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/problem-analysis.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use solution-design). For market-level trends and competitive context, see market-research."
 argument-hint: "[metric or problem to diagnose]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
