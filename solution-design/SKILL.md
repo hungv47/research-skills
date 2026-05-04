@@ -136,7 +136,7 @@ Skip unconventional-agent. Use when:
 
 Check for `research/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/research-skills`) first to create `research/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, ask the user 8 product questions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `research/product-context.md`.
 
-If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommend re-running `problem-analysis` before proceeding — the root cause landscape may have shifted. Tip: `/navigate status` (from meta-skills) gives a single-pass freshness report across all upstream artifacts.
+If `.agents/problem-analysis.md` has a `date` field older than 30 days, recommend re-running `problem-analysis` before proceeding — the root cause landscape may have shifted.
 
 #### Required Artifacts
 | Artifact | Source | If Missing |

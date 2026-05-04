@@ -114,7 +114,7 @@ Models business funnels backward from revenue goals to required traffic, convers
 - You're setting quarterly targets with realistic assumptions
 - You want to stress-test whether your growth model actually works
 
-**Not for:** validating ideas with experiments (use `experiment` if you have one) — funnel-planner sets the math, doesn't measure it
+**Not for:** measuring activities against existing targets (the math is the plan; measurement comes after execution).
 
 **Produces:** `.agents/targets.md`
 
