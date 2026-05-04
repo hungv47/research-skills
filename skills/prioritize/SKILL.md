@@ -11,7 +11,8 @@ metadata:
   estimated-cost: "$1-3"
 promptSignals:
   phrases:
-    - "what should we build"
+    - "what to build first"
+    - "which to build first"
     - "prioritize initiatives"
     - "ice score"
     - "which solution"

@@ -21,15 +21,18 @@ promptSignals:
     - [funnel, model]
     - [growth, target]
   anyOf:
-    - "funnel"
     - "ltv"
     - "cac"
     - "conversion rate"
-    - "revenue"
-    - "traffic"
+    - "revenue target"
+    - "traffic target"
+    - "growth model"
+    - "unit economics"
   noneOf:
     - "market size"
     - "competitor"
+    - "what should we build"
+    - "diagnose"
   minScore: 6
 routing:
   intent-tags:

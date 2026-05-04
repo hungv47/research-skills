@@ -23,9 +23,11 @@ promptSignals:
   anyOf:
     - "hypothesis"
     - "logic tree"
-    - "metric"
-    - "decline"
+    - "metric decline"
+    - "metric drop"
+    - "performance gap"
     - "diagnose"
+    - "if/then/because"
   noneOf:
     - "market size"
     - "competitor analysis"
