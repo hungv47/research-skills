@@ -114,7 +114,7 @@ Models business funnels backward from revenue goals to required traffic, convers
 - You're setting quarterly targets with realistic assumptions
 - You want to stress-test whether your growth model actually works
 
-**Not for:** mapping activities to existing KPIs (use `attribution`)
+**Not for:** validating ideas with experiments (use `experiment` if you have one) — funnel-planner sets the math, doesn't measure it
 
 **Produces:** `.agents/targets.md`
 
@@ -124,7 +124,7 @@ Models business funnels backward from revenue goals to required traffic, convers
 
 All research skills can read `research/product-context.md`, the foundation artifact created by `icp-research`. Run it first to establish context for all downstream skills.
 
-Research artifacts feed into marketing (`imc-plan`, `attribution`) and product (`system-architecture`) stacks.
+Research artifacts feed into marketing (`imc-plan`, `lp-brief`, `copywriting`) and product (`system-architecture`) stacks.
 
 ## License
 

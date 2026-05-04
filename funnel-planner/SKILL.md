@@ -1,6 +1,6 @@
 ---
 name: funnel-planner
-description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. Not for mapping activities to existing KPIs (use attribution). For campaign planning, see imc-plan."
+description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/targets.md`. For campaign planning, see imc-plan."
 argument-hint: "[revenue target or business goal]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -48,9 +48,7 @@ routing:
     - product-context.md
     - solution-design.md
   requires: []
-  defers-to:
-    - skill: attribution
-      when: "measuring results against targets, not setting them"
+  defers-to: []
   parallel-with: []
   interactive: false
   estimated-complexity: medium
@@ -87,7 +85,7 @@ Improvement factors and benchmarks here are evidence-backed starting points. Act
 - `.agents/targets.md`
 
 ## Chain Position
-Previous: `solution-design` | Next: `attribution` (post-execution measurement)
+Previous: `solution-design` | Next: terminal (consumed by imc-plan and downstream measurement when one is in place)
 
 **Re-run triggers:** When baselines shift >20% from target table values, after measurement cycles conclude with new data, or quarterly.
 

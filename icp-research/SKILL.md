@@ -169,7 +169,7 @@ Classify the task, then follow the matching route.
 ```
 
 ### Route C: Called by Another Skill
-**When:** Invoked by `imc-plan`, `brand-system`, `content-create`, or another skill that needs audience context.
+**When:** Invoked by `imc-plan`, `brand-system`, `copywriting`, or another skill that needs audience context.
 
 ```
 1. Pre-dispatch: Read context from calling skill's artifacts
@@ -226,7 +226,7 @@ This scan-then-interview approach avoids asking the user questions they've alrea
 | [canonical term] | [precise definition] | [synonyms to avoid] |
 ```
 
-The Canonical Terminology section defines the shared vocabulary for the product and domain. Downstream skills (imc-plan, content-create, copywriting, humanize, lp-optimization) reference this to maintain consistent language across all artifacts. Populate during the scope interview — ask: "What do you call your users? Your pricing tiers? The main workspace?" If the user doesn't have strong preferences, propose defaults from the codebase (variable names, UI labels, docs).
+The Canonical Terminology section defines the shared vocabulary for the product and domain. Downstream skills (imc-plan, copywriting, humanize, lp-optimization, lp-brief, design-brief) reference this to maintain consistent language across all artifacts. Populate during the scope interview — ask: "What do you call your users? Your pricing tiers? The main workspace?" If the user doesn't have strong preferences, propose defaults from the codebase (variable names, UI labels, docs).
 
 All marketing skills read this file for product context.
 
