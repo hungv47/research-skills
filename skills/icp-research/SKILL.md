@@ -2,7 +2,7 @@
 name: icp-research
 description: "Builds ideal customer profiles and buyer personas — analyzes demographics, pain points, jobs-to-be-done, and segmentation for a target market. Produces `research/icp-research.md`. Not for competitive positioning (use prioritize) or campaign planning (use campaign-plan). For brand identity from audience data, see brand-system. For market sizing and competitor landscape, see market-research."
 argument-hint: "[product or target market]"
-allowed-tools: Read Grep Glob Bash WebSearch WebFetch
+allowed-tools: Read Grep Glob Bash WebSearch WebFetch mcp__exa__* mcp__perplexity__* mcp__tavily__* mcp__firecrawl__*
 license: MIT
 metadata:
   author: hungv47
