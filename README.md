@@ -130,7 +130,7 @@ Research artifacts feed into marketing (`campaign-plan`, `lp-brief`, `copywritin
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for release notes.
+See [CHANGELOG.md](CHANGELOG.md) for release notes (commit 1286a6a, 2026-05-05).
 
 ## License
 
