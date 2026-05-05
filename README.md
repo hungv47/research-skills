@@ -1,5 +1,7 @@
 # Research Skills
 
+![Research Skills](./assets/banner.png)
+
 Structured frameworks for audience research, market analysis, problem diagnosis, solution design, and target setting. 5 skills.
 
 ## Install
