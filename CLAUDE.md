@@ -25,6 +25,10 @@ Created by `icp-research` — run it first to establish the foundation artifact.
 ## Recommended Starting Point
 Run `icp-research` first to create `research/product-context.md`, the canonical cross-stack artifact.
 
+## Pre-Dispatch Protocol
+
+All 5 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). Cold Start (3-5 bundled questions, one round-trip) when context is missing; Warm Start (summary + optional probe) when artifacts/experience cover what's needed. Answers persist to `.agents/experience/{domain}.md` so subsequent skills never re-ask. `prioritize` and `funnel-planner` are hard-gated — no cold-start; recommend upstream (diagnose / prioritize) when gate fails.
+
 ## Multi-Agent Skills
 
 All 5 skills use a two-layer multi-agent orchestration pattern:
