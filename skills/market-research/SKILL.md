@@ -2,7 +2,7 @@
 name: market-research
 description: "Analyzes market landscapes, competitive dynamics, TAM/SAM/SOM sizing, and whitespace opportunities for a product or category. Produces `research/market-research.md`. Not for building customer personas (use icp-research) or planning marketing campaigns (use campaign-plan). For diagnosing a specific business problem, see diagnose. For prioritizing what to build from market data, see prioritize."
 argument-hint: "[market or product category]"
-allowed-tools: Read Grep Glob Bash WebSearch WebFetch mcp__exa__* mcp__perplexity__* mcp__tavily__* mcp__firecrawl__*
+allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
 metadata:
   author: hungv47
