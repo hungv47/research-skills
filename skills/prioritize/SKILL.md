@@ -86,6 +86,32 @@ Previous: `diagnose` | Next: `funnel-planner` | Cross-stack: `system-architectur
 
 ---
 
+## Pre-Dispatch
+
+This skill is **hard-gated** on `.agents/diagnose.md`. No cold-start questioning — diagnose IS the upstream interview. Full Pre-Dispatch pattern: `meta-skills/references/pre-dispatch-protocol.md`.
+
+**Hard gate:** `.agents/diagnose.md` must exist. If missing → return **NEEDS_CONTEXT** and recommend running `diagnose` first. Do not substitute via interview — initiative ranking only makes sense against a validated root cause.
+
+**Read order (post-gate):**
+1. Pipeline: `.agents/diagnose.md` (required). `research/product-context.md` (optional, for impact estimation). `research/icp-research.md` (optional, for audience-fit scoring).
+2. Experience: `.agents/experience/{goals,business,product}.md`.
+
+**Warm Start** (after gate passes):
+
+```
+Found:
+- diagnose verdict → "[top root causes from diagnose.md]"
+- product → "[from product-context.md]"
+
+Generating initiatives against these root causes. Override or proceed?
+```
+
+If user proceeds, dispatch. No cold-start — diagnose has already done that work.
+
+**Write-back:** none. prioritize doesn't seed dimensions to experience/ — initiatives are project-specific tactics, not stable user-profile state.
+
+---
+
 ## Agent Manifest
 
 | # | Agent | Layer | Focus | Input | Output |

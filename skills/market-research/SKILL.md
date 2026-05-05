@@ -92,6 +92,53 @@ Previous: none | Next: `prioritize`, `icp-research`
 
 ---
 
+## Pre-Dispatch
+
+Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`).
+
+**Needed dimensions:** category/niche, geo + time horizon, why-now (decision this informs), known competitors (or "find them"), B2B/B2C.
+
+**Read order:**
+1. Pipeline: `research/product-context.md` for product signal, `.agents/diagnose.md` for known root-cause focus.
+2. Experience: `.agents/experience/{product,business,audience}.md`.
+
+**Warm Start** (product + B2B/B2C inferable, decision focus clear):
+
+```
+Found:
+- product → "[1-line from product-context.md]"
+- B2B/B2C → "[from audience.md]"
+
+Need before dispatching: category/niche, geo+horizon, why-now, known competitors?
+```
+
+**Cold Start** (no upstream context):
+
+```
+market-research analyzes the landscape, competitors, sizing (TAM/SAM/SOM),
+and whitespace. To target the scan:
+
+1. **Category/niche** — one phrase (e.g., "async project management for engineering teams").
+2. **Geo + time horizon** — US / EU / global; current state / forward-looking 12-24 months.
+3. **Why now** — what decision does this need to inform? (Market entry, fundraising, pivot, positioning, etc.)
+4. **Known competitors** — name 3-5, OR say "find them" if you want me to discover.
+5. **B2B/B2C** — affects sizing methodology and consumer-landscape weighting.
+
+Answer 1-5 in one response. I'll dispatch.
+```
+
+**Write-back:**
+
+| Q | File | Key |
+|---|---|---|
+| 1. Category | `product.md` | `Product — category` |
+| 2. Geo + horizon | `business.md` | `Business — geo + planning horizon` |
+| 3. Why-now | `goals.md` | `Goals — market-research trigger` |
+| 4. Competitors | `business.md` | `Business — known competitors` |
+| 5. B2B/B2C | `audience.md` | `Audience — B2B or B2C` |
+
+---
+
 ## Agent Manifest
 
 7 agents across 2 layers:

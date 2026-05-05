@@ -94,6 +94,44 @@ Previous: none | Next: `prioritize`
 
 ---
 
+## Pre-Dispatch
+
+Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`).
+
+**Needed dimensions:** metric (specific name), current value + period, target + deadline, what's been tried.
+
+This skill **always cold-starts** — diagnose IS the diagnostic interview. The only "warm" path is a re-run after metric shift, where prior diagnose.md context informs the new run.
+
+**Read order:**
+1. Pipeline: prior `.agents/diagnose.md` if re-running. `research/product-context.md` for context.
+2. Experience: `.agents/experience/goals.md` for prior metric history.
+
+**Cold Start:**
+
+```
+diagnose traces a metric gap to root causes via MECE logic tree, hypothesis
+validation, and verdict scoring. The diagnostic depends on numeric specifics:
+
+1. **Metric** — name it precisely. ("Trial-to-paid conversion" beats "conversion".)
+2. **Current value + measurement period** — e.g., "3.2% over the last 90 days, n=1,400 trials".
+3. **Target + deadline** — e.g., "5% by end of Q2".
+4. **What you've tried** — 1-2 things, with outcome if known. Helps the tree
+   skip already-falsified branches.
+
+Answer 1-4 in one response. I'll build the logic tree and dispatch agents.
+```
+
+**Write-back:**
+
+| Q | File | Key |
+|---|---|---|
+| 1. Metric | `goals.md` | `Goals — diagnostic metric: [name]` |
+| 2. Current | `goals.md` | `Goals — baseline: [metric]` |
+| 3. Target | `goals.md` | `Goals — target: [metric]` |
+| 4. Tried | (not persisted — diagnostic-specific, lives in diagnose.md) |
+
+---
+
 ## Agent Manifest
 
 | # | Agent | Layer | Focus | Input | Output |

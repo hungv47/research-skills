@@ -100,6 +100,32 @@ Previous: `prioritize` | Next: terminal (consumed by campaign-plan and downstrea
 
 ---
 
+## Pre-Dispatch
+
+This skill is **hard-gated** on `.agents/prioritize.md`. No cold-start questioning — prioritize is the upstream that produces the ranked initiatives this skill sets targets for. Full Pre-Dispatch pattern: `meta-skills/references/pre-dispatch-protocol.md`.
+
+**Hard gate (already declared in Inputs Required above):** `.agents/prioritize.md` must exist. Missing → **NEEDS_CONTEXT**, recommend `prioritize` first. Targets without prioritized initiatives are arbitrary; INTERVIEW substitute cannot reproduce the ICE rigor.
+
+**Read order (post-gate):**
+1. Pipeline: `.agents/prioritize.md` (required). `research/product-context.md` (optional, for benchmark selection).
+2. Experience: `.agents/experience/{business,goals}.md` for growth motion + funnel state.
+
+**Warm Start** (after gate passes):
+
+```
+Found:
+- prioritize.md → "[N initiatives above cut line]"
+- growth motion → "[PLG / SLG / Hybrid from experience/business.md]"
+
+Setting targets against these initiatives. Override growth motion or proceed?
+```
+
+If user proceeds, dispatch. No cold-start — prioritize already did the upstream work.
+
+**Write-back:** baselines collected during the run append to `business.md` (`Business — funnel baselines: [stage]`) — these are stable user-profile state worth carrying forward.
+
+---
+
 ## Agent Manifest
 
 | # | Agent | Layer | Focus | Input | Output |

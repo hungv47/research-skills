@@ -167,13 +167,61 @@ Classify the task, then follow the matching route.
 
 ---
 
-## Step 0: Pre-Dispatch — Product Context
+## Pre-Dispatch
 
-Check for `research/product-context.md`. If missing, **scan first, then interview for gaps:**
-1. **Auto-scan sources:** README.md, marketing site, pricing page, product descriptions, existing docs. Extract what you can about the 8 dimensions below.
-2. **Interview only for gaps:** Present findings; ask user to confirm, correct, or fill missing dimensions.
+Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). icp-research is the canonical producer of `research/product-context.md` — Pre-Dispatch answers seed the artifact, then Layer 1 agents flesh it out.
 
-Avoids re-asking answered questions. This skill is the canonical source for product context across stacks (comms, strategy, prod, design). Save to `research/product-context.md`:
+**Needed dimensions:** product (1-line), primary buyer (role + size + B2B/B2C), top 1-2 pains, geo focus, route (Quick ICP / Full ICP).
+
+**Read order:**
+1. **Auto-scan first** (skill-specific): README.md, marketing site, pricing page, /docs, package.json. Extract product/buyer/pricing/voice signals to fill in what you can before asking.
+2. Pipeline: existing `research/product-context.md` if present (re-run case).
+3. Experience: `.agents/experience/{product,audience}.md`.
+
+After scan + read, present findings and ask only about the gaps.
+
+**Warm Start** (rich auto-scan or re-run with existing artifact):
+
+```
+Auto-scan / existing context found:
+- product → "[1-line]"
+- buyer → "[role + size]"
+- pains → "[top 1-2]"
+
+Need before dispatching: geo focus (US / EU / global / specific) and route (Quick ICP / Full ICP)?
+```
+
+**Cold Start** (no scan signal, no prior context):
+
+```
+icp-research builds the canonical product-context + audience profile that
+12+ downstream skills read. To start:
+
+1. **Product** — one sentence: what it does, who pays for it.
+2. **Primary buyer** — role + company size + B2B/B2C.
+3. **Top 1-2 pains** they articulate (verbatim if possible).
+4. **Geo focus** — US / EU / global / specific.
+5. **Route** — Quick ICP (single persona, fast) or Full ICP (full personas + habitats + decision psychology)?
+
+Answer 1-5 in one response. I'll auto-scan README + marketing + pricing pages
+to enrich, then dispatch Layer 1.
+```
+
+**Write-back:**
+
+| Q | File | Key |
+|---|---|---|
+| 1. Product | `product.md` (also `research/product-context.md` as canonical) | `Product — one-line` |
+| 2. Buyer | `audience.md` | `Audience — primary persona` |
+| 3. Pains | `audience.md` | `Audience — pain points (primary)` |
+| 4. Geo | `audience.md` | `Audience — geo focus` |
+| 5. Route | (routing only, not persisted) |
+
+---
+
+## Step 0: Product Context Artifact
+
+After Pre-Dispatch, generate or update `research/product-context.md` — the canonical product-context record other skills read:
 
 ```markdown
 # Product Context
