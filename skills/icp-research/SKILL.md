@@ -114,12 +114,6 @@ Previous: none (or any skill needing audience context) | Next: `campaign-plan`, 
 | Synthesis Agent | 2 (sequential) | `agents/synthesis-agent.md` | Merges all fragments into coherent ICP profile |
 | Critic Agent | 2 (final) | `agents/critic-agent.md` | Quality gate — PASS/FAIL evaluation with rewrite routing |
 
-### Shared References (read by multiple agents)
-- `references/voice-of-customer.md` — VoC patterns, quote categories, platform tips (voc-collector-agent)
-- `references/customer-interviews.md` — Win/loss methodology, support ticket analysis (voc-collector-agent)
-- `references/habitat-mapping.md` — Density, engagement types, cross-persona analysis (habitat-agent)
-- `references/icp-to-imc-handoff.md` — Packaging outputs for IMC planning (synthesis-agent)
-
 ---
 
 ## Routing Logic
@@ -481,7 +475,7 @@ All 7 gates pass. 18 quotes with attribution. Habitats are specific. Biases are 
 - [agents/_template.md](agents/_template.md) — Reusable template for creating new agent files
 
 ### Shared References (references/)
-- [references/voice-of-customer.md](references/voice-of-customer.md) — VoC collection patterns, quote categories, platform tips
-- [references/customer-interviews.md](references/customer-interviews.md) — Win/loss interview methodology, support ticket analysis
-- [references/habitat-mapping.md](references/habitat-mapping.md) — Density definitions, engagement types, cross-persona analysis
-- [references/icp-to-imc-handoff.md](references/icp-to-imc-handoff.md) — How to package outputs for IMC planning
+- [references/voice-of-customer.md](references/voice-of-customer.md) — VoC collection patterns, quote categories, platform tips (voc-collector-agent)
+- [references/customer-interviews.md](references/customer-interviews.md) — Win/loss interview methodology, support ticket analysis (voc-collector-agent)
+- [references/habitat-mapping.md](references/habitat-mapping.md) — Density definitions, engagement types, cross-persona analysis (habitat-agent)
+- [references/icp-to-imc-handoff.md](references/icp-to-imc-handoff.md) — How to package outputs for IMC planning (synthesis-agent)
