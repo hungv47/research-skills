@@ -126,6 +126,10 @@ All research skills can read `research/product-context.md`, the foundation artif
 
 Research artifacts feed into marketing (`campaign-plan`, `lp-brief`, `copywriting`) and product (`system-architecture`) stacks.
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
+
 ## License
 
 MIT
