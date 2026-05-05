@@ -268,7 +268,7 @@ On re-run: rename existing artifact to `prioritize.v[N].md` and create new with 
 skill: prioritize
 version: 1
 date: {{today}}
-status: draft
+status: done | done_with_concerns | blocked | needs_context
 ---
 
 # Solution Design
@@ -442,6 +442,16 @@ Run `funnel-planner` to set targets for Restore Paid Targeting and Restore Socia
 **Missing kill criteria** — Initiatives without a "stop if" threshold run forever. INSTEAD: Every "Proceed" initiative needs a specific metric, threshold, and duration that triggers a stop.
 
 **Skipping the unconventional scan** — Only considering standard approaches when the root cause may need asymmetric leverage. INSTEAD: Run unconventional-agent alongside initiative-generator-agent unless Route B is explicitly chosen.
+
+---
+
+## Completion Status
+
+Every run ends with explicit status:
+- **DONE** — initiatives generated, ICE-scored, ranked, cut-line drawn (≤3 above), kill criteria attached, critic PASS
+- **DONE_WITH_CONCERNS** — ranking complete but with sizing/impact uncertainty flagged at item level (e.g., effort estimates speculative, ICE inputs from interview not data)
+- **BLOCKED** — `.agents/diagnose.md` missing AND no other root-cause source available; STOP gate per skill body — recommend `diagnose` first
+- **NEEDS_CONTEXT** — diagnose available but `research/product-context.md` missing for impact estimation; recommend `icp-research`
 
 ---
 

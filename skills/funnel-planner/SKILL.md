@@ -250,7 +250,7 @@ On re-run: rename existing artifact to `targets.v[N].md` and create new with inc
 skill: funnel-planner
 version: 1
 date: {{today}}
-status: draft
+status: done | done_with_concerns | blocked | needs_context
 ---
 
 # Targets
@@ -375,6 +375,16 @@ Every target in this table is also the baseline for downstream measurement. Keep
 **Input traps** — Measuring activities ("publish 4 posts") instead of outcomes ("organic signups from content"). INSTEAD: Measure the output the activity should produce.
 
 **Ignoring unit economics** — Setting aggressive acquisition targets when LTV:CAC is unhealthy. INSTEAD: Check LTV:CAC first. If <3:1, fix economics before scaling acquisition.
+
+---
+
+## Completion Status
+
+Every run ends with explicit status:
+- **DONE** — model selected, baselines collected, targets computed and stress-tested, critic PASS
+- **DONE_WITH_CONCERNS** — targets computed but baseline data was thin or estimated; assumptions explicit in artifact, sanity-check flags noted
+- **BLOCKED** — no usable baseline data AND unit economics blocking (LTV:CAC <3:1) — proposed targets would worsen the problem; needs business-model fix first
+- **NEEDS_CONTEXT** — `prioritize.md` missing OR baseline metrics absent; recommend `prioritize` first or interview for current funnel state
 
 ---
 

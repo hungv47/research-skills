@@ -329,7 +329,7 @@ On re-run: rename existing artifact to `market-research.v[N].md` and create new 
 skill: market-research
 version: 1
 date: {{today}}
-status: draft
+status: done | done_with_concerns | blocked | needs_context
 ---
 
 # Market Research
@@ -511,6 +511,16 @@ None — this is an entry point for the Strategy track.
 |----------|--------|---------|
 | `product-context.md` | icp-research | Better competitor selection and gap identification |
 | `diagnose.md` | diagnose | Known root causes focus analysis on relevant dimensions |
+
+---
+
+## Completion Status
+
+Every run ends with explicit status:
+- **DONE** — all 4 Layer 1 streams complete (trends, sizing, competitor, consumer-landscape), opportunities ranked, critic PASS
+- **DONE_WITH_CONCERNS** — partial coverage (e.g., sizing data thin or estimated); opportunities listed with confidence flags in artifact
+- **BLOCKED** — category undefined or too broad to size; needs user-supplied scope narrowing before any agent can dispatch
+- **NEEDS_CONTEXT** — `research/product-context.md` absent and product not described; recommend `icp-research` first or interview the user
 
 ---
 

@@ -257,7 +257,7 @@ On re-run: rename existing artifact to `diagnose.v[N].md` and create new with in
 skill: diagnose
 version: 1
 date: {{today}}
-status: draft
+status: done | done_with_concerns | blocked | needs_context
 ---
 
 # Problem Analysis
@@ -474,6 +474,16 @@ No external factors confirmed — proceed with internal analysis.
 **Ignoring inconclusive results** — Marking ambiguous evidence as "Rejected" to simplify the analysis. INSTEAD: Inconclusive is valid. It means more data is needed. Specify what data, from where, owned by whom.
 
 **Gap percentages that don't add up** — If root causes explain 140% of the gap (or only 30%), the analysis has double-counting or missing causes. INSTEAD: Percentages should roughly sum to 100%. Re-check for overlapping branches or missed causes.
+
+---
+
+## Completion Status
+
+Every run ends with explicit status:
+- **DONE** — root causes traced via MECE tree, hypotheses validated against data, verdict written, critic PASS
+- **DONE_WITH_CONCERNS** — root causes identified but data validation thin (small sample, estimated baselines, or inconclusive evidence); verdict notes confidence and what would strengthen it
+- **BLOCKED** — metric/baseline cannot be obtained from any source (data unavailable, access denied, or measurement undefined); analysis would be speculation
+- **NEEDS_CONTEXT** — problem statement missing the metric+current+target triad required for dispatch; ask the user before invoking agents
 
 ---
 

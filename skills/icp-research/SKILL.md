@@ -323,7 +323,7 @@ Critic returns:
 skill: icp-research
 version: 1
 date: [today's date]
-status: draft
+status: done | done_with_concerns | blocked | needs_context
 ---
 
 # ICP Research
@@ -459,6 +459,16 @@ All 7 gates pass. 18 quotes with attribution. Habitats are specific. Biases are 
 **Recycling stale research** — Reusing personas and VoC without re-validation. INSTEAD: Check artifact date. If >30 days, recommend re-run. Markets shift, competitors launch, pain points evolve.
 
 **Ignoring critic FAIL** — Delivering a failed artifact because "close enough." INSTEAD: Re-dispatch named agent with critic feedback. Max 2 cycles, then deliver with annotations.
+
+---
+
+## Completion Status
+
+Every run ends with explicit status:
+- **DONE** — full ICP synthesized, critic PASS, all 5-7 dimensions populated with quoted evidence
+- **DONE_WITH_CONCERNS** — critic PASS but Route A (Quick ICP) used so habitat/decision-psychology omitted, OR VoC quote density thin (flagged in artifact)
+- **BLOCKED** — irreconcilable persona contradictions surfaced (e.g., two distinct buyers with no merge path); needs user scope decision
+- **NEEDS_CONTEXT** — `research/product-context.md` missing AND user can't describe product/audience; recommend interview sub-flow first
 
 ---
 
