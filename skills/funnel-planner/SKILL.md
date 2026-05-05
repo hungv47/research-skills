@@ -50,7 +50,8 @@ routing:
   consumes:
     - product-context.md
     - prioritize.md
-  requires: []
+  requires:
+    - prioritize.md
   defers-to: []
   parallel-with: []
   interactive: false
@@ -81,8 +82,13 @@ routing:
 Improvement factors and benchmarks here are evidence-backed starting points. Actual achievable improvement depends on baseline, team capability, and market context. Use the defaults as sanity checks, not ceilings or floors.
 
 ## Inputs Required
-- Prioritized initiatives from `.agents/prioritize.md` (preferred)
-- OR: A business with metrics that need targets
+
+**Hard gate:** `.agents/prioritize.md` must exist before any agent dispatches. Targets without prioritized initiatives are arbitrary — the whole skill structure (improvement factors, kill criteria, stress tests) presupposes a ranked list of initiatives to set targets for.
+
+If `.agents/prioritize.md` is missing → return **NEEDS_CONTEXT** and recommend running `prioritize` first. Do NOT substitute via interview — the prioritization rigor (ICE scoring, cut-line, kill criteria) is what makes targets defensible, and a quick interview cannot reproduce it.
+
+Optional inputs (read if present, no gate):
+- `research/product-context.md` — improves baseline benchmark selection (run `icp-research` to populate)
 
 ## Output
 - `.agents/targets.md`
