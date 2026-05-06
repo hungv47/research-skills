@@ -6,6 +6,20 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [2.1.0] - 2026-05-06
+
+Stack orchestrator added; declaration drift fixed.
+
+### Added
+
+- `start-research` — Stack orchestrator. Reads `research/`, `.agents/`, and `.agents/experience/*.md`, parses the user's free-form ask (or asks one bundled scoping question if empty), and proposes the next 1–3 skills in the research pipeline (`icp-research` → `market-research` / `diagnose` → `prioritize` → `funnel-planner`) with rationale + cost + duration. Never auto-invokes — always prints the `/skill-name` for the user to type. Persists a breadcrumb to `.agents/experience/research-workflow.md` so re-entry across sessions resumes the workflow. Standard budget, ~$0.10–0.30 per run. Pipeline catalog lives in `references/workflow-graph.md`.
+
+### Fixed
+
+- `short-form-research` was present on disk since v2.0.0 but missing from `.claude-plugin/plugin.json` `skills[]` — declaration restored. Skill now installs correctly via the Claude Code plugin marketplace path.
+
+---
+
 ## [1.0.0] - 2026-05-05
 
 Initial public release. Structured frameworks for audience research, market analysis, problem diagnosis → solution design → target setting.

@@ -2,7 +2,9 @@
 
 ![Research Skills](./assets/banner.png)
 
-Structured frameworks for audience research, market analysis, problem diagnosis, solution design, and target setting. 5 skills.
+Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and short-form video research. 7 skills (incl. `/start-research` orchestrator).
+
+**New here?** Run `/start-research` — it reads project state, parses your ask, and proposes the next skill to invoke with rationale + cost + duration.
 
 ## Install
 
