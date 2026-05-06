@@ -9,6 +9,8 @@ market-research ──┐
                   ├→ prioritize → funnel-planner
 diagnose ─┘
 
+short-form-research → .agents/mkt/short-form-research.md (consumed by short-form-brief in marketing-skills)
+
 ## Artifacts
 Pipeline outputs write to `.agents/`; canonical audience/market records live in the top-level `research/` folder:
 - `research/product-context.md` (cross-stack canonical record — created by icp-research, consumed by 12+ skills)
@@ -17,6 +19,7 @@ Pipeline outputs write to `.agents/`; canonical audience/market records live in 
 - `.agents/diagnose.md`
 - `.agents/prioritize.md`
 - `.agents/targets.md`
+- `.agents/mkt/short-form-research.md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
 
 ## Cross-Stack (Optional)
 All research skills can read `research/product-context.md` for business context.
@@ -27,11 +30,11 @@ Run `icp-research` first to create `research/product-context.md`, the canonical 
 
 ## Pre-Dispatch Protocol
 
-All 5 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). Cold Start (3-5 bundled questions, one round-trip) when context is missing; Warm Start (summary + optional probe) when artifacts/experience cover what's needed. Answers persist to `.agents/experience/{domain}.md` so subsequent skills never re-ask. `prioritize` and `funnel-planner` are hard-gated — no cold-start; recommend upstream (diagnose / prioritize) when gate fails.
+All 6 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). Cold Start (3-5 bundled questions, one round-trip) when context is missing; Warm Start (summary + optional probe) when artifacts/experience cover what's needed. Answers persist to `.agents/experience/{domain}.md` so subsequent skills never re-ask. `prioritize` and `funnel-planner` are hard-gated — no cold-start; recommend upstream (diagnose / prioritize) when gate fails. `short-form-research` writes to `.agents/experience/content.md`.
 
 ## Multi-Agent Skills
 
-All 5 skills use a two-layer multi-agent orchestration pattern:
+All 6 skills use a two-layer multi-agent orchestration pattern:
 
 - `SKILL.md` = **orchestrator** — dispatch graph, routing logic, merge step, critic gate
 - `agents/` = **sub-agent instruction files** — each with role, input/output contracts, domain knowledge, self-check
@@ -50,3 +53,4 @@ All 5 skills use a two-layer multi-agent orchestration pattern:
 - `diagnose` — 6 agents (tree-builder, external-check, hypothesis, data-mapper, verdict, critic). Layer 1 parallel (tree-builder + external-check) → Layer 2 sequential (hypothesis→data-mapper→verdict→critic).
 - `prioritize` — 7 agents (research, initiative-generator, unconventional, ranking, ice-scoring, cut-line, critic). Layer 1 (research) → Layer 1.5 parallel (initiative-generator + unconventional) → Layer 2 sequential (ranking→ice-scoring→cut-line→critic).
 - `funnel-planner` — 6 agents (model-selection, baseline-collector, target-setter, sanity-check, stress-test, critic). Layer 1 parallel (model-selection + baseline-collector) → Layer 2 sequential (target-setter→sanity-check→stress-test→critic).
+- `short-form-research` — 6 agents (platform-scout × N parallel, audience-fit, pattern-extractor, audio-trend conditional, synthesis, critic). Layer 1 parallel (platform-scout × N + audience-fit) → Layer 2 sequential (pattern-extractor→audio-trend→synthesis→critic). Default 3 platforms (TikTok+Reels+Shorts), max 5 with `--all`. Single-market per artifact.
