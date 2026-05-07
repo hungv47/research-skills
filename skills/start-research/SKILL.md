@@ -40,6 +40,8 @@ routing:
   position: orchestrator
   produces:
     - .agents/experience/research-workflow.md
+  side-effects:
+    - manifest-sync
   consumes:
     - research/product-context.md
     - research/icp-research.md
@@ -105,7 +107,33 @@ The skill never auto-invokes another skill. It always pauses for explicit user c
 
 ## Step 1: State Detection
 
-Silently scan in this order. Do not announce findings until Step 4 — keep the read invisible.
+Silently read state. Do not announce findings until Step 4 — keep the read invisible.
+
+**Read `.agents/manifest.json` first** — this is the canonical state index. Single file, single read; no per-path scanning required.
+
+If the manifest is missing or looks stale (check `updated_at` drift), regenerate it:
+
+```bash
+bun ${SKILLS_ROOT:-.claude/skills}/meta-skills/scripts/manifest-sync.ts
+```
+
+**Status-aware lookup** — for each artifact relevant to the research stack, read its manifest entry's `status` and `stale` fields to qualify the state map:
+
+| Manifest signal | State map value |
+|---|---|
+| `status: done`, `stale: false` | ✅ done |
+| `status: done_with_concerns` | ⚠️ done-with-concerns — surface the concern in routing output |
+| `status: blocked` or `needs_context` | treat as missing |
+| `stale: true` | ✅ done (stale) — propose refresh as an option, don't block |
+| `frontmatter_present: false` | ✅ done (legacy, no frontmatter) — quality unknown, suggest refresh |
+
+Staleness is now derived per-artifact via the manifest's `stale_after_days` (default 90, overridable per artifact). Read the manifest entry's `stale` field directly — no manual date arithmetic needed.
+
+**Experience block** — also read the manifest's `experience` block. `audience.md` and `business.md` `entries` counts indicate Pre-Dispatch coverage for research-stack questions. Low entry counts (≤2) mean cold-start conditions are likely for downstream skills.
+
+See [`../../../meta-skills/references/manifest-spec.md`](../../../meta-skills/references/manifest-spec.md) for the full contract.
+
+**Path reference / filesystem fallback** — used only when `.agents/manifest.json` doesn't exist (fresh project) or sync hasn't been run:
 
 | Path | What it tells you |
 |---|---|
@@ -128,8 +156,6 @@ problem-diagnosis: done | partial | missing | n/a
 prioritization:    done | partial | missing | n/a
 funnel-targets:    done | partial | missing | n/a
 ```
-
-**Stale check:** if an artifact is older than 90 days OR product-context.md mentions a different product than the current `CLAUDE.md` describes, mark it as stale and surface that in the proposal.
 
 ---
 
@@ -241,6 +267,7 @@ For the canonical pipeline definition, decision rules, and per-skill catalog, se
 
 ## Anti-Patterns
 
+- **Don't ignore the manifest** — always read `.agents/manifest.json` first; per-path filesystem scans are a fallback, not the default.
 - **Don't summarize all 6 skills** in the output. Propose 1–3 specific ones for THIS user's state.
 - **Don't auto-invoke** the recommended skill. The user must explicitly type `/skill-name`. This is the anti-runaway guard.
 - **Don't re-derive the pipeline** from scratch each invocation. Read it from `references/workflow-graph.md`.

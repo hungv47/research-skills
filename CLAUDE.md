@@ -32,6 +32,10 @@ Run `icp-research` first to create `research/product-context.md`, the canonical 
 
 All 6 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). Cold Start (3-5 bundled questions, one round-trip) when context is missing; Warm Start (summary + optional probe) when artifacts/experience cover what's needed. Answers persist to `.agents/experience/{domain}.md` so subsequent skills never re-ask. `prioritize` and `funnel-planner` are hard-gated — no cold-start; recommend upstream (diagnose / prioritize) when gate fails. `short-form-research` writes to `.agents/experience/content.md`.
 
+## Manifest Spec
+
+State detection across all research skills (especially `start-research`) reads `.agents/manifest.json` — a derived index of artifact metadata (producer, date, status, schema version, staleness, summary). The manifest is rebuilt from artifact frontmatter by `meta-skills/scripts/manifest-sync.ts`; skills don't write to it directly. See [`../meta-skills/references/manifest-spec.md`](../meta-skills/references/manifest-spec.md) for the full contract. Skills that produce artifacts (icp-research, market-research, diagnose, prioritize, funnel-planner, short-form-research) must write the required frontmatter fields (`skill`, `version`, `date`, `status`) and call sync as their last step.
+
 ## Multi-Agent Skills
 
 All 6 skills use a two-layer multi-agent orchestration pattern:

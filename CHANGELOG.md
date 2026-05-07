@@ -6,6 +6,21 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [2.2.0] - 2026-05-07
+
+Manifest-aware state detection in `start-research`.
+
+### Changed
+
+- `start-research` SKILL.md — Step 1 (State Detection) now reads `.agents/manifest.json` first with a status-aware lookup table (`done`, `done_with_concerns`, `blocked`/`needs_context`, `stale`, `frontmatter_present: false`). Per-artifact staleness now flows from the manifest's `stale_after_days` field rather than a hard-coded 90-day check. Per-path filesystem scan demoted to fallback for fresh projects. Anti-pattern entry added: "Don't ignore the manifest." Added `side-effects: [manifest-sync]` to the skill's routing block.
+- `CLAUDE.md` — added "Manifest Spec" section pointing producer skills (icp-research, market-research, diagnose, prioritize, funnel-planner, short-form-research) at the canonical contract in `meta-skills/references/manifest-spec.md` and the frontmatter obligations.
+
+### Notes
+
+This release lands the manifest-spec contract on the consumer side. Per-skill frontmatter retrofit (icp-research, market-research, etc.) follows in a later release — the spec's graceful fallback (`frontmatter_present: false`) means existing artifacts keep working until producers are migrated.
+
+---
+
 ## [2.1.0] - 2026-05-06
 
 Stack orchestrator added; declaration drift fixed.
