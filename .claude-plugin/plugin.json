@@ -1,7 +1,7 @@
 {
   "name": "research-skills",
   "description": "Market research, audience, and strategy skills — ICP, market sizing, problem analysis, solution design, funnel planning.",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "author": { "name": "hungv47" },
   "homepage": "https://github.com/hungv47/research-skills",
   "repository": "https://github.com/hungv47/research-skills",
@@ -14,6 +14,7 @@
     "./skills/diagnose/",
     "./skills/prioritize/",
     "./skills/funnel-planner/",
-    "./skills/short-form-research/"
+    "./skills/short-form-research/",
+    "./skills/short-form-eval/"
   ]
 }

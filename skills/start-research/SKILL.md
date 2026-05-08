@@ -38,6 +38,7 @@ routing:
     - stack-entry-point
     - research-guide
   position: orchestrator
+  lifecycle: pipeline
   produces:
     - .agents/experience/research-workflow.md
   side-effects:
@@ -46,9 +47,9 @@ routing:
     - research/product-context.md
     - research/icp-research.md
     - research/market-research.md
-    - .agents/diagnose.md
-    - .agents/prioritize.md
-    - .agents/targets.md
+    - .agents/skill-artifacts/meta/records/[date]-diagnose-[slug].md
+    - .agents/skill-artifacts/meta/sketches/prioritize-[slug].md
+    - .agents/skill-artifacts/meta/records/targets-[slug].md
     - .agents/experience/*.md
   requires: []
   defers-to:
@@ -140,9 +141,11 @@ See [`../../../meta-skills/references/manifest-spec.md`](../../../meta-skills/re
 | `research/product-context.md` | ICP foundation exists. Audience is at least sketched. |
 | `research/icp-research.md` | Full ICP research is done. |
 | `research/market-research.md` | Market landscape mapped. |
-| `.agents/diagnose.md` | A specific problem has been diagnosed. |
-| `.agents/prioritize.md` | Initiative ranking exists. |
-| `.agents/targets.md` | Funnel targets are set. |
+| `.agents/skill-artifacts/meta/records/[date]-diagnose-[slug].md` | A specific problem has been diagnosed. |
+| `.agents/skill-artifacts/meta/sketches/prioritize-[slug].md` | Initiative ranking exists. |
+| `.agents/skill-artifacts/meta/records/targets-[slug].md` | Funnel targets are set. |
+| `.agents/skill-artifacts/research/short-form-research/[slug].md` | Per-platform short-form catalog exists. |
+| `.agents/skill-artifacts/research/short-form-eval/[date]-cycle-N.md` | Short-form eval cycles have run; pattern-log entries available. |
 | `.agents/experience/audience.md` | Cold-start audience answers persisted. |
 | `.agents/experience/business.md` | Business model context persisted. |
 | `.agents/experience/research-workflow.md` | Prior `/start-research` session left a breadcrumb. |

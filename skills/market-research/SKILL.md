@@ -38,10 +38,11 @@ routing:
     - tam-sam-som
     - whitespace-analysis
   position: pipeline
+  lifecycle: canonical
   produces:
-    - market-research.md
+    - research/market-research.md
   consumes:
-    - product-context.md
+    - research/product-context.md
   requires: []
   defers-to:
     - skill: icp-research
@@ -99,7 +100,7 @@ Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`
 **Needed dimensions:** category/niche, geo + time horizon, why-now (decision this informs), known competitors (or "find them"), B2B/B2C.
 
 **Read order:**
-1. Pipeline: `research/product-context.md` for product signal, `.agents/diagnose.md` for known root-cause focus.
+1. Pipeline: `research/product-context.md` for product signal, `.agents/skill-artifacts/meta/records/diagnose-*.md` for known root-cause focus.
 2. Experience: `.agents/experience/{product,business,audience}.md`.
 
 **Warm Start** (product + B2B/B2C inferable, decision focus clear):

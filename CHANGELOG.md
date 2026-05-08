@@ -6,6 +6,25 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [2.3.0] - 2026-05-08
+
+`short-form-eval` scaffold + T33 path migration.
+
+### Added
+
+- `short-form-eval` — Closes the feedback loop for short-form video. Scores published posts against the original brief and platform-intelligence references; produces signal-bearing pattern-log entries the gap-gate consumes. Scaffolded per panel verdict 2026-05-08 (manufactured-calibration approach — see `.agents/skill-artifacts/meta/decisions/2026-05-08-agents-panel-content-stack-direction.md`). 4 agents (eval-runner, hook-strength, pattern-extractor, critic) across 2 layers; standard budget; ~$0.50–1.50 per cycle. Provisional v0.1 rubric in `references/rubric.md`, **mandatory revision after cycle 2-3** against real variance — explicitly revisable, not locked. Cycle 1 weighting is 70% observation / 30% scoring to avoid overfitting on a single calibration pair.
+
+### Changed
+
+- T33 path migration: SKILL.md output declarations across `short-form-research`, `start-research`, `diagnose`, `prioritize`, `funnel-planner` updated to the new `.agents/skill-artifacts/...` taxonomy (canonical lifecycle taxonomy from `agent-skills/CLAUDE.md` §"Artifact Placement"). `lifecycle:` added to routing blocks: `pipeline` (short-form-research, short-form-eval, start-research), `snapshot` (diagnose, funnel-planner), `sketch` (prioritize). Body references and `produces:` paths aligned. Inline references to `.agents/diagnose.md`, `.agents/prioritize.md`, `.agents/targets.md` in `start-research`'s state-detection table updated to their new `.agents/skill-artifacts/meta/...` equivalents. `market-research` body line updated alongside.
+- `market-research` and `icp-research` are canonical (top-level `research/...` paths) — `lifecycle: canonical` added to routing blocks, paths unchanged. `produces:` fields normalized to full `research/<file>.md` paths for clarity.
+
+### Notes
+
+The provisional rubric is the load-bearing design choice. Premature-rubric-lock was the panel's highest residual risk; mitigation is procedural — friction goes in the cycle-report Friction Notes channel, and the operator runs the revision pass at the cycle 2-3 boundary. Skill scaffolds and reports; it does not loop cycles autonomously. T27 (cycle 1 run) is operator-gated on T25 (calibration material decision).
+
+---
+
 ## [2.2.0] - 2026-05-07
 
 Manifest-aware state detection in `start-research`.

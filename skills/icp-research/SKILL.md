@@ -39,9 +39,10 @@ routing:
     - persona-development
     - customer-profiling
   position: foundation
+  lifecycle: canonical
   produces:
-    - product-context.md
-    - icp-research.md
+    - research/product-context.md
+    - research/icp-research.md
   consumes: []
   requires: []
   defers-to:

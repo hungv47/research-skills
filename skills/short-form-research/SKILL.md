@@ -1,6 +1,6 @@
 ---
 name: short-form-research
-description: "Discovers what's working right now on short-form video platforms (TikTok, Instagram Reels, YouTube Shorts; X video and LinkedIn video by opt-in) for a given topic and market. Produces a per-platform best-practice catalog at .agents/mkt/short-form-research.md that short-form-brief consumes. Not for long-form video (parked) or static visual (use design-brief). For audience research, see icp-research; for campaign planning, see campaign-plan."
+description: "Discovers what's working right now on short-form video platforms (TikTok, Instagram Reels, YouTube Shorts; X video and LinkedIn video by opt-in) for a given topic and market. Produces a per-platform best-practice catalog at .agents/skill-artifacts/research/short-form-research/[slug].md that short-form-brief consumes. Not for long-form video (parked) or static visual (use design-brief). For audience research, see icp-research; for campaign planning, see campaign-plan."
 argument-hint: "[topic or angle]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch Write
 license: MIT
@@ -39,8 +39,9 @@ routing:
     - hook-research
     - content-research
   position: pipeline
+  lifecycle: pipeline
   produces:
-    - short-form-research.md
+    - .agents/skill-artifacts/research/short-form-research/[slug].md
   consumes:
     - product-context.md
     - icp-research.md
@@ -86,7 +87,7 @@ Trend signals decay fast — 14-day windows are deliberate. Platform mechanics c
 
 **Inputs:** Topic (required); target platforms (default 3); market (single per artifact); audience hint or `research/icp-research.md` (warm-start); optional competitor handles to seed scout.
 
-**Output:** `.agents/mkt/short-form-research.md` — single artifact, single market.
+**Output:** `.agents/skill-artifacts/research/short-form-research/[slug].md` — single artifact, single market.
 
 ## Quality Gate
 
@@ -152,7 +153,7 @@ Run the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-pr
 **Needed dimensions:** topic, market, target platforms, audience hint or ICP availability, optional competitor seeds.
 
 **Read order:**
-1. `.agents/mkt/short-form-research.md` if exists — check (topic, market) match and freshness windows.
+1. `.agents/skill-artifacts/research/short-form-research/[slug].md` if exists — check (topic, market) match and freshness windows.
 2. `.agents/experience/content.md` — most recent entries for market, audience register, topics already researched.
 3. `.agents/experience/audience.md` — primary persona, language, habitats.
 4. `research/icp-research.md`, `research/product-context.md` — full context if present.
@@ -275,7 +276,7 @@ Critic returns one of:
 
 ## Output Artifact Structure
 
-`.agents/mkt/short-form-research.md` (frontmatter shown; full template in §5 of `.agents/meta/short-form-research-spec.md`):
+`.agents/skill-artifacts/research/short-form-research/[slug].md` (frontmatter shown; full template in §5 of `.agents/skill-artifacts/meta/specs/short-form-research-spec.md`):
 
 ```yaml
 ---
