@@ -9,17 +9,17 @@ market-research ──┐
                   ├→ prioritize → funnel-planner
 diagnose ─┘
 
-short-form-research → .agents/mkt/short-form-research.md (consumed by short-form-brief in marketing-skills)
+short-form-research → .agents/skill-artifacts/research/short-form-research.md (consumed by short-form-brief in marketing-skills)
 
 ## Artifacts
-Pipeline outputs write to `.agents/`; canonical audience/market records live in the top-level `research/` folder:
+Pipeline outputs write under `.agents/skill-artifacts/`; canonical audience/market records live in the top-level `research/` folder:
 - `research/product-context.md` (cross-stack canonical record — created by icp-research, consumed by 12+ skills)
 - `research/icp-research.md` (canonical audience record from icp-research)
 - `research/market-research.md` (canonical market record from market-research)
-- `.agents/diagnose.md`
-- `.agents/prioritize.md`
-- `.agents/targets.md`
-- `.agents/mkt/short-form-research.md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
+- `.agents/skill-artifacts/meta/records/diagnose-*.md`
+- `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
+- `.agents/skill-artifacts/meta/records/targets-*.md`
+- `.agents/skill-artifacts/research/short-form-research.md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
 
 ## Cross-Stack (Optional)
 All research skills can read `research/product-context.md` for business context.

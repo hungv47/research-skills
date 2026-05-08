@@ -6,6 +6,25 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [2.3.1] - 2026-05-08
+
+CLAUDE.md doc cleanup — align stack-level documentation with the new `.agents/skill-artifacts/` taxonomy shipped in v2.3.0 and across the umbrella as marketplace 1.5.0.
+
+### Changed
+
+- `research-skills/CLAUDE.md` Pipeline and Artifacts sections — every `.agents/diagnose.md`, `.agents/prioritize.md`, `.agents/targets.md`, `.agents/mkt/short-form-research.md` reference migrated to the new taxonomy:
+  - `.agents/diagnose.md` → `.agents/skill-artifacts/meta/records/diagnose-*.md`
+  - `.agents/prioritize.md` → `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
+  - `.agents/targets.md` → `.agents/skill-artifacts/meta/records/targets-*.md`
+  - `.agents/mkt/short-form-research.md` → `.agents/skill-artifacts/research/short-form-research.md` (cross-stack relocation: short-form-research is a research-skill, output now lives under `research/` not `mkt/`)
+- "Pipeline outputs write to `.agents/`" → "Pipeline outputs write under `.agents/skill-artifacts/`."
+
+### Notes
+
+Doc-only patch — no SKILL.md or skill-behavior changes.
+
+---
+
 ## [2.3.0] - 2026-05-08
 
 `short-form-eval` scaffold + T33 path migration.
