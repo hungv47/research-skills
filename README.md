@@ -132,6 +132,16 @@ All research skills can read `research/product-context.md`, the foundation artif
 
 Research artifacts feed into marketing (`campaign-plan`, `lp-brief`, `copywriting`) and product (`system-architecture`) stacks.
 
+## Releases
+
+```bash
+# Update to latest version (if already installed)
+npx skills update
+
+# Add this stack to your project
+npx skills add hungv47/research-skills
+```
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for release notes (commit 1286a6a, 2026-05-05).
