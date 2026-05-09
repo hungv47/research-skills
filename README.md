@@ -144,7 +144,7 @@ npx skills add hungv47/research-skills
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for release notes (commit 1286a6a, 2026-05-05).
+Full release history with per-version notes: [research-skills/releases](https://github.com/hungv47/research-skills/releases)
 
 ## License
 
