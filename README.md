@@ -2,9 +2,11 @@
 
 ![Research Skills](./assets/banner.png)
 
-Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and short-form video research. 7 skills (incl. `/start-research` orchestrator).
+> **v3.0.0 BREAKING:** `start-research` renamed to `orchestrate-research`. Update any `/start-research` invocations in your workflows to `/orchestrate-research`.
 
-**New here?** Run `/start-research` — it reads project state, parses your ask, and proposes the next skill to invoke with rationale + cost + duration.
+Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and short-form video research. 7 skills (incl. `/orchestrate-research` orchestrator).
+
+**New here?** Run `/orchestrate-research` — it reads project state, parses your ask, and proposes the next skill to invoke with rationale + cost + duration.
 
 ## Install
 

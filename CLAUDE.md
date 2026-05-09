@@ -34,7 +34,7 @@ All 6 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references
 
 ## Manifest Spec
 
-State detection across all research skills (especially `start-research`) reads `.agents/manifest.json` — a derived index of artifact metadata (producer, date, status, schema version, staleness, summary). The manifest is rebuilt from artifact frontmatter by `meta-skills/scripts/manifest-sync.ts`; skills don't write to it directly. See [`../meta-skills/references/manifest-spec.md`](../meta-skills/references/manifest-spec.md) for the full contract. Skills that produce artifacts (icp-research, market-research, diagnose, prioritize, funnel-planner, short-form-research) must write the required frontmatter fields (`skill`, `version`, `date`, `status`) and call sync as their last step.
+State detection across all research skills (especially `orchestrate-research`) reads `.agents/manifest.json` — a derived index of artifact metadata (producer, date, status, schema version, staleness, summary). The manifest is rebuilt from artifact frontmatter by `meta-skills/scripts/manifest-sync.ts`; skills don't write to it directly. See [`../meta-skills/references/manifest-spec.md`](../meta-skills/references/manifest-spec.md) for the full contract. Skills that produce artifacts (icp-research, market-research, diagnose, prioritize, funnel-planner, short-form-research) must write the required frontmatter fields (`skill`, `version`, `date`, `status`) and call sync as their last step.
 
 ## Multi-Agent Skills
 

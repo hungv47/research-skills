@@ -1,6 +1,6 @@
 # Research Stack Workflow Graph
 
-Canonical pipeline definition for the research-skills stack. `start-research` reads this to make routing decisions.
+Canonical pipeline definition for the research-skills stack. `orchestrate-research` reads this to make routing decisions.
 
 ---
 
@@ -104,7 +104,7 @@ icp-research ─────┤                       ├──→ prioritize �
    c. Intent ambiguous AND multiple downstream skills available?
       → propose 2 options with one-line rationale each.
    d. All 5 core artifacts done?
-      → user is past the pipeline. Suggest cross-stack (start-marketing / start-product).
+      → user is past the pipeline. Suggest cross-stack (orchestrate-marketing / orchestrate-product).
 
 4. Present (1–3 options max). Wait for user confirmation.
 
@@ -126,9 +126,9 @@ Stale artifacts get a warning, not a forced re-run. User decides.
 
 ## Re-Entry Behavior
 
-`/start-research` is idempotent — running it twice in a row produces the same proposal (assuming no other work happened between).
+`/orchestrate-research` is idempotent — running it twice in a row produces the same proposal (assuming no other work happened between).
 
-When the breadcrumb file shows a prior session ended on "user confirmed: market-research" and `research/market-research.md` now exists, the next `/start-research` should:
+When the breadcrumb file shows a prior session ended on "user confirmed: market-research" and `research/market-research.md` now exists, the next `/orchestrate-research` should:
 
 1. Acknowledge: "Last session you ran market-research. It's now in place."
 2. Advance: propose the next step (typically `prioritize` if upstream is sufficient).
@@ -142,4 +142,4 @@ If the prior recommended skill never produced its artifact, surface that: "Last 
 - Don't recommend more than 3 skills in one proposal. Pick the most-relevant 1–3.
 - Don't lecture. The user invoked this because they need a quick decision, not a tutorial.
 - Don't auto-invoke. Always print the `/skill-name` command and let the user type it.
-- Don't recommend skills outside this stack. If user's intent is marketing or product, say so and point at `/start-marketing` or `/start-product`.
+- Don't recommend skills outside this stack. If user's intent is marketing or product, say so and point at `/orchestrate-marketing` or `/orchestrate-product`.
