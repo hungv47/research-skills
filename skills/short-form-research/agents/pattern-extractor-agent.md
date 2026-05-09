@@ -135,6 +135,27 @@ Quote 2-3 specific entries to support each claim.
 - Note timing patterns: "overlay at 0:20-0:24" or "caption first-line"
 - Cross-reference with engagement: do high-save entries cluster on a placement?
 
+**Synthesis-heuristic detection (Jibran's rule):**
+
+Viral formats are rarely net-new — they're usually a synthesis of a *current* trend with a *previous* viral format from a different category, era, or product. Source: Jibran, $0 → #1 AppStore in 3 days with 60M views; explicit rule from <https://x.com/Jibran_05/status/2036118330004636070>: *"every viral format = synthesis of current viral formats + previous viral formats"* (worked example: 2025 wrapped's hands-covered iMessage hook = 2024 Spotify Wrapped face-cover format + 2022 trusted-brand-association format).
+
+When extracting hook archetypes from this scout window, run a **synthesis check** on each archetype that crosses the ≥3-occurrence threshold:
+
+1. Does this archetype look identical to a viral format from a *different category* (e.g., basketball clip → consumer app, finance creator → SaaS, sports highlight → product demo)? Tag as `[SYNTHESIS-CANDIDATE: cross-category]` with the source-category named.
+2. Does this archetype look identical to a viral format from a *different era* (1-3 years prior, e.g., 2022 cutout-style brand-association reused in 2025)? Tag as `[SYNTHESIS-CANDIDATE: cross-era]` with the prior-era format named if recognizable.
+3. Does this archetype combine *two or more* prior viral formats into a new structure? Tag as `[SYNTHESIS-CANDIDATE: combined]` and name both source formats.
+
+Synthesis candidates are flagged for synthesis-agent's downstream cross-platform table — they're high-leverage for the brief skill because they signal a format with proven engagement that hasn't yet saturated this category. **Caveat:** synthesis tagging requires recognizing the prior-era / cross-category source. If the scout's window doesn't surface enough cross-context exposure to recognize the synthesis, mark `[SYNTHESIS-CHECK: insufficient cross-context — flag for human]` rather than guessing. Don't fabricate sources — a wrong attribution misleads the downstream brief.
+
+Output format inside the per-platform Hook Archetypes section:
+
+```
+- **[Archetype name]** — N/X occurrences. Description: [...]. Example: "[opening 1-3s]" ([URL])
+  - Synthesis tag: [SYNTHESIS-CANDIDATE: cross-era] — appears to reuse 2022-era cutout-style brand-association format observed in [@source]'s [date] post (URL if recallable; else "category memory only")
+```
+
+This widens the extractor's window beyond the scout's literal sample. The extractor doesn't *search* for the prior format (that's outside scope) — it tags candidates for synthesis-agent and the brief skill to consider.
+
 ### Anti-Patterns
 
 - **Naming patterns at n=2** — that's not a pattern, it's two entries. Hold to ≥3.
@@ -142,6 +163,8 @@ Quote 2-3 specific entries to support each claim.
 - **Citation-free claims** — "credential flash dominates" without a URL. Fails critic.
 - **Over-categorizing** — splitting "credential flash with text" and "credential flash with no text" into two archetypes when they're variations. Group, don't fragment.
 - **Skipping INSUFFICIENT_DATA** — if a platform has n<3, don't pretend you can extract patterns. List entries observed only.
+- **Fabricated synthesis attribution** — tagging an archetype `[SYNTHESIS-CANDIDATE: cross-era]` with a guessed prior-era source. If the source isn't recognizable from real prior exposure, mark `[SYNTHESIS-CHECK: insufficient cross-context]` and let the brief skill or human verify. Wrong synthesis attributions burn downstream brief decisions.
+- **Over-tagging synthesis** — labeling every archetype as a synthesis candidate. Most archetypes are not. Hold the bar: visible structural overlap with a recognizable prior format, or skip.
 
 ## Self-Check
 
@@ -153,3 +176,4 @@ Quote 2-3 specific entries to support each claim.
 - [ ] Caption norms include length range, hashtag count, citations
 - [ ] CTA placement observed with frequency and citations
 - [ ] No fabricated patterns — every claim traces to ≥3 scout entries
+- [ ] Synthesis-heuristic check run on each ≥3-occurrence archetype (tagged `[SYNTHESIS-CANDIDATE: cross-category | cross-era | combined]` OR `[SYNTHESIS-CHECK: insufficient cross-context]` where applicable; never fabricated)

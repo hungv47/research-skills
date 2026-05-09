@@ -6,6 +6,19 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [3.0.1] - 2026-05-10
+
+REB-2c — `short-form-research/pattern-extractor-agent.md` gains a synthesis-heuristic detection pass. Sourced from external practitioner content (Jibran's 60M-views / #1-AppStore-in-3-days breakdown).
+
+### Changed
+- `short-form-research/agents/pattern-extractor-agent.md` — added **Synthesis-heuristic detection** technique (Jibran's rule: viral formats are usually a synthesis of a *current* trend with a *previous* viral format from a different category, era, or product). For every archetype crossing the ≥3-occurrence threshold, the extractor now runs three checks: cross-category synthesis, cross-era synthesis (1-3 years prior), or combined-format synthesis. Candidates are tagged `[SYNTHESIS-CANDIDATE: cross-category | cross-era | combined]` for synthesis-agent's downstream cross-platform table; insufficient cross-context exposure tags `[SYNTHESIS-CHECK: insufficient cross-context — flag for human]` rather than fabricating a source. New anti-patterns: fabricated synthesis attribution, over-tagging. Self-check item added.
+
+### Notes
+- Driven by Reference Enrichment Backlog REB-2 in agent-skills `.agents/skill-artifacts/meta/roadmap.md`. REB-2a + REB-2b ship in the matching `marketing-skills` patch (4.0.2) — separate stack.
+- Bump kind: PATCH. Additive technique to an existing agent (no contract change for synthesis-agent or critic-agent downstream consumers; tags are purely additive metadata in the existing per-platform Hook Archetypes section).
+
+---
+
 ## [3.0.0] - 2026-05-08
 
 ### BREAKING
