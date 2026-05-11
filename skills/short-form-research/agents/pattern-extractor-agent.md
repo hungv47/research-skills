@@ -156,6 +156,31 @@ Output format inside the per-platform Hook Archetypes section:
 
 This widens the extractor's window beyond the scout's literal sample. The extractor doesn't *search* for the prior format (that's outside scope) — it tags candidates for synthesis-agent and the brief skill to consider.
 
+**Clip-density characterization (Oren's rule):**
+
+Source: Oren John, 2026-03-17 — *"This format matters not just because people watch the full thing, though some do, but because it is engineered for clipping. Every single interaction is an opportunity for a quotable moment, a sharp rebuttal, a trap that gets laid and a point that lands. That's what travels."* (verbatim from <https://x.com/orenmeetsworld/status/2033927145706365016>).
+
+The synthesis-heuristic check above asks where a format *came from*. Clip-density asks what a format *pays out* — how many quotable moments per minute of source material, which determines whether the archetype survives the downstream paid-clipper / cross-post distribution layer (see `marketing-skills/skills/campaign-plan/references/distribution-models/clipping-and-live.md` §5 compelling-source test).
+
+For each archetype that crosses the ≥3-occurrence threshold, score clip-density across these triggers:
+
+| Trigger | What to look for | Tag |
+|---|---|---|
+| Every-interaction-quotable | Format structurally produces a clip-ready moment every ~30-60 seconds (Jubilee-style debates, founder-Q&A with skeptics, hot-take rebuttal posts) | `[CLIP-DENSITY: high]` |
+| Multi-cut-point long-form | Format produces 3+ quotable moments in a 5-10 minute span — but with non-clippable stretches between (long-form interviews with sharp segments, podcast highlights) | `[CLIP-DENSITY: med]` |
+| Single-moment or none | Format has at most one quotable beat per source unit (talking-head monologue, brand-account narrator, sponsored sizzle reel, demo-only with no opinion) | `[CLIP-DENSITY: low]` |
+
+Output format inside the per-platform Hook Archetypes section:
+
+```
+- **[Archetype name]** — N/X occurrences. Description: [...]. Example: "[opening 1-3s]" ([URL])
+  - Clip-density tag: [CLIP-DENSITY: high] — every interaction produces a quotable rebuttal moment (Jubilee-style debate structure observed in N/X entries)
+```
+
+The tag is consumed downstream by `short-form-brief`'s format-fit critic (REB-2b — Roman Khaves's two-failure-modes test). High clip-density archetypes are format-fit candidates for campaigns running a paid-CPM clipping distribution layer; low clip-density archetypes get flagged as "produces views but won't survive clipping bounty network" so the brief skill can route around the format if clipping is the planned distribution.
+
+**Caveat:** clip-density is a property of the *archetype's structure*, not of a single high-performing entry. If 4/5 entries under the same archetype produced one quotable moment each and one entry produced zero, the archetype is still `[CLIP-DENSITY: low]` — the average payout is what matters for downstream distribution decisions, not the outlier. **Don't fabricate** — if the scout sample doesn't include enough source-length entries to judge density (e.g., all entries are <60 seconds), mark `[CLIP-DENSITY: insufficient-source-length-to-judge]` and let the synthesis-agent or human assess.
+
 ### Anti-Patterns
 
 - **Naming patterns at n=2** — that's not a pattern, it's two entries. Hold to ≥3.
@@ -165,6 +190,8 @@ This widens the extractor's window beyond the scout's literal sample. The extrac
 - **Skipping INSUFFICIENT_DATA** — if a platform has n<3, don't pretend you can extract patterns. List entries observed only.
 - **Fabricated synthesis attribution** — tagging an archetype `[SYNTHESIS-CANDIDATE: cross-era]` with a guessed prior-era source. If the source isn't recognizable from real prior exposure, mark `[SYNTHESIS-CHECK: insufficient cross-context]` and let the brief skill or human verify. Wrong synthesis attributions burn downstream brief decisions.
 - **Over-tagging synthesis** — labeling every archetype as a synthesis candidate. Most archetypes are not. Hold the bar: visible structural overlap with a recognizable prior format, or skip.
+- **Over-tagging clip-density-high** — labeling every conversational/multi-speaker archetype as `[CLIP-DENSITY: high]`. The bar is *every-interaction-quotable*, not "has dialogue." Standard 1-on-1 interview format is `[CLIP-DENSITY: med]` at best; long-form podcast is typically `low`. Reserve `high` for genuinely structurally-clippable formats (Jubilee debates, founder-vs-N-skeptics, structured-conflict-per-segment).
+- **Fabricated clip-density from a single outlier** — judging the archetype's density off one viral clip rather than the average payout across the ≥3 entries. Density is a structural property of the format, not an artifact of one strong moment.
 
 ## Self-Check
 
@@ -177,3 +204,4 @@ This widens the extractor's window beyond the scout's literal sample. The extrac
 - [ ] CTA placement observed with frequency and citations
 - [ ] No fabricated patterns — every claim traces to ≥3 scout entries
 - [ ] Synthesis-heuristic check run on each ≥3-occurrence archetype (tagged `[SYNTHESIS-CANDIDATE: cross-category | cross-era | combined]` OR `[SYNTHESIS-CHECK: insufficient cross-context]` where applicable; never fabricated)
+- [ ] Clip-density characterization run on each ≥3-occurrence archetype (tagged `[CLIP-DENSITY: high | med | low]` OR `[CLIP-DENSITY: insufficient-source-length-to-judge]`; structural property, not single-outlier-driven)

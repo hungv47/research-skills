@@ -6,6 +6,21 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [3.0.2] - 2026-05-11
+
+`short-form-research/pattern-extractor-agent.md` gains a clip-density characterization pass. Sourced from Oren John's clipping-and-live ecosystem breakdown (2026-03-17). Closes the upstream half of the format-fit critic loop shipped in 3.0.1 + marketing-skills 4.0.2.
+
+### Changed
+- **`short-form-research/agents/pattern-extractor-agent.md`** — added a **clip-density characterization** technique parallel to the existing synthesis-heuristic check. Synthesis asks where a format *came from*; clip-density asks what a format *pays out* — how many quotable moments per minute of source. For every archetype crossing the ≥3-occurrence threshold, the extractor now tags `[CLIP-DENSITY: high | med | low]` based on three structural triggers (every-interaction-quotable / multi-cut-point-long-form / single-moment-or-none). Insufficient source-length to judge tags `[CLIP-DENSITY: insufficient-source-length-to-judge]` rather than guessing. Two new anti-patterns: over-tagging-high (treating any conversational archetype as high-density), and single-outlier-driven judgments (clip-density is a structural property of the format, not an artifact of one strong moment).
+
+### Why it matters downstream
+The tag is consumed by `marketing-skills/short-form-brief`'s format-fit critic — high-density archetypes are format-fit candidates for campaigns running a paid-CPM clipping distribution layer; low-density archetypes get flagged as "produces views but won't survive clipping bounty network" so the brief skill can route around the format if clipping is the planned distribution. Cross-stack companion: `marketing-skills@4.1.2` ships the `campaign-plan/references/distribution-models/clipping-and-live.md` reference that this tag is scored against.
+
+### Notes
+- Additive technique to an existing agent. No contract change for synthesis-agent or critic-agent downstream consumers; tags are purely additive metadata in the existing per-platform Hook Archetypes section.
+
+---
+
 ## [3.0.1] - 2026-05-10
 
 `short-form-research/pattern-extractor-agent.md` gains a synthesis-heuristic detection pass. Sourced from Jibran's 60M-views / #1-AppStore-in-3-days breakdown.
