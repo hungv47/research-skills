@@ -6,6 +6,22 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [5.0.0] - 2026-05-12
+
+Stack-major cut coordinated across the 4-stack marketplace to mark the post-tier-discipline stable era. Funnel-planning gets a new default route shape; the stack-orchestrator declares itself fast-tier. No skill removed or renamed; no API breaking change. Major bump signals the alignment, not breakage.
+
+### Changed
+- `funnel-planner` defaults to Route B (`target-setter → sanity-check → critic`, 3-agent). Route A (full 6-agent flow) reserved for `--deep` flag or 3+ initiatives spanning 2+ funnel models.
+- `funnel-planner` budget reclassified deep → standard, estimated cost $1-3 → $0.30-0.80.
+- `orchestrate-research` budget reclassified standard → fast; body declares it is a pure router (no agent dispatch, no critic gate).
+
+### Added
+- `funnel-planner` Route C: single-pass bump-update path for ≤3-sentence asks with a single initiative and a prior `targets-*.md` on disk. Falls back to Route B if any condition fails.
+
+Full review: `.agents/skill-artifacts/meta/records/2026-05-12-fresh-eyes-tier-discipline-phase-ab.md`
+
+---
+
 ## [3.0.3] - 2026-05-11
 
 `orchestrate-research` Step 1 starts from concrete disk state instead of asking the model to derive it. When you run `/orchestrate-research`, the skill now sees the actual artifact counts by domain, which top-level canonical folders exist (`research/`, `brand/`, `architecture/`), and the last 5 commits — all rendered inline before the manifest read kicks in.

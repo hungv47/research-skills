@@ -7,8 +7,8 @@ license: MIT
 metadata:
   author: hungv47
   version: "4.0.0"
-  budget: deep
-  estimated-cost: "$1-3"
+  budget: standard
+  estimated-cost: "$0.30-0.80"
 promptSignals:
   phrases:
     - "funnel model"
@@ -142,9 +142,11 @@ If user proceeds, dispatch. No cold-start — prioritize already did the upstrea
 
 ## Routing Logic
 
-### Route A: Full Analysis (Default)
+**Tier note (`metadata.budget: standard`):** Route B is the default for the modal case. Route A is the `--deep` upgrade for multi-funnel exercises. Route C is the auto-downgrade for bump-update asks. Pick the route at dispatch time; do not run a fuller route than the input justifies.
 
-For any target-setting exercise with multiple initiatives.
+### Route A: Full Analysis (`--deep` override OR 3+ initiatives spanning 2+ funnel models)
+
+Run when user explicitly passes `--deep`, OR when the initiative list spans 2+ distinct funnel models (e.g., PLG self-serve + SLG enterprise in one campaign). The parallel L1 + stress-test cost is justified when different baselines and sensitivities apply to different initiatives.
 
 ```
 Layer 1 (parallel):  model-selection-agent + baseline-collector-agent
@@ -152,18 +154,25 @@ Layer 1 (parallel):  model-selection-agent + baseline-collector-agent
 Layer 2 (sequential): target-setter-agent → sanity-check-agent → stress-test-agent → critic-agent
 ```
 
-### Route B: Quick Targets
+### Route B: Standard Path (Default)
 
-When the funnel model is already established and baselines are known.
+Modal target-setting: known or quickly-inferable funnel model, 1–2 initiatives, baselines available or industry-benchmark substitutable.
 
 ```
 target-setter-agent → sanity-check-agent → critic-agent
 ```
 
-Skip model-selection-agent, baseline-collector-agent, and stress-test-agent. Use when:
-- User already has a funnel model and baselines
-- Updating existing targets with new data
-- Single initiative needs a quick target
+Skip model-selection-agent, baseline-collector-agent, and stress-test-agent. target-setter-agent handles model + baseline inference inline (it's already reading product-context + prioritize). The three skipped agents add value on multi-funnel work; for the modal single-funnel case they're theater.
+
+### Route C: Fast Bump (auto-downgrade)
+
+Auto-triggered when ALL of: input is ≤3 sentences, single initiative, prior `targets-*.md` exists for the same initiative. Single-pass target-setter, no critic gate. Used for "bump the conversion target on X to Y%" kind of asks where the rigor is already on file.
+
+```
+target-setter-agent (read prior targets-*.md, apply delta, write)
+```
+
+If any condition fails (no prior file, multi-initiative, structural change to the funnel) → fall back to Route B.
 
 ---
 
@@ -202,8 +211,9 @@ Read `.agents/skill-artifacts/meta/sketches/prioritize-*.md` if it exists — se
 - What channels are active or planned? (Reference the 9-channel map: Search engines/GEO, Store/Listing platforms, Bounty/Info platforms, News, Forums/Communities, Social media, IRL, Mailbox, SMS)
 
 #### Route Selection
-- Default → Route A (Full Analysis)
-- If user provides baselines + funnel model → Route B
+- Default → Route B (Standard Path)
+- If `--deep` flag OR 3+ initiatives spanning 2+ funnel models → Route A (Full Analysis)
+- If input ≤3 sentences AND single initiative AND prior `targets-*.md` exists → Route C (Fast Bump); fall back to Route B if any condition fails
 
 ### Single-Agent Fallback
 
