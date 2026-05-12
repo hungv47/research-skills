@@ -33,7 +33,7 @@ icp-research ─────┤                       ├──→ prioritize �
 - **Consumes:** nothing (entry point)
 - **When to recommend:** no `research/product-context.md` exists, or it exists but is stale, or user's intent is audience-side ("who buys", "personas", "VoC").
 - **Cost:** $1–3 · 7 agents · deep budget · ~10 min
-- **Hard prerequisite for:** market-research, diagnose, prioritize, funnel-planner, brand-system, copywriting, campaign-plan, lp-brief, lp-optimization, cold-outreach, seo, system-architecture (12+ downstream consumers).
+- **Hard prerequisite for:** market-research, diagnose, prioritize, funnel-planner, brand-system, copywriting, campaign-plan, lp-brief, cold-outreach, seo, system-architecture (11+ downstream consumers).
 
 ### market-research
 

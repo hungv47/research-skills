@@ -259,7 +259,7 @@ After Pre-Dispatch, generate or update `research/product-context.md` — the can
 | [canonical term] | [precise definition] | [synonyms to avoid] |
 ```
 
-Canonical Terminology defines shared vocabulary for product and domain. Downstream skills (campaign-plan, copywriting, humanize, lp-optimization, lp-brief, design-brief) reference this for consistent language. Populate during scope interview — ask: "What do you call your users? Pricing tiers? Main workspace?" If no strong preferences, propose defaults from codebase (variable names, UI labels, docs).
+Canonical Terminology defines shared vocabulary for product and domain. Downstream skills (campaign-plan, copywriting, humanize, lp-brief, design-brief) reference this for consistent language. Populate during scope interview — ask: "What do you call your users? Pricing tiers? Main workspace?" If no strong preferences, propose defaults from codebase (variable names, UI labels, docs).
 
 All marketing skills read this file for product context.
 

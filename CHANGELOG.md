@@ -6,6 +6,16 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [5.0.1] - 2026-05-12
+
+Coordinated cross-stack cleanup of cross-references to `lp-optimization`, which was hard-removed in marketing-skills 6.0.0.
+
+### Changed
+- `skills/icp-research/SKILL.md` — dropped `lp-optimization` from the Canonical Terminology downstream-consumer list (kept campaign-plan, copywriting, humanize, lp-brief, design-brief).
+- `skills/orchestrate-research/references/workflow-graph.md` — dropped `lp-optimization` from the icp-research "Hard prerequisite for:" downstream-consumer list (count updated 12+ → 11+).
+
+No skill behavior changed; downstream-consumer accounting only.
+
 ## [5.0.0] - 2026-05-12
 
 Stack-major cut coordinated across the 4-stack marketplace to mark the post-tier-discipline stable era. Funnel-planning gets a new default route shape; the stack-orchestrator declares itself fast-tier. No skill removed or renamed; no API breaking change. Major bump signals the alignment, not breakage.
