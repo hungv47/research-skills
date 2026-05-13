@@ -9,17 +9,17 @@ market-research ──┐
                   ├→ prioritize → funnel-planner
 diagnose ─┘
 
-short-form-research → .agents/skill-artifacts/research/short-form-research.md (consumed by short-form-brief in marketing-skills)
+short-form-research → skills-resources/research/short-form-research.md (consumed by short-form-brief in marketing-skills)
 
 ## Artifacts
-Pipeline outputs write under `.agents/skill-artifacts/`; canonical audience/market records live in the top-level `research/` folder:
-- `research/product-context.md` (cross-stack canonical record — created by icp-research, consumed by 12+ skills)
+Pipeline outputs write under `skills-resources/`; canonical audience/market records live in the top-level `research/` folder:
+- `research/product-context.md` (cross-stack canonical record — created by icp-research, consumed by 13+ skills)
 - `research/icp-research.md` (canonical audience record from icp-research)
 - `research/market-research.md` (canonical market record from market-research)
-- `.agents/skill-artifacts/meta/records/diagnose-*.md`
-- `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
-- `.agents/skill-artifacts/meta/records/targets-*.md`
-- `.agents/skill-artifacts/research/short-form-research.md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
+- `skills-resources/meta/records/diagnose-*.md`
+- `skills-resources/meta/sketches/prioritize-*.md`
+- `skills-resources/meta/records/targets-*.md`
+- `skills-resources/research/short-form-research.md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
 
 ## Cross-Stack (Optional)
 All research skills can read `research/product-context.md` for business context.
@@ -30,7 +30,7 @@ Run `icp-research` first to create `research/product-context.md`, the canonical 
 
 ## Pre-Dispatch Protocol
 
-All 6 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). Cold Start (3-5 bundled questions, one round-trip) when context is missing; Warm Start (summary + optional probe) when artifacts/experience cover what's needed. Answers persist to `.agents/experience/{domain}.md` so subsequent skills never re-ask. `prioritize` and `funnel-planner` are hard-gated — no cold-start; recommend upstream (diagnose / prioritize) when gate fails. `short-form-research` writes to `.agents/experience/content.md`.
+All 6 skills follow the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`). Cold Start (3-5 bundled questions, one round-trip) when context is missing; Warm Start (summary + optional probe) when artifacts/experience cover what's needed. Answers persist to `skills-resources/experience/{domain}.md` so subsequent skills never re-ask. `prioritize` and `funnel-planner` are hard-gated — no cold-start; recommend upstream (diagnose / prioritize) when gate fails. `short-form-research` writes to `skills-resources/experience/content.md`.
 
 ## Complexity Routing
 
@@ -49,7 +49,7 @@ Every skill declares a `budget` tier in frontmatter: `fast`, `standard`, or `dee
 - **Upward (force deeper):** "run this thoroughly", "full analysis", "deep mode" → use the documented tier even on small inputs.
 - **Downward (`--fast`):** `--fast` flag on the slash command, OR phrases "fast mode" / "quick pass" / "skip the orchestration" in the same turn → force single-agent execution regardless of tier. No sub-agents, no critic gate, no rewrite loops, no warm-start Pre-Dispatch interrogation. Skill produces its core deliverable in one pass and ends with "Ran in --fast mode; rerun without the flag for full critique."
 
-**`--fast` does NOT skip Cold Start.** When no context is resolvable from artifacts or `.agents/experience/`, the skill still asks its bundled cold-start questions. `--fast` only bypasses multi-agent orchestration *after* context is resolved — it does not authorize hallucinating against missing audience/business/brand decisions.
+**`--fast` does NOT skip Cold Start.** When no context is resolvable from artifacts or `skills-resources/experience/`, the skill still asks its bundled cold-start questions. `--fast` only bypasses multi-agent orchestration *after* context is resolved — it does not authorize hallucinating against missing audience/business/brand decisions.
 
 **Safety gates supersede `--fast`.** Hard-gated skills (mandatory Pre-Dispatch hard blocks — `prioritize` and `funnel-planner` are hard-gated per the Pre-Dispatch section above) enforce gates regardless of `--fast`. The contract is "skip the heavy lift, not the guardrails."
 
@@ -59,7 +59,7 @@ Conflict rules: `--fast` on a `fast`-tier skill is a no-op. `--fast` + "run thor
 
 ## Manifest Spec
 
-State detection across all research skills (especially `orchestrate-research`) reads `.agents/manifest.json` — a derived index of artifact metadata (producer, date, status, schema version, staleness, summary). The manifest is rebuilt from artifact frontmatter by `meta-skills/scripts/manifest-sync.ts`; skills don't write to it directly. See [`../meta-skills/references/manifest-spec.md`](../meta-skills/references/manifest-spec.md) for the full contract. Skills that produce artifacts (icp-research, market-research, diagnose, prioritize, funnel-planner, short-form-research) must write the required frontmatter fields (`skill`, `version`, `date`, `status`) and call sync as their last step.
+State detection across all research skills (especially `orchestrate-research`) reads `skills-resources/manifest.json` — a derived index of artifact metadata (producer, date, status, schema version, staleness, summary). The manifest is rebuilt from artifact frontmatter by `meta-skills/scripts/manifest-sync.ts`; skills don't write to it directly. See [`../meta-skills/references/manifest-spec.md`](../meta-skills/references/manifest-spec.md) for the full contract. Skills that produce artifacts (icp-research, market-research, diagnose, prioritize, funnel-planner, short-form-research) must write the required frontmatter fields (`skill`, `version`, `date`, `status`) and call sync as their last step.
 
 ## Multi-Agent Skills
 

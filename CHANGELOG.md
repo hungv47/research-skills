@@ -6,6 +6,33 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [6.0.0] - 2026-05-13
+
+BREAKING: every artifact path migrates from `.agents/skill-artifacts/research/` to `skills-resources/research/`. Cross-stack consumer counts bumped from 12+ to 13+ to reflect the lp-eval consumer added in marketing-skills 6.1.0.
+
+### Changed (BREAKING)
+- `.agents/skill-artifacts/research/short-form-research/` → `skills-resources/research/short-form-research/`.
+- `.agents/skill-artifacts/research/short-form-eval/` → `skills-resources/research/short-form-eval/`.
+- All SKILL.md `produces:` / `consumes:` / `requires:` paths updated to the new tree.
+- `orchestrate-research` inline pre-dispatch bash scans `skills-resources/` instead of `.agents/skill-artifacts/`.
+- README, CLAUDE.md, and `orchestrate-research/references/workflow-graph.md` rewritten for new paths. The `12+`/`11+` downstream-consumer counts that were missed in 5.0.2 are now consistently `13+` across all surfaces.
+
+### Migration
+Move existing `research/` pipeline artifacts under `skills-resources/research/`. Then run `bun meta-skills/scripts/manifest-sync.ts` to regenerate the index.
+
+---
+
+## [5.0.2] - 2026-05-13
+
+Prompt-router calibration for current skill names.
+
+### Changed
+- `skills/prioritize/SKILL.md` prompt signals now catch "what should we build next? prioritize" style prompts instead of losing to `discover`.
+- `skills/funnel-planner/SKILL.md` prompt signals now catch "model the funnel from traffic to revenue" phrasing.
+- ICP downstream-consumer count references updated from 12+ to 13+ after adding loop-native landing-page evaluation.
+
+No artifact contract changes.
+
 ## [5.0.1] - 2026-05-12
 
 Coordinated cross-stack cleanup of cross-references to `lp-optimization`, which was hard-removed in marketing-skills 6.0.0.

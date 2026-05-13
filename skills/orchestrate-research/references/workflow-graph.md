@@ -14,7 +14,7 @@ icp-research ─────┤                       ├──→ prioritize �
 (short-form-research is parallel, content-side, not in main pipeline)
 ```
 
-**Foundation:** `icp-research` is the entry point. It produces `research/product-context.md` and `research/icp-research.md`, both consumed by 12+ downstream skills across all 4 stacks.
+**Foundation:** `icp-research` is the entry point. It produces `research/product-context.md` and `research/icp-research.md`, both consumed by 13+ downstream skills across all 4 stacks.
 
 **Branch point after icp:** `market-research` (proactive — what's the landscape?) and `diagnose` (reactive — why is this metric moving?). Either or both can run.
 
@@ -33,7 +33,7 @@ icp-research ─────┤                       ├──→ prioritize �
 - **Consumes:** nothing (entry point)
 - **When to recommend:** no `research/product-context.md` exists, or it exists but is stale, or user's intent is audience-side ("who buys", "personas", "VoC").
 - **Cost:** $1–3 · 7 agents · deep budget · ~10 min
-- **Hard prerequisite for:** market-research, diagnose, prioritize, funnel-planner, brand-system, copywriting, campaign-plan, lp-brief, cold-outreach, seo, system-architecture (11+ downstream consumers).
+- **Hard prerequisite for:** market-research, diagnose, prioritize, funnel-planner, brand-system, copywriting, campaign-plan, lp-brief, lp-eval, cold-outreach, ad-copy, seo, system-architecture (13+ downstream consumers).
 
 ### market-research
 
@@ -47,7 +47,7 @@ icp-research ─────┤                       ├──→ prioritize �
 ### diagnose
 
 - **Job:** root-cause a specific problem with logic trees + testable hypotheses.
-- **Produces:** `.agents/diagnose.md`
+- **Produces:** `skills-resources/meta/records/diagnose-*.md`
 - **Consumes:** `research/product-context.md`
 - **When to recommend:** icp done; user has a specific metric or problem ("why is signup conversion dropping", "why are users churning at week 2").
 - **Cost:** $1–3 · 6 agents · deep budget · ~8 min
@@ -56,8 +56,8 @@ icp-research ─────┤                       ├──→ prioritize �
 ### prioritize
 
 - **Job:** generate strategic options, ICE-score, draw the cut line.
-- **Produces:** `.agents/prioritize.md`
-- **Consumes:** `research/product-context.md` + at least one of `market-research.md` or `.agents/diagnose.md`
+- **Produces:** `skills-resources/meta/sketches/prioritize-*.md`
+- **Consumes:** `research/product-context.md` + at least one of `market-research.md` or `skills-resources/meta/records/diagnose-*.md`
 - **When to recommend:** at least one upstream artifact exists; user intent is "what should we do next", "rank these options", "which initiative to bet on".
 - **Cost:** $1–3 · 7 agents · deep budget · ~10 min
 - **Hard-gated:** if no upstream artifact, skill itself recommends running market-research or diagnose first.
@@ -65,8 +65,8 @@ icp-research ─────┤                       ├──→ prioritize �
 ### funnel-planner
 
 - **Job:** model funnels backward from revenue goal → traffic, conversion, unit economics.
-- **Produces:** `.agents/targets.md`
-- **Consumes:** `research/product-context.md`, `.agents/prioritize.md`
+- **Produces:** `skills-resources/meta/records/targets-*.md`
+- **Consumes:** `research/product-context.md`, `skills-resources/meta/sketches/prioritize-*.md`
 - **When to recommend:** prioritize is done; user intent is "set targets", "how much traffic", "LTV/CAC", "revenue math".
 - **Cost:** $1–3 · 6 agents · deep budget · ~8 min
 - **Hard-gated:** without prioritize.md, recommends running prioritize first.
@@ -74,7 +74,7 @@ icp-research ─────┤                       ├──→ prioritize �
 ### short-form-research (off-pipeline)
 
 - **Job:** discover what's working on TikTok/Reels/Shorts for a topic right now.
-- **Produces:** `.agents/mkt/short-form-research.md`
+- **Produces:** `skills-resources/marketing/short-form-research.md`
 - **Consumes:** nothing (uses live web)
 - **When to recommend:** user is content-side, not strategy-side — "what's trending", "TikTok research", "shorts best practices", "what hooks are working".
 - **Cost:** $1–3 · 6 agents · deep budget · ~10 min
@@ -108,7 +108,7 @@ icp-research ─────┤                       ├──→ prioritize �
 
 4. Present (1–3 options max). Wait for user confirmation.
 
-5. On confirmation, append breadcrumb to .agents/experience/research-workflow.md.
+5. On confirmation, append breadcrumb to skills-resources/experience/research-workflow.md.
 ```
 
 ---

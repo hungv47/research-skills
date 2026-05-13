@@ -65,9 +65,9 @@ routing:
 ## Critical Gates — Read First
 
 Non-negotiable constraints before dispatching any agent:
-1. **No guessed personas — VoC or interview evidence only.** Every attribute traces to product context, brief, user input, or VoC quotes. Fabricated personas mislead 12+ downstream skills.
+1. **No guessed personas — VoC or interview evidence only.** Every attribute traces to product context, brief, user input, or VoC quotes. Fabricated personas mislead 13+ downstream skills.
 2. **Don't skip habitat mapping.** IMC planning needs specific community names with density and engagement type. "They're on LinkedIn" is not actionable.
-3. **Max 2 personas.** More dilutes focus for 12+ downstream skills. If research reveals 4+ segments, force-rank by revenue potential.
+3. **Max 2 personas.** More dilutes focus for 13+ downstream skills. If research reveals 4+ segments, force-rank by revenue potential.
 4. **Stale product context (>30 days) → recommend re-running.** If `research/product-context.md` `Date` field is older than 30 days, warn and recommend re-run. If user proceeds, note "stale product context" in artifact header.
 
 ---
@@ -92,7 +92,7 @@ Critic agent verifies before delivery:
 ## Chain Position
 Previous: none (or any skill needing audience context) | Next: `campaign-plan`, `brand-system` (marketing-skills).
 
-**Foundational role:** Creates `research/product-context.md`, used by 12+ downstream skills across all 4 stacks (comms, strategy, prod, design). Run first for significantly better downstream output.
+**Foundational role:** Creates `research/product-context.md`, used by 13+ downstream skills across all 4 stacks (comms, strategy, prod, design). Run first for significantly better downstream output.
 **Re-run triggers:** Audience pivot, new market entry, major product changes, or quarterly for active products.
 
 ### Skill Deference
@@ -177,7 +177,7 @@ Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`
 **Read order:**
 1. **Auto-scan first** (skill-specific): README.md, marketing site, pricing page, /docs, package.json. Extract product/buyer/pricing/voice signals to fill in what you can before asking.
 2. Pipeline: existing `research/product-context.md` if present (re-run case).
-3. Experience: `.agents/experience/{product,audience}.md`.
+3. Experience: `skills-resources/experience/{product,audience}.md`.
 
 After scan + read, present findings and ask only about the gaps.
 
@@ -196,7 +196,7 @@ Need before dispatching: geo focus (US / EU / global / specific) and route (Quic
 
 ```
 icp-research builds the canonical product-context + audience profile that
-12+ downstream skills read. To start:
+13+ downstream skills read. To start:
 
 1. **Product** — one sentence: what it does, who pays for it.
 2. **Primary buyer** — role + company size + B2B/B2C.

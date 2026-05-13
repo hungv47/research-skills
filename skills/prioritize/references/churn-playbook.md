@@ -9,7 +9,7 @@
 - OR: User describes their churn situation
 
 ## Output
-- `.agents/churn-prevention.md`
+- `skills-resources/meta/records/churn-prevention.md`
 
 ## Quality Gate
 Before delivering, verify:

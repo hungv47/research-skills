@@ -50,7 +50,7 @@ Return a single markdown document with exactly these sections:
 
 **Rules:**
 - Stay within your output sections — do not produce pain profiles, habitat maps, or decision psychology.
-- Maximum 2 personas. This is a genuine constraint — more dilutes focus for 12+ downstream skills. If evidence suggests 4+ segments, force-rank by revenue potential and explain the cut.
+- Maximum 2 personas. This is a genuine constraint — more dilutes focus for 13+ downstream skills. If evidence suggests 4+ segments, force-rank by revenue potential and explain the cut.
 - If you receive **feedback**, prepend a `## Feedback Response` section explaining what you changed and why.
 - If you cannot complete a section due to missing input, write `[BLOCKED: describe what's missing]` instead of guessing.
 

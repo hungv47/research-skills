@@ -1,6 +1,6 @@
 ---
 name: prioritize
-description: "Brainstorms and prioritizes strategic solutions when the problem or goal is already clear — generates options, scores trade-offs, and recommends a path forward. Produces `.agents/skill-artifacts/meta/sketches/prioritize-*.md`. Not for diagnosing what the problem is (use diagnose) or engineering task lists (use task-breakdown). For setting numeric targets after prioritizing, see funnel-planner. For technical architecture of chosen initiatives, see system-architecture."
+description: "Brainstorms and prioritizes strategic solutions when the problem or goal is already clear — generates options, scores trade-offs, and recommends a path forward. Produces `skills-resources/meta/sketches/prioritize-*.md`. Not for diagnosing what the problem is (use diagnose) or engineering task lists (use task-breakdown). For setting numeric targets after prioritizing, see funnel-planner. For technical architecture of chosen initiatives, see system-architecture."
 argument-hint: "[problem or goal to solve]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -12,6 +12,7 @@ metadata:
 promptSignals:
   phrases:
     - "what to build first"
+    - "what should we build next"
     - "which to build first"
     - "prioritize initiatives"
     - "ice score"
@@ -19,6 +20,7 @@ promptSignals:
     - "strategic options"
     - "rank the options"
   allOf:
+    - [what, build, prioritize]
     - [solution, prioritize]
     - [initiative, rank]
   anyOf:
@@ -41,11 +43,11 @@ routing:
   position: pipeline
   lifecycle: sketch
   produces:
-    - skill-artifacts/meta/sketches/prioritize-*.md
+    - skills-resources/meta/sketches/prioritize-*.md
   consumes:
     - product-context.md
     - market-research.md
-    - skill-artifacts/meta/records/diagnose-*.md
+    - skills-resources/meta/records/diagnose-*.md
   requires: []
   defers-to:
     - skill: discover
@@ -75,10 +77,10 @@ routing:
 ---
 
 ## Inputs Required
-- Root cause from `.agents/skill-artifacts/meta/records/diagnose-*.md`
+- Root cause from `skills-resources/meta/records/diagnose-*.md`
 
 ## Output
-- `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
+- `skills-resources/meta/sketches/prioritize-*.md`
 
 ## Chain Position
 Previous: `diagnose` | Next: `funnel-planner` | Cross-stack: `system-architecture` (from product-skills — for initiatives requiring technical builds)
@@ -89,13 +91,13 @@ Previous: `diagnose` | Next: `funnel-planner` | Cross-stack: `system-architectur
 
 ## Pre-Dispatch
 
-This skill is **hard-gated** on `.agents/skill-artifacts/meta/records/diagnose-*.md`. No cold-start questioning — diagnose IS the upstream interview. Full Pre-Dispatch pattern: `meta-skills/references/pre-dispatch-protocol.md`.
+This skill is **hard-gated** on `skills-resources/meta/records/diagnose-*.md`. No cold-start questioning — diagnose IS the upstream interview. Full Pre-Dispatch pattern: `meta-skills/references/pre-dispatch-protocol.md`.
 
-**Hard gate:** `.agents/skill-artifacts/meta/records/diagnose-*.md` must exist. If missing → return **NEEDS_CONTEXT** and recommend running `diagnose` first. Do not substitute via interview — initiative ranking only makes sense against a validated root cause.
+**Hard gate:** `skills-resources/meta/records/diagnose-*.md` must exist. If missing → return **NEEDS_CONTEXT** and recommend running `diagnose` first. Do not substitute via interview — initiative ranking only makes sense against a validated root cause.
 
 **Read order (post-gate):**
-1. Pipeline: `.agents/skill-artifacts/meta/records/diagnose-*.md` (required). `research/product-context.md` (optional, for impact estimation). `research/icp-research.md` (optional, for audience-fit scoring).
-2. Experience: `.agents/experience/{goals,business,product}.md`.
+1. Pipeline: `skills-resources/meta/records/diagnose-*.md` (required). `research/product-context.md` (optional, for impact estimation). `research/icp-research.md` (optional, for audience-fit scoring).
+2. Experience: `skills-resources/experience/{goals,business,product}.md`.
 
 **Warm Start** (after gate passes):
 
@@ -164,7 +166,7 @@ Skip unconventional-agent. Use when:
 
 Check for `research/product-context.md`. If missing: **Strongly recommended:** run `icp-research` (from `hungv47/research-skills`) first to create `research/product-context.md` — this skill works without it but produces significantly better analysis with it. If the user prefers not to, ask the user 8 product questions (what, who, problem, differentiator, proof points, pricing, objections, voice) and save to `research/product-context.md`.
 
-If `.agents/skill-artifacts/meta/records/diagnose-*.md` has a `date` field older than 30 days, recommend re-running `diagnose` before proceeding — the root cause landscape may have shifted.
+If `skills-resources/meta/records/diagnose-*.md` has a `date` field older than 30 days, recommend re-running `diagnose` before proceeding — the root cause landscape may have shifted.
 
 #### Required Artifacts
 | Artifact | Source | If Missing |
@@ -178,7 +180,7 @@ If `.agents/skill-artifacts/meta/records/diagnose-*.md` has a `date` field older
 | `market-research.md` | market-research | Market gaps and competitive intelligence sharpen initiative generation |
 
 #### Root Cause Review
-Read `.agents/skill-artifacts/meta/records/diagnose-*.md`. Quote the root cause statement(s) and gap percentages. This anchor is necessary because generic growth ideas produce low-impact, unfocused initiatives.
+Read `skills-resources/meta/records/diagnose-*.md`. Quote the root cause statement(s) and gap percentages. This anchor is necessary because generic growth ideas produce low-impact, unfocused initiatives.
 
 #### Constraint Interview
 Interview for:
@@ -268,7 +270,7 @@ After both agents return:
 
 ## Out-of-Scope Persistence
 
-After delivering the artifact, write killed initiatives to `.agents/skill-artifacts/meta/out-of-scope/` so future sessions don't re-analyze them:
+After delivering the artifact, write killed initiatives to `skills-resources/meta/out-of-scope/` so future sessions don't re-analyze them:
 
 For each initiative marked **Kill** in the Decisions table:
 
@@ -280,7 +282,7 @@ For each initiative marked **Kill** in the Decisions table:
 **Revisit if:** [condition that would change the decision — e.g., "team grows to 5+", "root cause shifts to retention"]
 ```
 
-Save as `.agents/skill-artifacts/meta/out-of-scope/[kebab-case-name].md`. Create the directory if it doesn't exist.
+Save as `skills-resources/meta/out-of-scope/[kebab-case-name].md`. Create the directory if it doesn't exist.
 
 **Why:** Prevents re-debating settled decisions in future sessions. Navigate and discover read this directory before recommending workflows or asking about features already rejected.
 
@@ -477,7 +479,7 @@ Run `funnel-planner` to set targets for Restore Paid Targeting and Restore Socia
 Every run ends with explicit status:
 - **DONE** — initiatives generated, ICE-scored, ranked, cut-line drawn (≤3 above), kill criteria attached, critic PASS
 - **DONE_WITH_CONCERNS** — ranking complete but with sizing/impact uncertainty flagged at item level (e.g., effort estimates speculative, ICE inputs from interview not data)
-- **BLOCKED** — `.agents/skill-artifacts/meta/records/diagnose-*.md` missing AND no other root-cause source available; STOP gate per skill body — recommend `diagnose` first
+- **BLOCKED** — `skills-resources/meta/records/diagnose-*.md` missing AND no other root-cause source available; STOP gate per skill body — recommend `diagnose` first
 - **NEEDS_CONTEXT** — diagnose available but `research/product-context.md` missing for impact estimation; recommend `icp-research`
 
 ---

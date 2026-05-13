@@ -92,7 +92,7 @@ Builds logic trees, forms testable hypotheses, maps data requirements, and ident
 
 **Not for:** code bugs (use `code-cleanup`) or brainstorming solutions to a known problem (use `prioritize`)
 
-**Produces:** `.agents/diagnose.md`
+**Produces:** `skills-resources/meta/records/diagnose-*.md`
 
 ---
 
@@ -107,7 +107,7 @@ Generates strategic options, scores trade-offs with evidence-backed ICE scoring,
 
 **Not for:** diagnosing what the problem is (use `diagnose`) or engineering task lists (use `task-breakdown`)
 
-**Produces:** `.agents/prioritize.md`
+**Produces:** `skills-resources/meta/sketches/prioritize-*.md`
 
 ---
 
@@ -122,7 +122,7 @@ Models business funnels backward from revenue goals to required traffic, convers
 
 **Not for:** measuring activities against existing targets (the math is the plan; measurement comes after execution).
 
-**Produces:** `.agents/targets.md`
+**Produces:** `skills-resources/meta/records/targets-*.md`
 
 ---
 

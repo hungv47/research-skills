@@ -1,6 +1,6 @@
 ---
 name: short-form-eval
-description: "Closes the feedback loop for short-form video — scores published posts against the original brief and platform-intelligence references; produces signal-bearing pattern outputs that the gap-gate consumes. Reads `<post-url>` + `<brief-path>` + the matching short-form-research catalog, runs a 4-dimension provisional rubric (v0.1, mandatory revision after cycle 2-3), and writes a cycle report to `.agents/skill-artifacts/research/short-form-eval/[date]-cycle-N.md`. Not for pre-publish brief authoring (use short-form-brief in marketing-skills). Not for catalog discovery (use short-form-research). Cycle 1 weights observation 70 / scoring 30 to avoid overfitting on a single calibration pair."
+description: "Closes the feedback loop for short-form video — scores published posts against the original brief and platform-intelligence references; produces signal-bearing pattern outputs that the gap-gate consumes. Reads `<post-url>` + `<brief-path>` + the matching short-form-research catalog, runs a 4-dimension provisional rubric (v0.1, mandatory revision after cycle 2-3), and writes a cycle report to `skills-resources/research/short-form-eval/[date]-cycle-N.md`. Not for pre-publish brief authoring (use short-form-brief in marketing-skills). Not for catalog discovery (use short-form-research). Cycle 1 weights observation 70 / scoring 30 to avoid overfitting on a single calibration pair."
 argument-hint: "<post-url> <brief-path>"
 allowed-tools: Read Grep Glob Bash WebFetch Write
 license: MIT
@@ -41,10 +41,10 @@ routing:
   position: feedback-loop
   lifecycle: pipeline
   produces:
-    - .agents/skill-artifacts/research/short-form-eval/[date]-cycle-N.md
+    - skills-resources/research/short-form-eval/[date]-cycle-N.md
   consumes:
     - short-form-brief output (the per-asset brief that produced the post)
-    - .agents/skill-artifacts/research/short-form-research/[slug].md (platform-intelligence references)
+    - skills-resources/research/short-form-research/[slug].md (platform-intelligence references)
     - published post URL or saved post data
   requires: []
   defers-to:
@@ -89,11 +89,11 @@ A v0.1 rubric is a hedge against premature lock-in. The panel that scoped this s
 
 **Inputs:**
 - `<post-url>` (required) — public URL of the published short-form post
-- `<brief-path>` (required) — path to the brief artifact that produced the post (typically a short-form-brief output under `.agents/skill-artifacts/mkt/short-form-brief/...`)
+- `<brief-path>` (required) — path to the brief artifact that produced the post (typically a short-form-brief output under `skills-resources/marketing/short-form-brief/...`)
 - Implicit: matching `short-form-research` catalog entry for the post's topic+market — auto-resolved from brief frontmatter or asked once during Pre-Dispatch
-- Optional: prior cycle reports in `.agents/skill-artifacts/research/short-form-eval/` — for trend context
+- Optional: prior cycle reports in `skills-resources/research/short-form-eval/` — for trend context
 
-**Output:** `.agents/skill-artifacts/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md` — one file per cycle, single platform, single brief.
+**Output:** `skills-resources/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md` — one file per cycle, single platform, single brief.
 
 ## Quality Gate
 
@@ -143,7 +143,7 @@ Single route. The skill always runs the full Layer 1 + Layer 2 sequence — ther
    - pattern-extractor-agent (consumes both Layer 1 outputs)
    - critic-agent (4-rubric gate; FAIL → re-dispatch named agent with feedback)
 4. Critic FAIL → re-dispatch named agent(s) (max 2 cycles); after cycle 2, ship done_with_concerns
-5. Write artifact to .agents/skill-artifacts/research/short-form-eval/[date]-cycle-N.md and call manifest-sync
+5. Write artifact to skills-resources/research/short-form-eval/[date]-cycle-N.md and call manifest-sync
 ```
 
 ---
@@ -156,17 +156,17 @@ Run the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-pr
 
 **Read order:**
 1. `<brief-path>` — confirm it exists, parse frontmatter for topic, market, target platform, hook archetype claim.
-2. `.agents/skill-artifacts/research/short-form-eval/` — count prior cycles; the new cycle index is `prior + 1`.
-3. `.agents/skill-artifacts/research/short-form-research/[slug].md` — locate the matching catalog by topic+market; if multiple match, ask user once.
-4. `.agents/manifest.json` — confirm catalog freshness (warn if stale).
-5. `.agents/experience/content.md` — most recent entries for market and audience register.
+2. `skills-resources/research/short-form-eval/` — count prior cycles; the new cycle index is `prior + 1`.
+3. `skills-resources/research/short-form-research/[slug].md` — locate the matching catalog by topic+market; if multiple match, ask user once.
+4. `skills-resources/manifest.json` — confirm catalog freshness (warn if stale).
+5. `skills-resources/experience/content.md` — most recent entries for market and audience register.
 
 **Warm Start** (brief, post URL, and matching catalog all resolvable):
 
 ```
 Found:
 - brief: [path] (topic="[topic]", market="[market]", platform=[platform])
-- catalog: .agents/skill-artifacts/research/short-form-research/[slug].md (last refreshed [date])
+- catalog: skills-resources/research/short-form-research/[slug].md (last refreshed [date])
 - prior cycles for this catalog: N → this is cycle N+1
 - post URL: [url]
 
@@ -192,7 +192,7 @@ Short-form eval needs three things to score a post against a known reference. Tw
 Answer 1-3 in one response. I'll resolve the catalog and dispatch.
 ```
 
-**Write-back to `.agents/experience/content.md`:**
+**Write-back to `skills-resources/experience/content.md`:**
 
 | Q | Key |
 |---|---|
@@ -261,7 +261,7 @@ Critic returns one of:
 
 ## Output Artifact Structure
 
-`.agents/skill-artifacts/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md`:
+`skills-resources/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md`:
 
 ```yaml
 ---
@@ -341,5 +341,5 @@ Skill returns one of:
 
 ## Output
 
-- **Artifact:** `.agents/skill-artifacts/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md` (single file per cycle).
-- **Side effect:** call `bun meta-skills/scripts/manifest-sync.ts` after artifact write so `.agents/manifest.json` indexes the new cycle.
+- **Artifact:** `skills-resources/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md` (single file per cycle).
+- **Side effect:** call `bun meta-skills/scripts/manifest-sync.ts` after artifact write so `skills-resources/manifest.json` indexes the new cycle.

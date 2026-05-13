@@ -72,7 +72,7 @@ If `cycle_index == 1`:
 
 If `cycle_index >= 2`:
 - Balanced prose
-- Reference any prior cycle scores from `.agents/skill-artifacts/research/short-form-eval/` for trend
+- Reference any prior cycle scores from `skills-resources/research/short-form-eval/` for trend
 - If cycle is 2 or 3 and rubric is still v0.1: surface the **mandatory revision flag** in §Friction Notes
 
 ## Friction Notes (rubric revision input)

@@ -1,6 +1,6 @@
 ---
 name: diagnose
-description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/skill-artifacts/meta/records/diagnose-*.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use prioritize). Not for clarifying what to build or scoping an idea from scratch (use discover). For market-level trends and competitive context, see market-research."
+description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `skills-resources/meta/records/diagnose-*.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use prioritize). Not for clarifying what to build or scoping an idea from scratch (use discover). For market-level trends and competitive context, see market-research."
 argument-hint: "[metric or problem to diagnose]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -46,7 +46,7 @@ routing:
   position: pipeline
   lifecycle: snapshot
   produces:
-    - skill-artifacts/meta/records/diagnose-*.md
+    - skills-resources/meta/records/diagnose-*.md
   consumes:
     - product-context.md
   requires: []
@@ -82,7 +82,7 @@ routing:
 - A problem (metric decline, performance gap, strategic question)
 
 ## Output
-- `.agents/skill-artifacts/meta/records/diagnose-*.md`
+- `skills-resources/meta/records/diagnose-*.md`
 
 ## Chain Position
 Previous: none | Next: `prioritize`
@@ -104,8 +104,8 @@ Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`
 This skill **always cold-starts** — diagnose IS the diagnostic interview. The only "warm" path is a re-run after metric shift, where prior diagnose.md context informs the new run.
 
 **Read order:**
-1. Pipeline: prior `.agents/skill-artifacts/meta/records/diagnose-*.md` if re-running. `research/product-context.md` for context.
-2. Experience: `.agents/experience/goals.md` for prior metric history.
+1. Pipeline: prior `skills-resources/meta/records/diagnose-*.md` if re-running. `research/product-context.md` for context.
+2. Experience: `skills-resources/experience/goals.md` for prior metric history.
 
 **Cold Start:**
 

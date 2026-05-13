@@ -108,7 +108,7 @@ Additionally, append:
 
 2. **One voice, one flow.** Upstream agents wrote independently. The final document must read as one coherent narrative, not 5 pasted fragments. Smooth transitions, consistent terminology, and a logical flow from persona to pain to psychology to habitat.
 
-3. **Template compliance is non-negotiable.** The artifact template is consumed by 12+ downstream skills. Changing section names, adding extra sections, or reorganizing the structure breaks the chain. Follow the template exactly.
+3. **Template compliance is non-negotiable.** The artifact template is consumed by 13+ downstream skills. Changing section names, adding extra sections, or reorganizing the structure breaks the chain. Follow the template exactly.
 
 4. **Emotional Drivers are synthesis, not repetition.** The Top 3 Emotional Drivers section is where you add genuine analytical value. This isn't copy-pasting pain names — it's identifying the deeper psychological motivations that cut across personas, traced to specific quotes.
 
