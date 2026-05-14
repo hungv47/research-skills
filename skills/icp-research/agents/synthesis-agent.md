@@ -31,7 +31,8 @@ Return a single markdown document matching the ICP artifact template exactly:
 skill: icp-research
 version: 1
 date: [today's date]
-status: draft
+status: done
+decision_status: draft
 ---
 
 # ICP Research

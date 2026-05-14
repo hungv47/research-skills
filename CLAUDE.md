@@ -9,7 +9,7 @@ market-research ──┐
                   ├→ prioritize → funnel-planner
 diagnose ─┘
 
-short-form-research → skills-resources/research/short-form-research.md (consumed by short-form-brief in marketing-skills)
+short-form-research → skills-resources/research/short-form-research/[slug].md (consumed by short-form-brief in marketing-skills)
 
 ## Artifacts
 Pipeline outputs write under `skills-resources/`; canonical audience/market records live in the top-level `research/` folder:
@@ -19,7 +19,7 @@ Pipeline outputs write under `skills-resources/`; canonical audience/market reco
 - `skills-resources/meta/records/diagnose-*.md`
 - `skills-resources/meta/sketches/prioritize-*.md`
 - `skills-resources/meta/records/targets-*.md`
-- `skills-resources/research/short-form-research.md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
+- `skills-resources/research/short-form-research/[slug].md` (per-platform best-practice catalog — pipeline output, consumed by short-form-brief)
 
 ## Cross-Stack (Optional)
 All research skills can read `research/product-context.md` for business context.

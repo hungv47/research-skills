@@ -162,7 +162,7 @@ See [`../../../meta-skills/references/manifest-spec.md`](../../../meta-skills/re
 | `skills-resources/meta/sketches/prioritize-[slug].md` | Initiative ranking exists. |
 | `skills-resources/meta/records/targets-[slug].md` | Funnel targets are set. |
 | `skills-resources/research/short-form-research/[slug].md` | Per-platform short-form catalog exists. |
-| `skills-resources/research/short-form-eval/[date]-cycle-N.md` | Short-form eval cycles have run; pattern-log entries available. |
+| `skills-resources/marketing/loops/*/evals/[date]-cycle-N.md` | Short-form eval cycles have run inside marketing loops; pattern-log entries available. |
 | `skills-resources/experience/audience.md` | Cold-start audience answers persisted. |
 | `skills-resources/experience/business.md` | Business model context persisted. |
 | `skills-resources/experience/research-workflow.md` | Prior `/orchestrate-research` session left a breadcrumb. |

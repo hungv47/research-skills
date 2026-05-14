@@ -74,7 +74,7 @@ icp-research ─────┤                       ├──→ prioritize �
 ### short-form-research (off-pipeline)
 
 - **Job:** discover what's working on TikTok/Reels/Shorts for a topic right now.
-- **Produces:** `skills-resources/marketing/short-form-research.md`
+- **Produces:** `skills-resources/research/short-form-research/[slug].md`
 - **Consumes:** nothing (uses live web)
 - **When to recommend:** user is content-side, not strategy-side — "what's trending", "TikTok research", "shorts best practices", "what hooks are working".
 - **Cost:** $1–3 · 6 agents · deep budget · ~10 min

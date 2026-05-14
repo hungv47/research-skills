@@ -1,7 +1,7 @@
 ---
 name: short-form-eval
-description: "Closes the feedback loop for short-form video — scores published posts against the original brief and platform-intelligence references; produces signal-bearing pattern outputs that the gap-gate consumes. Reads `<post-url>` + `<brief-path>` + the matching short-form-research catalog, runs a 4-dimension provisional rubric (v0.1, mandatory revision after cycle 2-3), and writes a cycle report to `skills-resources/research/short-form-eval/[date]-cycle-N.md`. Not for pre-publish brief authoring (use short-form-brief in marketing-skills). Not for catalog discovery (use short-form-research). Cycle 1 weights observation 70 / scoring 30 to avoid overfitting on a single calibration pair."
-argument-hint: "<post-url> <brief-path>"
+description: "Closes the feedback loop for short-form video — scores published posts against the original brief and platform-intelligence references inside an existing marketing eval loop. Reads `<loop-slug>` + `<post-url>` + `<brief-path>` + the matching short-form-research catalog, runs a 4-dimension provisional rubric (v0.1, mandatory revision after cycle 2-3), writes a cycle report to `skills-resources/marketing/loops/[slug]/evals/[date]-cycle-N.md`, and appends `results.tsv`. Not for pre-publish brief authoring (use short-form-brief in marketing-skills). Not for catalog discovery (use short-form-research). Cycle 1 weights observation 70 / scoring 30 to avoid overfitting on a single calibration pair."
+argument-hint: "<loop-slug> <post-url> <brief-path>"
 allowed-tools: Read Grep Glob Bash WebFetch Write
 license: MIT
 metadata:
@@ -39,10 +39,15 @@ routing:
     - post-publish
     - short-form
   position: feedback-loop
-  lifecycle: pipeline
+  lifecycle: evaluation
   produces:
-    - skills-resources/research/short-form-eval/[date]-cycle-N.md
+    - skills-resources/marketing/loops/[slug]/evals/[date]-cycle-N.md
+    - skills-resources/marketing/loops/[slug]/results.tsv
+    - skills-resources/marketing/loops/[slug]/learnings.md
   consumes:
+    - skills-resources/marketing/loops/[slug]/program.md
+    - skills-resources/marketing/loops/[slug]/context.md
+    - skills-resources/marketing/loops/[slug]/results.tsv
     - short-form-brief output (the per-asset brief that produced the post)
     - skills-resources/research/short-form-research/[slug].md (platform-intelligence references)
     - published post URL or saved post data
@@ -52,6 +57,8 @@ routing:
       when: "no platform-intel catalog exists for the topic+market — eval against missing reference is meaningless"
     - skill: short-form-brief
       when: "user wants pre-publish brief authoring, not post-publish scoring"
+    - skill: eval-loop
+      when: "no existing marketing loop workspace exists for this short-form initiative"
   parallel-with: []
   interactive: false
   estimated-complexity: medium
@@ -88,12 +95,13 @@ A v0.1 rubric is a hedge against premature lock-in. The panel that scoped this s
 ## Inputs / Output
 
 **Inputs:**
+- `<loop-slug>` (required) — existing marketing loop under `skills-resources/marketing/loops/[slug]/`
 - `<post-url>` (required) — public URL of the published short-form post
 - `<brief-path>` (required) — path to the brief artifact that produced the post (typically a short-form-brief output under `skills-resources/marketing/short-form-brief/...`)
 - Implicit: matching `short-form-research` catalog entry for the post's topic+market — auto-resolved from brief frontmatter or asked once during Pre-Dispatch
-- Optional: prior cycle reports in `skills-resources/research/short-form-eval/` — for trend context
+- Optional: prior cycle reports and `results.tsv` rows in `skills-resources/marketing/loops/[slug]/` — for trend context
 
-**Output:** `skills-resources/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md` — one file per cycle, single platform, single brief.
+**Output:** `skills-resources/marketing/loops/[slug]/evals/[YYYY-MM-DD]-cycle-N.md` — one file per cycle, single platform, single brief — plus a validated `results.tsv` row appended with `meta-skills/scripts/append-loop-result.ts`.
 
 ## Quality Gate
 
@@ -143,7 +151,7 @@ Single route. The skill always runs the full Layer 1 + Layer 2 sequence — ther
    - pattern-extractor-agent (consumes both Layer 1 outputs)
    - critic-agent (4-rubric gate; FAIL → re-dispatch named agent with feedback)
 4. Critic FAIL → re-dispatch named agent(s) (max 2 cycles); after cycle 2, ship done_with_concerns
-5. Write artifact to skills-resources/research/short-form-eval/[date]-cycle-N.md and call manifest-sync
+5. Write artifact to `skills-resources/marketing/loops/[slug]/evals/[date]-cycle-N.md`, append `results.tsv` with `append-loop-result.ts`, then call manifest-sync
 ```
 
 ---
@@ -152,11 +160,11 @@ Single route. The skill always runs the full Layer 1 + Layer 2 sequence — ther
 
 Run the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`).
 
-**Needed dimensions:** post URL (positional arg), brief path (positional arg), platform-intel catalog (auto-resolve from brief frontmatter), cycle index (auto-increment from prior cycles in the artifact directory).
+**Needed dimensions:** loop slug (positional arg), post URL (positional arg), brief path (positional arg), platform-intel catalog (auto-resolve from brief frontmatter), cycle index (auto-increment from loop `results.tsv`).
 
 **Read order:**
-1. `<brief-path>` — confirm it exists, parse frontmatter for topic, market, target platform, hook archetype claim.
-2. `skills-resources/research/short-form-eval/` — count prior cycles; the new cycle index is `prior + 1`.
+1. `skills-resources/marketing/loops/[loop-slug]/program.md`, `context.md`, and `results.tsv` — confirm the loop exists and find the next cycle.
+2. `<brief-path>` — confirm it exists, parse frontmatter for topic, market, target platform, hook archetype claim.
 3. `skills-resources/research/short-form-research/[slug].md` — locate the matching catalog by topic+market; if multiple match, ask user once.
 4. `skills-resources/manifest.json` — confirm catalog freshness (warn if stale).
 5. `skills-resources/experience/content.md` — most recent entries for market and audience register.
@@ -166,8 +174,9 @@ Run the canonical Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-pr
 ```
 Found:
 - brief: [path] (topic="[topic]", market="[market]", platform=[platform])
+- loop: skills-resources/marketing/loops/[slug]/
 - catalog: skills-resources/research/short-form-research/[slug].md (last refreshed [date])
-- prior cycles for this catalog: N → this is cycle N+1
+- prior cycles in results.tsv: N → this is cycle N+1
 - post URL: [url]
 
 Cycle 1 reminder: 70% observation / 30% scoring. Rubric is provisional v0.1.
@@ -180,16 +189,19 @@ Proceed with eval, or override?
 ```
 Short-form eval needs three things to score a post against a known reference. Two are in the args; one is missing.
 
-1. Topic of this post (one phrase — to match a short-form-research catalog):
+1. Existing marketing loop slug for this short-form initiative:
+   [free text — create one first with eval-loop if none exists]
+
+2. Topic of this post (one phrase — to match a short-form-research catalog):
    [free text]
 
-2. Target market the post was aimed at:
+3. Target market the post was aimed at:
    (a) Vietnam   (b) US/global English   (c) SEA   (d) Other: ___
 
-3. Platform of this post:
+4. Platform of this post:
    (a) TikTok   (b) Reels   (c) Shorts   (d) X video   (e) LinkedIn video
 
-Answer 1-3 in one response. I'll resolve the catalog and dispatch.
+Answer 1-4 in one response. I'll resolve the loop, catalog, and dispatch.
 ```
 
 **Write-back to `skills-resources/experience/content.md`:**
@@ -261,7 +273,7 @@ Critic returns one of:
 
 ## Output Artifact Structure
 
-`skills-resources/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md`:
+`skills-resources/marketing/loops/[slug]/evals/[YYYY-MM-DD]-cycle-N.md`:
 
 ```yaml
 ---
@@ -269,6 +281,7 @@ type: short-form-eval
 status: done | done_with_concerns | blocked | needs_context
 date: [YYYY-MM-DD]
 cycle: [N]
+loop: [slug]
 post_url: [url]
 brief_path: [path]
 catalog_path: [path]
@@ -341,5 +354,5 @@ Skill returns one of:
 
 ## Output
 
-- **Artifact:** `skills-resources/research/short-form-eval/[YYYY-MM-DD]-cycle-N.md` (single file per cycle).
-- **Side effect:** call `bun meta-skills/scripts/manifest-sync.ts` after artifact write so `skills-resources/manifest.json` indexes the new cycle.
+- **Artifact:** `skills-resources/marketing/loops/[slug]/evals/[YYYY-MM-DD]-cycle-N.md` (single file per cycle).
+- **Side effects:** append `skills-resources/marketing/loops/[slug]/results.tsv` with `append-loop-result.ts`, then call `bun meta-skills/scripts/manifest-sync.ts` after artifact write so `skills-resources/manifest.json` indexes the new cycle.

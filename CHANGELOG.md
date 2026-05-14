@@ -6,6 +6,18 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 
 ---
 
+## [6.0.1] - 2026-05-14
+
+Fresh-eyes patch for the 6.0.0 artifact-tree migration.
+
+### Fixed
+- `short-form-research` and its synthesis agent now agree on the canonical output contract: `skills-resources/research/short-form-research/[slug].md`.
+- `short-form-eval` is now loop-native in the docs and routing contract: it requires an existing marketing loop, writes eval artifacts under `skills-resources/marketing/loops/[slug]/evals/`, and appends the loop `results.tsv` instead of writing standalone research eval files.
+- `orchestrate-research` fallback state detection now points at loop-local short-form eval artifacts.
+- `icp-research` synthesis template now emits an allowed manifest `status: done` and records draft state in `decision_status`, avoiding invalid generated frontmatter.
+
+---
+
 ## [6.0.0] - 2026-05-13
 
 BREAKING: every artifact path migrates from `.agents/skill-artifacts/research/` to `skills-resources/research/`. Cross-stack consumer counts bumped from 12+ to 13+ to reflect the lp-eval consumer added in marketing-skills 6.1.0.
