@@ -118,8 +118,8 @@ You do NOT:
 
 **Good entry:**
 ```
-- url: https://www.tiktok.com/@devbuilder/video/7234567890123456789
-- creator: @devbuilder
+- url: [platform video URL]
+- creator: [creator handle]
 - publish_date: 2026-04-22
 - observable_metrics:
   - views: 184000
@@ -140,8 +140,8 @@ You do NOT:
 
 **Bad entry (drop or mark INSUFFICIENT):**
 ```
-- url: https://www.tiktok.com/@randomcreator/video/1234567
-- creator: @randomcreator
+- url: [platform video URL]
+- creator: [creator handle]
 - publish_date: unknown
 - observable_metrics: all metric_unobserved
 - opening_1_3s: visual unclear from thumbnail

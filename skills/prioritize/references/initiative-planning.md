@@ -84,7 +84,7 @@ Any section scoring 1 = proposal needs rework before execution.
 # Initiative Plan: [Name]
 
 **Date:** [today]
-**Source:** prioritize.md, Initiative #[N]
+**Pattern basis:** internal research synthesis.
 **Owner:** [name]
 
 ## Phase 1: Foundation
@@ -125,7 +125,7 @@ Any section scoring 1 = proposal needs rework before execution.
 |-------------|--------|----------|--------|------|
 | Primary | [metric] | [current] | [goal] | [date] |
 | Leading | [weekly signal] | [current] | [direction] | Weekly |
-| Lagging | [long-term] | [current] | [goal] | [date] |
+| Lagging | [pattern-derived] | [current] | [goal] | [date] |
 
 **Review Cadence:** [frequency + format]
 

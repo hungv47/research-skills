@@ -11,8 +11,8 @@ This file tracks stack-level releases. SKILL.md files describe current behavior;
 Fresh-eyes patch for the 6.0.0 artifact-tree migration.
 
 ### Fixed
-- `short-form-research` and its synthesis agent now agree on the canonical output contract: `skills-resources/research/short-form-research/[slug].md`.
-- `short-form-eval` is now loop-native in the docs and routing contract: it requires an existing marketing loop, writes eval artifacts under `skills-resources/marketing/loops/[slug]/evals/`, and appends the loop `results.tsv` instead of writing standalone research eval files.
+- `short-form-research` and its synthesis agent now agree on the canonical output contract: `.agents/skill-artifacts/research/short-form-research/[slug].md`.
+- `short-form-eval` is now loop-native in the docs and routing contract: it requires an existing marketing loop, writes eval artifacts under `skills-resources/loops/[slug]/evals/`, and appends the loop `results.tsv` instead of writing standalone research eval files.
 - `orchestrate-research` fallback state detection now points at loop-local short-form eval artifacts.
 - `icp-research` synthesis template now emits an allowed manifest `status: done` and records draft state in `decision_status`, avoiding invalid generated frontmatter.
 
@@ -20,17 +20,17 @@ Fresh-eyes patch for the 6.0.0 artifact-tree migration.
 
 ## [6.0.0] - 2026-05-13
 
-BREAKING: every artifact path migrates from `.agents/skill-artifacts/research/` to `skills-resources/research/`. Cross-stack consumer counts bumped from 12+ to 13+ to reflect the lp-eval consumer added in marketing-skills 6.1.0.
+BREAKING: every artifact path migrates from `.agents/skill-artifacts/research/` to `.agents/skill-artifacts/research/`. Cross-stack consumer counts bumped from 12+ to 13+ to reflect the lp-eval consumer added in marketing-skills 6.1.0.
 
 ### Changed (BREAKING)
-- `.agents/skill-artifacts/research/short-form-research/` → `skills-resources/research/short-form-research/`.
-- `.agents/skill-artifacts/research/short-form-eval/` → `skills-resources/research/short-form-eval/`.
+- `.agents/skill-artifacts/research/short-form-research/` → `.agents/skill-artifacts/research/short-form-research/`.
+- `.agents/skill-artifacts/research/short-form-eval/` → `.agents/skill-artifacts/research/short-form-eval/`.
 - All SKILL.md `produces:` / `consumes:` / `requires:` paths updated to the new tree.
-- `orchestrate-research` inline pre-dispatch bash scans `skills-resources/` instead of `.agents/skill-artifacts/`.
+- `orchestrate-research` inline pre-dispatch bash scans `.agents/skill-artifacts/` instead of `.agents/skill-artifacts/`.
 - README, CLAUDE.md, and `orchestrate-research/references/workflow-graph.md` rewritten for new paths. The `12+`/`11+` downstream-consumer counts that were missed in 5.0.2 are now consistently `13+` across all surfaces.
 
 ### Migration
-Move existing `research/` pipeline artifacts under `skills-resources/research/`. Then run `bun meta-skills/scripts/manifest-sync.ts` to regenerate the index.
+Move existing `research/` pipeline artifacts under `.agents/skill-artifacts/research/`. Then run `bun meta-skills/scripts/manifest-sync.ts` to regenerate the index.
 
 ---
 

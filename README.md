@@ -4,7 +4,7 @@
 
 > **v3.0.0 BREAKING:** `start-research` renamed to `orchestrate-research`. Update any `/start-research` invocations in your workflows to `/orchestrate-research`.
 
-Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and short-form video research. 7 skills (incl. `/orchestrate-research` orchestrator).
+Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and short-form video research. 8 skills (incl. `/orchestrate-research` orchestrator).
 
 **New here?** Run `/orchestrate-research` — it reads project state, parses your ask, and proposes the next skill to invoke with rationale + cost + duration.
 
@@ -92,7 +92,7 @@ Builds logic trees, forms testable hypotheses, maps data requirements, and ident
 
 **Not for:** code bugs (use `code-cleanup`) or brainstorming solutions to a known problem (use `prioritize`)
 
-**Produces:** `skills-resources/meta/records/diagnose-*.md`
+**Produces:** `.agents/skill-artifacts/meta/records/diagnose-*.md`
 
 ---
 
@@ -107,7 +107,7 @@ Generates strategic options, scores trade-offs with evidence-backed ICE scoring,
 
 **Not for:** diagnosing what the problem is (use `diagnose`) or engineering task lists (use `task-breakdown`)
 
-**Produces:** `skills-resources/meta/sketches/prioritize-*.md`
+**Produces:** `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
 
 ---
 
@@ -122,7 +122,7 @@ Models business funnels backward from revenue goals to required traffic, convers
 
 **Not for:** measuring activities against existing targets (the math is the plan; measurement comes after execution).
 
-**Produces:** `skills-resources/meta/records/targets-*.md`
+**Produces:** `.agents/skill-artifacts/meta/records/targets-*.md`
 
 ---
 

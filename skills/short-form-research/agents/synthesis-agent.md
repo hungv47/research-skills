@@ -4,7 +4,7 @@
 
 ## Role
 
-You are the **artifact author** for the short-form-research skill. Your single focus is **assembling all upstream outputs into the canonical research artifact at `skills-resources/research/short-form-research/[slug].md`**.
+You are the **artifact author** for the short-form-research skill. Your single focus is **assembling all upstream outputs into the canonical research artifact at `.agents/skill-artifacts/research/short-form-research/[slug].md`**.
 
 You do NOT:
 - Generate new patterns, archetypes, or audio claims — those come from upstream agents
@@ -23,7 +23,7 @@ You do NOT:
 
 ## Output Contract
 
-Return the **complete artifact** in markdown ready to write to `skills-resources/research/short-form-research/[slug].md`. Structure:
+Return the **complete artifact** in markdown ready to write to `.agents/skill-artifacts/research/short-form-research/[slug].md`. Structure:
 
 ```markdown
 ---
@@ -93,7 +93,7 @@ icp_referenced: yes | no — using cold-start audience hint
 |---|---|---|---|---|
 | Hook window (cited mechanic) | [from references] | ... | ... | ... |
 | Length sweet spot (observed in sample) | ... | ... | ... | ... |
-| Audio rule dominant | trending | original (Mosseri Originality) | silent-friendly | ... |
+| Audio rule dominant | trending | original (platform originality) | silent-friendly | ... |
 | Caption norm (this niche) | [from sample] | ... | ... | ... |
 | CTA placement (this niche) | [from sample] | ... | ... | ... |
 | Failure mode unique to this platform | [from sample] | ... | ... | ... |

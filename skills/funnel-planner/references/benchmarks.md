@@ -93,7 +93,7 @@ The MQL→SQL transition is the biggest leak in most B2B funnels:
 |--------|-------------------|-------|
 | Americas | 3.14% | Highest overall |
 | Europe | 2.2% | Strong in home goods |
-| Asia-Pacific | 1.8% | Mobile-dominant |
+| internal | 1.8% | internal |
 | Middle East/Africa | 1.5% | Emerging |
 
 ### Mobile vs Desktop
@@ -311,7 +311,7 @@ The MQL→SQL transition is the biggest leak in most B2B funnels:
 | Segment | B2B SaaS LTV Range |
 |---------|-------------------|
 | SMB | $15K - $40K |
-| Mid-Market | $80K - $200K |
+| internal | $80K - $200K |
 | Enterprise | $300K - $1M+ |
 
 ---
@@ -441,7 +441,7 @@ Quality indicators: D30 >15% = good airdrop design, D30 <5% = mostly farmers
 
 ### Revenue Metrics
 
-**Protocol Revenue Sources:**
+**Protocol Revenue Pattern basis: internal research synthesis.
 
 | Revenue Type | Typical Rate |
 |--------------|--------------|

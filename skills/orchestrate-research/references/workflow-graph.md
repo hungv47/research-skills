@@ -7,9 +7,9 @@ Canonical pipeline definition for the research-skills stack. `orchestrate-resear
 ## The Pipeline
 
 ```
-                  ┌──→ market-research ──┐
-icp-research ─────┤                       ├──→ prioritize ──→ funnel-planner
-                  └──→ diagnose ──────────┘
+ ┌──→ market-research ──┐
+icp-research ─────┤ ├──→ prioritize ──→ funnel-planner
+ └──→ diagnose ──────────┘
 
 (short-form-research is parallel, content-side, not in main pipeline)
 ```
@@ -47,7 +47,7 @@ icp-research ─────┤                       ├──→ prioritize �
 ### diagnose
 
 - **Job:** root-cause a specific problem with logic trees + testable hypotheses.
-- **Produces:** `skills-resources/meta/records/diagnose-*.md`
+- **Produces:** `.agents/skill-artifacts/meta/records/diagnose-*.md`
 - **Consumes:** `research/product-context.md`
 - **When to recommend:** icp done; user has a specific metric or problem ("why is signup conversion dropping", "why are users churning at week 2").
 - **Cost:** $1–3 · 6 agents · deep budget · ~8 min
@@ -56,8 +56,8 @@ icp-research ─────┤                       ├──→ prioritize �
 ### prioritize
 
 - **Job:** generate strategic options, ICE-score, draw the cut line.
-- **Produces:** `skills-resources/meta/sketches/prioritize-*.md`
-- **Consumes:** `research/product-context.md` + at least one of `market-research.md` or `skills-resources/meta/records/diagnose-*.md`
+- **Produces:** `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
+- **Consumes:** `research/product-context.md` + at least one of `market-research.md` or `.agents/skill-artifacts/meta/records/diagnose-*.md`
 - **When to recommend:** at least one upstream artifact exists; user intent is "what should we do next", "rank these options", "which initiative to bet on".
 - **Cost:** $1–3 · 7 agents · deep budget · ~10 min
 - **Hard-gated:** if no upstream artifact, skill itself recommends running market-research or diagnose first.
@@ -65,8 +65,8 @@ icp-research ─────┤                       ├──→ prioritize �
 ### funnel-planner
 
 - **Job:** model funnels backward from revenue goal → traffic, conversion, unit economics.
-- **Produces:** `skills-resources/meta/records/targets-*.md`
-- **Consumes:** `research/product-context.md`, `skills-resources/meta/sketches/prioritize-*.md`
+- **Produces:** `.agents/skill-artifacts/meta/records/targets-*.md`
+- **Consumes:** `research/product-context.md`, `.agents/skill-artifacts/meta/sketches/prioritize-*.md`
 - **When to recommend:** prioritize is done; user intent is "set targets", "how much traffic", "LTV/CAC", "revenue math".
 - **Cost:** $1–3 · 6 agents · deep budget · ~8 min
 - **Hard-gated:** without prioritize.md, recommends running prioritize first.
@@ -74,7 +74,7 @@ icp-research ─────┤                       ├──→ prioritize �
 ### short-form-research (off-pipeline)
 
 - **Job:** discover what's working on TikTok/Reels/Shorts for a topic right now.
-- **Produces:** `skills-resources/research/short-form-research/[slug].md`
+- **Produces:** `.agents/skill-artifacts/research/short-form-research/[slug].md`
 - **Consumes:** nothing (uses live web)
 - **When to recommend:** user is content-side, not strategy-side — "what's trending", "TikTok research", "shorts best practices", "what hooks are working".
 - **Cost:** $1–3 · 6 agents · deep budget · ~10 min
@@ -88,27 +88,27 @@ icp-research ─────┤                       ├──→ prioritize �
 1. Read state: which artifacts exist? Are any stale?
 
 2. Parse user intent → bucket:
-   - audience-research      → icp-research
-   - market-mapping         → market-research
-   - problem-diagnosis      → diagnose
-   - option-ranking         → prioritize
-   - target-setting         → funnel-planner
-   - short-form-content     → short-form-research
-   - empty / ambiguous      → ask scoping question
+ - audience-research → icp-research
+ - market-mapping → market-research
+ - problem-diagnosis → diagnose
+ - option-ranking → prioritize
+ - target-setting → funnel-planner
+ - short-form-content → short-form-research
+ - empty / ambiguous → ask scoping question
 
 3. Apply gates (in order, first match wins):
-   a. Intent needs upstream artifact that's missing?
-      → recommend the upstream skill first, with rationale.
-   b. Intent matches a skill whose upstream is done?
-      → recommend that skill.
-   c. Intent ambiguous AND multiple downstream skills available?
-      → propose 2 options with one-line rationale each.
-   d. All 5 core artifacts done?
-      → user is past the pipeline. Suggest cross-stack (orchestrate-marketing / orchestrate-product).
+ a. Intent needs upstream artifact that's missing?
+ → recommend the upstream skill first, with rationale.
+ b. Intent matches a skill whose upstream is done?
+ → recommend that skill.
+ c. Intent ambiguous AND multiple downstream skills available?
+ → propose 2 options with one-line rationale each.
+ d. All 5 core artifacts done?
+ → user is past the pipeline. Suggest cross-stack (orchestrate-marketing / orchestrate-product).
 
 4. Present (1–3 options max). Wait for user confirmation.
 
-5. On confirmation, append breadcrumb to skills-resources/experience/research-workflow.md.
+5. On confirmation, append breadcrumb to.agents/experience/research-workflow.md.
 ```
 
 ---

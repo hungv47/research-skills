@@ -229,7 +229,7 @@ Apply these to every Key Result:
 
 When stress-testing reveals these answers, push back:
 
-| Response | Red Flag | Follow-up |
+| Response | Red Flag | internal |
 |----------|----------|-----------|
 | "It's hard to measure" | Unmeasurable KR | "Then how will we know if we succeeded?" |
 | "Leadership wants this" | No ownership | "Who's accountable for making it happen?" |

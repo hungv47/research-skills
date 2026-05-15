@@ -13,22 +13,22 @@ Worked examples of MECE logic trees for common business problems.
 ```
 Churn rate increasing (6% → 3% target)
 ├── Voluntary churn (user decides to leave)
-│   ├── Product-related
-│   │   ├── Feature gaps (missing functionality users need)
-│   │   ├── Bugs/reliability (product not working as expected)
-│   │   └── UX friction (too hard to use)
-│   ├── Value-related
-│   │   ├── Not achieving desired outcome
-│   │   ├── Found better alternative
-│   │   └── Price no longer justified
-│   └── Circumstance-related
-│       ├── Budget cuts / downsizing
-│       ├── Role change (no longer needs product)
-│       └── Project completed (temporary need)
+│ ├── Product-related
+│ │ ├── Feature gaps (missing functionality users need)
+│ │ ├── Bugs/reliability (product not working as expected)
+│ │ └── UX friction (too hard to use)
+│ ├── Value-related
+│ │ ├── Not achieving desired outcome
+│ │ ├── Found better alternative
+│ │ └── Price no longer justified
+│ └── Circumstance-related
+│ ├── Budget cuts / downsizing
+│ ├── Role change (no longer needs product)
+│ └── Project completed (temporary need)
 └── Involuntary churn (payment failure)
-    ├── Card expiration
-    ├── Insufficient funds
-    └── Payment processing errors
+ ├── Card expiration
+ ├── Insufficient funds
+ └── Payment processing errors
 ```
 
 ### Hypotheses
@@ -51,26 +51,26 @@ Churn rate increasing (6% → 3% target)
 ```
 Conversion rate dropping (1.2% → 2.5% target)
 ├── Traffic quality declining
-│   ├── Channel mix shift (more low-intent traffic)
-│   │   ├── Paid traffic targeting changed
-│   │   ├── Organic traffic keyword shift
-│   │   └── Social traffic increase (browsing, not buying)
-│   ├── Audience mismatch (reaching wrong people)
-│   └── Seasonality / external factors
+│ ├── Channel mix shift (more low-intent traffic)
+│ │ ├── Paid traffic targeting changed
+│ │ ├── Organic traffic keyword shift
+│ │ └── Social traffic increase (browsing, not buying)
+│ ├── Audience mismatch (reaching wrong people)
+│ └── Seasonality / external factors
 ├── On-site experience degrading
-│   ├── Page load speed
-│   ├── Mobile experience broken
-│   ├── Navigation / UX changes
-│   └── Content / product page quality
+│ ├── Page load speed
+│ ├── Mobile experience broken
+│ ├── Navigation / UX changes
+│ └── Content / product page quality
 ├── Purchase friction increasing
-│   ├── Checkout flow issues
-│   ├── Payment method problems
-│   ├── Shipping cost/time surprises
-│   └── Trust signals missing or broken
+│ ├── Checkout flow issues
+│ ├── Payment method problems
+│ ├── Shipping cost/time surprises
+│ └── Trust signals missing or broken
 └── Offer/pricing issues
-    ├── Price competitiveness
-    ├── Promotion changes
-    └── Stock availability
+ ├── Price competitiveness
+ ├── Promotion changes
+ └── Stock availability
 ```
 
 ### Data Requirements (Top 3 Hypotheses)
@@ -92,29 +92,29 @@ Conversion rate dropping (1.2% → 2.5% target)
 ```
 Content-attributed pipeline declining ($200K → $500K target)
 ├── Reach problem (fewer people seeing content)
-│   ├── Organic search traffic declining
-│   │   ├── Algorithm changes
-│   │   ├── Keyword rankings lost
-│   │   └── Fewer pages indexed
-│   ├── Social distribution declining
-│   │   ├── Posting frequency decreased
-│   │   ├── Engagement rates down
-│   │   └── Algorithm reach reduction
-│   └── Email distribution declining
-│       ├── List size shrinking
-│       └── Open/click rates declining
+│ ├── Organic search traffic declining
+│ │ ├── Algorithm changes
+│ │ ├── Keyword rankings lost
+│ │ └── Fewer pages indexed
+│ ├── Social distribution declining
+│ │ ├── Posting frequency decreased
+│ │ ├── Engagement rates down
+│ │ └── Algorithm reach reduction
+│ └── Email distribution declining
+│ ├── List size shrinking
+│ └── Open/click rates declining
 ├── Engagement problem (people see but don't engage)
-│   ├── Content quality declining
-│   ├── Topics not resonating
-│   └── Format mismatch with audience
+│ ├── Content quality declining
+│ ├── Topics not resonating
+│ └── Format mismatch with audience
 ├── Conversion problem (engage but don't convert)
-│   ├── CTAs not effective
-│   ├── Conversion path broken
-│   └── Offer not compelling
+│ ├── CTAs not effective
+│ ├── Conversion path broken
+│ └── Offer not compelling
 └── Attribution problem (converting but not tracked)
-    ├── Tracking broken
-    ├── Attribution model changed
-    └── Pipeline reporting methodology changed
+ ├── Tracking broken
+ ├── Attribution model changed
+ └── Pipeline reporting methodology changed
 ```
 
 ### Key Insight
@@ -132,30 +132,30 @@ Always include "measurement changed" as a branch. Sometimes the problem isn't pe
 ```
 Pipeline velocity declining
 ├── Deal cycle lengthening (90 → 60 days)
-│   ├── Top-of-funnel stage extending
-│   │   ├── Lead quality declining (more unqualified leads entering)
-│   │   ├── SDR response time increasing
-│   │   └── Qualification criteria unclear
-│   ├── Middle-of-funnel stage extending
-│   │   ├── Stakeholder count increasing (more approvals needed)
-│   │   ├── Competitive evaluation taking longer
-│   │   └── Proof-of-concept/trial taking longer
-│   └── Bottom-of-funnel stage extending
-│       ├── Legal/procurement delays
-│       ├── Budget approval process changed
-│       └── Champion turnover mid-deal
+│ ├── Top-of-funnel stage extending
+│ │ ├── Lead quality declining (more unqualified leads entering)
+│ │ ├── SDR response time increasing
+│ │ └── Qualification criteria unclear
+│ ├── Middle-of-funnel stage extending
+│ │ ├── Stakeholder count increasing (more approvals needed)
+│ │ ├── Competitive evaluation taking longer
+│ │ └── Proof-of-concept/trial taking longer
+│ └── Bottom-of-funnel stage extending
+│ ├── Legal/procurement delays
+│ ├── Budget approval process changed
+│ └── Champion turnover mid-deal
 └── Win rate declining (18% → 25%)
-    ├── Competitive losses increasing
-    │   ├── Feature gap vs. specific competitor
-    │   ├── Price competitiveness
-    │   └── Brand perception / trust
-    ├── No-decision losses increasing
-    │   ├── Status quo preference growing
-    │   ├── Budget prioritization shifting
-    │   └── Business case not compelling enough
-    └── Qualification issues
-        ├── Wrong-fit deals entering pipeline
-        └── ICP definition needs updating
+ ├── Competitive losses increasing
+ │ ├── Feature gap vs. specific competitor
+ │ ├── Price competitiveness
+ │ └── Brand perception / trust
+ ├── No-decision losses increasing
+ │ ├── Status quo preference growing
+ │ ├── Budget prioritization shifting
+ │ └── Business case not compelling enough
+ └── Qualification issues
+ ├── Wrong-fit deals entering pipeline
+ └── ICP definition needs updating
 ```
 
 ### Segmentation Approach

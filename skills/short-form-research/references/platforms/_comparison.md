@@ -16,12 +16,12 @@ Diff table skeleton consumed by `synthesis-agent` to build the artifact's Cross-
 | **Algorithm signal weighted** | completion (~70%) + saves | watch time + reshares | swipe-through + loop + shares | replies + reposts | comments + reshares |
 | **Caption discovery weight** | medium (first 50-80 chars) | low (first 125 chars) | high (title carries weight) | high (tweet text alongside) | medium-high (first 200 chars) |
 | **Hashtag count typical** | 3-5 | 3-5 | 1-3 | 1-3 (less weighted) | 3-5 (professional) |
-| **CTA placement dominant** | overlay 0:20-0:25 | end-card | end-card + pinned comment | reply-prompt in tweet | comment-prompt in caption |
+| **CTA placement dominant** | overlay 0:20-0:25 | internal | end-card + pinned comment | reply-prompt in tweet | comment-prompt in caption |
 | **Captions mandatory?** | yes | yes | yes | yes | yes (+29% engagement cited) |
 | **Sound-off viewing %** | 85%+ | 85%+ | 85%+ | 85%+ | majority |
 | **Watermark policy** | other-platform watermarks may downrank | TikTok watermark detected and downranked | tolerates | tolerates | feels off-platform — avoid |
 | **Loop-friendly ending?** | not weighted | not weighted | yes — direct ranking signal | not applicable | not applicable |
-| **Originality bias?** | trending-OK | yes — Mosseri Jan 2025 | tolerates remix | tolerates | tolerates |
+| **Originality bias?** | internal | yes — platform leadership's Jan 2025 | tolerates remix | tolerates | tolerates |
 
 ---
 
@@ -35,7 +35,7 @@ For each row in the artifact's Cross-Platform Comparison table:
 
 Example artifact cell:
 ```
-| Length sweet spot | 15-60s (reference) / 22-35s (sample n=12) | ... | ... |
+| Length sweet spot | 15-60s (reference) / 22-35s (sample n=12) |... |... |
 ```
 
 ---

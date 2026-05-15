@@ -1,6 +1,6 @@
 ---
 name: funnel-planner
-description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `skills-resources/meta/records/targets-*.md`. For campaign planning, see campaign-plan."
+description: "Models business funnels with numeric targets — works backward from revenue goals to required traffic, conversion rates, and unit economics. Produces `.agents/skill-artifacts/meta/records/targets-*.md`. For campaign planning, see campaign-plan."
 argument-hint: "[revenue target or business goal]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -48,12 +48,12 @@ routing:
   position: pipeline
   lifecycle: snapshot
   produces:
-    - skills-resources/meta/records/targets-*.md
+    - .agents/skill-artifacts/meta/records/targets-*.md
   consumes:
     - product-context.md
-    - skills-resources/meta/sketches/prioritize-*.md
+    - .agents/skill-artifacts/meta/sketches/prioritize-*.md
   requires:
-    - skills-resources/meta/sketches/prioritize-*.md
+    - .agents/skill-artifacts/meta/sketches/prioritize-*.md
   defers-to: []
   parallel-with: []
   interactive: false
@@ -85,15 +85,15 @@ Improvement factors and benchmarks here are evidence-backed starting points. Act
 
 ## Inputs Required
 
-**Hard gate:** `skills-resources/meta/sketches/prioritize-*.md` must exist before any agent dispatches. Targets without prioritized initiatives are arbitrary — the whole skill structure (improvement factors, kill criteria, stress tests) presupposes a ranked list of initiatives to set targets for.
+**Hard gate:** `.agents/skill-artifacts/meta/sketches/prioritize-*.md` must exist before any agent dispatches. Targets without prioritized initiatives are arbitrary — the whole skill structure (improvement factors, kill criteria, stress tests) presupposes a ranked list of initiatives to set targets for.
 
-If `skills-resources/meta/sketches/prioritize-*.md` is missing → return **NEEDS_CONTEXT** and recommend running `prioritize` first. Do NOT substitute via interview — the prioritization rigor (ICE scoring, cut-line, kill criteria) is what makes targets defensible, and a quick interview cannot reproduce it.
+If `.agents/skill-artifacts/meta/sketches/prioritize-*.md` is missing → return **NEEDS_CONTEXT** and recommend running `prioritize` first. Do NOT substitute via interview — the prioritization rigor (ICE scoring, cut-line, kill criteria) is what makes targets defensible, and a quick interview cannot reproduce it.
 
 Optional inputs (read if present, no gate):
 - `research/product-context.md` — improves baseline benchmark selection (run `icp-research` to populate)
 
 ## Output
-- `skills-resources/meta/records/targets-*.md`
+- `.agents/skill-artifacts/meta/records/targets-*.md`
 
 ## Chain Position
 Previous: `prioritize` | Next: terminal (consumed by campaign-plan and downstream measurement when one is in place)
@@ -104,13 +104,13 @@ Previous: `prioritize` | Next: terminal (consumed by campaign-plan and downstrea
 
 ## Pre-Dispatch
 
-This skill is **hard-gated** on `skills-resources/meta/sketches/prioritize-*.md`. No cold-start questioning — prioritize is the upstream that produces the ranked initiatives this skill sets targets for. Full Pre-Dispatch pattern: `meta-skills/references/pre-dispatch-protocol.md`.
+This skill is **hard-gated** on `.agents/skill-artifacts/meta/sketches/prioritize-*.md`. No cold-start questioning — prioritize is the upstream that produces the ranked initiatives this skill sets targets for. Full Pre-Dispatch pattern: `references/_shared/pre-dispatch-protocol.md`.
 
-**Hard gate (already declared in Inputs Required above):** `skills-resources/meta/sketches/prioritize-*.md` must exist. Missing → **NEEDS_CONTEXT**, recommend `prioritize` first. Targets without prioritized initiatives are arbitrary; INTERVIEW substitute cannot reproduce the ICE rigor.
+**Hard gate (already declared in Inputs Required above):** `.agents/skill-artifacts/meta/sketches/prioritize-*.md` must exist. Missing → **NEEDS_CONTEXT**, recommend `prioritize` first. Targets without prioritized initiatives are arbitrary; INTERVIEW substitute cannot reproduce the ICE rigor.
 
 **Read order (post-gate):**
-1. Pipeline: `skills-resources/meta/sketches/prioritize-*.md` (required). `research/product-context.md` (optional, for benchmark selection).
-2. Experience: `skills-resources/experience/{business,goals}.md` for growth motion + funnel state.
+1. Pipeline: `.agents/skill-artifacts/meta/sketches/prioritize-*.md` (required). `research/product-context.md` (optional, for benchmark selection).
+2. Experience: `.agents/experience/{business,goals}.md` for growth motion + funnel state.
 
 **Warm Start** (after gate passes):
 
@@ -204,7 +204,7 @@ Before selecting a funnel model, determine the growth motion:
 - **Hybrid** — Both motions coexist (e.g., self-serve for SMB + sales-assisted for enterprise). Designate which is primary for target-setting.
 
 #### Initiative Review
-Read `skills-resources/meta/sketches/prioritize-*.md` if it exists — set a target for each "Proceed" initiative. If it doesn't exist, interview for:
+Read `.agents/skill-artifacts/meta/sketches/prioritize-*.md` if it exists — set a target for each "Proceed" initiative. If it doesn't exist, interview for:
 - What business type? (SaaS, e-commerce, B2B services, etc.)
 - What stage? (Pre-launch, early traction, growth, mature)
 - What is the growth motion? (PLG, SLG, or Hybrid — see above)

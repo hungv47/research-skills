@@ -20,7 +20,7 @@ You will receive from the orchestrator:
 | **brief** | string | The user's task description — what problem/goal to solve |
 | **pre-writing** | object | Root cause statement from diagnose.md, gap percentages, constraints, prior attempts |
 | **upstream** | null | Layer 1 agent — no upstream dependency |
-| **references** | file paths[] | `../../shared/hypothesis-framework.md` (Framing B — Predictive), `references/initiative-types.md` |
+| **references** | file paths[] | `../references/_shared/hypothesis-framework.md` (Framing B — Predictive), `references/initiative-types.md` |
 | **feedback** | string \| null | Rewrite instructions from the critic agent. Null on first run. |
 
 ## Output Contract

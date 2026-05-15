@@ -1,6 +1,6 @@
 # Instagram Reels — Platform Reference
 
-Cited mechanics, format specs, and known failure modes for Reels. Mosseri's January 2025 ranking-signal post is the load-bearing source for current algo behavior.
+Cited mechanics, format specs, and known failure modes for Reels. platform leadership's January 2025 ranking-signal post is the load-bearing source for current algo behavior.
 
 ---
 
@@ -18,7 +18,7 @@ Cited mechanics, format specs, and known failure modes for Reels. Mosseri's Janu
 
 **Source-doc URLs (verify and record `last_updated`):**
 - Meta Creator — Reels Specs: https://creators.instagram.com/reels (verify section URLs at run-time)
-- Mosseri ranking-signal posts (Threads, Instagram, Meta blog) — most recent post supersedes older
+- platform leadership's ranking-signal posts (Threads, Instagram, Meta blog) — most recent post supersedes older
 
 ---
 
@@ -26,11 +26,11 @@ Cited mechanics, format specs, and known failure modes for Reels. Mosseri's Janu
 
 | Signal | Value | Source |
 |---|---|---|
-| Watch time | **#1 ranking signal** (Mosseri Jan 2025) | Mosseri — Threads/Instagram post Jan 2025 |
-| Originality Score | recycled clips penalized; original audio favored | Mosseri Jan 2025 |
+| Watch time | **#1 ranking signal** (platform leadership's Jan 2025) | platform leadership's — Threads/Instagram post Jan 2025 |
+| Originality Score | recycled clips penalized; original audio favored | platform leadership's Jan 2025 |
 | 3s drop-off | up to 50% of viewers lost in first 3s | Meta Creator — retention guidance + third-party data |
-| 3s hold rate threshold | >60% → outperforms <40% by 5-10× total reach | Third-party data (Hootsuite / Later trend reporting) |
-| Reshares | weighted heavily for distribution | Mosseri Jan 2025 |
+| 3s hold rate threshold | >60% → outperforms <40% by 5-10× total reach | Third-party data (a third-party benchmark / third-party cohort trend reporting) |
+| Reshares | weighted heavily for distribution | platform leadership's Jan 2025 |
 
 **Originality penalty specifics:**
 - TikTok-watermarked Reels are detected and downranked
@@ -61,7 +61,7 @@ Cited mechanics, format specs, and known failure modes for Reels. Mosseri's Janu
 ## Hashtag / Discovery Mechanics
 
 - 3-5 relevant hashtags (in caption or comments)
-- Mosseri has indicated hashtags carry less weight than they used to — they're discovery-aid, not ranking-driver
+- platform leadership's has indicated hashtags carry less weight than they used to — they're discovery-aid, not ranking-driver
 - Niche hashtags > broad ones for Reels reach
 
 ---
@@ -95,6 +95,6 @@ Cited mechanics, format specs, and known failure modes for Reels. Mosseri's Janu
 ## Verification Checklist
 
 - [ ] Meta Creator Reels page resolves and `last_updated` checked
-- [ ] Most recent Mosseri post (Threads / Instagram / blog) read for any updates to ranking signals
+- [ ] Most recent platform leadership's post (Threads / Instagram / blog) read for any updates to ranking signals
 - [ ] Originality Score still in effect (no policy reversal)
 - [ ] Update `mechanics_sources_verified[]` in artifact frontmatter

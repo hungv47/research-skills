@@ -90,7 +90,7 @@ From scout entries, capture:
 | TikTok | tiktok.com/business/creativecenter (Sounds tab) | Public, shows usage trajectory |
 | TikTok | Third-party trend trackers (e.g., trendpop, exolyt) | Use cautiously — verify against creator center |
 | Reels | Instagram audio libraries (less public visibility) | Often inferred from creator-tool screenshots in articles |
-| Mosseri / Meta blog | brand-policy posts | For Originality Score context, not specific tracks |
+| Official platform blog | brand-policy posts | For platform originality context, not specific tracks |
 
 **Decay risk assessment:**
 
@@ -101,7 +101,7 @@ From scout entries, capture:
 **Per-platform notes:**
 
 - **TikTok:** trending sounds boost reach. Recommend the brief skill use a "named track + ID" approach.
-- **Reels:** Mosseri's Originality Score (Jan 2025) penalizes content with reused audio that's been recycled across many creators. Brief should either use original audio OR a track confirmed-fresh in this niche.
+- **Reels:** platform originality classifiers may penalize content with reused audio that's been recycled across many creators. Brief should either use original audio OR a track confirmed-fresh in this niche.
 
 ### Anti-Patterns
 

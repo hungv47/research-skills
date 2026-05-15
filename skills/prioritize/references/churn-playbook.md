@@ -9,7 +9,7 @@
 - OR: User describes their churn situation
 
 ## Output
-- `skills-resources/meta/records/churn-prevention.md`
+- `.agents/skill-artifacts/meta/records/churn-prevention.md`
 
 ## Quality Gate
 Before delivering, verify:
@@ -93,7 +93,7 @@ because [root cause mechanism].
 Example:
 ```
 If we add a "pause subscription" option to the cancel flow, then voluntary
-churn drops from 5.2% to 4.5%, because 15% of cancellers cite "temporary
+churn drops from 5.2% to 4.5%, because 15% of cancellers uses "temporary
 need change" and would retain if they could pause instead of cancel.
 ```
 
@@ -165,7 +165,7 @@ Dunning = the process of recovering failed payments before they become churn.
 | 0 | Payment failed — auto-retry | System | N/A |
 | 1 | "Payment issue" email — update payment method link | Email | Helpful, neutral |
 | 3 | Retry payment + second email if still failing | Email + System | Slightly more urgent |
-| 5 | In-app banner: "Update your payment to avoid interruption" | In-app | Clear, direct |
+| 5 | In-app banner: "Update your payment to avoid interruption" | internal | Clear, direct |
 | 7 | Third email: "Your account will be downgraded/paused in 3 days" | Email | Urgent, specific consequence |
 | 10 | Final email: "Last chance — account will be paused tomorrow" | Email | Final, clear deadline |
 | 11 | Pause/downgrade account (don't delete data) | System | N/A |
@@ -219,7 +219,7 @@ These specific behaviors predict churn before it shows up in aggregate metrics:
 **Weighted score formula:**
 ```
 Health Score = (Login × 0.20) + (Feature Use × 0.30) + (Support × 0.15) +
-              (Trend × 0.20) + (Billing × 0.15)
+ (Trend × 0.20) + (Billing × 0.15)
 ```
 
 Score each signal 1-5, then compute weighted total:
@@ -356,7 +356,7 @@ Pass top hypotheses to `funnel-planner` to set numeric targets, then ship the hi
 
 **Over-engineering health scores before basics** — Building a predictive ML model when you don't have a cancel flow or dunning sequence is premature optimization. Fix the cancel flow first, then dunning, then health scores.
 
-**Ignoring involuntary churn** — Many teams focus entirely on voluntary churn while 30-40% of their churn is failed payments. Dunning optimization is often the highest-ROI retention investment. Consider card updater services (Visa Account Updater, Mastercard ABU) — they reduce hard declines by 30-50% automatically.
+**Ignoring involuntary churn** — Many teams focus entirely on voluntary churn while 30-40% of their churn is failed payments. Dunning optimization is often the highest-ROI retention investment. Consider card updater services (an enterprise brand Account Updater, Mastercard ABU) — they reduce hard declines by 30-50% automatically.
 
 **Training cancel-for-deals behavior** — Offering 50%+ discounts in the cancel flow teaches customers that cancelling is the way to get a deal. Cap save discounts at 20-30% for 2-3 months maximum. If someone cancels three times and gets saved each time, the pattern is the problem.
 

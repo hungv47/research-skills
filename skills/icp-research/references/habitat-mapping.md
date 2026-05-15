@@ -67,7 +67,7 @@ A single habitat can serve multiple roles for different personas.
 |---|---|---|---|---|---|
 | LinkedIn | Industry groups | "Product Managers Network" | H | Engager | Discovery |
 | Reddit | Subreddits | r/projectmanagement | M | Searcher | Trust |
-| YouTube | Educators | @MondayDotCom | M | Subscriber | Discovery |
+| YouTube | Educators | practitioner source | M | Subscriber | Discovery |
 | Slack | Professional communities | "Product School Alumni" | H | Creator | Trust |
 | G2 | Review platform | G2.com/project-management | M | Searcher | Trust |
 | Email | Newsletter | The PM Newsletter | H | Subscriber | Discovery |

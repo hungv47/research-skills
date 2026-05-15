@@ -1,6 +1,6 @@
 ---
 name: diagnose
-description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `skills-resources/meta/records/diagnose-*.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use prioritize). Not for clarifying what to build or scoping an idea from scratch (use discover). For market-level trends and competitive context, see market-research."
+description: "Structured diagnosis of business and strategic problems — builds logic trees, forms testable hypotheses, and identifies root causes with evidence. Produces `.agents/skill-artifacts/meta/records/diagnose-*.md`. Not for code bugs (use code-cleanup) or brainstorming solutions to a known problem (use prioritize). Not for clarifying what to build or scoping an idea from scratch (use discover). For market-level trends and competitive context, see market-research."
 argument-hint: "[metric or problem to diagnose]"
 allowed-tools: Read Grep Glob Bash WebSearch WebFetch
 license: MIT
@@ -46,7 +46,7 @@ routing:
   position: pipeline
   lifecycle: snapshot
   produces:
-    - skills-resources/meta/records/diagnose-*.md
+    - .agents/skill-artifacts/meta/records/diagnose-*.md
   consumes:
     - product-context.md
   requires: []
@@ -82,7 +82,7 @@ routing:
 - A problem (metric decline, performance gap, strategic question)
 
 ## Output
-- `skills-resources/meta/records/diagnose-*.md`
+- `.agents/skill-artifacts/meta/records/diagnose-*.md`
 
 ## Chain Position
 Previous: none | Next: `prioritize`
@@ -97,15 +97,15 @@ Previous: none | Next: `prioritize`
 
 ## Pre-Dispatch
 
-Run the Pre-Dispatch protocol (`meta-skills/references/pre-dispatch-protocol.md`).
+Run the Pre-Dispatch protocol (`references/_shared/pre-dispatch-protocol.md`).
 
 **Needed dimensions:** metric (specific name), current value + period, target + deadline, what's been tried.
 
 This skill **always cold-starts** — diagnose IS the diagnostic interview. The only "warm" path is a re-run after metric shift, where prior diagnose.md context informs the new run.
 
 **Read order:**
-1. Pipeline: prior `skills-resources/meta/records/diagnose-*.md` if re-running. `research/product-context.md` for context.
-2. Experience: `skills-resources/experience/goals.md` for prior metric history.
+1. Pipeline: prior `.agents/skill-artifacts/meta/records/diagnose-*.md` if re-running. `research/product-context.md` for context.
+2. Experience: `.agents/experience/goals.md` for prior metric history.
 
 **Cold Start:**
 
@@ -227,7 +227,7 @@ After both agents return:
 
 ### Step 1: hypothesis-agent
 - **Input:** Merged L1 output (tree + external factors)
-- **References:** `../shared/hypothesis-framework.md` (use Framing A — Diagnostic), `references/logic-tree-examples.md`
+- **References:** `references/_shared/hypothesis-framework.md` (use Framing A — Diagnostic), `references/logic-tree-examples.md`
 - **Expected output:** If/Then/Because hypotheses for every leaf, ranked by testability (speed x impact)
 
 ### Step 2: data-mapper-agent
@@ -530,4 +530,4 @@ Every run ends with explicit status:
 
 - [references/watanabe-framework.md](references/watanabe-framework.md) — MECE principles and tree-building
 - [references/logic-tree-examples.md](references/logic-tree-examples.md) — 4 worked examples (SaaS churn, e-commerce, content ROI, B2B pipeline)
-- [../shared/hypothesis-framework.md](../shared/hypothesis-framework.md) — If/Then/Because structure and templates by problem type (use Framing A — Diagnostic)
+- [references/_shared/hypothesis-framework.md](references/_shared/hypothesis-framework.md) — If/Then/Because structure and templates by problem type (use Framing A — Diagnostic)

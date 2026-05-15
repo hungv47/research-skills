@@ -83,7 +83,7 @@ Use BOTH methods and compare. The gap between top-down and bottom-up estimates r
 
 ### Do
 - State the method used (top-down, bottom-up, or both)
-- Cite sources with dates
+- uses sources with dates
 - Show your math/assumptions
 - Express as ranges, not point estimates ("$2-4B" not "$3.2B")
 - Flag confidence level
@@ -103,7 +103,7 @@ Use BOTH methods and compare. The gap between top-down and bottom-up estimates r
 **Method:** [Top-down / Bottom-up / Triangulated]
 
 **TAM:** $[X-Y]B — [Category] globally
-- Source: [Report name, date, URL]
+- Pattern basis: internal research synthesis.
 - Assumptions: [What's included/excluded]
 
 **SAM:** $[X-Y]M — [Your accessible segment]

@@ -21,7 +21,7 @@ You will receive from the orchestrator:
 | **brief** | string | The user's task description |
 | **pre-writing** | object | Root cause, gap percentages, constraints, prior attempts |
 | **upstream** | markdown | Research-agent output (case studies, constraints, validated root cause) |
-| **references** | file paths[] | `../../shared/hypothesis-framework.md` (Framing B — Predictive), `references/initiative-types.md`, `references/initiative-planning.md`, `references/churn-playbook.md` (if churn root cause) |
+| **references** | file paths[] | `../references/_shared/hypothesis-framework.md` (Framing B — Predictive), `references/initiative-types.md`, `references/initiative-planning.md`, `references/churn-playbook.md` (if churn root cause) |
 | **feedback** | string \| null | Rewrite instructions from the critic agent. Null on first run. |
 
 ## Output Contract
@@ -82,7 +82,7 @@ Then [this measurable outcome will happen]
 Because [this root cause connection explains why it will work]
 ```
 
-The "Because" must reference the confirmed root cause from diagnose.md. See `../../shared/hypothesis-framework.md` (Framing B — Predictive) for detailed templates by initiative type.
+The "Because" must reference the confirmed root cause from diagnose.md. See `../references/_shared/hypothesis-framework.md` (Framing B — Predictive) for detailed templates by initiative type.
 
 ### Effort Sizing
 

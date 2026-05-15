@@ -1,6 +1,6 @@
 ---
 name: orchestrate-research
-description: "Stack orchestrator for research-skills. Reads what's already done in `research/` and `skills-resources/`, parses your intent, and proposes the next 1–3 skills in the research pipeline (icp-research → market-research / diagnose → prioritize → funnel-planner). Use when you don't know which research skill to invoke, or want a guided run through the full audience/market/strategy workflow. Not for executing the work itself — it routes to the skill that does. Not for cross-stack workflows (use orchestrate-meta or invoke skills directly). Renamed from `start-research` in v3.0.0."
+description: "Stack orchestrator for research-skills. Reads what's already done in `research/` and `.agents/skill-artifacts/`, parses your intent, and proposes the next 1–3 skills in the research pipeline (icp-research → market-research / diagnose → prioritize → funnel-planner). Use when you don't know which research skill to invoke, or want a guided run through the full audience/market/strategy workflow. Not for executing the work itself — it routes to the skill that does. Not for cross-stack workflows (use orchestrate-meta or invoke skills directly). Renamed from `start-research` in v3.0.0."
 argument-hint: "[free-form ask, or empty to be guided]"
 allowed-tools: Read Grep Glob Bash
 user-invocable: true
@@ -40,17 +40,17 @@ routing:
   position: orchestrator
   lifecycle: pipeline
   produces:
-    - skills-resources/experience/research-workflow.md
+    - .agents/experience/research-workflow.md
   side-effects:
     - manifest-sync
   consumes:
     - research/product-context.md
     - research/icp-research.md
     - research/market-research.md
-    - skills-resources/meta/records/[date]-diagnose-[slug].md
-    - skills-resources/meta/sketches/prioritize-[slug].md
-    - skills-resources/meta/records/targets-[slug].md
-    - skills-resources/experience/*.md
+    - .agents/skill-artifacts/meta/records/[date]-diagnose-[slug].md
+    - .agents/skill-artifacts/meta/sketches/prioritize-[slug].md
+    - .agents/skill-artifacts/meta/records/targets-[slug].md
+    - .agents/experience/*.md
   requires: []
   defers-to:
     - skill: icp-research
@@ -74,7 +74,7 @@ routing:
 
 **Core Job:** read what's been done, infer where you are in the research pipeline, propose the next skill.
 
-**Core Question:** "Given what's already in `research/` and `skills-resources/`, plus what you just asked, what's the highest-leverage research skill to run next?"
+**Core Question:** "Given what's already in `research/` and `.agents/skill-artifacts/`, plus what you just asked, what's the highest-leverage research skill to run next?"
 
 This skill does NOT execute research work. It is a router and progress-tracker. The actual research is done by the skill it routes you to (icp-research, market-research, diagnose, prioritize, funnel-planner).
 
@@ -99,7 +99,7 @@ This skill does NOT execute research work. It is a router and progress-tracker. 
 
 **Tier note (`metadata.budget: fast`):** This is a pure router — no sub-agent dispatch, no critic gate. The body below runs in-line: read state, parse intent, propose next skill, await user confirmation. No `agents/` directory, no L1/L2 layers, no rewrite cycles. The premium-orchestration substrate (multi-agent + critic) lives in the skills this router proposes; running it here would be theater.
 
-1. **State detection** — silently read `research/`, `skills-resources/`, and `skills-resources/experience/*.md` to build a picture of what's been done.
+1. **State detection** — silently read `research/`, `.agents/skill-artifacts/`, and `.agents/experience/*.md` to build a picture of what's been done.
 2. **Intention analysis** — parse the user's free-form ask (or, if empty, ask one scoping question). Map intent to a position in the research pipeline.
 3. **Routing decision** — propose the next 1–3 skills with rationale. Show what each consumes and produces, expected cost, expected duration.
 4. **User confirmation** — user picks one (or none, or a different skill). On confirmation, hand off — recommend the user invoke `/<skill-name>` with the appropriate args.
@@ -112,11 +112,11 @@ The skill never auto-invokes another skill. It always pauses for explicit user c
 
 Silently read state. Do not announce findings until Step 4 — keep the read invisible.
 
-**Disk snapshot** (rendered inline when `/orchestrate-research` is invoked — see `meta-skills/CLAUDE.md` §"Skill-Authoring Patterns" for the inline-shell-interpolation convention):
+**Disk snapshot** (rendered inline when `/orchestrate-research` is invoked — see this skill's generated support notes for the inline-shell-interpolation convention):
 
 ```
 Artifacts by domain:
-! `[ -d skills-resources ] && find skills-resources -mindepth 2 -name "*.md" -type f 2>/dev/null | awk -F/ '{print $3}' | sort | uniq -c | sort -rn | grep . || echo "  (no skills-resources/ yet)"`
+! `[ -d .agents/skill-artifacts ] && find .agents/skill-artifacts -mindepth 2 -name "*.md" -type f 2>/dev/null | awk -F/ '{print $3}' | sort | uniq -c | sort -rn | grep . || echo "  (no .agents/skill-artifacts/ yet)"`
 
 Top-level canonical folders present:
 ! `found=0; for d in research brand architecture; do [ -d "$d" ] && { echo "  $d/ ✓"; found=1; }; done; [ $found -eq 0 ] && echo "  (none yet)" || true`
@@ -127,12 +127,12 @@ Last 5 commits in this repo:
 
 The `! \`...\`` lines run at slash-command invocation time and substitute the command output — so the orchestrator starts from concrete state instead of speculating about what's on disk.
 
-**Read `skills-resources/manifest.json` first** — this is the canonical state index. Single file, single read; no per-path scanning required.
+**Read `.agents/manifest.json` first** — this is the canonical state index. Single file, single read; no per-path scanning required.
 
 If the manifest is missing or looks stale (check `updated_at` drift), regenerate it:
 
 ```bash
-bun ${SKILLS_ROOT:-.claude/skills}/meta-skills/scripts/manifest-sync.ts
+bun scripts/manifest-sync.ts
 ```
 
 **Status-aware lookup** — for each artifact relevant to the research stack, read its manifest entry's `status` and `stale` fields to qualify the state map:
@@ -149,23 +149,23 @@ Staleness is now derived per-artifact via the manifest's `stale_after_days` (def
 
 **Experience block** — also read the manifest's `experience` block. `audience.md` and `business.md` `entries` counts indicate Pre-Dispatch coverage for research-stack questions. Low entry counts (≤2) mean cold-start conditions are likely for downstream skills.
 
-See [`../../../meta-skills/references/manifest-spec.md`](../../../meta-skills/references/manifest-spec.md) for the full contract.
+See [`references/_shared/manifest-spec.md`](references/_shared/manifest-spec.md) for the full contract.
 
-**Path reference / filesystem fallback** — used only when `skills-resources/manifest.json` doesn't exist (fresh project) or sync hasn't been run:
+**Path reference / filesystem fallback** — used only when `.agents/manifest.json` doesn't exist (fresh project) or sync hasn't been run:
 
 | Path | What it tells you |
 |---|---|
 | `research/product-context.md` | ICP foundation exists. Audience is at least sketched. |
 | `research/icp-research.md` | Full ICP research is done. |
 | `research/market-research.md` | Market landscape mapped. |
-| `skills-resources/meta/records/[date]-diagnose-[slug].md` | A specific problem has been diagnosed. |
-| `skills-resources/meta/sketches/prioritize-[slug].md` | Initiative ranking exists. |
-| `skills-resources/meta/records/targets-[slug].md` | Funnel targets are set. |
-| `skills-resources/research/short-form-research/[slug].md` | Per-platform short-form catalog exists. |
-| `skills-resources/marketing/loops/*/evals/[date]-cycle-N.md` | Short-form eval cycles have run inside marketing loops; pattern-log entries available. |
-| `skills-resources/experience/audience.md` | Cold-start audience answers persisted. |
-| `skills-resources/experience/business.md` | Business model context persisted. |
-| `skills-resources/experience/research-workflow.md` | Prior `/orchestrate-research` session left a breadcrumb. |
+| `.agents/skill-artifacts/meta/records/[date]-diagnose-[slug].md` | A specific problem has been diagnosed. |
+| `.agents/skill-artifacts/meta/sketches/prioritize-[slug].md` | Initiative ranking exists. |
+| `.agents/skill-artifacts/meta/records/targets-[slug].md` | Funnel targets are set. |
+| `.agents/skill-artifacts/research/short-form-research/[slug].md` | Per-platform short-form catalog exists. |
+| `skills-resources/loops/*/evals/[date]-cycle-N.md` | Short-form eval cycles have run inside marketing loops; pattern-log entries available. |
+| `.agents/experience/audience.md` | Cold-start audience answers persisted. |
+| `.agents/experience/business.md` | Business model context persisted. |
+| `.agents/experience/research-workflow.md` | Prior `/orchestrate-research` session left a breadcrumb. |
 
 Build a **state map** — a small internal table:
 
@@ -258,7 +258,7 @@ If multiple options apply (rule 6), show 2–3 with rationale per option, ask th
 
 ## Step 5: Persist + Hand Off
 
-After the user confirms, write a breadcrumb to `skills-resources/experience/research-workflow.md`:
+After the user confirms, write a breadcrumb to `.agents/experience/research-workflow.md`:
 
 ```markdown
 ## Session 2026-05-06
@@ -287,7 +287,7 @@ For the canonical pipeline definition, decision rules, and per-skill catalog, se
 
 ## Anti-Patterns
 
-- **Don't ignore the manifest** — always read `skills-resources/manifest.json` first; per-path filesystem scans are a fallback, not the default.
+- **Don't ignore the manifest** — always read `.agents/manifest.json` first; per-path filesystem scans are a fallback, not the default.
 - **Don't summarize all 6 skills** in the output. Propose 1–3 specific ones for THIS user's state.
 - **Don't auto-invoke** the recommended skill. The user must explicitly type `/skill-name`. This is the anti-runaway guard.
 - **Don't re-derive the pipeline** from scratch each invocation. Read it from `references/workflow-graph.md`.
@@ -299,11 +299,11 @@ For the canonical pipeline definition, decision rules, and per-skill catalog, se
 ## Output
 
 - **Inline only** — this skill prints to the conversation, doesn't produce a saved artifact.
-- **Side effect:** appends one entry to `skills-resources/experience/research-workflow.md`.
+- **Side effect:** appends one entry to `.agents/experience/research-workflow.md`.
 
 ## Status
 
 Always ends with one of:
 - `DONE` — recommendation given, user confirmed, hand-off line printed.
-- `BLOCKED` — couldn't read state (no project context, no `CLAUDE.md`, no `skills-resources/`). Ask user where the project lives.
+- `BLOCKED` — couldn't read state (no project context, no `CLAUDE.md`, no `.agents/skill-artifacts/`). Ask user where the project lives.
 - `NEEDS_CONTEXT` — user's ask was empty AND no state exists. Ask the scoping question, return after answer.

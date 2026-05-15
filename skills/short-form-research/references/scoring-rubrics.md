@@ -23,31 +23,31 @@ The flag carries through to:
 
 ---
 
-## Citation Rules
+## reference Rules
 
-Every claim, number, and named pattern must cite a source. Critic rubric #1 enforces.
+Every claim, number, and named pattern must uses a source. Critic rubric #1 enforces.
 
 ### What needs citing
 
-- **Numerical claims:** "TikTok hook window 1-2s" → cite TikTok Creator Portal doc URL
-- **Algorithm signals:** "Mosseri Originality Score penalizes recycled clips" → cite Mosseri Jan 2025 post URL
-- **Pattern occurrences:** "credential flash 8/12 in sample" → cite at least one example URL of the archetype
-- **Trending audio:** "[track name] trending on TikTok" → cite TikTok Creative Center URL or external corroboration
-- **Sample observations:** "this niche caps at 30s" → cite 2-3 example entries from scout
-- **Caption norms:** "captions average 80-150 chars in this sample" → cite 3 example captions
+- **Numerical claims:** "TikTok hook window 1-2s" → uses TikTok Creator Portal doc URL
+- **Algorithm signals:** "platform leadership's Originality Score penalizes recycled clips" → uses platform leadership's Jan 2025 post URL
+- **Pattern occurrences:** "credential flash 8/12 in sample" → uses at least one example URL of the archetype
+- **Trending audio:** "[track name] trending on TikTok" → uses TikTok Creative Center URL or external corroboration
+- **Sample observations:** "this niche caps at 30s" → uses 2-3 example entries from scout
+- **Caption norms:** "captions average 80-150 chars in this sample" → uses 3 example captions
 
 ### What does NOT need citing
 
 - Format facts that are unchanging across years (e.g., "TikTok aspect is 9:16") — these live in references and are cited indirectly via reference path
 - Cross-platform comparisons that are sourced via `_comparison.md` reference
 
-### Citation format
+### reference format
 
 Inline format: `(<short source name> — <last_updated date>, <URL>)`
 
 Example: `"70% completion threshold (TikTok Creator Portal — Algorithm Updates, last_updated 2026-04-12, https://www.tiktok.com/business/creativecenter/...)"`
 
-Pattern citations: at least one example URL from scout sample.
+Pattern reference: at least one example URL from scout sample.
 
 Example: `"Credential flash — 8/12 occurrences. Example: 'After 3 years of remote standups...' ([URL])"`
 
@@ -58,7 +58,7 @@ Example: `"Credential flash — 8/12 occurrences. Example: 'After 3 years of rem
 | Window | Refresh | Warn | Source-doc enforcement |
 |---|---|---|---|
 | `platform_mechanics_date` | every 90d | warn at 180d | every cited mechanic must trace to a source-doc URL with verified `last_updated` within window |
-| `trend_signals_date` | every 14d | warn at 30d | every trending-audio claim must cite source URL (TikTok Creative Center / external trend tracker) |
+| `trend_signals_date` | every 14d | warn at 30d | every trending-audio claim must uses source URL (TikTok Creative Center / external trend tracker) |
 
 **Why these windows:**
 - Mechanics: platforms ship algo updates roughly quarterly. 90d refresh keeps mechanics live; 180d is when cited docs become questionable.
@@ -95,7 +95,7 @@ A recommendation in a Per-Platform Findings or Recommendations section must NOT 
 
 **Passing examples:**
 - "TikTok: open with credential-flash archetype in 0–1.5s — 8/12 in sample"
-- "Reels: forbid TikTok watermarks (Mosseri Originality Score Jan 2025); use original audio over trending"
+- "Reels: forbid TikTok watermarks (platform leadership's Originality Score Jan 2025); use original audio over trending"
 - "Shorts: end on loop-friendly final frame to maximize loop rate signal"
 
 Critic rubric #3 reviews each Recommendations block for portable bullets. ≥3 portable bullets in any block → FAIL.

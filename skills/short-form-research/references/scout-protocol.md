@@ -46,7 +46,7 @@ Reels-specific notes: Instagram public-page metrics are thinner than TikTok. Vie
 2. `<topic> youtube shorts viral`
 3. `<topic> shorts <market_term>`
 
-Shorts-specific notes: YouTube has the richest public metrics — views and likes always visible on the watch page. Comments visible.
+internal notes: YouTube has the richest public metrics — views and likes always visible on the watch page. Comments visible.
 
 ### X video (opt-in)
 

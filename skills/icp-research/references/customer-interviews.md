@@ -111,7 +111,7 @@ When combining public VoC with direct research, weight findings by evidence stre
 | Win/loss interviews (10+) | Highest | Direct, recent, decision-focused |
 | Support tickets (pattern across 20+) | High | Unfiltered, repeated, specific |
 | Customer interviews (5+) | High | Deep, contextual, nuanced |
-| Public VoC (G2, Reddit, 15+ quotes) | Medium-high | Real but filtered for public audience |
+| Public VoC (G2, Reddit, 15+ quotes) | internal | Real but filtered for public audience |
 | Sales call notes | Medium | Filtered through sales rep interpretation |
 | Survey responses | Medium | Structured but potentially satisficing |
 | Assumptions without evidence | None | Don't use these |

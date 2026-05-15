@@ -135,7 +135,7 @@ Examples that fail:
 
 Examples that pass:
 - "TikTok: open with credential-flash archetype in 0-1.5s — 8/12 in sample"
-- "Reels: forbid TikTok watermarks (Mosseri Originality Score Jan 2025); use original audio over trending"
+- "Reels: forbid cross-platform watermarks; use original audio over trending"
 - "Shorts: end on loop-friendly final frame to maximize loop rate signal"
 
 If ≥3 bullets in any Recommendations block fail the portability test → rubric FAIL.

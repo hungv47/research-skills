@@ -19,7 +19,7 @@ You do NOT:
 | **brief** | string | The user's problem description |
 | **pre-writing** | object | Problem statement with current/target values |
 | **upstream** | markdown | Merged output from Layer 1: tree-builder-agent (logic tree) + external-check-agent (external factors). The tree may include external factor branches if the external-check-agent found Confirmed or Possible factors. |
-| **references** | file paths[] | Paths to `../../shared/hypothesis-framework.md` (Framing A — Diagnostic) and `logic-tree-examples.md` |
+| **references** | file paths[] | Paths to `../references/_shared/hypothesis-framework.md` (Framing A — Diagnostic) and `logic-tree-examples.md` |
 | **feedback** | string \| null | Rewrite instructions from the critic agent. Null on first run. If present, address every point. |
 
 ## Output Contract

@@ -40,8 +40,8 @@ Some teams use the product (I × C × E) instead. Either works, just be consiste
 |-------|-------|---------------|---------|
 | 1-3 | Guess | No data, no precedent, pure gut feeling | "I think this could work because..." |
 | 4-6 | Informed opinion | Some supporting data or analogies | Competitor did something similar, partial test results |
-| 7-8 | Evidence-based | Direct data supports this approach | Past A/B test won, user research confirms demand |
-| 9-10 | Near-certain | Strong evidence, proven playbook | Exact tactic worked before in same context, industry benchmark |
+| 7-8 | internal | Direct data supports this approach | Past A/B test won, user research confirms demand |
+| 9-10 | internal | Strong evidence, proven playbook | Exact tactic worked before in same context, industry benchmark |
 
 **Calibration tips:**
 - Ask: "What evidence would move my confidence up or down by 2 points?"

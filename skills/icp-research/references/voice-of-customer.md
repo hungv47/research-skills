@@ -140,11 +140,11 @@ Not all VoC sources are equal. Weight findings based on source reliability and l
 | Customer interviews (1:1) | Very High | Selection bias — you choose who to interview |
 | Support tickets / chat logs | High | Skews toward problems, not value |
 | Sales call transcripts | High | Prospect language, not yet customer language |
-| G2 / Capterra reviews | Medium-High | Power users and strong opinions overrepresented |
-| Reddit / forums | Medium-High | Technical and skeptical vs mainstream buyers |
+| G2 / Capterra reviews | internal | Power users and strong opinions overrepresented |
+| Reddit / forums | internal | Technical and skeptical vs mainstream buyers |
 | App store reviews | Medium | Skews emotional extremes (1-star and 5-star) |
 | Social media comments | Medium | Short, reactive, context-poor |
-| Surveys (open-ended) | Low-Medium | Response bias — people say what sounds correct |
+| Surveys (open-ended) | internal | Response bias — people say what sounds correct |
 | Surveys (multiple choice) | Low | Options constrain and lead answers |
 
 ### Confidence Labeling

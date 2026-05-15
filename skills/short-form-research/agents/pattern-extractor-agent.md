@@ -135,9 +135,9 @@ Quote 2-3 specific entries to support each claim.
 - Note timing patterns: "overlay at 0:20-0:24" or "caption first-line"
 - Cross-reference with engagement: do high-save entries cluster on a placement?
 
-**Synthesis-heuristic detection (Jibran's rule):**
+**Synthesis-heuristic detection:**
 
-Viral formats are rarely net-new — they're usually a synthesis of a *current* trend with a *previous* viral format from a different category, era, or product. Source: Jibran, $0 → #1 AppStore in 3 days with 60M views; explicit rule from <https://x.com/Jibran_05/status/2036118330004636070>: *"every viral format = synthesis of current viral formats + previous viral formats"* (worked example: 2025 wrapped's hands-covered iMessage hook = 2024 Spotify Wrapped face-cover format + 2022 trusted-brand-association format).
+Viral formats are rarely net-new — they're usually a synthesis of a *current* trend with a *previous* viral format from a different category, era, or product. Internal research synthesis pattern: current viral format + previous viral format = candidate format mutation. Example: a current wrapped-style hook can borrow visual concealment from an older music recap format and trust cues from an even older brand-association format.
 
 When extracting hook archetypes from this scout window, run a **synthesis check** on each archetype that crosses the ≥3-occurrence threshold:
 
@@ -156,11 +156,11 @@ Output format inside the per-platform Hook Archetypes section:
 
 This widens the extractor's window beyond the scout's literal sample. The extractor doesn't *search* for the prior format (that's outside scope) — it tags candidates for synthesis-agent and the brief skill to consider.
 
-**Clip-density characterization (Oren's rule):**
+**Clip-density characterization:**
 
-Source: Oren John, 2026-03-17 — *"This format matters not just because people watch the full thing, though some do, but because it is engineered for clipping. Every single interaction is an opportunity for a quotable moment, a sharp rebuttal, a trap that gets laid and a point that lands. That's what travels."* (verbatim from <https://x.com/orenmeetsworld/status/2033927145706365016>).
+Internal research synthesis: formats built around repeated conflict, rebuttal, objection handling, or crisp payoff moments produce more quotable moments per minute and survive clipping distribution better than low-tension source material.
 
-The synthesis-heuristic check above asks where a format *came from*. Clip-density asks what a format *pays out* — how many quotable moments per minute of source material, which determines whether the archetype survives the downstream paid-clipper / cross-post distribution layer (see `marketing-skills/skills/campaign-plan/references/distribution-models/clipping-and-live.md` §5 compelling-source test).
+The synthesis-heuristic check above asks where a format *came from*. Clip-density asks what a format *pays out* — how many quotable moments per minute of source material, which determines whether the archetype survives the downstream paid-clipper / cross-post distribution layer (see `references/_shared/clipping-and-live.md` §5 compelling-source test).
 
 For each archetype that crosses the ≥3-occurrence threshold, score clip-density across these triggers:
 
@@ -177,7 +177,7 @@ Output format inside the per-platform Hook Archetypes section:
   - Clip-density tag: [CLIP-DENSITY: high] — every interaction produces a quotable rebuttal moment (Jubilee-style debate structure observed in N/X entries)
 ```
 
-The tag is consumed downstream by `short-form-brief`'s format-fit critic (REB-2b — Roman Khaves's two-failure-modes test). High clip-density archetypes are format-fit candidates for campaigns running a paid-CPM clipping distribution layer; low clip-density archetypes get flagged as "produces views but won't survive clipping bounty network" so the brief skill can route around the format if clipping is the planned distribution.
+The tag is consumed downstream by `short-form-brief`'s format-fit critic (REB-2b — the two-failure-modes format-fit test). High clip-density archetypes are format-fit candidates for campaigns running a paid-CPM clipping distribution layer; low clip-density archetypes get flagged as "produces views but won't survive clipping bounty network" so the brief skill can route around the format if clipping is the planned distribution.
 
 **Caveat:** clip-density is a property of the *archetype's structure*, not of a single high-performing entry. If 4/5 entries under the same archetype produced one quotable moment each and one entry produced zero, the archetype is still `[CLIP-DENSITY: low]` — the average payout is what matters for downstream distribution decisions, not the outlier. **Don't fabricate** — if the scout sample doesn't include enough source-length entries to judge density (e.g., all entries are <60 seconds), mark `[CLIP-DENSITY: insufficient-source-length-to-judge]` and let the synthesis-agent or human assess.
 

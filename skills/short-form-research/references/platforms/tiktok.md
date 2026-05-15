@@ -1,6 +1,6 @@
 # TikTok — Platform Reference
 
-Cited mechanics, format specs, and known failure modes for TikTok in-feed video. Every number cites a source. Refresh source-doc verification at every research run.
+Cited mechanics, format specs, and known failure modes for TikTok in-feed video. Every number uses a source. Refresh source-doc verification at every research run.
 
 ---
 

@@ -37,7 +37,7 @@ By cycle 4 (post-revision), prose-to-score balance can be roughly even. Until th
 
 | Score | Criteria |
 |---|---|
-| **3** | Every brief commitment (hook archetype, caption shape, CTA placement, audio choice, target watch time) executed and observable in the post. Citations support each. |
+| **3** | Every brief commitment (hook archetype, caption shape, CTA placement, audio choice, target watch time) executed and observable in the post. reference support each. |
 | **2** | Most commitments executed; 1-2 deviations are explained or minor (e.g., audio was changed but the new audio is on-trend). |
 | **1** | Half executed, half drifted; deviations have no clear authorial intent — the brief was partially abandoned. |
 | **0** | Brief was abandoned wholesale; the post bears no observable relationship to the commitments. |
@@ -57,7 +57,7 @@ By cycle 4 (post-revision), prose-to-score balance can be roughly even. Until th
 | **1** | Hook is a novel archetype not in the catalog — has a name and identifying signal but n=1 sample so far. (Equivalent of NOVEL_ARCHETYPE.) Catalog refresh recommended. |
 | **0** | Hook misses both the catalog and any structurally recognizable archetype. (Equivalent of MISMATCH.) Brief failed at the hook contract. |
 
-**Falsifiability check:** The justification names the catalog archetype matched (or names the novel one), cites the catalog sample size, and references the post URL with timestamp.
+**Falsifiability check:** The justification names the catalog archetype matched (or names the novel one), uses the catalog sample size, and references the post URL with timestamp.
 
 **Catalog freshness caveat:** A MATCH against an archetype with `LOW_SAMPLE` (n=3-7) is directional. A MATCH against `INSUFFICIENT_DATA` (n<3) is not yet a pattern confirmation. Reflect this in your justification language — "this cycle confirms" requires `OK` (n≥8) sample; otherwise hedge to "this cycle adds to."
 
@@ -69,8 +69,8 @@ By cycle 4 (post-revision), prose-to-score balance can be roughly even. Until th
 
 | Score | Criteria |
 |---|---|
-| **3** | Cycle yields a refutable pattern claim in canonical 4-line shape (claim / evidence / refutability / expiry); evidence has citations; refutability names an observable counter-example; expiry is a timeframe or condition. |
-| **2** | Cycle yields a pattern claim in canonical shape but one of: refutability is borderline observable, expiry hedges with a soft condition, evidence is light on citations. Workable but not crisp. |
+| **3** | Cycle yields a refutable pattern claim in canonical 4-line shape (claim / evidence / refutability / expiry); evidence has reference; refutability names an observable counter-example; expiry is a timeframe or condition. |
+| **2** | Cycle yields a pattern claim in canonical shape but one of: refutability is borderline observable, expiry hedges with a soft condition, evidence is light on reference. Workable but not crisp. |
 | **1** | No refutable pattern extractable — observation was too uniform (brief and post agreed entirely with no surprising delta) or too noisy (post engagement below sample threshold). Pattern Extractor outputs the No Pattern Branch with reasoning. |
 | **0** | Cycle's pattern entry violates the canonical shape (free-form prose, missing lines, untestable claim). Critic rubric #3 fails the artifact. |
 
@@ -89,7 +89,7 @@ By cycle 4 (post-revision), prose-to-score balance can be roughly even. Until th
 | **1** | Both windows stale at brief-ship time; eval is essentially against a historical reference. Pattern claims should hedge accordingly. |
 | **0** | Catalog was already flagged stale and brief shipped anyway. Process failure upstream — the eval is recording rather than scoring at this point. Recommendation: catalog refresh before next brief. |
 
-**Falsifiability check:** The justification cites specific catalog `last_updated` dates and the brief publication date.
+**Falsifiability check:** The justification uses specific catalog `last_updated` dates and the brief publication date.
 
 ---
 
@@ -99,7 +99,7 @@ By cycle 4 (post-revision), prose-to-score balance can be roughly even. Until th
 
 | Score | Criteria |
 |---|---|
-| **3** | Distinctive qualitative observation that materially changes how the cycle should be read; observation has citation; observation cannot be relocated to dimensions 1-4 without losing meaning. |
+| **3** | Distinctive qualitative observation that materially changes how the cycle should be read; observation has reference; observation cannot be relocated to dimensions 1-4 without losing meaning. |
 | **2** | Useful qualitative observation, but partially captured by another dimension's justification. |
 | **1** | Observation is interesting but not load-bearing for the cycle's pattern claim. |
 | **0** | No observation worth recording at this dimension. |

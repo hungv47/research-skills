@@ -20,7 +20,7 @@ Build a comparison matrix covering:
 - 🟡 Partial — feature exists but limited, beta, or poorly reviewed
 - ❌ Not available — no evidence of this capability
 
-**Sources:** Product pages, documentation, G2/Capterra feature lists, changelog/release notes.
+**Pattern basis:** internal research synthesis.
 
 ### 2. Pricing Models
 
@@ -93,7 +93,7 @@ Common axis pairs:
 | **User-generated content** | Tutorials, blog posts, videos by users | Organic advocacy level |
 | **Share of voice** | % of category mentions that include this competitor | Mindshare dominance |
 
-**Sources:** Reddit mentions, Twitter/X mentions, GitHub stars (if applicable), Discord/Slack community size, YouTube tutorial count, Stack Overflow tag activity.
+**Pattern basis:** internal research synthesis.
 
 ## Threat Level Assessment
 

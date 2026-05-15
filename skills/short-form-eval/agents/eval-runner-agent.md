@@ -72,7 +72,7 @@ If `cycle_index == 1`:
 
 If `cycle_index >= 2`:
 - Balanced prose
-- Reference any prior cycle scores from the loop's `skills-resources/marketing/loops/[slug]/evals/` folder for trend
+- Reference any prior cycle scores from the loop's `skills-resources/loops/[slug]/evals/` folder for trend
 - If cycle is 2 or 3 and rubric is still v0.1: surface the **mandatory revision flag** in §Friction Notes
 
 ## Friction Notes (rubric revision input)

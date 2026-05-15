@@ -64,15 +64,15 @@ Best for: Sequential diagnostic questions where each answer narrows the search.
 ```
 Is the problem new (started recently)?
 ├── YES: Did anything change?
-│   ├── YES: Was it a product change?
-│   │   ├── YES → Investigate the specific change
-│   │   └── NO → Investigate external factors
-│   └── NO: Did the measurement change?
-│       ├── YES → Fix measurement, re-evaluate
-│       └── NO → Deeper investigation needed
+│ ├── YES: Was it a product change?
+│ │ ├── YES → Investigate the specific change
+│ │ └── NO → Investigate external factors
+│ └── NO: Did the measurement change?
+│ ├── YES → Fix measurement, re-evaluate
+│ └── NO → Deeper investigation needed
 └── NO: Has it always been this way?
-    ├── YES → This is a capability gap, not a regression
-    └── NO → Identify when it started degrading
+ ├── YES → This is a capability gap, not a regression
+ └── NO → Identify when it started degrading
 ```
 
 **When to use:** When you're trying to narrow down from many possibilities quickly. Good for initial triage.
@@ -84,14 +84,14 @@ Best for: Complex problems with multiple potential cause categories.
 ```
 Problem
 ├── Category A
-│   ├── Sub-cause A1
-│   └── Sub-cause A2
+│ ├── Sub-cause A1
+│ └── Sub-cause A2
 ├── Category B
-│   ├── Sub-cause B1
-│   └── Sub-cause B2
+│ ├── Sub-cause B1
+│ └── Sub-cause B2
 └── Category C
-    ├── Sub-cause C1
-    └── Sub-cause C2
+ ├── Sub-cause C1
+ └── Sub-cause C2
 ```
 
 **When to use:** When the problem could stem from many different areas and you need to explore systematically. Most common tree type for business problems.
@@ -105,16 +105,16 @@ Revenue = Traffic × Conversion Rate × Average Order Value
 
 Revenue declining
 ├── Traffic (volume)
-│   ├── Organic
-│   ├── Paid
-│   └── Direct/Referral
+│ ├── Organic
+│ ├── Paid
+│ └── Direct/Referral
 ├── Conversion rate (%)
-│   ├── Browse → Cart
-│   ├── Cart → Checkout
-│   └── Checkout → Purchase
+│ ├── Browse → Cart
+│ ├── Cart → Checkout
+│ └── Checkout → Purchase
 └── Average order value ($)
-    ├── Items per order
-    └── Price per item
+ ├── Items per order
+ └── Price per item
 ```
 
 **When to use:** When you can express the problem as a mathematical formula. Forces precision and makes it easy to quantify each branch's contribution to the gap.

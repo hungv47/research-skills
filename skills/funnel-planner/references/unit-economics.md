@@ -282,7 +282,7 @@ Different customer segments have different LTVs:
 | Segment | ARPU | Lifespan | LTV |
 |---------|------|----------|-----|
 | SMB | $50 | 18 months | $900 |
-| Mid-Market | $200 | 30 months | $6,000 |
+| internal | $200 | 30 months | $6,000 |
 | Enterprise | $1,000 | 48 months | $48,000 |
 
 ---
@@ -331,7 +331,7 @@ Payback Period = CAC / (ARPU × Gross Margin)
 | Segment | Target Payback |
 |---------|----------------|
 | SMB | < 12 months |
-| Mid-Market | < 18 months |
+| internal | < 18 months |
 | Enterprise | < 24 months |
 
 ---
@@ -784,7 +784,7 @@ Cost to Serve = (Support costs + Success costs + Infrastructure) / Customers
 | Segment | LTV | CAC | Cost to Serve | Profit | Action |
 |---------|-----|-----|---------------|--------|--------|
 | Enterprise | $10,000 | $3,000 | $2,000 | $5,000 | Invest |
-| Mid-Market | $3,000 | $1,000 | $500 | $1,500 | Grow |
+| internal | $3,000 | $1,000 | $500 | $1,500 | Grow |
 | SMB | $500 | $200 | $200 | $100 | Automate |
 | Free | $0 | $50 | $50 | -$100 | Convert or churn |
 

@@ -138,24 +138,24 @@ Users → Invites → New Signups → Activations → More Users → More Invite
 
 ```
 User signed up but not activated
-         │
-         ├─► Never returned after signup?
-         │        │
-         │        ├─► Email delivered? → Check deliverability
-         │        │
-         │        └─► Email opened? → Improve subject/timing
-         │
-         ├─► Returned but didn't complete onboarding?
-         │        │
-         │        ├─► Where did they drop? → Simplify that step
-         │        │
-         │        └─► How long was session? → Too complex, simplify
-         │
-         └─► Completed onboarding but no first action?
-                  │
-                  ├─► Did they find the core feature? → Better guidance
-                  │
-                  └─► Did they understand the value? → Clearer messaging
+ │
+ ├─► Never returned after signup?
+ │ │
+ │ ├─► Email delivered? → Check deliverability
+ │ │
+ │ └─► Email opened? → Improve subject/timing
+ │
+ ├─► Returned but didn't complete onboarding?
+ │ │
+ │ ├─► Where did they drop? → Simplify that step
+ │ │
+ │ └─► How long was session? → Too complex, simplify
+ │
+ └─► Completed onboarding but no first action?
+ │
+ ├─► Did they find the core feature? → Better guidance
+ │
+ └─► Did they understand the value? → Clearer messaging
 ```
 
 ---
@@ -189,13 +189,13 @@ Product is the primary acquisition and conversion engine. Users discover, try, a
 |--------|---------|---------------|
 | Signup rate | Visitors → Free Users | 2-10% (depends on traffic quality) |
 | Activation rate | Free Users → Activated | 20-40% |
-| Free-to-paid | Activated → Converted | 2-5% (freemium), 15-25% (free trial) |
+| internal | Activated → Converted | 2-5% (freemium), 15-25% (free trial) |
 | Expansion rate | Revenue from upgrades / Starting MRR | >5% monthly |
 | Viral coefficient | Invites × invite conversion rate | >0.5 (self-sustaining >1.0) |
 
 ### PLG-Specific Anti-Patterns
 
-| Anti-Pattern | Symptom | Fix |
+| internal | Symptom | Fix |
 |-------------|---------|-----|
 | **Vanity free users** | High signups, <10% activation | Fix onboarding, reduce time to value |
 | **Premature paywall** | Low signup → high churn after trial | Move paywall later, expand free tier |
@@ -265,7 +265,7 @@ Outbound and paid channels drive acquisition. Sales team or performance marketin
 
 ### SLG-Specific Anti-Patterns
 
-| Anti-Pattern | Symptom | Fix |
+| internal | Symptom | Fix |
 |-------------|---------|-----|
 | **High CPL, low SQL** | Spending on leads that don't convert | Tighten targeting, improve lead scoring |
 | **Long cycle, no nurture** | Leads go cold between MQL and SQL | Build nurture sequences, content for each stage |
@@ -406,27 +406,27 @@ User completes purchase or conversion.
 
 ```
 User engaged with content but didn't express purchase intent
-         │
-         ├─► Did they view product/pricing pages?
-         │        │
-         │        ├─► No → Content not moving them down funnel
-         │        │        └─► Add CTAs, create bridge content
-         │        │
-         │        └─► Yes → Something on those pages stopped them
-         │                  │
-         │                  ├─► Price page bounce? → Price objection
-         │                  │        └─► Add social proof, ROI calc
-         │                  │
-         │                  └─► Product page bounce? → Trust/fit objection
-         │                           └─► Add testimonials, comparisons
-         │
-         └─► Did they return multiple times?
-                  │
-                  ├─► Yes → Considering but need push
-                  │        └─► Retargeting, email nurture, urgency
-                  │
-                  └─► No → Lost interest or found alternative
-                           └─► Win-back content, competitive positioning
+ │
+ ├─► Did they view product/pricing pages?
+ │ │
+ │ ├─► No → Content not moving them down funnel
+ │ │ └─► Add CTAs, create bridge content
+ │ │
+ │ └─► Yes → Something on those pages stopped them
+ │ │
+ │ ├─► Price page bounce? → Price objection
+ │ │ └─► Add social proof, ROI calc
+ │ │
+ │ └─► Product page bounce? → Trust/fit objection
+ │ └─► Add testimonials, comparisons
+ │
+ └─► Did they return multiple times?
+ │
+ ├─► Yes → Considering but need push
+ │ └─► Retargeting, email nurture, urgency
+ │
+ └─► No → Lost interest or found alternative
+ └─► Win-back content, competitive positioning
 ```
 
 ---
@@ -541,53 +541,53 @@ Convert leads with decision-enabling content.
 
 ```
 Lead captured but not engaging with MOFU content
-         │
-         ├─► Are nurture emails being opened?
-         │        │
-         │        ├─► No → Deliverability or subject line issue
-         │        │        └─► Check spam, A/B test subjects
-         │        │
-         │        └─► Yes → Content not compelling enough
-         │                  │
-         │                  ├─► Clicks but no action? → CTA/landing issue
-         │                  │
-         │                  └─► No clicks? → Content relevance issue
-         │                           └─► Segment better, personalize
-         │
-         └─► Are they visiting site independently?
-                  │
-                  ├─► Yes → Progressing outside email
-                  │        └─► Adjust attribution, check other channels
-                  │
-                  └─► No → Not actively considering
-                           └─► Different nurture cadence, re-qualification
+ │
+ ├─► Are nurture emails being opened?
+ │ │
+ │ ├─► No → Deliverability or subject line issue
+ │ │ └─► Check spam, A/B test subjects
+ │ │
+ │ └─► Yes → Content not compelling enough
+ │ │
+ │ ├─► Clicks but no action? → CTA/landing issue
+ │ │
+ │ └─► No clicks? → Content relevance issue
+ │ └─► Segment better, personalize
+ │
+ └─► Are they visiting site independently?
+ │
+ ├─► Yes → Progressing outside email
+ │ └─► Adjust attribution, check other channels
+ │
+ └─► No → Not actively considering
+ └─► Different nurture cadence, re-qualification
 ```
 
 **Diagnostic Tree: MQL → SQL Conversion Problem**
 
 ```
 Leads hitting MQL threshold but not converting to SQL
-         │
-         ├─► Is sales following up quickly?
-         │        │
-         │        ├─► No → SLA violation
-         │        │        └─► Implement SLA, automate routing
-         │        │
-         │        └─► Yes → Quality or qualification issue
-         │                  │
-         │                  ├─► Sales rejecting leads? → MQL criteria too loose
-         │                  │        └─► Tighten scoring, add qualification
-         │                  │
-         │                  └─► Leads not responding? → Timing or channel issue
-         │                           └─► Multi-channel outreach, timing optimization
-         │
-         └─► What's the rejection reason pattern?
-                  │
-                  ├─► "Not decision maker" → Targeting issue
-                  │
-                  ├─► "No budget" → Qualification issue
-                  │
-                  └─► "Not interested" → Lead quality or timing issue
+ │
+ ├─► Is sales following up quickly?
+ │ │
+ │ ├─► No → SLA violation
+ │ │ └─► Implement SLA, automate routing
+ │ │
+ │ └─► Yes → Quality or qualification issue
+ │ │
+ │ ├─► Sales rejecting leads? → MQL criteria too loose
+ │ │ └─► Tighten scoring, add qualification
+ │ │
+ │ └─► Leads not responding? → Timing or channel issue
+ │ └─► Multi-channel outreach, timing optimization
+ │
+ └─► What's the rejection reason pattern?
+ │
+ ├─► "Not decision maker" → Targeting issue
+ │
+ ├─► "No budget" → Qualification issue
+ │
+ └─► "Not interested" → Lead quality or timing issue
 ```
 
 ---
@@ -607,21 +607,21 @@ When standard models don't fit.
 ### Building a Custom Funnel
 
 1. **Map the actual user journey**
-   - Interview customers
-   - Analyze behavior data
-   - Identify key decision points
+ - Interview customers
+ - Analyze behavior data
+ - Identify key decision points
 
 2. **Define stage entry criteria**
-   - What action moves someone to this stage?
-   - What data captures this?
+ - What action moves someone to this stage?
+ - What data captures this?
 
 3. **Choose stage metrics**
-   - What indicates success at this stage?
-   - What indicates failure/drop-off?
+ - What indicates success at this stage?
+ - What indicates failure/drop-off?
 
 4. **Validate with data**
-   - Do users actually follow this path?
-   - Are stages distinct and meaningful?
+ - Do users actually follow this path?
+ - Are stages distinct and meaningful?
 
 ### Example: Marketplace Funnel
 
@@ -646,7 +646,7 @@ Visit → Browse → First Purchase → Repeat Purchase → Loyal
 
 ## Funnel Model Comparison
 
-| Aspect | PLG | SLG | AARRR | AIDA | TOFU-MOFU-BOFU |
+| Aspect | PLG | SLG | AARRR | AIDA | internal |
 |--------|-----|-----|-------|------|----------------|
 | Focus | Product as growth engine | Outbound + paid performance | Product + Growth | Marketing + Sales | Content + Leads |
 | Stages | 6 | 7 | 5 | 4 | 3 |
@@ -654,7 +654,7 @@ Visit → Browse → First Purchase → Repeat Purchase → Loyal
 | Best metric | Activation rate | Win rate / CAC | Retention | Conversion | Lead quality |
 | Optimization | Product UX, onboarding | Targeting, sales process | Product changes | Messaging | Content strategy |
 | Team ownership | Product/Growth | Sales/Performance Marketing | Growth/Product | Marketing | Marketing/Content |
-| Channel emphasis | SEO, community, forums, referral | Paid ads, email, IRL, SMS, PR | All channels | Campaign-specific | Content-driven |
+| Channel emphasis | SEO, community, forums, referral | Paid ads, email, IRL, SMS, PR | All channels | internal | internal |
 
 ---
 
@@ -671,7 +671,7 @@ Ask these questions:
 | Is retention critical to unit economics? | AARRR |
 | Is the purchase decision quick (<1 week)? | AIDA |
 | Is the sales cycle long (>30 days)? | TOFU-MOFU-BOFU or **SLG** |
-| Is content the main acquisition channel? | TOFU-MOFU-BOFU |
+| Is content the main acquisition channel? | internal |
 | Is it a one-time purchase? | AIDA |
 | Is there a human sales team closing deals? | **SLG** or TOFU-MOFU-BOFU |
 
