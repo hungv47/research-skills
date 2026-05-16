@@ -40,7 +40,7 @@ routing:
   position: orchestrator
   lifecycle: pipeline
   produces:
-    - .agents/experience/research-workflow.md
+    - skills-resources/experience/research-workflow.md
   side-effects:
     - manifest-sync
   consumes:
@@ -50,7 +50,7 @@ routing:
     - .agents/skill-artifacts/meta/records/[date]-diagnose-[slug].md
     - .agents/skill-artifacts/meta/sketches/prioritize-[slug].md
     - .agents/skill-artifacts/meta/records/targets-[slug].md
-    - .agents/experience/*.md
+    - skills-resources/experience/*.md
   requires: []
   defers-to:
     - skill: icp-research
@@ -99,7 +99,7 @@ This skill does NOT execute research work. It is a router and progress-tracker. 
 
 **Tier note (`metadata.budget: fast`):** This is a pure router — no sub-agent dispatch, no critic gate. The body below runs in-line: read state, parse intent, propose next skill, await user confirmation. No `agents/` directory, no L1/L2 layers, no rewrite cycles. The premium-orchestration substrate (multi-agent + critic) lives in the skills this router proposes; running it here would be theater.
 
-1. **State detection** — silently read `research/`, `.agents/skill-artifacts/`, and `.agents/experience/*.md` to build a picture of what's been done.
+1. **State detection** — silently read `research/`, `.agents/skill-artifacts/`, and `skills-resources/experience/*.md` to build a picture of what's been done.
 2. **Intention analysis** — parse the user's free-form ask (or, if empty, ask one scoping question). Map intent to a position in the research pipeline.
 3. **Routing decision** — propose the next 1–3 skills with rationale. Show what each consumes and produces, expected cost, expected duration.
 4. **User confirmation** — user picks one (or none, or a different skill). On confirmation, hand off — recommend the user invoke `/<skill-name>` with the appropriate args.
@@ -163,9 +163,9 @@ See [`references/_shared/manifest-spec.md`](references/_shared/manifest-spec.md)
 | `.agents/skill-artifacts/meta/records/targets-[slug].md` | Funnel targets are set. |
 | `.agents/skill-artifacts/research/short-form-research/[slug].md` | Per-platform short-form catalog exists. |
 | `skills-resources/loops/*/evals/[date]-cycle-N.md` | Short-form eval cycles have run inside marketing loops; pattern-log entries available. |
-| `.agents/experience/audience.md` | Cold-start audience answers persisted. |
-| `.agents/experience/business.md` | Business model context persisted. |
-| `.agents/experience/research-workflow.md` | Prior `/orchestrate-research` session left a breadcrumb. |
+| `skills-resources/experience/audience.md` | Cold-start audience answers persisted. |
+| `skills-resources/experience/business.md` | Business model context persisted. |
+| `skills-resources/experience/research-workflow.md` | Prior `/orchestrate-research` session left a breadcrumb. |
 
 Build a **state map** — a small internal table:
 
@@ -258,7 +258,7 @@ If multiple options apply (rule 6), show 2–3 with rationale per option, ask th
 
 ## Step 5: Persist + Hand Off
 
-After the user confirms, write a breadcrumb to `.agents/experience/research-workflow.md`:
+After the user confirms, write a breadcrumb to `skills-resources/experience/research-workflow.md`:
 
 ```markdown
 ## Session 2026-05-06
@@ -299,7 +299,7 @@ For the canonical pipeline definition, decision rules, and per-skill catalog, se
 ## Output
 
 - **Inline only** — this skill prints to the conversation, doesn't produce a saved artifact.
-- **Side effect:** appends one entry to `.agents/experience/research-workflow.md`.
+- **Side effect:** appends one entry to `skills-resources/experience/research-workflow.md`.
 
 ## Status
 

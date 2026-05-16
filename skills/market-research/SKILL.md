@@ -101,7 +101,7 @@ Run the Pre-Dispatch protocol (`references/_shared/pre-dispatch-protocol.md`).
 
 **Read order:**
 1. Pipeline: `research/product-context.md` for product signal, `.agents/skill-artifacts/meta/records/diagnose-*.md` for known root-cause focus.
-2. Experience: `.agents/experience/{product,business,audience}.md`.
+2. Experience: `skills-resources/experience/{product,business,audience}.md`.
 
 **Warm Start** (product + B2B/B2C inferable, decision focus clear):
 

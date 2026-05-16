@@ -167,7 +167,7 @@ Run the canonical Pre-Dispatch protocol (`references/_shared/pre-dispatch-protoc
 2. `<brief-path>` — confirm it exists, parse frontmatter for topic, market, target platform, hook archetype claim.
 3. `.agents/skill-artifacts/research/short-form-research/[slug].md` — locate the matching catalog by topic+market; if multiple match, ask user once.
 4. `.agents/manifest.json` — confirm catalog freshness (warn if stale).
-5. `.agents/experience/content.md` — most recent entries for market and audience register.
+5. `skills-resources/experience/content.md` — most recent entries for market and audience register.
 
 **Warm Start** (brief, post URL, and matching catalog all resolvable):
 
@@ -204,7 +204,7 @@ Short-form eval needs three things to score a post against a known reference. Tw
 Answer 1-4 in one response. I'll resolve the loop, catalog, and dispatch.
 ```
 
-**Write-back to `.agents/experience/content.md`:**
+**Write-back to `skills-resources/experience/content.md`:**
 
 | Q | Key |
 |---|---|

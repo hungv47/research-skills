@@ -108,7 +108,7 @@ icp-research ─────┤ ├──→ prioritize ──→ funnel-planner
 
 4. Present (1–3 options max). Wait for user confirmation.
 
-5. On confirmation, append breadcrumb to.agents/experience/research-workflow.md.
+5. On confirmation, append breadcrumb toskills-resources/experience/research-workflow.md.
 ```
 
 ---

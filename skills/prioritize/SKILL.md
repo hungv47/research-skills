@@ -97,7 +97,7 @@ This skill is **hard-gated** on `.agents/skill-artifacts/meta/records/diagnose-*
 
 **Read order (post-gate):**
 1. Pipeline: `.agents/skill-artifacts/meta/records/diagnose-*.md` (required). `research/product-context.md` (optional, for impact estimation). `research/icp-research.md` (optional, for audience-fit scoring).
-2. Experience: `.agents/experience/{goals,business,product}.md`.
+2. Experience: `skills-resources/experience/{goals,business,product}.md`.
 
 **Warm Start** (after gate passes):
 

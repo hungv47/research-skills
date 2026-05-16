@@ -110,7 +110,7 @@ This skill is **hard-gated** on `.agents/skill-artifacts/meta/sketches/prioritiz
 
 **Read order (post-gate):**
 1. Pipeline: `.agents/skill-artifacts/meta/sketches/prioritize-*.md` (required). `research/product-context.md` (optional, for benchmark selection).
-2. Experience: `.agents/experience/{business,goals}.md` for growth motion + funnel state.
+2. Experience: `skills-resources/experience/{business,goals}.md` for growth motion + funnel state.
 
 **Warm Start** (after gate passes):
 

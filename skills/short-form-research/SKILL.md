@@ -154,8 +154,8 @@ Run the canonical Pre-Dispatch protocol (`references/_shared/pre-dispatch-protoc
 
 **Read order:**
 1. `.agents/skill-artifacts/research/short-form-research/[slug].md` if exists — check (topic, market) match and freshness windows.
-2. `.agents/experience/content.md` — most recent entries for market, audience register, topics already researched.
-3. `.agents/experience/audience.md` — primary persona, language, habitats.
+2. `skills-resources/experience/content.md` — most recent entries for market, audience register, topics already researched.
+3. `skills-resources/experience/audience.md` — primary persona, language, habitats.
 4. `research/icp-research.md`, `research/product-context.md` — full context if present.
 5. `brand/BRAND.md` — voice and archetype hints.
 
@@ -202,7 +202,7 @@ Short-form research starts with five quick decisions (one round-trip).
 Answer 1-5 in one response. I'll confirm what I heard, then dispatch.
 ```
 
-**Write-back to `.agents/experience/content.md`:**
+**Write-back to `skills-resources/experience/content.md`:**
 
 | Q | Key |
 |---|---|

@@ -177,7 +177,7 @@ Run the Pre-Dispatch protocol (`references/_shared/pre-dispatch-protocol.md`). i
 **Read order:**
 1. **Auto-scan first** (skill-specific): README.md, marketing site, pricing page, /docs, package.json. Extract product/buyer/pricing/voice signals to fill in what you can before asking.
 2. Pipeline: existing `research/product-context.md` if present (re-run case).
-3. Experience: `.agents/experience/{product,audience}.md`.
+3. Experience: `skills-resources/experience/{product,audience}.md`.
 
 After scan + read, present findings and ask only about the gaps.
 

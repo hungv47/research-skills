@@ -105,7 +105,7 @@ This skill **always cold-starts** — diagnose IS the diagnostic interview. The 
 
 **Read order:**
 1. Pipeline: prior `.agents/skill-artifacts/meta/records/diagnose-*.md` if re-running. `research/product-context.md` for context.
-2. Experience: `.agents/experience/goals.md` for prior metric history.
+2. Experience: `skills-resources/experience/goals.md` for prior metric history.
 
 **Cold Start:**
 
