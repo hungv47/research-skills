@@ -2,7 +2,7 @@
 
 ![Research Skills](./assets/banner.png)
 
-> **v3.0.0 BREAKING:** `start-research` renamed to `orchestrate-research`. Update any `/start-research` invocations in your workflows to `/orchestrate-research`.
+> **Agent Skills 2.0** — fresh start on the `refactor/v2.0` branch. Install via `npx skills add hungv47/research-skills@refactor/v2.0`. The `main` branch holds the legacy v1.x line.
 
 Structured frameworks for audience research, market analysis, problem diagnosis, solution design, target setting, and short-form video research. 8 skills (incl. `/orchestrate-research` orchestrator).
 
